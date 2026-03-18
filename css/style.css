@@ -117,6 +117,18 @@ button { cursor: pointer; }
         linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0.30) 100%);
     background-size: 24px 24px, 100% 100%;
 }
+/* Hero Canvas Particles */
+.hero-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0.25;
+    z-index: 1;
+}
+[data-theme="light"] .hero-canvas { opacity: 0.12; }
+
 .page-hero::after,
 .eshop-hero::after {
     content: '';

@@ -310,3 +310,73 @@
         counterObserver.observe(el);
     });
 })();
+
+// ==================== HERO CANVAS PARTICLES ====================
+(function() {
+    'use strict';
+    var canvas = document.getElementById('heroCanvas');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var particles = [];
+    var W, H;
+    var animFrame;
+
+    function resize() {
+        W = canvas.width = canvas.offsetWidth;
+        H = canvas.height = canvas.offsetHeight;
+    }
+
+    function createParticle() {
+        return {
+            x: -20,
+            y: Math.random() * H,
+            length: Math.random() * 120 + 40,
+            speed: Math.random() * 4 + 2,
+            opacity: Math.random() * 0.5 + 0.1,
+            width: Math.random() * 1.5 + 0.3
+        };
+    }
+
+    function init() {
+        particles = [];
+        for (var i = 0; i < 25; i++) {
+            var p = createParticle();
+            p.x = Math.random() * W;
+            particles.push(p);
+        }
+    }
+
+    function draw() {
+        ctx.clearRect(0, 0, W, H);
+        particles.forEach(function(p, i) {
+            ctx.save();
+            var grad = ctx.createLinearGradient(p.x - p.length, p.y, p.x, p.y);
+            grad.addColorStop(0, 'rgba(189, 20, 27, 0)');
+            grad.addColorStop(0.5, 'rgba(189, 20, 27, ' + p.opacity + ')');
+            grad.addColorStop(1, 'rgba(245, 158, 11, ' + (p.opacity * 0.6) + ')');
+            ctx.strokeStyle = grad;
+            ctx.lineWidth = p.width;
+            ctx.beginPath();
+            ctx.moveTo(p.x - p.length, p.y);
+            ctx.lineTo(p.x, p.y);
+            ctx.stroke();
+            ctx.restore();
+            p.x += p.speed;
+            if (p.x - p.length > W) {
+                particles[i] = createParticle();
+            }
+        });
+        animFrame = requestAnimationFrame(draw);
+    }
+
+    window.addEventListener('resize', function() {
+        resize();
+        init();
+    });
+    resize();
+    init();
+
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        draw();
+    }
+})();
