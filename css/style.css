@@ -1466,7 +1466,8 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
 .service-card:hover { box-shadow: 0 0 20px rgba(189,20,27,0.15); }
 .stat-card:hover { box-shadow: var(--shadow-md), 0 0 15px rgba(189,20,27,0.12); }
 .sponsor-item:hover { box-shadow: var(--shadow-md), 0 0 15px rgba(189,20,27,0.1); }
-.blog-card:hover { box-shadow: 0 0 20px rgba(189,20,27,0.12); }
+.blog-card:hover { box-shadow: 0 20px 50px -20px rgba(var(--primary-rgb), 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.04); }
 .gallery-item:hover { box-shadow: 0 0 20px rgba(189,20,27,0.15); }
 ::selection { background: rgba(189,20,27,0.25); color: inherit; }
 ::-moz-selection { background: rgba(189,20,27,0.25); color: inherit; }
@@ -1691,37 +1692,47 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
                 box-shadow 0.3s ease;
 }
 .process-step:hover {
-    transform: translateY(-6px);
-    border-color: rgba(var(--primary-rgb), 0.35);
-    box-shadow: 0 20px 60px -20px rgba(var(--primary-rgb), 0.25);
+    transform: translateY(-8px);
+    border-color: rgba(var(--primary-rgb), 0.4);
+    box-shadow:
+        0 24px 60px -20px rgba(var(--primary-rgb), 0.3),
+        0 0 0 1px rgba(var(--primary-rgb), 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 .process-step-number {
     font-family: var(--font-heading);
-    font-size: 3rem;
-    font-weight: 700;
+    font-size: 3.5rem;
+    font-weight: 800;
     line-height: 1;
-    color: rgba(var(--primary-rgb), 0.12);
     position: absolute;
-    top: 1rem;
-    right: 1.25rem;
+    top: 0.75rem;
+    right: 1rem;
     letter-spacing: -0.04em;
+    background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.15) 0%, rgba(var(--accent-rgb), 0.08) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    user-select: none;
+    pointer-events: none;
 }
 .process-step-icon {
-    width: 56px;
-    height: 56px;
+    width: 64px;
+    height: 64px;
     border-radius: 50%;
-    background: rgba(var(--primary-rgb), 0.1);
-    border: 1px solid rgba(var(--primary-rgb), 0.2);
+    background: radial-gradient(circle at 30% 30%, rgba(var(--primary-rgb), 0.25) 0%, rgba(var(--primary-rgb), 0.05) 100%);
+    border: 1px solid rgba(var(--primary-rgb), 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto 1.25rem;
     color: var(--primary);
-    transition: background 0.25s ease, box-shadow 0.25s ease;
+    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
+    position: relative;
 }
 .process-step:hover .process-step-icon {
-    background: rgba(var(--primary-rgb), 0.18);
-    box-shadow: 0 0 20px rgba(var(--primary-rgb), 0.2);
+    background: radial-gradient(circle at 30% 30%, rgba(var(--primary-rgb), 0.35) 0%, rgba(var(--primary-rgb), 0.1) 100%);
+    box-shadow: 0 0 0 1px rgba(var(--primary-rgb), 0.5), 0 0 20px rgba(var(--primary-rgb), 0.3);
+    transform: scale(1.08);
 }
 .process-step-title {
     font-family: var(--font-heading);
