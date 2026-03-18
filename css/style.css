@@ -1235,3 +1235,53 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
 .quick-view-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--surface-border); }
 .quick-view-price { font-size: 1.75rem; font-weight: 700; font-family: var(--font-heading); color: var(--primary); }
 @media (max-width: 640px) { .quick-view-panel { grid-template-columns: 1fr; } .quick-view-img-wrap { border-radius: var(--radius-xl) var(--radius-xl) 0 0; min-height: 220px; } }
+
+/* ==================== SKELETON LOADING ==================== */
+@keyframes shimmer {
+    0% { background-position: -600px 0; }
+    100% { background-position: 600px 0; }
+}
+.skeleton {
+    background: linear-gradient(90deg, var(--surface-alt) 25%, var(--surface-border) 50%, var(--surface-alt) 75%);
+    background-size: 600px 100%;
+    animation: shimmer 1.4s ease-in-out infinite;
+    border-radius: var(--radius-sm);
+}
+.product-skeleton { background: var(--surface); border: 1px solid var(--surface-border); border-radius: var(--radius-lg); overflow: hidden; }
+.product-skeleton-img { aspect-ratio: 4/3; }
+.product-skeleton-body { padding: 1.25rem; display: flex; flex-direction: column; gap: 0.6rem; }
+.product-skeleton-line { height: 14px; border-radius: var(--radius-sm); }
+.product-skeleton-line.short { width: 60%; }
+.product-skeleton-line.medium { width: 80%; }
+.product-skeleton-btn { height: 38px; border-radius: var(--radius-md); margin-top: 0.5rem; }
+
+/* ==================== FLY TO CART ANIMATION ==================== */
+.fly-to-cart {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--primary);
+    pointer-events: none;
+    z-index: 9999;
+    transition: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.9;
+}
+.fly-to-cart.animate {
+    transition: left 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                top 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.7s ease,
+                opacity 0.7s ease;
+    transform: scale(0.3);
+    opacity: 0;
+}
+@keyframes cartPulse {
+    0% { transform: scale(1); }
+    40% { transform: scale(1.35); }
+    70% { transform: scale(0.9); }
+    100% { transform: scale(1); }
+}
+.cart-pulse { animation: cartPulse 0.5s cubic-bezier(0.22, 1, 0.36, 1); }

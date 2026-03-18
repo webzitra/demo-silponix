@@ -290,6 +290,53 @@
         featured.forEach(function (p) { featuredGrid.appendChild(createProductCard(p)); });
     }
 
+    /* ==================== SKELETON LOADING ==================== */
+    function showSkeletons(count) {
+        var grid = document.getElementById('productsGrid');
+        if (!grid) return;
+        var html = '';
+        for (var i = 0; i < (count || 8); i++) {
+            html += '<div class="product-skeleton" aria-hidden="true">' +
+                '<div class="product-skeleton-img skeleton"></div>' +
+                '<div class="product-skeleton-body">' +
+                    '<div class="product-skeleton-line skeleton short"></div>' +
+                    '<div class="product-skeleton-line skeleton medium"></div>' +
+                    '<div class="product-skeleton-line skeleton"></div>' +
+                    '<div class="product-skeleton-btn skeleton"></div>' +
+                '</div>' +
+            '</div>';
+        }
+        grid.innerHTML = html;
+    }
+
+    /* ==================== FLY TO CART ==================== */
+    function flyToCart(triggerEl) {
+        var cartIcon = document.getElementById('navbarCart');
+        if (!cartIcon || !triggerEl) return;
+        var srcRect = triggerEl.getBoundingClientRect();
+        var dstRect = cartIcon.getBoundingClientRect();
+        var dot = document.createElement('div');
+        dot.className = 'fly-to-cart';
+        dot.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>';
+        dot.style.left = (srcRect.left + srcRect.width / 2 - 20) + 'px';
+        dot.style.top = (srcRect.top + srcRect.height / 2 - 20) + 'px';
+        document.body.appendChild(dot);
+        requestAnimationFrame(function () {
+            requestAnimationFrame(function () {
+                dot.classList.add('animate');
+                dot.style.left = (dstRect.left + dstRect.width / 2 - 20) + 'px';
+                dot.style.top = (dstRect.top + dstRect.height / 2 - 20) + 'px';
+            });
+        });
+        setTimeout(function () {
+            dot.remove();
+            cartIcon.classList.add('cart-pulse');
+            cartIcon.addEventListener('animationend', function () {
+                cartIcon.classList.remove('cart-pulse');
+            }, { once: true });
+        }, 700);
+    }
+
     /* ==================== E-SHOP PAGE ==================== */
     var productsGrid = document.getElementById('productsGrid');
     var categoryBtns = document.querySelectorAll('.category-btn');
@@ -323,15 +370,17 @@
         if (currentSort === 'name-asc') filtered.sort(function (a, b) { return a.name.localeCompare(b.name, 'cs'); });
         if (currentSort === 'name-desc') filtered.sort(function (a, b) { return b.name.localeCompare(a.name, 'cs'); });
 
-        productsGrid.innerHTML = '';
-        filtered.forEach(function (p) { productsGrid.appendChild(createProductCard(p)); });
+        // Show skeleton shimmer briefly before rendering actual products
+        showSkeletons(8);
+        setTimeout(function () {
+            productsGrid.innerHTML = '';
+            filtered.forEach(function (p) { productsGrid.appendChild(createProductCard(p)); });
 
-        if (eshopResults) {
-            eshopResults.textContent = filtered.length + ' produkt' + (filtered.length === 1 ? '' : filtered.length < 5 ? 'y' : 'ů');
-        }
-        if (eshopEmpty) eshopEmpty.hidden = filtered.length > 0;
-
-        // No animation needed for dynamic cards
+            if (eshopResults) {
+                eshopResults.textContent = filtered.length + ' produkt' + (filtered.length === 1 ? '' : filtered.length < 5 ? 'y' : 'ů');
+            }
+            if (eshopEmpty) eshopEmpty.hidden = filtered.length > 0;
+        }, 200);
     }
 
     // URL param category
@@ -414,6 +463,7 @@
         if (btn) {
             var productId = parseInt(btn.getAttribute('data-product-id'));
             addToCart(productId);
+            flyToCart(btn);
         }
     });
 
