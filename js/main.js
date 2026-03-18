@@ -154,6 +154,18 @@
             });
         }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
         elements.forEach(function (el) { observer.observe(el); });
+
+        // Auto-stagger for grid children
+        var autoStaggerGrids = document.querySelectorAll('.blog-grid, .sponsors-grid, .about-stats');
+        autoStaggerGrids.forEach(function(grid) {
+            Array.from(grid.children).forEach(function(child, i) {
+                if (!child.hasAttribute('data-animate')) {
+                    child.setAttribute('data-animate', '');
+                    child.style.transitionDelay = (i * 80) + 'ms';
+                    observer.observe(child);
+                }
+            });
+        });
     }
 
     initAnimations();
