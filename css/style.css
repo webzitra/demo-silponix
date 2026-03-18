@@ -2586,3 +2586,37 @@ main, .hero, .section, footer { position: relative; z-index: 1; }
         opacity: 1; transform: none; filter: none; transition: none;
     }
 }
+
+/* ==================== ICON MICRO-INTERACTIONS ==================== */
+.service-card:hover .service-card-icon {
+    animation: iconBounce 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(189, 20, 27, 0.25);
+    box-shadow: 0 0 0 1px rgba(189,20,27,0.4), 0 0 24px rgba(189,20,27,0.25);
+}
+.process-step:hover .process-step-icon {
+    animation: iconRingPulse 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+    .service-card:hover .service-card-icon,
+    .process-step:hover .process-step-icon { animation: none; }
+}
+
+/* ==================== ANIMATED GRADIENT BUTTON ==================== */
+/* Add after existing .btn-primary rules: */
+.btn-primary {
+    background-size: 200% 200%;
+    background-position: 0% 50%;
+    background-image: linear-gradient(135deg, var(--primary) 0%, #d42020 25%, #c45a00 50%, #d42020 75%, var(--primary) 100%);
+    transition: background-position 0.6s ease, box-shadow 0.25s ease, transform 0.15s ease, color 0.15s ease;
+}
+.btn-primary:hover {
+    background-position: 100% 50%;
+}
+
+/* ==================== STAT NUMBER HOVER GLOW ==================== */
+.hero-stat:hover .hero-stat-number { animation: statGlow 1.2s ease-in-out; }
+.stat-card:hover .stat-number      { animation: statGlow 1.2s ease-in-out; }
+@media (prefers-reduced-motion: reduce) {
+    .hero-stat:hover .hero-stat-number,
+    .stat-card:hover .stat-number { animation: none; }
+}
