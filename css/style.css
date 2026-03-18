@@ -5,7 +5,13 @@
 
 /* ==================== CSS RESET ==================== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+/* SplitText word wrap */
+.word-wrap {
+    display: inline-block;
+    overflow: hidden;
+}
 body {
     font-family: var(--font-body);
     font-size: 1rem; line-height: 1.6; color: var(--text); background-color: var(--bg);
