@@ -129,10 +129,10 @@ button { cursor: pointer; }
     width: 100%;
     height: 100%;
     pointer-events: none;
-    opacity: 0.25;
+    opacity: 0.45;
     z-index: 1;
 }
-[data-theme="light"] .hero-canvas { opacity: 0.12; }
+[data-theme="light"] .hero-canvas { opacity: 0.08; }
 
 .page-hero::after,
 .eshop-hero::after {
@@ -2403,3 +2403,79 @@ footer {
 }
 
 main, .hero, .section, footer { position: relative; z-index: 1; }
+
+/* ==================== HERO ENTRANCE ANIMATIONS ==================== */
+@keyframes heroWordUp {
+    from { opacity: 0; transform: translateY(28px); filter: blur(4px); }
+    to   { opacity: 1; transform: translateY(0);    filter: blur(0);   }
+}
+@keyframes heroBadgeIn {
+    from { opacity: 0; transform: translateY(12px) scale(0.94); }
+    to   { opacity: 1; transform: translateY(0)    scale(1);    }
+}
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(189, 20, 27, 0); }
+    50%      { box-shadow: 0 0 0 6px rgba(189, 20, 27, 0.2), 0 0 20px rgba(189, 20, 27, 0.1); }
+}
+@keyframes heroFloat {
+    0%, 100% { transform: translateY(0) scale(1); }
+    33%  { transform: translateY(-18px) scale(1.04); }
+    66%  { transform: translateY(-8px)  scale(0.97); }
+}
+@keyframes heroFloatReverse {
+    0%, 100% { transform: translateY(0)   scale(1);    }
+    33%  { transform: translateY(12px)  scale(0.96); }
+    66%  { transform: translateY(-14px) scale(1.03); }
+}
+
+/* Entrance animations — trigger when .active class is added to slide */
+.hero-slide.active .hero-badge    { animation: heroBadgeIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.1s  both; }
+.hero-slide.active .hero-title    { animation: heroWordUp  0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both; }
+.hero-slide.active .hero-subtitle { animation: heroWordUp  0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.4s  both; }
+.hero-slide.active .hero-stats    { animation: heroWordUp  0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.5s  both; }
+.hero-slide.active .hero-cta      { animation: heroWordUp  0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.65s both; }
+
+/* Badge continuous pulse glow */
+.hero-badge { animation: pulseGlow 3s ease-in-out infinite; }
+.hero-slide.active .hero-badge {
+    animation: heroBadgeIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both,
+               pulseGlow 3s ease-in-out 0.6s infinite;
+}
+
+/* Floating ambient orbs in hero carousel */
+.hero-carousel::before {
+    content: '';
+    position: absolute;
+    width: 500px; height: 500px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(189,20,27,0.12) 0%, rgba(189,20,27,0.04) 40%, transparent 70%);
+    top: -100px; right: -80px;
+    pointer-events: none; z-index: 0;
+    animation: heroFloat 9s ease-in-out infinite;
+    filter: blur(40px);
+}
+.hero-carousel::after {
+    content: '';
+    position: absolute;
+    width: 380px; height: 380px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(245,158,11,0.10) 0%, rgba(245,158,11,0.03) 40%, transparent 70%);
+    bottom: 60px; left: -60px;
+    pointer-events: none; z-index: 0;
+    animation: heroFloatReverse 11s ease-in-out infinite;
+    filter: blur(50px);
+}
+[data-theme="light"] .hero-carousel::before {
+    background: radial-gradient(circle, rgba(189,20,27,0.07) 0%, transparent 70%);
+}
+[data-theme="light"] .hero-carousel::after {
+    background: radial-gradient(circle, rgba(245,158,11,0.07) 0%, transparent 70%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-slide.active .hero-badge,
+    .hero-slide.active .hero-title,
+    .hero-slide.active .hero-subtitle,
+    .hero-slide.active .hero-stats,
+    .hero-slide.active .hero-cta,
+    .hero-badge { animation: none; }
+    .hero-carousel::before, .hero-carousel::after { animation: none; }
+}
