@@ -24,6 +24,9 @@ h1, h2, h3, h4, h5, h6,
     font-family: var(--font-heading);
     letter-spacing: -0.02em;
 }
+h1, .h1 { font-size: clamp(2.25rem, 4vw + 1rem, 4.5rem); text-wrap: balance; }
+h2, .h2 { font-size: clamp(1.75rem, 3vw + 0.75rem, 3rem); text-wrap: balance; }
+h3, .h3 { font-size: clamp(1.375rem, 2vw + 0.625rem, 2.25rem); text-wrap: balance; }
 img, svg { display: block; max-width: 100%; height: auto; }
 a { color: var(--primary); text-decoration: none; transition: color 0.2s ease; }
 a:hover { color: var(--primary-hover); }
@@ -197,7 +200,7 @@ button { cursor: pointer; }
     color: transparent;
 }
 [data-theme="light"] .section-dark .section-badge { background: transparent; border: 1px solid rgba(var(--primary-rgb), 0.3); }
-.section-title { font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.025em; margin-bottom: 1rem; position: relative; display: inline-block; }
+.section-title { font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.025em; margin-bottom: 1rem; position: relative; display: inline-block; text-wrap: balance; }
 .section-title::after {
     content: '';
     position: absolute;
@@ -494,7 +497,7 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
 .hero-title {
     font-size: clamp(2.5rem, 6vw, 3.75rem); font-weight: 900; line-height: 1.08;
     letter-spacing: -0.03em; margin-bottom: 1.25rem; color: #fff;
-    text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    text-shadow: 0 2px 20px rgba(0,0,0,0.3); text-wrap: balance;
 }
 [data-theme="light"] .hero-title { color: var(--text); text-shadow: 0 2px 20px rgba(255,255,255,0.3); }
 .text-gradient {
@@ -2707,6 +2710,42 @@ main, .hero, .section, footer { position: relative; z-index: 1; }
     .hero-stat:hover .hero-stat-number,
     .stat-card:hover .stat-number { animation: none; }
 }
+
+/* ==================== CUSTOM SCROLLBAR ==================== */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-dark, #0a0a0a); }
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--primary), rgba(189,20,27,0.5));
+    border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+[data-theme="light"] ::-webkit-scrollbar-track { background: #e0ddd8; }
+[data-theme="light"] ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, var(--primary), rgba(189,20,27,0.6)); }
+
+/* ==================== HERO CAROUSEL NAVIGATION ==================== */
+.hero-prev, .hero-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #fff;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+.hero-prev { left: 1.5rem; }
+.hero-next { right: 1.5rem; }
+.hero-prev:hover, .hero-next:hover {
+    background: rgba(189,20,27,0.4);
+    border-color: rgba(189,20,27,0.5);
+    transform: translateY(-50%) scale(1.08);
+}
+@media (max-width: 768px) { .hero-prev, .hero-next { display: none; } }
 
 /* ==================== PAGE LOADER ==================== */
 #pageLoader {

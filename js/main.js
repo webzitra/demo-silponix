@@ -269,6 +269,24 @@
             if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
         }
 
+        function resetInterval() {
+            clearInterval(autoTimer);
+            autoTimer = setInterval(nextSlide, slideInterval);
+        }
+
+        var prevBtn = document.querySelector('.hero-prev');
+        var nextBtn = document.querySelector('.hero-next');
+        if (prevBtn) prevBtn.addEventListener('click', function () {
+            var prev = (currentSlide - 1 + slides.length) % slides.length;
+            goToSlide(prev);
+            resetInterval();
+        });
+        if (nextBtn) nextBtn.addEventListener('click', function () {
+            var next = (currentSlide + 1) % slides.length;
+            goToSlide(next);
+            resetInterval();
+        });
+
         startAutoplay();
 
         heroCarousel.addEventListener('mouseenter', stopAutoplay);
