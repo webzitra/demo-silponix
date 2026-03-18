@@ -433,7 +433,7 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
 .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 1rem; }
 .service-card {
     background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-lg);
-    padding: 2rem; transition: all var(--transition-base);
+    padding: 2rem; position: relative; overflow: hidden; transition: all var(--transition-base);
 }
 [data-theme="light"] .section-dark .service-card { background: rgba(255,255,255,0.6); border-color: var(--surface-border); }
 .service-card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.07); border-color: rgba(var(--primary-rgb), 0.3); }
@@ -971,7 +971,7 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
 .blog-card-link { text-decoration: none; color: inherit; display: block; }
 .blog-card {
     background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-    border-radius: var(--radius-lg); overflow: hidden; transition: all var(--transition-base);
+    border-radius: var(--radius-lg); overflow: hidden; position: relative; transition: all var(--transition-base);
 }
 [data-theme="light"] .section-dark .blog-card { background: rgba(255,255,255,0.6); border-color: var(--surface-border); }
 .blog-card:hover { transform: translateY(-4px); border-color: rgba(var(--primary-rgb), 0.3); }
@@ -995,7 +995,7 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
 .sponsor-item {
     display: flex; align-items: center; justify-content: center;
     padding: 1.5rem 2rem; background: var(--surface); border: 1px solid var(--surface-border);
-    border-radius: var(--radius-lg); transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; min-height: 120px;
+    border-radius: var(--radius-lg); position: relative; overflow: hidden; transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; min-height: 120px;
 }
 .sponsor-item:hover {
     border-color: rgba(var(--primary-rgb), 0.3);
@@ -1406,6 +1406,7 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
 }
 .process-step {
     position: relative;
+    overflow: hidden;
     z-index: 1;
     text-align: center;
     padding: 2rem 1.25rem 1.5rem;
@@ -1481,6 +1482,8 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     border: 1px solid var(--surface-border);
     border-radius: var(--radius-lg);
     padding: 1.75rem;
+    position: relative;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -1758,3 +1761,102 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     text-decoration: underline;
 }
 .form-gdpr-text a:hover { color: var(--accent); }
+
+/* ==================== UNIVERSAL CARD TOP-BAR HOVER EFFECT ==================== */
+/* EmergentLabs signature: 3px gradient line slides in from left on hover */
+
+/* Blog cards */
+.blog-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+}
+.blog-card:hover::before { transform: scaleX(1); }
+
+/* Service cards */
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+}
+.service-card:hover::before { transform: scaleX(1); }
+
+/* Testimonial cards — reversed gradient */
+.testimonial-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--primary));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+}
+.testimonial-card:hover::before { transform: scaleX(1); }
+
+/* Process step cards */
+.process-step::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 2;
+}
+.process-step:hover::before { transform: scaleX(1); }
+
+/* Product cards */
+.product-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 3;
+}
+.product-card:hover::before { transform: scaleX(1); }
+
+/* Sponsor items */
+.sponsor-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+}
+.sponsor-item:hover::before { transform: scaleX(1); }
