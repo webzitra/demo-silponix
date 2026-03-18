@@ -156,7 +156,7 @@ button { cursor: pointer; }
     font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 1rem;
 }
 [data-theme="light"] .section-dark .section-badge { background: rgba(189,20,27,0.1); color: var(--primary); }
-.section-title { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.025em; margin-bottom: 1rem; }
+.section-title { font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.025em; margin-bottom: 1rem; }
 .section-subtitle { font-size: 1.0625rem; color: var(--text-secondary); line-height: 1.7; }
 .section-dark .section-subtitle { color: #d1d5db; }
 .section-cta { text-align: center; margin-top: 3rem; }
@@ -309,7 +309,7 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
 .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
 .hero-stats { display: flex; gap: 2.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
 .hero-stat { display: flex; flex-direction: column; }
-.hero-stat-number { font-size: 1.75rem; font-weight: 800; color: var(--primary); line-height: 1.2; }
+.hero-stat-number { font-size: 1.75rem; font-weight: 800; color: var(--primary); line-height: 1.2; font-variant-numeric: tabular-nums; }
 .hero-stat-label { font-size: 0.875rem; color: rgba(255,255,255,0.6); font-weight: 500; }
 [data-theme="light"] .hero-stat-label { color: var(--text-muted); }
 
@@ -396,12 +396,17 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     padding: 2rem; text-align: center; transition: all var(--transition-base);
 }
 .stat-card:hover { border-color: rgba(var(--primary-rgb), 0.3); box-shadow: var(--shadow-md); transform: translateY(-2px); }
-.stat-number { display: block; font-size: 2.5rem; font-weight: 900; color: var(--primary); line-height: 1.2; margin-bottom: 0.25rem; }
+.stat-number { display: block; font-size: 2.5rem; font-weight: 900; color: var(--primary); line-height: 1.2; margin-bottom: 0.25rem; font-variant-numeric: tabular-nums; }
 .stat-label { font-size: 0.875rem; color: var(--text-secondary); font-weight: 500; }
 
 /* ==================== CTA BLOCK ==================== */
 .section-cta-block { padding: 4rem 0; }
-[data-theme="dark"] .section-cta-block { background-color: #1a1a1a; }
+[data-theme="dark"] .section-cta-block {
+    background:
+        radial-gradient(ellipse at 20% 50%, rgba(189, 20, 27, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 50%, rgba(245, 158, 11, 0.08) 0%, transparent 50%),
+        var(--bg-dark, #0f0f0f);
+}
 [data-theme="light"] .section-cta-block { background-color: #f0efec; }
 .cta-block { text-align: center; max-width: 640px; margin: 0 auto; }
 .cta-title { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; margin-bottom: 1rem; color: #fff; }
@@ -894,15 +899,24 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
 [data-theme="light"] .blog-card-title { color: var(--text); }
 .blog-card-desc { font-size: 0.9375rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
 [data-theme="light"] .blog-card-desc { color: var(--text-secondary); }
+.blog-card-link:hover .blog-card-title,
+.blog-card:hover .blog-card-title {
+    color: var(--primary);
+    transition: color 0.2s ease;
+}
 
 /* ==================== SPONSORS ==================== */
 .sponsors-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5rem; align-items: center; }
 .sponsor-item {
     display: flex; align-items: center; justify-content: center;
     padding: 1.5rem 2rem; background: var(--surface); border: 1px solid var(--surface-border);
-    border-radius: var(--radius-lg); transition: all var(--transition-base); min-height: 120px;
+    border-radius: var(--radius-lg); transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; min-height: 120px;
 }
-.sponsor-item:hover { border-color: rgba(var(--primary-rgb), 0.3); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.sponsor-item:hover {
+    border-color: rgba(var(--primary-rgb), 0.3);
+    box-shadow: 0 12px 40px -16px rgba(var(--primary-rgb), 0.35);
+    transform: translateY(-4px);
+}
 .sponsor-item img {
     height: 60px; max-width: 100%; object-fit: contain;
     filter: grayscale(100%) brightness(0.8); opacity: 0.7; transition: all var(--transition-base);
