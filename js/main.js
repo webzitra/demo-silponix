@@ -547,8 +547,8 @@
     ];
 
     function resize() {
-        W = canvas.width  = window.innerWidth;
-        H = canvas.height = window.innerHeight;
+        W = canvas.width  = canvas.offsetWidth  || canvas.parentElement.offsetWidth  || window.innerWidth;
+        H = canvas.height = canvas.offsetHeight || canvas.parentElement.offsetHeight || window.innerHeight;
     }
     resize();
     window.addEventListener('resize', resize, { passive: true });
