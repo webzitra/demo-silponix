@@ -90,6 +90,17 @@ button { cursor: pointer; }
     --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+/* CSS @property — animated gradient borders */
+@property --border-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes borderRotate {
+    to { --border-angle: 360deg; }
+}
+
 /* ==================== CUSTOM PROPERTIES — LIGHT ==================== */
 [data-theme="light"] {
     --bg: #F5F4F1;
@@ -498,7 +509,25 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
 [data-theme="light"] .hero-subtitle { color: var(--text-secondary); text-shadow: none; }
 .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
 .hero-stats { display: flex; gap: 2.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
-.hero-stat { display: flex; flex-direction: column; }
+.hero-stat {
+    display: flex; flex-direction: column;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-lg);
+    padding: 1rem 1.5rem;
+    transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+.hero-stat:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(189, 20, 27, 0.3);
+    transform: translateY(-4px);
+}
+[data-theme="light"] .hero-stat {
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.08);
+}
 .hero-stat-number { font-size: 1.75rem; font-weight: 800; line-height: 1.2; font-variant-numeric: tabular-nums; background: linear-gradient(135deg, var(--primary) 0%, #f87171 40%, var(--accent) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
 .hero-stat-label { font-size: 0.875rem; color: rgba(255,255,255,0.6); font-weight: 500; }
 [data-theme="light"] .hero-stat-label { color: rgba(0, 0, 0, 0.55); }
@@ -560,6 +589,10 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
 .service-card {
     background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-lg);
     padding: 2rem; position: relative; overflow: hidden; transition: all var(--transition-base);
+    background: rgba(var(--surface-alt-rgb), 0.45);
+    backdrop-filter: blur(24px) saturate(150%);
+    -webkit-backdrop-filter: blur(24px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.06);
 }
 [data-theme="light"] .section-dark .service-card { background: rgba(255,255,255,0.6); border-color: var(--surface-border); }
 .service-card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.07); border-color: rgba(var(--primary-rgb), 0.3); }
@@ -1259,6 +1292,10 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
 .blog-card {
     background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
     border-radius: var(--radius-lg); overflow: hidden; position: relative; transition: all var(--transition-base);
+    background: rgba(var(--surface-alt-rgb), 0.5);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 [data-theme="light"] .section-dark .blog-card { background: rgba(255,255,255,0.6); border-color: var(--surface-border); }
 .blog-card:hover { transform: translateY(-4px); border-color: rgba(var(--primary-rgb), 0.3); }
@@ -1523,6 +1560,23 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
 [data-theme="light"] .section-dark .blog-card-desc { color: #555; }
 [data-theme="light"] .section-dark .cta-desc { color: #555; }
 
+/* Glassmorphism — light mode overrides */
+[data-theme="light"] .service-card {
+    background: rgba(255, 255, 255, 0.65);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+[data-theme="light"] .blog-card {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+[data-theme="light"] .process-step {
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.07);
+}
+[data-theme="light"] .testimonial-card {
+    background: rgba(255, 255, 255, 0.75);
+}
+
 /* ==================== PRODUCT DETAIL ==================== */
 .product-detail { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
 .product-detail-img { background: var(--surface); border: 1px solid var(--surface-border); border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; }
@@ -1702,6 +1756,10 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
                 border-color 0.3s ease,
                 box-shadow 0.3s ease;
+    background: rgba(var(--surface-alt-rgb), 0.5);
+    backdrop-filter: blur(28px) saturate(160%);
+    -webkit-backdrop-filter: blur(28px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.07);
 }
 .process-step:hover {
     transform: translateY(-8px);
@@ -1786,6 +1844,10 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
                 border-color 0.3s ease,
                 box-shadow 0.3s ease;
+    background: rgba(var(--surface-alt-rgb), 0.55);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 .testimonial-card:hover {
     transform: translateY(-5px);
@@ -2482,6 +2544,27 @@ main, .hero, .section, footer { position: relative; z-index: 1; }
     .hero-slide.active .hero-cta,
     .hero-badge { animation: none; }
     .hero-carousel::before, .hero-carousel::after { animation: none; }
+}
+
+/* Animated gradient border on process-step hover (CSS @property) */
+@supports (--border-angle: 0deg) {
+    .process-step:hover {
+        --border-angle: 0deg;
+        animation: borderRotate 3s linear infinite;
+        border-image: conic-gradient(
+            from var(--border-angle),
+            transparent 20%,
+            rgba(189,20,27,0.6) 40%,
+            rgba(245,158,11,0.4) 60%,
+            transparent 80%
+        ) 1;
+    }
+}
+
+@supports not (--border-angle: 0deg) {
+    .process-step:hover {
+        border-color: rgba(189, 20, 27, 0.4);
+    }
 }
 
 /* ==================== CURSOR-TRACKING CARD SPOTLIGHT ==================== */
