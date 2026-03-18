@@ -243,33 +243,42 @@
     /* ==================== PRODUCT RENDERING ==================== */
     function createProductCard(product) {
         var lang = (typeof getCurrentLang === 'function') ? getCurrentLang() : 'cs';
-        var pName = (lang === 'en' && product.name_en) ? product.name_en : product.name;
-        var pDesc = (lang === 'en' && product.desc_en) ? product.desc_en : product.desc;
-        var catLabel = (lang === 'en' ? CATEGORIES_EN[product.category] : CATEGORIES[product.category]) || product.category;
+        var name = (lang === 'en' && product.name_en) ? product.name_en : product.name;
+        var inStock = product.stock > 0;
+        var stockClass = inStock ? 'in-stock' : 'out-of-stock';
+        var stockLabel = inStock
+            ? (window.t ? window.t('products.in_stock') || 'Skladem' : 'Skladem')
+            : (window.t ? window.t('products.out_of_stock') || 'Vyprodáno' : 'Vyprodáno');
 
-        var badgeHTML = '';
-        if (product.badge === 'new') badgeHTML = '<span class="product-badge product-badge-new">' + (lang === 'en' ? 'New' : 'Novinka') + '</span>';
-        if (product.badge === 'sale') badgeHTML = '<span class="product-badge product-badge-sale">' + (lang === 'en' ? 'Sale' : 'Sleva') + '</span>';
+        var badge = '';
+        if (product.badge === 'bestseller') badge = '<span class="product-badge product-badge--bestseller">Bestseller</span>';
+        else if (product.badge === 'new') badge = '<span class="product-badge product-badge--new">' + (lang === 'en' ? 'New' : 'Nové') + '</span>';
+
+        var quickViewLabel = lang === 'en' ? 'Quick view' : 'Rychlý náhled';
 
         var card = document.createElement('div');
         card.className = 'product-card';
-        var detailUrl = '/produkt?id=' + product.id;
+        card.setAttribute('data-product-id', product.id);
         card.innerHTML =
-            '<a href="' + detailUrl + '" class="product-card-img-link"><div class="product-card-img">' +
-                badgeHTML +
-                (product.img ? '<img src="' + product.img + '" alt="' + pName + '" loading="lazy">' : '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>') +
-            '</div></a>' +
-            '<div class="product-card-body">' +
-                '<span class="product-card-category">' + catLabel + '</span>' +
-                '<h3 class="product-card-title"><a href="' + detailUrl + '">' + pName + '</a></h3>' +
-                '<p class="product-card-desc">' + pDesc + '</p>' +
-                '<div class="product-card-footer">' +
-                    '<span class="product-price">' + formatPrice(product.price) + '</span>' +
-                    '<button class="btn btn-sm btn-primary add-to-cart-btn" data-product-id="' + product.id + '" aria-label="' + (lang === 'en' ? 'Add to cart' : 'Přidat do košíku') + '">' +
-                        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>' +
-                        (lang === 'en' ? 'Add to cart' : 'Koupit') +
+            '<div class="product-card-img-wrap">' +
+                '<img src="' + (product.img || '') + '" alt="' + name + '" loading="lazy" class="product-card-img">' +
+                badge +
+                '<div class="product-card-overlay">' +
+                    '<button class="btn btn-primary btn-sm quick-view-btn" data-id="' + product.id + '" aria-label="' + quickViewLabel + ' ' + name + '">' +
+                        quickViewLabel +
                     '</button>' +
                 '</div>' +
+            '</div>' +
+            '<div class="product-card-body">' +
+                '<p class="product-card-category">' + (product.category || '') + '</p>' +
+                '<h3 class="product-name">' + name + '</h3>' +
+                '<div class="product-card-footer">' +
+                    '<span class="product-price">' + (product.price ? product.price.toLocaleString('cs-CZ') + '\u00a0K\u010d' : '') + '</span>' +
+                    '<span class="product-stock ' + stockClass + '">' + stockLabel + '</span>' +
+                '</div>' +
+                '<button class="btn btn-primary btn-sm add-to-cart-btn" data-product-id="' + product.id + '" ' + (!inStock ? 'disabled' : '') + '>' +
+                    (inStock ? (lang === 'en' ? 'Add to cart' : 'Koupit') : stockLabel) +
+                '</button>' +
             '</div>';
         return card;
     }
@@ -584,8 +593,9 @@
     renderCart();
     updateCartCount();
 
-    // Expose for admin
+    // Expose for admin and quick-view modal
     window.SILPONIX_PRODUCTS = PRODUCTS;
+    window.SILPONIX_addToCart = addToCart;
 
     // Try loading products from API (override hardcoded on success)
     fetch('/api/products', {
@@ -618,3 +628,59 @@
     });
 
 })();
+
+// ==================== QUICK VIEW MODAL ====================
+(function() {
+    'use strict';
+    var modal = document.getElementById('quickViewModal');
+    if (!modal) return; // Only runs on shop.html
+
+    var backdrop = document.getElementById('qvBackdrop');
+    var closeBtn = document.getElementById('qvClose');
+
+    function openModal(productId) {
+        var product = window.SILPONIX_PRODUCTS && window.SILPONIX_PRODUCTS.find(function(p) { return p.id === productId; });
+        if (!product) return;
+        var lang = (window.getCurrentLang && window.getCurrentLang()) || 'cs';
+        var name = (lang === 'en' && product.name_en) ? product.name_en : product.name;
+        var desc = (lang === 'en' && product.desc_long_en) ? product.desc_long_en : (product.desc_long || product.desc || '');
+        var specs = (lang === 'en' && product.specs_en) ? product.specs_en : (product.specs || []);
+
+        document.getElementById('qvImage').src = product.img || '';
+        document.getElementById('qvImage').alt = name;
+        document.getElementById('qvCategory').textContent = product.category || '';
+        document.getElementById('qvModalTitle').textContent = name;
+        document.getElementById('qvDesc').textContent = desc;
+        document.getElementById('qvPrice').textContent = product.price ? product.price.toLocaleString('cs-CZ') + '\u00a0K\u010d' : '';
+
+        var specsHtml = specs.slice(0, 6).map(function(s) {
+            return '<div class="quick-view-spec"><span class="quick-view-spec-label">' + s[0] + '</span><span class="quick-view-spec-value">' + s[1] + '</span></div>';
+        }).join('');
+        document.getElementById('qvSpecs').innerHTML = specsHtml;
+
+        var addBtn = document.getElementById('qvAddToCart');
+        addBtn.onclick = function() {
+            if (typeof window.SILPONIX_addToCart === 'function') window.SILPONIX_addToCart(product.id);
+            closeModal();
+        };
+
+        modal.hidden = false;
+        document.body.style.overflow = 'hidden';
+        setTimeout(function() { closeBtn.focus(); }, 50);
+    }
+
+    function closeModal() {
+        modal.hidden = true;
+        document.body.style.overflow = '';
+    }
+
+    backdrop.addEventListener('click', closeModal);
+    closeBtn.addEventListener('click', closeModal);
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && !modal.hidden) closeModal();
+    });
+    document.addEventListener('click', function(e) {
+        var btn = e.target.closest('.quick-view-btn');
+        if (btn) openModal(parseInt(btn.getAttribute('data-id'), 10));
+    });
+}());
