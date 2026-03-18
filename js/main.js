@@ -392,3 +392,24 @@
         draw();
     }
 })();
+
+// ==================== FAQ ACCORDION ====================
+(function() {
+    'use strict';
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var isOpen = btn.getAttribute('aria-expanded') === 'true';
+            var answer = btn.nextElementSibling;
+            // Close all others
+            document.querySelectorAll('.faq-question[aria-expanded="true"]').forEach(function(openBtn) {
+                if (openBtn !== btn) {
+                    openBtn.setAttribute('aria-expanded', 'false');
+                    openBtn.nextElementSibling.hidden = true;
+                }
+            });
+            // Toggle this one
+            btn.setAttribute('aria-expanded', String(!isOpen));
+            answer.hidden = isOpen;
+        });
+    });
+})();
