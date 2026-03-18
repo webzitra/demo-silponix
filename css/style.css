@@ -1647,3 +1647,29 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     .lightbox-prev { left: 0.5rem; }
     .lightbox-next { right: 0.5rem; }
 }
+
+/* Form GDPR checkbox */
+.form-gdpr-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    cursor: pointer;
+}
+.form-gdpr-checkbox {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    accent-color: var(--primary);
+    margin-top: 2px;
+    cursor: pointer;
+}
+.form-gdpr-text {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+.form-gdpr-text a {
+    color: var(--primary);
+    text-decoration: underline;
+}
+.form-gdpr-text a:hover { color: var(--accent); }
