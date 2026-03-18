@@ -2479,3 +2479,55 @@ main, .hero, .section, footer { position: relative; z-index: 1; }
     .hero-badge { animation: none; }
     .hero-carousel::before, .hero-carousel::after { animation: none; }
 }
+
+/* ==================== CURSOR-TRACKING CARD SPOTLIGHT ==================== */
+.blog-card, .service-card, .testimonial-card, .process-step, .product-card {
+    --mouse-x: 50%;
+    --mouse-y: 50%;
+}
+
+.blog-card::after, .service-card::after, .testimonial-card::after,
+.process-step::after, .product-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at var(--mouse-x) var(--mouse-y),
+        rgba(189, 20, 27, 0.12) 0%,
+        rgba(189, 20, 27, 0.04) 35%,
+        transparent 65%
+    );
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+    z-index: 0;
+    border-radius: inherit;
+}
+
+.blog-card:hover::after, .service-card:hover::after, .testimonial-card:hover::after,
+.process-step:hover::after, .product-card:hover::after {
+    opacity: 1;
+}
+
+[data-theme="light"] .blog-card::after,
+[data-theme="light"] .service-card::after,
+[data-theme="light"] .testimonial-card::after,
+[data-theme="light"] .process-step::after,
+[data-theme="light"] .product-card::after {
+    background: radial-gradient(
+        circle at var(--mouse-x) var(--mouse-y),
+        rgba(245, 158, 11, 0.10) 0%,
+        rgba(189, 20, 27, 0.05) 35%,
+        transparent 65%
+    );
+}
+
+/* Card content must sit above the glow layer (z-index: 0) */
+.product-card-body, .product-card-img, .product-card-footer,
+.blog-card-img, .blog-card-body,
+.service-card-icon, .service-card-title, .service-card-desc,
+.testimonial-card > *,
+.process-step-number, .process-step-icon, .process-step-title, .process-step-desc {
+    position: relative;
+    z-index: 1;
+}

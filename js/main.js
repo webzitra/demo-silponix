@@ -598,3 +598,26 @@
     }
     update();
 })();
+
+// ==================== CURSOR-TRACKING CARD GLOW ====================
+(function() {
+    'use strict';
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!window.matchMedia('(hover: hover)').matches) return;
+
+    var SELECTORS = ['.blog-card', '.service-card', '.testimonial-card', '.process-step', '.product-card'];
+
+    function attachGlow(card) {
+        card.addEventListener('mousemove', function(e) {
+            var rect = card.getBoundingClientRect();
+            var x = ((e.clientX - rect.left) / rect.width) * 100;
+            var y = ((e.clientY - rect.top) / rect.height) * 100;
+            card.style.setProperty('--mouse-x', x.toFixed(1) + '%');
+            card.style.setProperty('--mouse-y', y.toFixed(1) + '%');
+        }, { passive: true });
+    }
+
+    SELECTORS.forEach(function(sel) {
+        document.querySelectorAll(sel).forEach(attachGlow);
+    });
+})();
