@@ -873,8 +873,8 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     transform: translateY(-2px);
 }
 [data-theme="light"] .footer-social a {
-    background: rgba(0, 0, 0, 0.05);
-    border-color: rgba(0, 0, 0, 0.12);
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.1);
     color: var(--text-secondary);
 }
 .footer-links h4, .footer-contact-col h4 {
@@ -1871,7 +1871,7 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     z-index: 40;
 }
 [data-theme="light"] .gallery-filters {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.92);
     border-bottom-color: rgba(0, 0, 0, 0.08);
 }
 .gallery-filter-btns {
@@ -2237,6 +2237,7 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
 .auth-error { background: rgba(239,68,68,0.1); color: #ef4444; border-radius: var(--radius-md); padding: 0.75rem 1rem; font-size: 0.875rem; margin-bottom: 1rem; }
 [data-theme="light"] .auth-card {
     box-shadow: 0 24px 80px -24px rgba(0, 0, 0, 0.12);
+    border-color: rgba(0, 0, 0, 0.1);
 }
 
 /* ==================== PREMIUM SCROLLBAR ==================== */
@@ -2262,4 +2263,26 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     outline: 2px solid rgba(var(--primary-rgb), 0.6);
     outline-offset: 3px;
     border-radius: 4px;
+}
+
+/* ==================== LIGHT MODE — NEW ELEMENTS ==================== */
+
+/* Section dark ambient overlay — subtler in light mode */
+[data-theme="light"] .section-dark::after {
+    background:
+        radial-gradient(ellipse at 15% 30%, rgba(var(--primary-rgb), 0.04) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 70%, rgba(var(--accent-rgb), 0.03) 0%, transparent 55%);
+}
+
+/* Process step number stays subtle */
+[data-theme="light"] .process-step-number {
+    color: rgba(var(--primary-rgb), 0.07);
+}
+
+/* Section-about gradient title — light mode safety rule */
+[data-theme="light"] .section-about .section-header .section-title {
+    background: linear-gradient(135deg, var(--text) 40%, rgba(var(--primary-rgb), 0.85) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
