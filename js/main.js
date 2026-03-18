@@ -535,9 +535,9 @@
         return {
             x: rand(0, W),
             y: rand(H * 0.4, H + 100),
-            r: rand(30, 90),
+            r: rand(40, 110),
             opacity: 0,
-            maxOpacity: rand(0.018, 0.055),
+            maxOpacity: rand(0.04, 0.12),
             phase: 'fadein',
             life: 0,
             maxLife: rand(200, 400),
