@@ -2624,3 +2624,51 @@ main, .hero, .section, footer { position: relative; z-index: 1; }
     .hero-stat:hover .hero-stat-number,
     .stat-card:hover .stat-number { animation: none; }
 }
+
+/* ==================== CUSTOM CURSOR ==================== */
+#cursor { pointer-events: none; position: fixed; z-index: 99999; top: 0; left: 0; }
+
+#cursor-dot {
+    position: absolute;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--primary);
+    transform: translate(-50%, -50%);
+    transition: width 0.2s ease, height 0.2s ease, opacity 0.2s ease;
+}
+
+#cursor-ring {
+    position: absolute;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(189, 20, 27, 0.5);
+    transform: translate(-50%, -50%);
+    transition: width 0.35s cubic-bezier(0.4,0,0.2,1),
+                height 0.35s cubic-bezier(0.4,0,0.2,1),
+                border-color 0.35s ease,
+                opacity 0.3s ease;
+}
+
+body.cursor-hover #cursor-dot { width: 10px; height: 10px; }
+body.cursor-hover #cursor-ring {
+    width: 60px; height: 60px;
+    border-color: rgba(189, 20, 27, 0.8);
+}
+body.cursor-clicking #cursor-dot { width: 4px; height: 4px; }
+body.cursor-clicking #cursor-ring { width: 28px; height: 28px; }
+
+/* Hide on touch devices */
+@media (hover: none) { #cursor { display: none; } }
+
+/* ==================== SCROLL PROGRESS BAR ==================== */
+#scrollProgress {
+    position: fixed;
+    top: 0; left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), #f87171, var(--accent));
+    z-index: 99997;
+    pointer-events: none;
+    transition: width 0.05s linear;
+    box-shadow: 0 0 8px rgba(189,20,27,0.4);
+}

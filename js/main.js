@@ -665,3 +665,55 @@
         document.querySelectorAll(sel).forEach(attachGlow);
     });
 })();
+
+// ==================== CUSTOM CURSOR + SCROLL PROGRESS ====================
+(function () {
+    'use strict';
+    // Touch device check
+    if (!window.matchMedia('(hover: hover)').matches) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var cursor = document.getElementById('cursor');
+    var dot    = document.getElementById('cursor-dot');
+    var ring   = document.getElementById('cursor-ring');
+    var progress = document.getElementById('scrollProgress');
+
+    if (!cursor || !dot || !ring) return;
+
+    var mouseX = 0, mouseY = 0;
+    var ringX  = 0, ringY  = 0;
+
+    // Smooth ring lag
+    function animateCursor() {
+        ringX += (mouseX - ringX) * 0.12;
+        ringY += (mouseY - ringY) * 0.12;
+        cursor.style.transform = 'translate(' + mouseX + 'px,' + mouseY + 'px)';
+        ring.style.transform   = 'translate(' + (ringX - mouseX) + 'px,' + (ringY - mouseY) + 'px) translate(-50%,-50%)';
+        dot.style.transform    = 'translate(-50%,-50%)';
+        requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    document.addEventListener('mousemove', function (e) {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    }, { passive: true });
+
+    // Hover state
+    var hoverEls = 'a, button, [role="button"], .btn, .card, .service-card, .blog-card, .process-step, .gallery-item, label, input, textarea, select';
+    document.querySelectorAll(hoverEls).forEach(function (el) {
+        el.addEventListener('mouseenter', function () { document.body.classList.add('cursor-hover'); });
+        el.addEventListener('mouseleave', function () { document.body.classList.remove('cursor-hover'); });
+    });
+    document.addEventListener('mousedown', function () { document.body.classList.add('cursor-clicking'); });
+    document.addEventListener('mouseup',   function () { document.body.classList.remove('cursor-clicking'); });
+
+    // Scroll progress
+    if (progress) {
+        window.addEventListener('scroll', function () {
+            var scrolled = document.documentElement.scrollTop || document.body.scrollTop;
+            var total    = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            progress.style.width = (total > 0 ? (scrolled / total) * 100 : 0).toFixed(2) + '%';
+        }, { passive: true });
+    }
+})();
