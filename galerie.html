@@ -70,83 +70,95 @@
     </section>
     <div class="page-hero-transition"></div>
 
+    <!-- GALLERY FILTERS -->
+    <div class="gallery-filters" id="galleryFilters">
+        <div class="container">
+            <div class="gallery-filter-btns">
+                <button class="gallery-filter-btn active" data-filter="vse">V&#353;e</button>
+                <button class="gallery-filter-btn" data-filter="zavodni-vozy">Z&aacute;vodn&iacute; vozy</button>
+                <button class="gallery-filter-btn" data-filter="vyroba">V&yacute;roba &amp; d&iacute;lna</button>
+                <button class="gallery-filter-btn" data-filter="zavody">Z&aacute;vody</button>
+            </div>
+        </div>
+    </div>
+
     <!-- GALLERY GRID -->
     <section class="section">
         <div class="container">
             <div class="gallery-grid">
-                <div class="gallery-item gallery-item-large" data-animate>
+                <div class="gallery-item gallery-item-large" data-animate data-category="zavodni-vozy">
                     <img src="/img/gallery/race-car.jpg" alt="Z&aacute;vodn&iacute; Honda Civic" loading="lazy">
                     <div class="gallery-overlay"><span data-i18n="gallery.item1">Z&aacute;vodn&iacute; Honda Civic</span></div>
                 </div>
-                <div class="gallery-item" data-animate>
+                <div class="gallery-item" data-animate data-category="vyroba">
                     <img src="/img/gallery/pu-silentbloky.png" alt="PU silentbloky" loading="lazy">
                     <div class="gallery-overlay"><span data-i18n="gallery.item2">PU silentbloky</span></div>
                 </div>
-                <div class="gallery-item gallery-item-tall" data-animate>
+                <div class="gallery-item gallery-item-tall" data-animate data-category="zavodni-vozy">
                     <img src="/img/gallery/mezihorak.jpg" alt="Petr Mezihor&aacute;k" loading="lazy">
                     <div class="gallery-overlay"><span data-i18n="gallery.item3">Petr Mezihor&aacute;k</span></div>
                 </div>
-                <div class="gallery-item" data-animate>
+                <div class="gallery-item" data-animate data-category="vyroba">
                     <img src="/img/gallery/remenice.png" alt="CNC &#345;emenice B-series" loading="lazy">
                     <div class="gallery-overlay"><span data-i18n="gallery.item4">CNC &#345;emenice B-series</span></div>
                 </div>
-                <div class="gallery-item" data-animate>
+                <div class="gallery-item" data-animate data-category="vyroba">
                     <img src="/img/gallery/kovoobrabeeni.png" alt="V&yacute;roba komponent&#367;" loading="lazy">
                     <div class="gallery-overlay"><span data-i18n="gallery.item5">V&yacute;roba komponent&#367;</span></div>
                 </div>
-                <div class="gallery-item gallery-item-wide" data-animate>
+                <div class="gallery-item gallery-item-wide" data-animate data-category="vyroba">
                     <img src="/img/gallery/servis.png" alt="Servis &amp; &uacute;dr&#382;ba" loading="lazy">
                     <div class="gallery-overlay"><span data-i18n="gallery.item6">Servis &amp; &uacute;dr&#382;ba</span></div>
                 </div>
-                <div class="gallery-item gallery-item-tall" data-animate>
+                <div class="gallery-item gallery-item-tall" data-animate data-category="zavody">
                     <img src="/img/blog/bratri-hemerkovi.jpg" alt="Brat&#345;i Hemerkovi" loading="lazy">
                     <div class="gallery-overlay"><span>Brat&#345;i Hemerkovi</span></div>
                 </div>
-                <div class="gallery-item" data-animate>
+                <div class="gallery-item" data-animate data-category="zavody">
                     <img src="/img/blog/koprivnice.jpg" alt="Zlat&yacute; v&#283;nec Kop&#345;ivnice" loading="lazy">
                     <div class="gallery-overlay"><span data-i18n="gallery.item7">Zlat&yacute; v&#283;nec Kop&#345;ivnice</span></div>
                 </div>
-                <div class="gallery-item gallery-item-wide" data-animate>
+                <div class="gallery-item gallery-item-wide" data-animate data-category="zavody">
                     <img src="/img/blog/rally-vyskov.jpg" alt="Rally Vy&scaron;kov" loading="lazy">
                     <div class="gallery-overlay"><span>Rally Vy&scaron;kov</span></div>
                 </div>
-                <div class="gallery-item" data-animate>
+                <div class="gallery-item" data-animate data-category="zavody">
                     <img src="/img/blog/rally-magazin.jpg" alt="Rally Magaz&iacute;n" loading="lazy">
                     <div class="gallery-overlay"><span>Rally Magaz&iacute;n</span></div>
                 </div>
-                <div class="gallery-item gallery-item-large" data-animate>
+                <div class="gallery-item gallery-item-large" data-animate data-category="zavody">
                     <img src="/img/gallery/vyvlecka-rally.jpg" alt="Vyvle&#269;ka &mdash; Rally" loading="lazy">
                     <div class="gallery-overlay"><span>Tom&aacute;&scaron; Vyvle&#269;ka &mdash; Rally</span></div>
                 </div>
-                <div class="gallery-item gallery-item-tall" data-animate>
+                <div class="gallery-item gallery-item-tall" data-animate data-category="zavody">
                     <img src="/img/gallery/mezihorak-rally.jpg" alt="Mezihor&aacute;k &mdash; Rally" loading="lazy">
                     <div class="gallery-overlay"><span>Ond&#345;ej Mezihor&aacute;k &mdash; Rally</span></div>
                 </div>
-                <div class="gallery-item" data-animate>
+                <div class="gallery-item" data-animate data-category="zavody">
                     <img src="/img/gallery/ruzicka-rally.jpg" alt="R&#367;&#382;i&#269;ka &mdash; Rally" loading="lazy">
                     <div class="gallery-overlay"><span>Radim R&#367;&#382;i&#269;ka &mdash; Rally</span></div>
                 </div>
-                <div class="gallery-item gallery-item-wide" data-animate>
+                <div class="gallery-item gallery-item-wide" data-animate data-category="zavodni-vozy">
                     <img src="/img/gallery/sklenar-crx.jpg" alt="Sklen&aacute;&#345; &mdash; Honda CRX Rallycross" loading="lazy">
                     <div class="gallery-overlay"><span>Michal Sklen&aacute;&#345; &mdash; Honda CRX</span></div>
                 </div>
-                <div class="gallery-item" data-animate>
+                <div class="gallery-item" data-animate data-category="vyroba">
                     <img src="/img/gallery/workshop.jpg" alt="D&iacute;lna Silponix" loading="lazy">
                     <div class="gallery-overlay"><span>D&iacute;lna Silponix</span></div>
                 </div>
-                <div class="gallery-item gallery-item-wide" data-animate>
+                <div class="gallery-item gallery-item-wide" data-animate data-category="zavodni-vozy">
                     <img src="/img/gallery/team-photo.jpg" alt="T&yacute;m Silponix Racing" loading="lazy">
                     <div class="gallery-overlay"><span>T&yacute;m Silponix Racing</span></div>
                 </div>
-                <div class="gallery-item gallery-item-tall" data-animate>
+                <div class="gallery-item gallery-item-tall" data-animate data-category="zavody">
                     <img src="/img/social/racing-1.jpg" alt="Z&aacute;vodn&iacute; akce" loading="lazy">
                     <div class="gallery-overlay"><span>Z&aacute;vodn&iacute; akce</span></div>
                 </div>
-                <div class="gallery-item" data-animate>
+                <div class="gallery-item" data-animate data-category="zavody">
                     <img src="/img/social/racing-3.jpg" alt="Na trati" loading="lazy">
                     <div class="gallery-overlay"><span>Na trati</span></div>
                 </div>
-                <div class="gallery-item" data-animate>
+                <div class="gallery-item" data-animate data-category="zavody">
                     <img src="/img/social/racing-4.jpg" alt="Motorsport" loading="lazy">
                     <div class="gallery-overlay"><span>Motorsport</span></div>
                 </div>
@@ -219,6 +231,24 @@
     </footer>
 
     <div class="cookie-banner" id="cookieBanner" hidden><div class="cookie-inner"><p data-i18n="cookie.text_minimal">Tento web pou&#382;&iacute;v&aacute; cookies.</p><div class="cookie-actions"><button class="btn btn-sm btn-primary" id="cookieAccept" data-i18n="cookie.accept">P&#345;ijmout</button><button class="btn btn-sm btn-outline" id="cookieDecline" data-i18n="cookie.decline">Odm&iacute;tnout</button></div></div></div>
+
+    <!-- LIGHTBOX MODAL -->
+    <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Galerie">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Zav&#345;&#237;t">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <button class="lightbox-prev" id="lightboxPrev" aria-label="P&#345;edchoz&#237;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="lightbox-next" id="lightboxNext" aria-label="N&aacute;sleduj&#237;c&#237;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+        <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+        <div class="lightbox-content">
+            <img id="lightboxImg" src="" alt="" class="lightbox-img">
+            <p class="lightbox-caption" id="lightboxCaption"></p>
+        </div>
+    </div>
 
     <script src="/js/i18n.js?v=6"></script>
     <script src="/js/main.js?v=6"></script>
