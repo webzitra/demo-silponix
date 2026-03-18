@@ -274,3 +274,39 @@
     }
 
 })();
+
+// ==================== ANIMATED COUNTERS ====================
+(function() {
+    'use strict';
+    function animateCounter(el) {
+        var target = parseInt(el.getAttribute('data-count'), 10);
+        var suffix = el.getAttribute('data-suffix') || '';
+        if (!target || el.dataset.counted) return;
+        el.dataset.counted = '1';
+        var duration = 1800;
+        var start = null;
+        function easeOutQuart(t) { return 1 - Math.pow(1 - t, 4); }
+        function step(ts) {
+            if (!start) start = ts;
+            var progress = Math.min((ts - start) / duration, 1);
+            var current = Math.floor(easeOutQuart(progress) * target);
+            el.textContent = current + suffix;
+            if (progress < 1) requestAnimationFrame(step);
+            else el.textContent = target + suffix;
+        }
+        requestAnimationFrame(step);
+    }
+
+    var counterObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                counterObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('[data-count]').forEach(function(el) {
+        counterObserver.observe(el);
+    });
+})();
