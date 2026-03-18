@@ -2394,12 +2394,10 @@ footer {
     height: 100%;
     pointer-events: none;
     z-index: 3;
-    opacity: 0.15;
-    mix-blend-mode: screen;
+    opacity: 1;
 }
 [data-theme="light"] #smokeCanvas {
-    opacity: 0.08;
-    mix-blend-mode: multiply;
+    opacity: 0.4;
 }
 
 main, .hero, .section, footer { position: relative; z-index: 1; }

@@ -537,7 +537,7 @@
             y: rand(H * 0.4, H + 100),
             r: rand(40, 110),
             opacity: 0,
-            maxOpacity: rand(0.04, 0.12),
+            maxOpacity: rand(0.08, 0.18),
             phase: 'fadein',
             life: 0,
             maxLife: rand(200, 400),
