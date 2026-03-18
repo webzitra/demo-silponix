@@ -512,81 +512,125 @@
 })();
 
 // ==================== SMOKE / AMBIENT PARTICLES ====================
-(function() {
+(function () {
     'use strict';
     var canvas = document.getElementById('smokeCanvas');
     if (!canvas) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     var ctx = canvas.getContext('2d');
-    var W, H, particles = [];
-    var PARTICLE_COUNT = 18;
+    var W, H;
+    var particles = [];
+
+    // Two tiers: 'bg' = large, slow, very faint; 'fg' = medium, slightly faster
+    var TIERS = [
+        { count: 12, rMin: 90,  rMax: 200, dyMin: 0.08, dyMax: 0.22, opMin: 0.04, opMax: 0.09,  lifeMin: 400, lifeMax: 700 },
+        { count: 18, rMin: 40,  rMax: 100, dyMin: 0.18, dyMax: 0.50, opMin: 0.07, opMax: 0.18,  lifeMin: 200, lifeMax: 380 }
+    ];
 
     function resize() {
-        W = canvas.width = window.innerWidth;
+        W = canvas.width  = window.innerWidth;
         H = canvas.height = window.innerHeight;
     }
     resize();
     window.addEventListener('resize', resize, { passive: true });
 
-    function rand(min, max) { return Math.random() * (max - min) + min; }
+    function rand(a, b) { return Math.random() * (b - a) + a; }
 
-    function createParticle() {
+    function createParticle(tier) {
+        var r = rand(tier.rMin, tier.rMax);
         return {
-            x: rand(0, W),
-            y: rand(H * 0.4, H + 100),
-            r: rand(40, 110),
-            opacity: 0,
-            maxOpacity: rand(0.08, 0.18),
-            phase: 'fadein',
-            life: 0,
-            maxLife: rand(200, 400),
-            dy: -rand(0.15, 0.45),
-            dx: rand(-0.08, 0.08),
-            colorR: 200,
-            colorG: 200,
-            colorB: 200,
+            tier:       tier,
+            x:          rand(0, W),
+            y:          rand(H * 0.3, H + r),
+            r:          r,
+            baseX:      0,            // set after creation
+            sway:       rand(0.004, 0.012),   // sine frequency
+            swayAmp:    rand(18, 55),          // sine amplitude px
+            swayOff:    rand(0, Math.PI * 2),  // phase offset
+            opacity:    0,
+            maxOpacity: rand(tier.opMin, tier.opMax),
+            phase:      'fadein',
+            life:       0,
+            maxLife:    rand(tier.lifeMin, tier.lifeMax),
+            dy:         -rand(tier.dyMin, tier.dyMax),
+            // Near-white with subtle warm/cool variation
+            cr:         Math.floor(rand(220, 245)),
+            cg:         Math.floor(rand(220, 240)),
+            cb:         Math.floor(rand(225, 245))
         };
     }
 
-    for (var i = 0; i < PARTICLE_COUNT; i++) {
-        var p = createParticle();
-        p.y = rand(0, H);
-        p.life = Math.floor(rand(0, p.maxLife));
-        particles.push(p);
+    function spawnParticle(tier, spreadY) {
+        var p = createParticle(tier);
+        p.baseX = p.x;
+        if (spreadY) p.y = rand(0, H);
+        return p;
     }
 
+    // Initial spawn — spread across full height
+    TIERS.forEach(function (tier) {
+        for (var i = 0; i < tier.count; i++) {
+            var p = spawnParticle(tier, true);
+            p.life = Math.floor(rand(0, p.maxLife * 0.7));
+            // Pre-advance opacity based on life stage
+            if (p.life < p.maxLife * 0.2) {
+                p.opacity = p.maxOpacity * (p.life / (p.maxLife * 0.2));
+                p.phase = 'fadein';
+            } else if (p.life < p.maxLife * 0.6) {
+                p.opacity = p.maxOpacity;
+                p.phase = 'hold';
+            } else {
+                p.opacity = p.maxOpacity * (1 - (p.life - p.maxLife * 0.6) / (p.maxLife * 0.4));
+                p.phase = 'fadeout';
+            }
+            particles.push(p);
+        }
+    });
+
     function drawParticle(p) {
+        // Soft outer glow ring
         var grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r);
-        grad.addColorStop(0, 'rgba(' + p.colorR + ',' + p.colorG + ',' + p.colorB + ',' + p.opacity + ')');
-        grad.addColorStop(0.5, 'rgba(' + p.colorR + ',' + p.colorG + ',' + p.colorB + ',' + (p.opacity * 0.4) + ')');
-        grad.addColorStop(1, 'rgba(' + p.colorR + ',' + p.colorG + ',' + p.colorB + ',0)');
+        grad.addColorStop(0,    'rgba(' + p.cr + ',' + p.cg + ',' + p.cb + ',' + (p.opacity * 0.9) + ')');
+        grad.addColorStop(0.35, 'rgba(' + p.cr + ',' + p.cg + ',' + p.cb + ',' + (p.opacity * 0.55) + ')');
+        grad.addColorStop(0.65, 'rgba(' + p.cr + ',' + p.cg + ',' + p.cb + ',' + (p.opacity * 0.2) + ')');
+        grad.addColorStop(1,    'rgba(' + p.cr + ',' + p.cg + ',' + p.cb + ',0)');
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fillStyle = grad;
         ctx.fill();
     }
 
+    var frame = 0;
     function update() {
         ctx.clearRect(0, 0, W, H);
+        frame++;
 
         for (var i = 0; i < particles.length; i++) {
             var p = particles[i];
-            p.x += p.dx;
+
+            // Sinusoidal horizontal sway
+            p.x = p.baseX + Math.sin(frame * p.sway + p.swayOff) * p.swayAmp;
+            p.baseX += 0; // no horizontal drift of base
             p.y += p.dy;
             p.life++;
 
+            var fadeInFrames  = p.maxLife * 0.2;
+            var holdFrames    = p.maxLife * 0.6;
+
             if (p.phase === 'fadein') {
-                p.opacity = Math.min(p.maxOpacity, p.opacity + 0.0005);
-                if (p.opacity >= p.maxOpacity * 0.95) p.phase = 'hold';
+                p.opacity = Math.min(p.maxOpacity, p.maxOpacity * (p.life / fadeInFrames));
+                if (p.life >= fadeInFrames) p.phase = 'hold';
             }
-            if (p.phase === 'hold' && p.life > p.maxLife * 0.6) {
+            if (p.phase === 'hold' && p.life >= holdFrames) {
                 p.phase = 'fadeout';
             }
             if (p.phase === 'fadeout') {
-                p.opacity = Math.max(0, p.opacity - 0.0004);
-                if (p.opacity <= 0 || p.y < -p.r) {
-                    particles[i] = createParticle();
+                var remaining = p.maxLife - p.life;
+                var fadeOutFrames = p.maxLife - holdFrames;
+                p.opacity = p.maxOpacity * Math.max(0, remaining / fadeOutFrames);
+                if (p.opacity <= 0 || p.y + p.r < 0) {
+                    particles[i] = spawnParticle(p.tier, false);
                     continue;
                 }
             }
