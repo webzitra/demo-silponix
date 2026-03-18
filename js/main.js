@@ -510,3 +510,91 @@
         });
     }
 })();
+
+// ==================== SMOKE / AMBIENT PARTICLES ====================
+(function() {
+    'use strict';
+    var canvas = document.getElementById('smokeCanvas');
+    if (!canvas) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var ctx = canvas.getContext('2d');
+    var W, H, particles = [];
+    var PARTICLE_COUNT = 18;
+
+    function resize() {
+        W = canvas.width = window.innerWidth;
+        H = canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize, { passive: true });
+
+    function rand(min, max) { return Math.random() * (max - min) + min; }
+
+    function createParticle() {
+        return {
+            x: rand(0, W),
+            y: rand(H * 0.4, H + 100),
+            r: rand(30, 90),
+            opacity: 0,
+            maxOpacity: rand(0.018, 0.055),
+            phase: 'fadein',
+            life: 0,
+            maxLife: rand(200, 400),
+            dy: -rand(0.15, 0.45),
+            dx: rand(-0.08, 0.08),
+            colorR: Math.random() > 0.5 ? 189 : 50,
+            colorG: Math.random() > 0.5 ? 20 : 30,
+            colorB: Math.random() > 0.5 ? 27 : 30,
+        };
+    }
+
+    for (var i = 0; i < PARTICLE_COUNT; i++) {
+        var p = createParticle();
+        p.y = rand(0, H);
+        p.life = Math.floor(rand(0, p.maxLife));
+        particles.push(p);
+    }
+
+    function drawParticle(p) {
+        var grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r);
+        grad.addColorStop(0, 'rgba(' + p.colorR + ',' + p.colorG + ',' + p.colorB + ',' + p.opacity + ')');
+        grad.addColorStop(0.5, 'rgba(' + p.colorR + ',' + p.colorG + ',' + p.colorB + ',' + (p.opacity * 0.4) + ')');
+        grad.addColorStop(1, 'rgba(' + p.colorR + ',' + p.colorG + ',' + p.colorB + ',0)');
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = grad;
+        ctx.fill();
+    }
+
+    function update() {
+        ctx.clearRect(0, 0, W, H);
+
+        for (var i = 0; i < particles.length; i++) {
+            var p = particles[i];
+            p.x += p.dx;
+            p.y += p.dy;
+            p.life++;
+
+            if (p.phase === 'fadein') {
+                p.opacity = Math.min(p.maxOpacity, p.opacity + 0.0005);
+                if (p.opacity >= p.maxOpacity * 0.95) p.phase = 'hold';
+            }
+            if (p.phase === 'hold' && p.life > p.maxLife * 0.6) {
+                p.phase = 'fadeout';
+            }
+            if (p.phase === 'fadeout') {
+                p.opacity = Math.max(0, p.opacity - 0.0004);
+                if (p.opacity <= 0 || p.y < -p.r) {
+                    particles[i] = createParticle();
+                    continue;
+                }
+            }
+
+            drawParticle(p);
+        }
+
+        requestAnimationFrame(update);
+    }
+    update();
+})();
