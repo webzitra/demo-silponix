@@ -543,9 +543,9 @@
             maxLife: rand(200, 400),
             dy: -rand(0.15, 0.45),
             dx: rand(-0.08, 0.08),
-            colorR: Math.random() > 0.5 ? 189 : 50,
-            colorG: Math.random() > 0.5 ? 20 : 30,
-            colorB: Math.random() > 0.5 ? 27 : 30,
+            colorR: 200,
+            colorG: 200,
+            colorB: 200,
         };
     }
 
