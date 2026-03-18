@@ -60,7 +60,7 @@ button { cursor: pointer; }
 
     --container-max: 1200px;
     --container-padding: 1.5rem;
-    --section-padding: 5rem;
+    --section-padding: 6.25rem;
     --navbar-height: 72px;
 
     --radius-sm: 0.5rem;
@@ -77,6 +77,8 @@ button { cursor: pointer; }
     --z-overlay: 200;
     --z-modal: 500;
     --z-cookie: 400;
+
+    --section-fade: 80px;
 
     --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -2305,4 +2307,64 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+/* ==================== SECTION FADE TRANSITIONS ==================== */
+
+/* All sections fade in/out from both edges */
+.section {
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent 0px,
+        black var(--section-fade, 80px),
+        black calc(100% - var(--section-fade, 80px)),
+        transparent 100%
+    );
+    mask-image: linear-gradient(
+        to bottom,
+        transparent 0px,
+        black var(--section-fade, 80px),
+        black calc(100% - var(--section-fade, 80px)),
+        transparent 100%
+    );
+}
+
+/* Hero: only bottom fade (it starts the page) */
+.hero,
+.page-hero {
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        black 0%,
+        black calc(100% - 100px),
+        transparent 100%
+    );
+    mask-image: linear-gradient(
+        to bottom,
+        black 0%,
+        black calc(100% - 100px),
+        transparent 100%
+    );
+}
+
+/* Footer: only top fade */
+footer {
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent 0px,
+        black 80px,
+        black 100%
+    );
+    mask-image: linear-gradient(
+        to bottom,
+        transparent 0px,
+        black 80px,
+        black 100%
+    );
+}
+
+/* Sticky elements must NOT be masked */
+.navbar,
+.gallery-filters {
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
 }
