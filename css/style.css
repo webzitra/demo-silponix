@@ -496,6 +496,12 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
 .hero-stat-number { font-size: 1.75rem; font-weight: 800; line-height: 1.2; font-variant-numeric: tabular-nums; background: linear-gradient(135deg, var(--primary) 0%, #f87171 40%, var(--accent) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
 .hero-stat-label { font-size: 0.875rem; color: rgba(255,255,255,0.6); font-weight: 500; }
 [data-theme="light"] .hero-stat-label { color: rgba(0, 0, 0, 0.55); }
+.hero-prev:hover,
+.hero-next:hover {
+    background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.4), rgba(var(--accent-rgb), 0.2));
+    border-color: rgba(var(--primary-rgb), 0.5);
+    box-shadow: 0 0 20px rgba(var(--primary-rgb), 0.3);
+}
 
 
 /* ==================== PRODUCTS GRID ==================== */
