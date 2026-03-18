@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="cs" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrace &mdash; Silponix</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" href="/img/favicon-32.png" type="image/png">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+    <meta name="theme-color" content="#bd141b">
+    <link rel="stylesheet" href="/css/style.css?v=5">
+    <script>(function(){var t=localStorage.getItem('theme');if(t){document.documentElement.setAttribute('data-theme',t)}else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches){document.documentElement.setAttribute('data-theme','light')}})();</script>
+    <style>
+        .auth-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem; }
+        .auth-card { width: 100%; max-width: 420px; background: var(--surface); border: 1px solid var(--surface-border); border-radius: var(--radius-xl); padding: 2.5rem; }
+        .auth-card .form-group { margin-bottom: 1rem; }
+        .auth-card .form-label { margin-bottom: 0.375rem; }
+        .auth-logo { display: flex; justify-content: center; margin-bottom: 1.5rem; }
+        .auth-logo img { max-width: 200px; height: auto; }
+        .auth-logo .logo-light { display: block; }
+        .auth-logo .logo-dark { display: none; }
+        [data-theme="light"] .auth-logo .logo-light { display: none; }
+        [data-theme="light"] .auth-logo .logo-dark { display: block; }
+        .auth-title { text-align: center; font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem; }
+        .auth-links { text-align: center; margin-top: 1.5rem; font-size: 0.875rem; }
+        .auth-links a { color: var(--primary); }
+        .auth-links a:hover { text-decoration: underline; }
+        .auth-error { background: rgba(239,68,68,0.1); color: #ef4444; border-radius: var(--radius-md); padding: 0.75rem 1rem; font-size: 0.875rem; margin-bottom: 1rem; }
+        .auth-hint { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem; }
+    </style>
+</head>
+<body>
+    <!-- ==================== NAVBAR ==================== -->
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Hlavn&iacute; navigace">
+        <div class="container navbar-inner">
+            <a href="/" class="navbar-logo logo-only" aria-label="Silponix &mdash; dom&#367;">
+                <img src="/img/logo.png" alt="Silponix" width="80" height="80" class="logo-img logo-dark">
+                <img src="/img/logo-white.png" alt="" width="80" height="80" class="logo-img logo-light" aria-hidden="true">
+                <span class="logo-text">Silponix</span>
+            </a>
+            <div class="navbar-menu" id="navbarMenu" role="menubar">
+                <a href="/" class="navbar-link" role="menuitem" data-i18n="nav.home">Dom&#367;</a>
+                <a href="/shop.html" class="navbar-link" role="menuitem" data-i18n="nav.eshop">Shop</a>
+                <a href="/sluzby.html" class="navbar-link" role="menuitem" data-i18n="nav.services">Slu&#382;by</a>
+                <a href="/blog.html" class="navbar-link" role="menuitem" data-i18n="nav.blog">Novinky</a>
+                <a href="/galerie.html" class="navbar-link" role="menuitem" data-i18n="nav.gallery">Galerie</a>
+                <a href="/o-nas.html" class="navbar-link" role="menuitem" data-i18n="nav.about">O&nbsp;n&aacute;s</a>
+                <a href="/kontakt.html" class="navbar-link" role="menuitem" data-i18n="nav.contact">Kontakt</a>
+            </div>
+            <div class="navbar-actions">
+                <div class="lang-switcher" id="langSwitcher">
+                    <button class="lang-switcher-toggle" id="langToggle" aria-label="Jazyk" aria-expanded="false">
+                        <img src="/img/flags/cs.svg" alt="CZ" width="22" height="16" id="langToggleFlag">
+                    </button>
+                    <div class="lang-dropdown" role="menu">
+                        <button class="lang-btn active" data-lang="cs" role="menuitem" aria-label="&#268;esky">
+                            <img src="/img/flags/cs.svg" alt="" width="20" height="15">&#268;e&scaron;tina
+                        </button>
+                        <button class="lang-btn" data-lang="en" role="menuitem" aria-label="English">
+                            <img src="/img/flags/en.svg" alt="" width="20" height="15">English
+                        </button>
+                    </div>
+                </div>
+                <button class="theme-toggle" id="themeToggle" aria-label="P&#345;epnout t&eacute;ma">
+                    <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+                <a href="/klient/" class="navbar-user" aria-label="M&#367;j &uacute;&#269;et">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </a>
+                <a href="/kosik.html" class="navbar-cart" id="navbarCart" aria-label="Ko&scaron;&iacute;k">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                    <span class="cart-count" id="cartCount" hidden>0</span>
+                </a>
+                <a href="/shop.html" class="btn btn-primary btn-sm navbar-cta">Shop</a>
+                <button class="navbar-hamburger" id="navbarHamburger" aria-label="Menu" aria-expanded="false" aria-controls="navbarMenu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- REGISTER PAGE -->
+    <main class="auth-page">
+        <div class="auth-card">
+            <div class="auth-logo">
+                <img src="/img/logo-white.png" alt="Silponix" class="logo-light">
+                <img src="/img/logo.png" alt="Silponix" class="logo-dark">
+            </div>
+            <h1 class="auth-title">Vytvo&#345;en&iacute; &uacute;&#269;tu</h1>
+
+            <div class="auth-error" id="registerError" hidden></div>
+
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="name" class="form-label">Jm&eacute;no</label>
+                    <input type="text" id="name" name="name" class="form-input" placeholder="Va&scaron;e jm&eacute;no" required autofocus>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="form-label">E-mail</label>
+                    <input type="email" id="email" name="email" class="form-input" placeholder="vas@email.cz" required>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="form-label">Heslo</label>
+                    <input type="password" id="password" name="password" class="form-input" placeholder="Min. 6 znak&#367;" required minlength="6">
+                    <span class="auth-hint">Minim&aacute;ln&#283; 6 znak&#367;</span>
+                </div>
+                <div class="form-group">
+                    <label for="password2" class="form-label">Heslo znovu</label>
+                    <input type="password" id="password2" name="password2" class="form-input" placeholder="Zopakujte heslo" required minlength="6">
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg btn-block" id="registerBtn">
+                    <span class="btn-text">Registrovat se</span>
+                    <span class="btn-loading" hidden>Registruji...</span>
+                </button>
+            </form>
+
+            <div class="auth-links">
+                <p>U&#382; m&aacute;te &uacute;&#269;et? <a href="/klient/index.html">P&#345;ihla&scaron;te se</a></p>
+            </div>
+        </div>
+    </main>
+
+    <!-- COOKIE BANNER -->
+    <div class="cookie-banner" id="cookieBanner" hidden>
+        <div class="cookie-inner">
+            <p>Tento web pou&#382;&iacute;v&aacute; cookies pro zlep&scaron;en&iacute; va&scaron;eho z&aacute;&#382;itku.</p>
+            <div class="cookie-actions">
+                <button class="btn btn-sm btn-primary" id="cookieAccept">P&#345;ijmout</button>
+                <button class="btn btn-sm btn-outline" id="cookieDecline">Odm&iacute;tnout</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/main.js?v=5"></script>
+    <script>
+    (function() {
+        'use strict';
+
+        var form = document.getElementById('registerForm');
+        var errorEl = document.getElementById('registerError');
+        var registerBtn = document.getElementById('registerBtn');
+        var nameInput = document.getElementById('name');
+        var emailInput = document.getElementById('email');
+        var passwordInput = document.getElementById('password');
+        var password2Input = document.getElementById('password2');
+
+        // If already logged in, redirect
+        var sessionToken = localStorage.getItem('silponix_session');
+        if (sessionToken) {
+            window.location.href = '/klient/dashboard.html';
+        }
+
+        function showError(msg) {
+            errorEl.textContent = msg;
+            errorEl.hidden = false;
+        }
+
+        function hideError() {
+            errorEl.hidden = true;
+        }
+
+        function setLoading(loading) {
+            var btnText = registerBtn.querySelector('.btn-text');
+            var btnLoading = registerBtn.querySelector('.btn-loading');
+            if (loading) {
+                btnText.hidden = true;
+                btnLoading.hidden = false;
+                registerBtn.disabled = true;
+            } else {
+                btnText.hidden = false;
+                btnLoading.hidden = true;
+                registerBtn.disabled = false;
+            }
+        }
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            hideError();
+
+            var name = nameInput.value.trim();
+            var email = emailInput.value.trim();
+            var password = passwordInput.value;
+            var password2 = password2Input.value;
+
+            if (!name || !email || !password || !password2) {
+                showError('Vypl\u0148te v\u0161echna pole.');
+                return;
+            }
+
+            if (password.length < 6) {
+                showError('Heslo mus\u00ed m\u00edt alespo\u0148 6 znak\u016f.');
+                return;
+            }
+
+            if (password !== password2) {
+                showError('Hesla se neshoduj\u00ed.');
+                return;
+            }
+
+            setLoading(true);
+
+            fetch('/api/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name: name, email: email, password: password })
+            })
+            .then(function(res) { return res.json(); })
+            .then(function(data) {
+                setLoading(false);
+                if (data.sessionToken) {
+                    localStorage.setItem('silponix_session', data.sessionToken);
+                    if (data.client) {
+                        localStorage.setItem('silponix_client', JSON.stringify(data.client));
+                    }
+                    window.location.href = '/klient/dashboard.html';
+                } else {
+                    showError(data.error || 'Registrace se nezda\u0159ila. Zkuste to znovu.');
+                }
+            })
+            .catch(function() {
+                setLoading(false);
+                showError('Chyba p\u0159ipojen\u00ed. Zkuste to znovu.');
+            });
+        });
+    })();
+    </script>
+    <script src="/js/track.js?v=5" defer></script>
+</body>
+</html>

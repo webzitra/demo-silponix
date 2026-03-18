@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="cs" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obchodn&iacute; podm&iacute;nky | Silponix</title>
+    <meta name="description" content="Obchodn&iacute; podm&iacute;nky e-shopu Silponix &mdash; z&aacute;vodn&iacute; d&iacute;ly Honda a motorsport.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" href="/img/favicon-32.png" type="image/png">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="stylesheet" href="/css/style.css?v=5">
+    <script>(function(){var t=localStorage.getItem('theme');if(t){document.documentElement.setAttribute('data-theme',t)}else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches){document.documentElement.setAttribute('data-theme','light')}})();</script>
+</head>
+<body>
+
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Hlavn&iacute; navigace">
+        <div class="container navbar-inner">
+            <a href="/" class="navbar-logo logo-only" aria-label="Silponix &mdash; dom&#367;">
+                <img src="/img/logo.png" alt="Silponix" width="80" height="80" class="logo-img logo-dark">
+                <img src="/img/logo-white.png" alt="" width="80" height="80" class="logo-img logo-light" aria-hidden="true">
+                <span class="logo-text">Silponix</span>
+            </a>
+            <div class="navbar-menu" id="navbarMenu" role="menubar">
+                <a href="/" class="navbar-link" role="menuitem" data-i18n="nav.home">Dom&#367;</a>
+                <a href="/shop.html" class="navbar-link" role="menuitem" data-i18n="nav.eshop">Shop</a>
+                <a href="/sluzby.html" class="navbar-link" role="menuitem" data-i18n="nav.services">Slu&#382;by</a>
+                <a href="/blog.html" class="navbar-link" role="menuitem" data-i18n="nav.blog">Novinky</a>
+                <a href="/galerie.html" class="navbar-link" role="menuitem" data-i18n="nav.gallery">Galerie</a>
+                <a href="/o-nas.html" class="navbar-link" role="menuitem" data-i18n="nav.about">O&nbsp;n&aacute;s</a>
+                <a href="/kontakt.html" class="navbar-link" role="menuitem" data-i18n="nav.contact">Kontakt</a>
+            </div>
+            <div class="navbar-actions">
+                <div class="lang-switcher" id="langSwitcher">
+                    <button class="lang-switcher-toggle" id="langToggle" aria-label="Jazyk" aria-expanded="false">
+                        <img src="/img/flags/cs.svg" alt="CZ" width="22" height="16" id="langToggleFlag">
+                    </button>
+                    <div class="lang-dropdown" role="menu">
+                        <button class="lang-btn active" data-lang="cs" role="menuitem" aria-label="&#268;esky">
+                            <img src="/img/flags/cs.svg" alt="" width="20" height="15">&#268;e&scaron;tina
+                        </button>
+                        <button class="lang-btn" data-lang="en" role="menuitem" aria-label="English">
+                            <img src="/img/flags/en.svg" alt="" width="20" height="15">English
+                        </button>
+                    </div>
+                </div>
+                <button class="theme-toggle" id="themeToggle" aria-label="P&#345;epnout t&eacute;ma">
+                    <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+                <a href="/klient/" class="navbar-user" aria-label="M&#367;j &uacute;&#269;et">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </a>
+                <a href="/kosik.html" class="navbar-cart" id="navbarCart" aria-label="Ko&scaron;&iacute;k">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                    <span class="cart-count" id="cartCount" hidden>0</span>
+                </a>
+                <a href="/shop.html" class="btn btn-primary btn-sm navbar-cta">Shop</a>
+                <button class="navbar-hamburger" id="navbarHamburger" aria-label="Menu" aria-expanded="false" aria-controls="navbarMenu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="section" style="padding-top: calc(var(--navbar-height) + 2rem);">
+        <div class="container">
+            <div class="legal-content">
+
+                <h1>Obchodn&iacute; podm&iacute;nky</h1>
+                <p><em>&Uacute;&#269;innost od 1. 1. 2026</em></p>
+
+                <h2>I. &Uacute;vodn&iacute; ustanoven&iacute;</h2>
+                <p>Tyto v&scaron;eobecn&eacute; obchodn&iacute; podm&iacute;nky (d&aacute;le jen &bdquo;obchodn&iacute; podm&iacute;nky&ldquo;) upravuj&iacute; vz&aacute;jemn&aacute; pr&aacute;va a&nbsp;povinnosti smluvn&iacute;ch stran vznikl&eacute; v&nbsp;souvislosti s&nbsp;uzav&iacute;r&aacute;n&iacute;m kupn&iacute;ch smluv mezi prod&aacute;vaj&iacute;c&iacute;m a&nbsp;kupuj&iacute;c&iacute;m prost&#345;ednictv&iacute;m internetov&eacute;ho obchodu na adrese <strong>silponix.cz</strong>.</p>
+                <p>Prod&aacute;vaj&iacute;c&iacute;m je <strong>Silponix</strong>, se s&iacute;dlem K.&nbsp;H.&nbsp;M&aacute;chy 34, 765&nbsp;02 Otrokovice (d&aacute;le jen &bdquo;prod&aacute;vaj&iacute;c&iacute;&ldquo;). Kontaktn&iacute; &uacute;daje: e-mail <a href="mailto:mezihorak@silponix.cz">mezihorak@silponix.cz</a>, telefon +420&nbsp;739&nbsp;657&nbsp;624.</p>
+                <p>Kupuj&iacute;c&iacute;m je ka&#382;d&aacute; fyzick&aacute; nebo pr&aacute;vnick&aacute; osoba, kter&aacute; prost&#345;ednictv&iacute;m e-shopu objedn&aacute; zbo&#382;&iacute; (d&aacute;le jen &bdquo;kupuj&iacute;c&iacute;&ldquo;). Odes&iacute;l&aacute;n&iacute;m objedn&aacute;vky kupuj&iacute;c&iacute; potvrzuje, &#382;e se sezn&aacute;mil s&nbsp;t&#283;mito obchodn&iacute;mi podm&iacute;nkami a&nbsp;&#382;e s&nbsp;nimi souhlas&iacute;.</p>
+
+                <h2>II. Objedn&aacute;vka a&nbsp;uzav&#345;en&iacute; smlouvy</h2>
+                <p>Kupuj&iacute;c&iacute; prov&aacute;d&iacute; objedn&aacute;vku vybr&aacute;n&iacute;m zbo&#382;&iacute; v&nbsp;e-shopu, jeho vlo&#382;en&iacute;m do ko&scaron;&iacute;ku a&nbsp;n&aacute;sledn&yacute;m odesl&aacute;n&iacute;m objedn&aacute;vkov&eacute;ho formul&aacute;&#345;e. Ka&#382;d&aacute; objedn&aacute;vka je z&aacute;vazn&yacute;m n&aacute;vrhem kupn&iacute; smlouvy. Prod&aacute;vaj&iacute;c&iacute; potvrd&iacute; p&#345;ijet&iacute; objedn&aacute;vky e-mailem na adresu uvedenou kupuj&iacute;c&iacute;m.</p>
+                <p>Kupn&iacute; smlouva je uzav&#345;ena okam&#382;ikem, kdy prod&aacute;vaj&iacute;c&iacute; ode&scaron;le kupuj&iacute;c&iacute;mu potvrzen&iacute; objedn&aacute;vky. Od tohoto okam&#382;iku mezi prod&aacute;vaj&iacute;c&iacute;m a&nbsp;kupuj&iacute;c&iacute;m vznikaj&iacute; vz&aacute;jemn&aacute; pr&aacute;va a&nbsp;povinnosti vypl&yacute;vaj&iacute;c&iacute; z&nbsp;kupn&iacute; smlouvy.</p>
+                <p>Prod&aacute;vaj&iacute;c&iacute; si vyhrazuje pr&aacute;vo objedn&aacute;vku odm&iacute;tnout, pokud je zbo&#382;&iacute; nedostupn&eacute;, nebo pokud existuj&iacute; d&#367;vodn&eacute; pochybnosti o&nbsp;toto&#382;nosti &#269;i &uacute;myslu kupuj&iacute;c&iacute;ho. V&nbsp;takov&eacute;m p&#345;&iacute;pad&#283; bude kupuj&iacute;c&iacute; neprodlen&#283; informov&aacute;n.</p>
+
+                <h2>III. Ceny a&nbsp;platby</h2>
+                <p>V&scaron;echny ceny uveden&eacute; v&nbsp;e-shopu jsou kone&#269;n&eacute; a&nbsp;zahrnuj&iacute; DPH, pokud nen&iacute; v&yacute;slovn&#283; uvedeno jinak. Ceny jsou platn&eacute; v&nbsp;okam&#382;iku odesl&aacute;n&iacute; objedn&aacute;vky. Prod&aacute;vaj&iacute;c&iacute; si vyhrazuje pr&aacute;vo na zm&#283;nu cen, av&scaron;ak ji&#382; potvrzen&eacute; objedn&aacute;vky se &#345;&iacute;d&iacute; cenou platnou v&nbsp;dob&#283; jejich odesl&aacute;n&iacute;.</p>
+                <p>Kupuj&iacute;c&iacute; m&#367;&#382;e uhradit kupn&iacute; cenu n&aacute;sleduj&iacute;c&iacute;mi zp&#367;soby: bankovn&iacute;m p&#345;evodem na &uacute;&#269;et prod&aacute;vaj&iacute;c&iacute;ho dle pokyn&#367; zaslan&yacute;ch v&nbsp;potvrzen&iacute; objedn&aacute;vky, dob&iacute;rkou p&#345;i p&#345;evzet&iacute; z&aacute;silky nebo hotov&#283; p&#345;i osobn&iacute;m odb&#283;ru. Zbo&#382;&iacute; z&#367;st&aacute;v&aacute; vlastnictv&iacute;m prod&aacute;vaj&iacute;c&iacute;ho a&#382; do &uacute;pln&eacute;ho zaplacen&iacute; kupn&iacute; ceny.</p>
+                <p>V&nbsp;p&#345;&iacute;pad&#283; platby bankovn&iacute;m p&#345;evodem je kupuj&iacute;c&iacute; povinen uhradit kupn&iacute; cenu do 7&nbsp;pracovn&iacute;ch dn&#367; od potvrzen&iacute; objedn&aacute;vky. Pokud platba nen&iacute; p&#345;ips&aacute;na v&nbsp;t&eacute;to lh&#367;t&#283;, m&aacute; prod&aacute;vaj&iacute;c&iacute; pr&aacute;vo objedn&aacute;vku zru&scaron;it.</p>
+
+                <h2>IV. Dod&aacute;n&iacute; zbo&#382;&iacute;</h2>
+                <p>Prod&aacute;vaj&iacute;c&iacute; odes&iacute;l&aacute; zbo&#382;&iacute; zp&#367;sobem zvolen&yacute;m kupuj&iacute;c&iacute;m p&#345;i objedn&aacute;vce. Standardn&iacute; dodac&iacute; lh&#367;ta je 2&ndash;5&nbsp;pracovn&iacute;ch dn&#367; od p&#345;ips&aacute;n&iacute; platby na &uacute;&#269;et prod&aacute;vaj&iacute;c&iacute;ho, resp. od potvrzen&iacute; objedn&aacute;vky v&nbsp;p&#345;&iacute;pad&#283; dob&iacute;rky. U&nbsp;zbo&#382;&iacute; na objedn&aacute;vku m&#367;&#382;e b&yacute;t dodac&iacute; lh&#367;ta del&scaron;&iacute;, o&nbsp;&#269;em&#382; bude kupuj&iacute;c&iacute; informov&aacute;n.</p>
+                <p>P&#345;eprava je zaji&scaron;t&#283;na prost&#345;ednictv&iacute;m smluvn&iacute;ho p&#345;epravce. N&aacute;klady na dopravu jsou uvedeny v&nbsp;sekci <a href="/doprava-platby.html">Doprava a&nbsp;platby</a>. P&#345;i objedn&aacute;vce nad 20&nbsp;000&nbsp;K&#269; v&#269;etn&#283; DPH je doprava zdarma.</p>
+                <p>Kupuj&iacute;c&iacute; je povinen zbo&#382;&iacute; p&#345;i p&#345;evzet&iacute; zkontrolovat a&nbsp;v&nbsp;p&#345;&iacute;pad&#283; viditeln&eacute;ho po&scaron;kozen&iacute; obalu toto uv&eacute;st do p&#345;ed&aacute;vac&iacute;ho protokolu p&#345;epravce. Na pozd&#283;j&scaron;&iacute; reklamace viditeln&eacute;ho po&scaron;kozen&iacute; zp&#367;soben&eacute;ho p&#345;epravou nemus&iacute; b&yacute;t br&aacute;n z&#345;etel.</p>
+
+                <h2>V. Odstoupen&iacute; od smlouvy</h2>
+                <p>Kupuj&iacute;c&iacute;, kter&yacute; je spot&#345;ebitelem, m&aacute; pr&aacute;vo odstoupit od kupn&iacute; smlouvy bez ud&aacute;n&iacute; d&#367;vodu ve lh&#367;t&#283; 14&nbsp;dn&#367; ode dne p&#345;evzet&iacute; zbo&#382;&iacute;, a&nbsp;to v&nbsp;souladu s&nbsp;&sect;&nbsp;1829 z&aacute;kona &#269;.&nbsp;89/2012&nbsp;Sb., ob&#269;ansk&eacute;ho z&aacute;kon&iacute;ku. Odstoupen&iacute; mus&iacute; b&yacute;t p&iacute;semn&eacute; a&nbsp;doru&#269;en&eacute; prod&aacute;vaj&iacute;c&iacute;mu na adresu s&iacute;dla nebo e-mailem.</p>
+                <p>Kupuj&iacute;c&iacute; je povinen vr&aacute;tit zbo&#382;&iacute; v&nbsp;p&#367;vodn&iacute;m stavu, nepo&scaron;kozen&eacute;, nepou&#382;it&eacute;, v&nbsp;p&#367;vodn&iacute;m obalu, a&nbsp;to do 14&nbsp;dn&#367; od odstoupen&iacute;. N&aacute;klady na vr&aacute;cen&iacute; zbo&#382;&iacute; nese kupuj&iacute;c&iacute;. Prod&aacute;vaj&iacute;c&iacute; vr&aacute;t&iacute; kupuj&iacute;c&iacute;mu p&#345;ijatou platbu do 14&nbsp;dn&#367; od obdr&#382;en&iacute; vr&aacute;cen&eacute;ho zbo&#382;&iacute;, a&nbsp;to stejn&yacute;m zp&#367;sobem, jak&yacute;m ji od kupuj&iacute;c&iacute;ho p&#345;ijal, nedohodnou-li se jinak.</p>
+                <p>Pr&aacute;vo na odstoupen&iacute; nelze uplatnit u&nbsp;zbo&#382;&iacute; upraven&eacute;ho podle p&#345;&aacute;n&iacute; kupuj&iacute;c&iacute;ho (z&aacute;kazkov&aacute; v&yacute;roba, CNC d&iacute;ly na m&iacute;ru), u&nbsp;zbo&#382;&iacute;, kter&eacute; bylo nep&#345;evrateln&#283; sm&iacute;seno s&nbsp;jin&yacute;m zbo&#382;&iacute;m, ani u&nbsp;zbo&#382;&iacute;, kter&eacute; bylo po dod&aacute;n&iacute; poru&scaron;eno jeho ochrann&eacute; balen&iacute; a&nbsp;z&nbsp;hygienick&yacute;ch d&#367;vod&#367; je nelze vr&aacute;tit.</p>
+
+                <h2>VI. Reklamace</h2>
+                <p>Pr&aacute;va a&nbsp;povinnosti smluvn&iacute;ch stran ohledn&#283; pr&aacute;v z&nbsp;vadn&eacute;ho pln&#283;n&iacute; se &#345;&iacute;d&iacute; p&#345;&iacute;slu&scaron;n&yacute;mi obecn&#283; z&aacute;vazn&yacute;mi p&#345;edpisy, zejm&eacute;na ustanoven&iacute;mi &sect;&nbsp;1914 a&#382; 1925, &sect;&nbsp;2099 a&#382; 2117 a &sect;&nbsp;2161 a&#382; 2174 ob&#269;ansk&eacute;ho z&aacute;kon&iacute;ku a&nbsp;z&aacute;konem &#269;.&nbsp;634/1992&nbsp;Sb., o&nbsp;ochran&#283; spot&#345;ebitele.</p>
+                <p>Prod&aacute;vaj&iacute;c&iacute; odpov&iacute;d&aacute; kupuj&iacute;c&iacute;mu, &#382;e zbo&#382;&iacute; p&#345;i p&#345;evzet&iacute; nem&aacute; vady. Z&aacute;ru&#269;n&iacute; doba je 24&nbsp;m&#283;s&iacute;c&#367; od p&#345;evzet&iacute; zbo&#382;&iacute; pro spot&#345;ebitele. Podrobn&eacute; informace o&nbsp;uplatn&#283;n&iacute; reklamace naleznete v&nbsp;na&scaron;em <a href="/reklamacni-rad.html">Reklama&#269;n&iacute;m &#345;&aacute;du</a>.</p>
+                <p>Reklamaci lze uplatnit osobn&#283; na adrese K.&nbsp;H.&nbsp;M&aacute;chy 34, 765&nbsp;02 Otrokovice, nebo zasl&aacute;n&iacute;m zbo&#382;&iacute; na tutou adresu spolu s&nbsp;popisem vady a&nbsp;kopi&iacute; dokladu o&nbsp;koupi. Prod&aacute;vaj&iacute;c&iacute; rozhodne o&nbsp;reklamaci bez zbyte&#269;n&eacute;ho odkladu, nejpozd&#283;ji do 30&nbsp;dn&#367; od jej&iacute;ho uplatn&#283;n&iacute;.</p>
+
+                <h2>VII. Ochrana osobn&iacute;ch &uacute;daj&#367;</h2>
+                <p>Prod&aacute;vaj&iacute;c&iacute; zpracov&aacute;v&aacute; osobn&iacute; &uacute;daje kupuj&iacute;c&iacute;ho v&nbsp;souladu s&nbsp;na&#345;&iacute;zen&iacute;m Evropsk&eacute;ho parlamentu a&nbsp;Rady (EU) 2016/679 (GDPR) a&nbsp;z&aacute;konem &#269;.&nbsp;110/2019&nbsp;Sb., o&nbsp;zpracov&aacute;n&iacute; osobn&iacute;ch &uacute;daj&#367;. Podrobn&eacute; informace o&nbsp;zpracov&aacute;n&iacute; osobn&iacute;ch &uacute;daj&#367; jsou uvedeny v&nbsp;dokumentu <a href="/ochrana-udaju.html">Ochrana osobn&iacute;ch &uacute;daj&#367;</a>.</p>
+                <p>Osobn&iacute; &uacute;daje jsou zpracov&aacute;v&aacute;ny za &uacute;&#269;elem pln&#283;n&iacute; kupn&iacute; smlouvy, veden&iacute; &uacute;&#269;etnictv&iacute; a&nbsp;p&#345;&iacute;padn&eacute; komunikace s&nbsp;kupuj&iacute;c&iacute;m. Poskytnut&iacute; osobn&iacute;ch &uacute;daj&#367; je nezbytn&eacute; pro vy&#345;&iacute;zen&iacute; objedn&aacute;vky; bez nich nen&iacute; mo&#382;n&eacute; smlouvu uzav&#345;&iacute;t ani plnit.</p>
+                <p>Kupuj&iacute;c&iacute; m&aacute; pr&aacute;vo na p&#345;&iacute;stup ke sv&yacute;m &uacute;daj&#367;m, jejich opravu, v&yacute;maz, omezen&iacute; zpracov&aacute;n&iacute;, pr&aacute;vo na p&#345;enositelnost &uacute;daj&#367; a&nbsp;pr&aacute;vo podat st&iacute;&#382;nost u&nbsp;&Uacute;&#345;adu pro ochranu osobn&iacute;ch &uacute;daj&#367;.</p>
+
+                <h2>VIII. Z&aacute;v&#283;re&#269;n&aacute; ustanoven&iacute;</h2>
+                <p>Tyto obchodn&iacute; podm&iacute;nky jsou platn&eacute; a&nbsp;&uacute;&#269;inn&eacute; od 1.&nbsp;1.&nbsp;2026 a&nbsp;nahrazuj&iacute; v&scaron;echny p&#345;edchoz&iacute; verze. Prod&aacute;vaj&iacute;c&iacute; si vyhrazuje pr&aacute;vo na zm&#283;nu t&#283;chto obchodn&iacute;ch podm&iacute;nek. Nov&aacute; verze obchodn&iacute;ch podm&iacute;nek je &uacute;&#269;inn&aacute; dnem jej&iacute;ho zve&#345;ejn&#283;n&iacute; na webov&yacute;ch str&aacute;nk&aacute;ch prod&aacute;vaj&iacute;c&iacute;ho.</p>
+                <p>Ve&#353;ker&eacute; spory vznikl&eacute; z&nbsp;kupn&iacute; smlouvy budou &#345;e&scaron;eny p&#345;ednostn&#283; sm&iacute;rnou cestou. Nedojde-li k&nbsp;dohod&#283;, je kupuj&iacute;c&iacute; &ndash; spot&#345;ebitel opr&aacute;vn&#283;n obr&aacute;tit se na &#268;eskou obchodn&iacute; inspekci (&#268;OI, <a href="https://www.coi.cz" target="_blank" rel="noopener noreferrer">www.coi.cz</a>) jako subjekt mimosoudn&iacute;ho &#345;e&scaron;en&iacute; spot&#345;ebitelsk&yacute;ch spor&#367;. P&#345;&iacute;padn&eacute; soudn&iacute; spory budou &#345;e&scaron;eny p&#345;&iacute;slu&scaron;n&yacute;mi soudy &#268;esk&eacute; republiky.</p>
+                <p>Vztahy neupraven&eacute; t&#283;mito obchodn&iacute;mi podm&iacute;nkami se &#345;&iacute;d&iacute; ob&#269;ansk&yacute;m z&aacute;kon&iacute;kem (z&aacute;kon &#269;.&nbsp;89/2012&nbsp;Sb.) a&nbsp;z&aacute;konem o&nbsp;ochran&#283; spot&#345;ebitele (z&aacute;kon &#269;.&nbsp;634/1992&nbsp;Sb.) v&nbsp;platn&eacute;m zn&#283;n&iacute;.</p>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <a href="/" class="navbar-logo footer-logo">
+                        <img src="/img/logo.png" alt="Silponix" width="180" height="46" class="logo-img logo-dark"><img src="/img/logo-white.png" alt="" width="180" height="46" class="logo-img logo-light" aria-hidden="true">
+                    </a>
+                    <p class="footer-desc" data-i18n="footer.desc">Specialista na z&aacute;vodn&iacute; d&iacute;ly Honda a motorsport. V&yacute;roba, tuning, servis.</p>
+                    <div class="footer-newsletter"><p style="font-size:0.875rem; font-weight:600;">Odebírejte novinky</p><form class="footer-newsletter-form" onsubmit="event.preventDefault();var e=this.querySelector(&#39;input&#39;).value;if(!e)return;fetch(&#39;/api/newsletter&#39;,{method:&#39;POST&#39;,headers:{&#39;Content-Type&#39;:&#39;application/json&#39;},body:JSON.stringify({action:&#39;subscribe&#39;,email:e})}).then(function(r){return r.json()}).then(function(d){if(d.ok){var m=document.createElement(&#39;p&#39;);m.className=&#39;footer-newsletter-msg&#39;;m.textContent=&#39;Přihlášeno!&#39;;event.target.parentNode.appendChild(m);event.target.querySelector(&#39;input&#39;).value=&#39;&#39;;setTimeout(function(){m.remove()},3000)}})"><input type="email" placeholder="Váš e-mail" required><button type="submit" class="btn btn-sm btn-primary">Odebírat</button></form></div>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/SilponixHondaMotorsport/" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
+                        <a href="https://www.instagram.com/silponix_honda_motorsport/" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4 data-i18n="footer.eshop">Shop</h4>
+                    <ul>
+                        <li><a href="/shop.html" data-i18n="footer.all_products">V&scaron;echny produkty</a></li>
+                        <li><a href="/shop.html?kat=ecu" data-i18n="footer.ecu">ECU Hondata</a></li>
+                        <li><a href="/shop.html?kat=silentbloky" data-i18n="footer.silentbloky">Silentbloky</a></li>
+                        <li><a href="/shop.html?kat=motor" data-i18n="footer.motor">Motor &amp; P&#345;evodovky</a></li>
+                        <li><a href="/shop.html?kat=podvozek" data-i18n="footer.podvozek">Podvozek &amp; Brzdy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4 data-i18n="footer.company">Firma</h4>
+                    <ul>
+                        <li><a href="/sluzby.html" data-i18n="footer.services">Slu&#382;by</a></li>
+                        <li><a href="/o-nas.html" data-i18n="footer.about">O n&aacute;s</a></li>
+                        <li><a href="/kontakt.html" data-i18n="footer.contact">Kontakt</a></li>
+                        <li><a href="/blog.html" data-i18n="footer.blog">Novinky</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Informace</h4>
+                    <ul>
+                        <li><a href="/obchodni-podminky.html">Obchodn&iacute; podm&iacute;nky</a></li>
+                        <li><a href="/ochrana-udaju.html">Ochrana &uacute;daj&#367;</a></li>
+                        <li><a href="/reklamacni-rad.html">Reklama&#269;n&iacute; &#345;&aacute;d</a></li>
+                        <li><a href="/doprava-platby.html">Doprava a platby</a></li>
+                        <li><a href="/cookies.html">Cookies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact-col">
+                    <h4 data-i18n="footer.contact_heading">Kontakt</h4>
+                    <p>K. H. M&aacute;chy 34<br>765 02 Otrokovice</p>
+                    <p><a href="tel:+420739657624">+420 739 657 624</a></p>
+                    <p><a href="mailto:mezihorak@silponix.cz">mezihorak@silponix.cz</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-divider"></div>
+        <div class="container">
+            <div class="footer-bottom">
+                <p data-i18n="footer.copyright">&copy; 2026 Silponix. V&scaron;echna pr&aacute;va vyhrazena.</p>
+                <p class="footer-credit" data-i18n-html="footer.credit_html">Vytvo&#345;ilo <a href="https://webzitra.cz" target="_blank" rel="noopener noreferrer">WebZ&iacute;tra</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="cookie-banner" id="cookieBanner" hidden>
+        <div class="cookie-inner">
+            <p data-i18n="cookie.text">Tento web pou&#382;&iacute;v&aacute; cookies pro zlep&scaron;en&iacute; va&scaron;eho z&aacute;&#382;itku. Pokra&#269;ov&aacute;n&iacute;m souhlas&iacute;te s jejich pou&#382;it&iacute;m.</p>
+            <div class="cookie-actions">
+                <button class="btn btn-sm btn-primary" id="cookieAccept" data-i18n="cookie.accept">P&#345;ijmout</button>
+                <button class="btn btn-sm btn-outline" id="cookieDecline" data-i18n="cookie.decline">Odm&iacute;tnout</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/i18n.js?v=5"></script>
+    <script src="/js/main.js?v=5"></script>
+    <script src="/js/track.js?v=5" defer></script>
+</body>
+</html>

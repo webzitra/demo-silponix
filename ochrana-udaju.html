@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="cs" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ochrana osobn&iacute;ch &uacute;daj&#367; | Silponix</title>
+    <meta name="description" content="Z&aacute;sady ochrany osobn&iacute;ch &uacute;daj&#367; e-shopu Silponix v&nbsp;souladu s&nbsp;GDPR.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" href="/img/favicon-32.png" type="image/png">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="stylesheet" href="/css/style.css?v=5">
+    <script>(function(){var t=localStorage.getItem('theme');if(t){document.documentElement.setAttribute('data-theme',t)}else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches){document.documentElement.setAttribute('data-theme','light')}})();</script>
+</head>
+<body>
+
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Hlavn&iacute; navigace">
+        <div class="container navbar-inner">
+            <a href="/" class="navbar-logo logo-only" aria-label="Silponix &mdash; dom&#367;">
+                <img src="/img/logo.png" alt="Silponix" width="80" height="80" class="logo-img logo-dark">
+                <img src="/img/logo-white.png" alt="" width="80" height="80" class="logo-img logo-light" aria-hidden="true">
+                <span class="logo-text">Silponix</span>
+            </a>
+            <div class="navbar-menu" id="navbarMenu" role="menubar">
+                <a href="/" class="navbar-link" role="menuitem" data-i18n="nav.home">Dom&#367;</a>
+                <a href="/shop.html" class="navbar-link" role="menuitem" data-i18n="nav.eshop">Shop</a>
+                <a href="/sluzby.html" class="navbar-link" role="menuitem" data-i18n="nav.services">Slu&#382;by</a>
+                <a href="/blog.html" class="navbar-link" role="menuitem" data-i18n="nav.blog">Novinky</a>
+                <a href="/galerie.html" class="navbar-link" role="menuitem" data-i18n="nav.gallery">Galerie</a>
+                <a href="/o-nas.html" class="navbar-link" role="menuitem" data-i18n="nav.about">O&nbsp;n&aacute;s</a>
+                <a href="/kontakt.html" class="navbar-link" role="menuitem" data-i18n="nav.contact">Kontakt</a>
+            </div>
+            <div class="navbar-actions">
+                <div class="lang-switcher" id="langSwitcher">
+                    <button class="lang-switcher-toggle" id="langToggle" aria-label="Jazyk" aria-expanded="false">
+                        <img src="/img/flags/cs.svg" alt="CZ" width="22" height="16" id="langToggleFlag">
+                    </button>
+                    <div class="lang-dropdown" role="menu">
+                        <button class="lang-btn active" data-lang="cs" role="menuitem" aria-label="&#268;esky">
+                            <img src="/img/flags/cs.svg" alt="" width="20" height="15">&#268;e&scaron;tina
+                        </button>
+                        <button class="lang-btn" data-lang="en" role="menuitem" aria-label="English">
+                            <img src="/img/flags/en.svg" alt="" width="20" height="15">English
+                        </button>
+                    </div>
+                </div>
+                <button class="theme-toggle" id="themeToggle" aria-label="P&#345;epnout t&eacute;ma">
+                    <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+                <a href="/klient/" class="navbar-user" aria-label="M&#367;j &uacute;&#269;et">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </a>
+                <a href="/kosik.html" class="navbar-cart" id="navbarCart" aria-label="Ko&scaron;&iacute;k">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                    <span class="cart-count" id="cartCount" hidden>0</span>
+                </a>
+                <a href="/shop.html" class="btn btn-primary btn-sm navbar-cta">Shop</a>
+                <button class="navbar-hamburger" id="navbarHamburger" aria-label="Menu" aria-expanded="false" aria-controls="navbarMenu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="section" style="padding-top: calc(var(--navbar-height) + 2rem);">
+        <div class="container">
+            <div class="legal-content">
+
+                <h1>Ochrana osobn&iacute;ch &uacute;daj&#367;</h1>
+                <p><em>&Uacute;&#269;innost od 1. 1. 2026</em></p>
+
+                <h2>1. Spr&aacute;vce &uacute;daj&#367;</h2>
+                <p>Spr&aacute;vcem osobn&iacute;ch &uacute;daj&#367; je <strong>Silponix</strong>, se s&iacute;dlem K.&nbsp;H.&nbsp;M&aacute;chy 34, 765&nbsp;02 Otrokovice (d&aacute;le jen &bdquo;spr&aacute;vce&ldquo;). Kontaktn&iacute; &uacute;daje spr&aacute;vce: e-mail <a href="mailto:mezihorak@silponix.cz">mezihorak@silponix.cz</a>, telefon +420&nbsp;739&nbsp;657&nbsp;624.</p>
+                <p>Spr&aacute;vce nenajmenoval pov&#283;&#345;ence pro ochranu osobn&iacute;ch &uacute;daj&#367;. Ve v&scaron;ech z&aacute;le&#382;itostech t&yacute;kaj&iacute;c&iacute;ch se zpracov&aacute;n&iacute; osobn&iacute;ch &uacute;daj&#367; se m&#367;&#382;ete obr&aacute;tit p&#345;&iacute;mo na v&yacute;&scaron;e uveden&yacute; kontaktn&iacute; e-mail.</p>
+                <p>Spr&aacute;vce zpracov&aacute;v&aacute; osobn&iacute; &uacute;daje v&nbsp;souladu s&nbsp;na&#345;&iacute;zen&iacute;m Evropsk&eacute;ho parlamentu a&nbsp;Rady (EU) 2016/679 o&nbsp;ochran&#283; fyzick&yacute;ch osob v&nbsp;souvislosti se zpracov&aacute;n&iacute;m osobn&iacute;ch &uacute;daj&#367; (obecn&eacute; na&#345;&iacute;zen&iacute; o&nbsp;ochran&#283; osobn&iacute;ch &uacute;daj&#367;, d&aacute;le jen &bdquo;GDPR&ldquo;) a&nbsp;z&aacute;konem &#269;.&nbsp;110/2019&nbsp;Sb., o&nbsp;zpracov&aacute;n&iacute; osobn&iacute;ch &uacute;daj&#367;.</p>
+
+                <h2>2. &Uacute;&#269;ely zpracov&aacute;n&iacute;</h2>
+                <p>Spr&aacute;vce zpracov&aacute;v&aacute; osobn&iacute; &uacute;daje pro n&aacute;sleduj&iacute;c&iacute; &uacute;&#269;ely:</p>
+                <ul>
+                    <li><strong>Pln&#283;n&iacute; kupn&iacute; smlouvy</strong> &mdash; zpracov&aacute;n&iacute; objedn&aacute;vek, dod&aacute;n&iacute; zbo&#382;&iacute;, komunikace o&nbsp;stavu objedn&aacute;vky, vy&#345;izov&aacute;n&iacute; reklamac&iacute; a&nbsp;vr&aacute;cen&iacute; zbo&#382;&iacute;. Zpracov&aacute;van&eacute; &uacute;daje: jm&eacute;no, p&#345;&iacute;jmen&iacute;, doru&#269;ovac&iacute; adresa, e-mail, telefon, &uacute;daje o&nbsp;objedn&aacute;vce.</li>
+                    <li><strong>Veden&iacute; &uacute;&#269;etnictv&iacute; a&nbsp;pln&#283;n&iacute; da&#328;ov&yacute;ch povinnost&iacute;</strong> &mdash; vystaven&iacute; da&#328;ov&yacute;ch doklad&#367;, veden&iacute; &uacute;&#269;etn&iacute; evidence. Zpracov&aacute;van&eacute; &uacute;daje: faktura&#269;n&iacute; &uacute;daje, I&#268;O, DI&#268; (u&nbsp;podnikatel&#367;).</li>
+                    <li><strong>Komunikace a&nbsp;z&aacute;kaznick&aacute; podpora</strong> &mdash; zodpov&iacute;d&aacute;n&iacute; dotaz&#367; zaslan&yacute;ch prost&#345;ednictv&iacute;m kontaktn&iacute;ho formul&aacute;&#345;e, e-mailu nebo telefonu.</li>
+                    <li><strong>Marketing</strong> &mdash; zas&iacute;l&aacute;n&iacute; obchodn&iacute;ch sd&#283;len&iacute; (newsletter), pouze se souhlasem kupuj&iacute;c&iacute;ho. Souhlas lze kdykoliv odvolat kliknut&iacute;m na odkaz v&nbsp;e-mailu nebo kontaktov&aacute;n&iacute;m spr&aacute;vce.</li>
+                </ul>
+                <p>Spr&aacute;vce nezpracov&aacute;v&aacute; osobn&iacute; &uacute;daje za jin&yacute;mi &uacute;&#269;ely ne&#382; v&yacute;&scaron;e uveden&yacute;mi. Osobn&iacute; &uacute;daje nejsou p&#345;edm&#283;tem automatizovan&eacute;ho rozhodov&aacute;n&iacute; ani profilov&aacute;n&iacute;.</p>
+
+                <h2>3. Pr&aacute;vn&iacute; z&aacute;klad zpracov&aacute;n&iacute;</h2>
+                <p>Osobn&iacute; &uacute;daje jsou zpracov&aacute;v&aacute;ny na z&aacute;klad&#283; n&aacute;sleduj&iacute;c&iacute;ch pr&aacute;vn&iacute;ch z&aacute;klad&#367; dle &#269;l.&nbsp;6 odst.&nbsp;1 GDPR:</p>
+                <ul>
+                    <li><strong>P&iacute;sm. b) &mdash; pln&#283;n&iacute; smlouvy</strong> &mdash; zpracov&aacute;n&iacute; je nezbytn&eacute; pro spln&#283;n&iacute; kupn&iacute; smlouvy, jej&iacute;&#382; smluvn&iacute; stranou je kupuj&iacute;c&iacute;, nebo pro proveden&iacute; opat&#345;en&iacute; p&#345;ijat&yacute;ch p&#345;ed uzav&#345;en&iacute;m smlouvy na &#382;&aacute;dost kupuj&iacute;c&iacute;ho.</li>
+                    <li><strong>P&iacute;sm. c) &mdash; pr&aacute;vn&iacute; povinnost</strong> &mdash; zpracov&aacute;n&iacute; je nezbytn&eacute; pro spln&#283;n&iacute; pr&aacute;vn&iacute;ch povinnost&iacute; spr&aacute;vce (da&#328;ov&eacute; a&nbsp;&uacute;&#269;etn&iacute; p&#345;edpisy, archivace da&#328;ov&yacute;ch doklad&#367;).</li>
+                    <li><strong>P&iacute;sm. a) &mdash; souhlas</strong> &mdash; pro zas&iacute;l&aacute;n&iacute; marketingov&yacute;ch sd&#283;len&iacute; je vy&#382;adov&aacute;n v&yacute;slovn&yacute; souhlas subjektu &uacute;daj&#367;, kter&yacute; lze kdykoliv odvolat.</li>
+                    <li><strong>P&iacute;sm. f) &mdash; opr&aacute;vn&#283;n&yacute; z&aacute;jem</strong> &mdash; ochrana pr&aacute;vn&iacute;ch n&aacute;rok&#367; spr&aacute;vce, p&#345;edch&aacute;zen&iacute; podvod&#367;m, zlep&scaron;ov&aacute;n&iacute; slu&#382;eb.</li>
+                </ul>
+
+                <h2>4. P&#345;&iacute;jemci &uacute;daj&#367;</h2>
+                <p>Osobn&iacute; &uacute;daje mohou b&yacute;t p&#345;ed&aacute;ny t&#345;et&iacute;m stran&aacute;m v&yacute;hradn&#283; v&nbsp;rozsahu nezbytn&eacute;m pro spln&#283;n&iacute; v&yacute;&scaron;e uveden&yacute;ch &uacute;&#269;el&#367;:</p>
+                <ul>
+                    <li><strong>P&#345;epravn&iacute; spole&#269;nosti</strong> &mdash; pro doru&#269;en&iacute; zbo&#382;&iacute; (jm&eacute;no, adresa, telefon, e-mail).</li>
+                    <li><strong>&Uacute;&#269;etn&iacute; a&nbsp;da&#328;ov&yacute; poradce</strong> &mdash; pro veden&iacute; &uacute;&#269;etnictv&iacute; a&nbsp;pln&#283;n&iacute; da&#328;ov&yacute;ch povinnost&iacute;.</li>
+                    <li><strong>Poskytovatel&eacute; IT slu&#382;eb</strong> &mdash; hosting, spr&aacute;va e-shopu, technick&aacute; podpora.</li>
+                </ul>
+                <p>Spr&aacute;vce nep&#345;ed&aacute;v&aacute; osobn&iacute; &uacute;daje do t&#345;et&iacute;ch zem&iacute; mimo Evropsk&yacute; hospod&aacute;&#345;sk&yacute; prostor ani mezin&aacute;rodn&iacute;m organizac&iacute;m.</p>
+
+                <h2>5. Doba uchov&aacute;v&aacute;n&iacute;</h2>
+                <p>Osobn&iacute; &uacute;daje jsou uchov&aacute;v&aacute;ny po dobu nezbytnou k&nbsp;napln&#283;n&iacute; &uacute;&#269;elu zpracov&aacute;n&iacute;:</p>
+                <ul>
+                    <li><strong>Objedn&aacute;vkov&eacute; &uacute;daje</strong> &mdash; po dobu trv&aacute;n&iacute; smluvn&iacute;ho vztahu a&nbsp;n&aacute;sledn&#283; po dobu z&aacute;konn&yacute;ch proml&#269;ec&iacute;ch lh&#367;t (3&nbsp;roky od ukon&#269;en&iacute; smlouvy).</li>
+                    <li><strong>&Uacute;&#269;etn&iacute; doklady</strong> &mdash; po dobu stanovenou z&aacute;konem o&nbsp;&uacute;&#269;etnictv&iacute; (5&nbsp;let) a&nbsp;da&#328;ov&yacute;mi p&#345;edpisy (10&nbsp;let u&nbsp;da&#328;ov&yacute;ch doklad&#367;).</li>
+                    <li><strong>Marketingov&eacute; &uacute;&#269;ely</strong> &mdash; do odvol&aacute;n&iacute; souhlasu.</li>
+                    <li><strong>Kontaktn&iacute; formul&aacute;&#345;</strong> &mdash; po dobu nezbytnou k&nbsp;vy&#345;&iacute;zen&iacute; dotazu, nejd&eacute;le 1&nbsp;rok.</li>
+                </ul>
+                <p>Po uplynut&iacute; doby uchov&aacute;v&aacute;n&iacute; jsou osobn&iacute; &uacute;daje bezpe&#269;n&#283; smazány nebo anonymizov&aacute;ny.</p>
+
+                <h2>6. Pr&aacute;va subjekt&#367; &uacute;daj&#367;</h2>
+                <p>Jako subjekt &uacute;daj&#367; m&aacute;te n&aacute;sleduj&iacute;c&iacute; pr&aacute;va:</p>
+                <ul>
+                    <li><strong>Pr&aacute;vo na p&#345;&iacute;stup</strong> &mdash; m&aacute;te pr&aacute;vo z&iacute;skat potvrzen&iacute;, zda jsou va&scaron;e osobn&iacute; &uacute;daje zpracov&aacute;v&aacute;ny, a&nbsp;pokud ano, z&iacute;skat k&nbsp;nim p&#345;&iacute;stup a&nbsp;informace o&nbsp;zpracov&aacute;n&iacute;.</li>
+                    <li><strong>Pr&aacute;vo na opravu</strong> &mdash; m&aacute;te pr&aacute;vo na opravu nep&#345;esn&yacute;ch osobn&iacute;ch &uacute;daj&#367; a&nbsp;dopln&#283;n&iacute; ne&uacute;pln&yacute;ch &uacute;daj&#367;.</li>
+                    <li><strong>Pr&aacute;vo na v&yacute;maz</strong> &mdash; m&aacute;te pr&aacute;vo na v&yacute;maz osobn&iacute;ch &uacute;daj&#367;, pokud pominul &uacute;&#269;el zpracov&aacute;n&iacute;, odvol&aacute;te souhlas, vznesete n&aacute;mitku, nebo jsou &uacute;daje zpracov&aacute;v&aacute;ny protipr&aacute;vn&#283;.</li>
+                    <li><strong>Pr&aacute;vo na omezen&iacute; zpracov&aacute;n&iacute;</strong> &mdash; m&aacute;te pr&aacute;vo po&#382;adovat omezen&iacute; zpracov&aacute;n&iacute; v&nbsp;ur&#269;it&yacute;ch p&#345;&iacute;padech stanoven&yacute;ch GDPR.</li>
+                    <li><strong>Pr&aacute;vo na p&#345;enositelnost &uacute;daj&#367;</strong> &mdash; m&aacute;te pr&aacute;vo z&iacute;skat sv&eacute; osobn&iacute; &uacute;daje ve strukturovan&eacute;m, b&#283;&#382;n&#283; pou&#382;&iacute;van&eacute;m a&nbsp;strojov&#283; &#269;iteln&eacute;m form&aacute;tu.</li>
+                    <li><strong>Pr&aacute;vo vzn&eacute;st n&aacute;mitku</strong> &mdash; m&aacute;te pr&aacute;vo vzn&eacute;st n&aacute;mitku proti zpracov&aacute;n&iacute; zalo&#382;en&eacute;mu na opr&aacute;vn&#283;n&eacute;m z&aacute;jmu spr&aacute;vce.</li>
+                    <li><strong>Pr&aacute;vo podat st&iacute;&#382;nost</strong> &mdash; m&aacute;te pr&aacute;vo podat st&iacute;&#382;nost u&nbsp;&Uacute;&#345;adu pro ochranu osobn&iacute;ch &uacute;daj&#367; (&Uacute;OO&Uacute;, <a href="https://www.uoou.cz" target="_blank" rel="noopener noreferrer">www.uoou.cz</a>), Pplk. Sochora 27, 170&nbsp;00 Praha&nbsp;7.</li>
+                </ul>
+                <p>Sv&aacute; pr&aacute;va m&#367;&#382;ete uplatnit e-mailem na adrese <a href="mailto:mezihorak@silponix.cz">mezihorak@silponix.cz</a> nebo p&iacute;semn&#283; na adrese s&iacute;dla spr&aacute;vce. Na va&scaron;i &#382;&aacute;dost odpov&iacute;me bez zbyte&#269;n&eacute;ho odkladu, nejpozd&#283;ji do 30&nbsp;dn&#367;.</p>
+
+                <h2>7. Cookies</h2>
+                <p>Webov&eacute; str&aacute;nky spr&aacute;vce pou&#382;&iacute;vaj&iacute; soubory cookies. Podrobn&eacute; informace o&nbsp;pou&#382;&iacute;v&aacute;n&iacute; cookies naleznete v&nbsp;samostatn&eacute;m dokumentu <a href="/cookies.html">Z&aacute;sady pou&#382;&iacute;v&aacute;n&iacute; cookies</a>.</p>
+                <p>P&#345;i prvn&iacute; n&aacute;v&scaron;t&#283;v&#283; webu jste informov&aacute;ni o&nbsp;pou&#382;&iacute;v&aacute;n&iacute; cookies prost&#345;ednictv&iacute;m banneru a&nbsp;m&aacute;te mo&#382;nost cookies p&#345;ijmout nebo odm&iacute;tnout. Nastaven&iacute; cookies m&#367;&#382;ete kdykoliv zm&#283;nit v&nbsp;nastaven&iacute; va&scaron;eho prohl&iacute;&#382;e&#269;e.</p>
+
+                <h2>8. Kontakt</h2>
+                <p>V&nbsp;p&#345;&iacute;pad&#283; jak&yacute;chkoliv dotaz&#367; t&yacute;kaj&iacute;c&iacute;ch se zpracov&aacute;n&iacute; va&scaron;ich osobn&iacute;ch &uacute;daj&#367; se na n&aacute;s nev&aacute;hejte obr&aacute;tit:</p>
+                <ul>
+                    <li><strong>E-mail:</strong> <a href="mailto:mezihorak@silponix.cz">mezihorak@silponix.cz</a></li>
+                    <li><strong>Telefon:</strong> +420&nbsp;739&nbsp;657&nbsp;624</li>
+                    <li><strong>Adresa:</strong> Silponix, K.&nbsp;H.&nbsp;M&aacute;chy 34, 765&nbsp;02 Otrokovice</li>
+                </ul>
+                <p>Tyto z&aacute;sady ochrany osobn&iacute;ch &uacute;daj&#367; jsou &uacute;&#269;inn&eacute; od 1.&nbsp;1.&nbsp;2026 a&nbsp;mohou b&yacute;t pr&#367;b&#283;&#382;n&#283; aktualizov&aacute;ny. Aktu&aacute;ln&iacute; verze je v&#382;dy dostupn&aacute; na t&#283;chto webov&yacute;ch str&aacute;nk&aacute;ch.</p>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <a href="/" class="navbar-logo footer-logo">
+                        <img src="/img/logo.png" alt="Silponix" width="180" height="46" class="logo-img logo-dark"><img src="/img/logo-white.png" alt="" width="180" height="46" class="logo-img logo-light" aria-hidden="true">
+                    </a>
+                    <p class="footer-desc" data-i18n="footer.desc">Specialista na z&aacute;vodn&iacute; d&iacute;ly Honda a motorsport. V&yacute;roba, tuning, servis.</p>
+                    <div class="footer-newsletter"><p style="font-size:0.875rem; font-weight:600;">Odebírejte novinky</p><form class="footer-newsletter-form" onsubmit="event.preventDefault();var e=this.querySelector(&#39;input&#39;).value;if(!e)return;fetch(&#39;/api/newsletter&#39;,{method:&#39;POST&#39;,headers:{&#39;Content-Type&#39;:&#39;application/json&#39;},body:JSON.stringify({action:&#39;subscribe&#39;,email:e})}).then(function(r){return r.json()}).then(function(d){if(d.ok){var m=document.createElement(&#39;p&#39;);m.className=&#39;footer-newsletter-msg&#39;;m.textContent=&#39;Přihlášeno!&#39;;event.target.parentNode.appendChild(m);event.target.querySelector(&#39;input&#39;).value=&#39;&#39;;setTimeout(function(){m.remove()},3000)}})"><input type="email" placeholder="Váš e-mail" required><button type="submit" class="btn btn-sm btn-primary">Odebírat</button></form></div>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/SilponixHondaMotorsport/" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
+                        <a href="https://www.instagram.com/silponix_honda_motorsport/" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4 data-i18n="footer.eshop">Shop</h4>
+                    <ul>
+                        <li><a href="/shop.html" data-i18n="footer.all_products">V&scaron;echny produkty</a></li>
+                        <li><a href="/shop.html?kat=ecu" data-i18n="footer.ecu">ECU Hondata</a></li>
+                        <li><a href="/shop.html?kat=silentbloky" data-i18n="footer.silentbloky">Silentbloky</a></li>
+                        <li><a href="/shop.html?kat=motor" data-i18n="footer.motor">Motor &amp; P&#345;evodovky</a></li>
+                        <li><a href="/shop.html?kat=podvozek" data-i18n="footer.podvozek">Podvozek &amp; Brzdy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4 data-i18n="footer.company">Firma</h4>
+                    <ul>
+                        <li><a href="/sluzby.html" data-i18n="footer.services">Slu&#382;by</a></li>
+                        <li><a href="/o-nas.html" data-i18n="footer.about">O n&aacute;s</a></li>
+                        <li><a href="/kontakt.html" data-i18n="footer.contact">Kontakt</a></li>
+                        <li><a href="/blog.html" data-i18n="footer.blog">Novinky</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Informace</h4>
+                    <ul>
+                        <li><a href="/obchodni-podminky.html">Obchodn&iacute; podm&iacute;nky</a></li>
+                        <li><a href="/ochrana-udaju.html">Ochrana &uacute;daj&#367;</a></li>
+                        <li><a href="/reklamacni-rad.html">Reklama&#269;n&iacute; &#345;&aacute;d</a></li>
+                        <li><a href="/doprava-platby.html">Doprava a platby</a></li>
+                        <li><a href="/cookies.html">Cookies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact-col">
+                    <h4 data-i18n="footer.contact_heading">Kontakt</h4>
+                    <p>K. H. M&aacute;chy 34<br>765 02 Otrokovice</p>
+                    <p><a href="tel:+420739657624">+420 739 657 624</a></p>
+                    <p><a href="mailto:mezihorak@silponix.cz">mezihorak@silponix.cz</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-divider"></div>
+        <div class="container">
+            <div class="footer-bottom">
+                <p data-i18n="footer.copyright">&copy; 2026 Silponix. V&scaron;echna pr&aacute;va vyhrazena.</p>
+                <p class="footer-credit" data-i18n-html="footer.credit_html">Vytvo&#345;ilo <a href="https://webzitra.cz" target="_blank" rel="noopener noreferrer">WebZ&iacute;tra</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="cookie-banner" id="cookieBanner" hidden>
+        <div class="cookie-inner">
+            <p data-i18n="cookie.text">Tento web pou&#382;&iacute;v&aacute; cookies pro zlep&scaron;en&iacute; va&scaron;eho z&aacute;&#382;itku. Pokra&#269;ov&aacute;n&iacute;m souhlas&iacute;te s jejich pou&#382;it&iacute;m.</p>
+            <div class="cookie-actions">
+                <button class="btn btn-sm btn-primary" id="cookieAccept" data-i18n="cookie.accept">P&#345;ijmout</button>
+                <button class="btn btn-sm btn-outline" id="cookieDecline" data-i18n="cookie.decline">Odm&iacute;tnout</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/i18n.js?v=5"></script>
+    <script src="/js/main.js?v=5"></script>
+    <script src="/js/track.js?v=5" defer></script>
+</body>
+</html>

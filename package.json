@@ -1,0 +1,12 @@
+{
+    "name": "silponix-demo",
+    "version": "1.0.0",
+    "private": true,
+    "description": "Silponix — závodní díly Honda & motorsport e-shop",
+    "dependencies": {
+        "@anthropic-ai/sdk": "^0.39.0",
+        "@netlify/blobs": "^8.1.0",
+        "resend": "^4.0.0",
+        "sharp": "^0.33.5"
+    }
+}

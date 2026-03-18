@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="cs" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookies | Silponix</title>
+    <meta name="description" content="Z&aacute;sady pou&#382;&iacute;v&aacute;n&iacute; soubor&#367; cookies na webu Silponix.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" href="/img/favicon-32.png" type="image/png">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="stylesheet" href="/css/style.css?v=5">
+    <script>(function(){var t=localStorage.getItem('theme');if(t){document.documentElement.setAttribute('data-theme',t)}else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches){document.documentElement.setAttribute('data-theme','light')}})();</script>
+</head>
+<body>
+
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Hlavn&iacute; navigace">
+        <div class="container navbar-inner">
+            <a href="/" class="navbar-logo logo-only" aria-label="Silponix &mdash; dom&#367;">
+                <img src="/img/logo.png" alt="Silponix" width="80" height="80" class="logo-img logo-dark">
+                <img src="/img/logo-white.png" alt="" width="80" height="80" class="logo-img logo-light" aria-hidden="true">
+                <span class="logo-text">Silponix</span>
+            </a>
+            <div class="navbar-menu" id="navbarMenu" role="menubar">
+                <a href="/" class="navbar-link" role="menuitem" data-i18n="nav.home">Dom&#367;</a>
+                <a href="/shop.html" class="navbar-link" role="menuitem" data-i18n="nav.eshop">Shop</a>
+                <a href="/sluzby.html" class="navbar-link" role="menuitem" data-i18n="nav.services">Slu&#382;by</a>
+                <a href="/blog.html" class="navbar-link" role="menuitem" data-i18n="nav.blog">Novinky</a>
+                <a href="/galerie.html" class="navbar-link" role="menuitem" data-i18n="nav.gallery">Galerie</a>
+                <a href="/o-nas.html" class="navbar-link" role="menuitem" data-i18n="nav.about">O&nbsp;n&aacute;s</a>
+                <a href="/kontakt.html" class="navbar-link" role="menuitem" data-i18n="nav.contact">Kontakt</a>
+            </div>
+            <div class="navbar-actions">
+                <div class="lang-switcher" id="langSwitcher">
+                    <button class="lang-switcher-toggle" id="langToggle" aria-label="Jazyk" aria-expanded="false">
+                        <img src="/img/flags/cs.svg" alt="CZ" width="22" height="16" id="langToggleFlag">
+                    </button>
+                    <div class="lang-dropdown" role="menu">
+                        <button class="lang-btn active" data-lang="cs" role="menuitem" aria-label="&#268;esky">
+                            <img src="/img/flags/cs.svg" alt="" width="20" height="15">&#268;e&scaron;tina
+                        </button>
+                        <button class="lang-btn" data-lang="en" role="menuitem" aria-label="English">
+                            <img src="/img/flags/en.svg" alt="" width="20" height="15">English
+                        </button>
+                    </div>
+                </div>
+                <button class="theme-toggle" id="themeToggle" aria-label="P&#345;epnout t&eacute;ma">
+                    <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+                <a href="/klient/" class="navbar-user" aria-label="M&#367;j &uacute;&#269;et">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </a>
+                <a href="/kosik.html" class="navbar-cart" id="navbarCart" aria-label="Ko&scaron;&iacute;k">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                    <span class="cart-count" id="cartCount" hidden>0</span>
+                </a>
+                <a href="/shop.html" class="btn btn-primary btn-sm navbar-cta">Shop</a>
+                <button class="navbar-hamburger" id="navbarHamburger" aria-label="Menu" aria-expanded="false" aria-controls="navbarMenu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="section" style="padding-top: calc(var(--navbar-height) + 2rem);">
+        <div class="container">
+            <div class="legal-content">
+
+                <h1>Z&aacute;sady pou&#382;&iacute;v&aacute;n&iacute; cookies</h1>
+                <p><em>&Uacute;&#269;innost od 1. 1. 2026</em></p>
+
+                <h2>1. Co jsou cookies</h2>
+                <p>Cookies jsou mal&eacute; textov&eacute; soubory, kter&eacute; se ukl&aacute;daj&iacute; do va&scaron;eho za&#345;&iacute;zen&iacute; (po&#269;&iacute;ta&#269;, tablet, mobiln&iacute; telefon) p&#345;i n&aacute;v&scaron;t&#283;v&#283; webov&yacute;ch str&aacute;nek. Cookies umo&#382;&#328;uj&iacute; webu zapamatovat si va&scaron;e nastaven&iacute; a&nbsp;preference, &#269;&iacute;m&#382; zlep&scaron;uj&iacute; v&aacute;&scaron; u&#382;ivatelsk&yacute; z&aacute;&#382;itek.</p>
+                <p>Cookies nepot&#345;ebuj&iacute; v&aacute;&scaron; v&yacute;slovn&yacute; souhlas, pokud jsou nezbytn&eacute; pro fungov&aacute;n&iacute; webov&eacute; str&aacute;nky (technick&eacute; cookies). Pro ostatn&iacute; typy cookies (analytick&eacute;, marketingov&eacute;) v&aacute;s &#382;&aacute;d&aacute;me o&nbsp;souhlas prost&#345;ednictv&iacute;m cookie banneru p&#345;i prvn&iacute; n&aacute;v&scaron;t&#283;v&#283; webu.</p>
+                <p>Pou&#382;&iacute;v&aacute;n&iacute; cookies se &#345;&iacute;d&iacute; na&#345;&iacute;zen&iacute;m (EU) 2016/679 (GDPR), z&aacute;konem &#269;.&nbsp;110/2019&nbsp;Sb. a&nbsp;z&aacute;konem &#269;.&nbsp;127/2005&nbsp;Sb., o&nbsp;elektronick&yacute;ch komunikac&iacute;ch.</p>
+
+                <h2>2. Jak&eacute; cookies pou&#382;&iacute;v&aacute;me</h2>
+
+                <h3>Nezbytn&eacute; (technick&eacute;) cookies</h3>
+                <p>Tyto cookies jsou nezbytn&eacute; pro spr&aacute;vn&eacute; fungov&aacute;n&iacute; webov&yacute;ch str&aacute;nek. Bez nich by web nefungoval spr&aacute;vn&#283;. Nepot&#345;ebuj&iacute; v&aacute;&scaron; souhlas.</p>
+                <table style="width:100%; border-collapse:collapse; margin:1rem 0 1.5rem;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid var(--border);">
+                            <th style="text-align:left; padding:0.5rem 0.75rem;">N&aacute;zev</th>
+                            <th style="text-align:left; padding:0.5rem 0.75rem;">&Uacute;&#269;el</th>
+                            <th style="text-align:left; padding:0.5rem 0.75rem;">Platnost</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <td style="padding:0.5rem 0.75rem;"><code>cookie_consent</code></td>
+                            <td style="padding:0.5rem 0.75rem;">Ukl&aacute;d&aacute; va&scaron;e rozhodnut&iacute; o&nbsp;souhlasu s&nbsp;cookies</td>
+                            <td style="padding:0.5rem 0.75rem;">1&nbsp;rok</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <td style="padding:0.5rem 0.75rem;"><code>theme</code></td>
+                            <td style="padding:0.5rem 0.75rem;">Zapamatuje zvolen&eacute; barevn&eacute; t&eacute;ma (sv&#283;tl&eacute;/tmav&eacute;)</td>
+                            <td style="padding:0.5rem 0.75rem;">1&nbsp;rok</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <td style="padding:0.5rem 0.75rem;"><code>lang</code></td>
+                            <td style="padding:0.5rem 0.75rem;">Zapamatuje zvolen&yacute; jazyk rozhran&iacute;</td>
+                            <td style="padding:0.5rem 0.75rem;">1&nbsp;rok</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <td style="padding:0.5rem 0.75rem;"><code>cart</code></td>
+                            <td style="padding:0.5rem 0.75rem;">Uchov&aacute;v&aacute; obsah n&aacute;kupn&iacute;ho ko&scaron;&iacute;ku</td>
+                            <td style="padding:0.5rem 0.75rem;">30&nbsp;dn&#367;</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Analytick&eacute; cookies</h3>
+                <p>Tyto cookies n&aacute;m pom&aacute;haj&iacute; porozum&#283;t, jak n&aacute;v&scaron;t&#283;vn&iacute;ci pou&#382;&iacute;vaj&iacute; na&scaron;e webov&eacute; str&aacute;nky. Z&iacute;skan&eacute; &uacute;daje jsou anonymizov&aacute;ny a&nbsp;pou&#382;&iacute;v&aacute;ny v&yacute;hradn&#283; pro statistick&eacute; &uacute;&#269;ely a&nbsp;zlep&scaron;ov&aacute;n&iacute; webu.</p>
+                <p>Na&scaron;e webov&eacute; str&aacute;nky pou&#382;&iacute;vaj&iacute; serverovou analytiku poskytovanou platformou Netlify. Tato analytika nevyu&#382;&iacute;v&aacute; cookies t&#345;et&iacute;ch stran a&nbsp;neshroma&#382;&#271;uje osobn&iacute; &uacute;daje n&aacute;v&scaron;t&#283;vn&iacute;k&#367;. Zaznamen&aacute;v&aacute; pouze z&aacute;kladn&iacute; statistiky (po&#269;et n&aacute;v&scaron;t&#283;v, nejnav&scaron;t&#283;vovan&#283;j&scaron;&iacute; str&aacute;nky, zdroje n&aacute;v&scaron;t&#283;vnosti).</p>
+
+                <h3>Marketingov&eacute; cookies</h3>
+                <p>V&nbsp;sou&#269;asn&eacute; dob&#283; nepou&#382;&iacute;v&aacute;me marketingov&eacute; cookies ani cookies t&#345;et&iacute;ch stran pro reklamn&iacute; &uacute;&#269;ely. Pokud bychom je v&nbsp;budoucnu zavedli, budeme v&aacute;s o&nbsp;tom informovat a&nbsp;po&#382;&aacute;d&aacute;me o&nbsp;v&aacute;&scaron; souhlas.</p>
+
+                <h2>3. Spr&aacute;va cookies</h2>
+                <p>P&#345;i prvn&iacute; n&aacute;v&scaron;t&#283;v&#283; na&scaron;eho webu se v&aacute;m zobraz&iacute; cookie banner, kde m&#367;&#382;ete cookies p&#345;ijmout nebo odm&iacute;tnout. Va&scaron;e volba se ulo&#382;&iacute; a&nbsp;p&#345;i dal&scaron;&iacute;ch n&aacute;v&scaron;t&#283;v&aacute;ch se banner ji&#382; nezobraz&iacute;.</p>
+                <p>Cookies m&#367;&#382;ete tak&eacute; spravovat p&#345;&iacute;mo v&nbsp;nastaven&iacute; va&scaron;eho webov&eacute;ho prohl&iacute;&#382;e&#269;e. V&#283;t&scaron;ina prohl&iacute;&#382;e&#269;&#367; umo&#382;&#328;uje:</p>
+                <ul>
+                    <li>Zobrazit a&nbsp;smazat ulo&#382;en&eacute; cookies.</li>
+                    <li>Blokovat cookies od t&#345;et&iacute;ch stran.</li>
+                    <li>Blokovat cookies z&nbsp;konkr&eacute;tn&iacute;ch webov&yacute;ch str&aacute;nek.</li>
+                    <li>Blokovat v&scaron;echny cookies.</li>
+                    <li>Smazat v&scaron;echny cookies p&#345;i zav&#345;en&iacute; prohl&iacute;&#382;e&#269;e.</li>
+                </ul>
+                <p>N&aacute;vod na spr&aacute;vu cookies naleznete v&nbsp;n&aacute;pov&#283;d&#283; va&scaron;eho prohl&iacute;&#382;e&#269;e:</p>
+                <ul>
+                    <li><strong>Google Chrome:</strong> Nastaven&iacute; &rarr; Soukrom&iacute; a&nbsp;zabezpe&#269;en&iacute; &rarr; Soubory cookie</li>
+                    <li><strong>Mozilla Firefox:</strong> Nastaven&iacute; &rarr; Soukrom&iacute; a&nbsp;zabezpe&#269;en&iacute; &rarr; Cookies a&nbsp;data str&aacute;nek</li>
+                    <li><strong>Safari:</strong> P&#345;edvolby &rarr; Soukrom&iacute; &rarr; Spravovat data webov&yacute;ch str&aacute;nek</li>
+                    <li><strong>Microsoft Edge:</strong> Nastaven&iacute; &rarr; Soubory cookie a&nbsp;opr&aacute;vn&#283;n&iacute; webu</li>
+                </ul>
+                <p>Upozor&#328;ujeme, &#382;e zablokov&aacute;n&iacute;m v&scaron;ech cookies m&#367;&#382;e doj&iacute;t k&nbsp;omezen&iacute; funkcionality webov&yacute;ch str&aacute;nek &mdash; nap&#345;&iacute;klad nebude fungovat ulo&#382;en&iacute; zbo&#382;&iacute; v&nbsp;ko&scaron;&iacute;ku, zapamatov&aacute;n&iacute; jazykov&eacute; preference nebo t&eacute;matu.</p>
+
+                <h2>4. Kontakt</h2>
+                <p>Pokud m&aacute;te jak&eacute;koliv dotazy ohledn&#283; pou&#382;&iacute;v&aacute;n&iacute; cookies na na&scaron;ich webov&yacute;ch str&aacute;nk&aacute;ch, kontaktujte n&aacute;s:</p>
+                <ul>
+                    <li><strong>E-mail:</strong> <a href="mailto:mezihorak@silponix.cz">mezihorak@silponix.cz</a></li>
+                    <li><strong>Telefon:</strong> +420&nbsp;739&nbsp;657&nbsp;624</li>
+                    <li><strong>Adresa:</strong> Silponix, K.&nbsp;H.&nbsp;M&aacute;chy 34, 765&nbsp;02 Otrokovice</li>
+                </ul>
+                <p>V&iacute;ce informac&iacute; o&nbsp;zpracov&aacute;n&iacute; osobn&iacute;ch &uacute;daj&#367; naleznete v&nbsp;dokumentu <a href="/ochrana-udaju.html">Ochrana osobn&iacute;ch &uacute;daj&#367;</a>.</p>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <a href="/" class="navbar-logo footer-logo">
+                        <img src="/img/logo.png" alt="Silponix" width="180" height="46" class="logo-img logo-dark"><img src="/img/logo-white.png" alt="" width="180" height="46" class="logo-img logo-light" aria-hidden="true">
+                    </a>
+                    <p class="footer-desc" data-i18n="footer.desc">Specialista na z&aacute;vodn&iacute; d&iacute;ly Honda a motorsport. V&yacute;roba, tuning, servis.</p>
+                    <div class="footer-newsletter"><p style="font-size:0.875rem; font-weight:600;">Odebírejte novinky</p><form class="footer-newsletter-form" onsubmit="event.preventDefault();var e=this.querySelector(&#39;input&#39;).value;if(!e)return;fetch(&#39;/api/newsletter&#39;,{method:&#39;POST&#39;,headers:{&#39;Content-Type&#39;:&#39;application/json&#39;},body:JSON.stringify({action:&#39;subscribe&#39;,email:e})}).then(function(r){return r.json()}).then(function(d){if(d.ok){var m=document.createElement(&#39;p&#39;);m.className=&#39;footer-newsletter-msg&#39;;m.textContent=&#39;Přihlášeno!&#39;;event.target.parentNode.appendChild(m);event.target.querySelector(&#39;input&#39;).value=&#39;&#39;;setTimeout(function(){m.remove()},3000)}})"><input type="email" placeholder="Váš e-mail" required><button type="submit" class="btn btn-sm btn-primary">Odebírat</button></form></div>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/SilponixHondaMotorsport/" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
+                        <a href="https://www.instagram.com/silponix_honda_motorsport/" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4 data-i18n="footer.eshop">Shop</h4>
+                    <ul>
+                        <li><a href="/shop.html" data-i18n="footer.all_products">V&scaron;echny produkty</a></li>
+                        <li><a href="/shop.html?kat=ecu" data-i18n="footer.ecu">ECU Hondata</a></li>
+                        <li><a href="/shop.html?kat=silentbloky" data-i18n="footer.silentbloky">Silentbloky</a></li>
+                        <li><a href="/shop.html?kat=motor" data-i18n="footer.motor">Motor &amp; P&#345;evodovky</a></li>
+                        <li><a href="/shop.html?kat=podvozek" data-i18n="footer.podvozek">Podvozek &amp; Brzdy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4 data-i18n="footer.company">Firma</h4>
+                    <ul>
+                        <li><a href="/sluzby.html" data-i18n="footer.services">Slu&#382;by</a></li>
+                        <li><a href="/o-nas.html" data-i18n="footer.about">O n&aacute;s</a></li>
+                        <li><a href="/kontakt.html" data-i18n="footer.contact">Kontakt</a></li>
+                        <li><a href="/blog.html" data-i18n="footer.blog">Novinky</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Informace</h4>
+                    <ul>
+                        <li><a href="/obchodni-podminky.html">Obchodn&iacute; podm&iacute;nky</a></li>
+                        <li><a href="/ochrana-udaju.html">Ochrana &uacute;daj&#367;</a></li>
+                        <li><a href="/reklamacni-rad.html">Reklama&#269;n&iacute; &#345;&aacute;d</a></li>
+                        <li><a href="/doprava-platby.html">Doprava a platby</a></li>
+                        <li><a href="/cookies.html">Cookies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact-col">
+                    <h4 data-i18n="footer.contact_heading">Kontakt</h4>
+                    <p>K. H. M&aacute;chy 34<br>765 02 Otrokovice</p>
+                    <p><a href="tel:+420739657624">+420 739 657 624</a></p>
+                    <p><a href="mailto:mezihorak@silponix.cz">mezihorak@silponix.cz</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-divider"></div>
+        <div class="container">
+            <div class="footer-bottom">
+                <p data-i18n="footer.copyright">&copy; 2026 Silponix. V&scaron;echna pr&aacute;va vyhrazena.</p>
+                <p class="footer-credit" data-i18n-html="footer.credit_html">Vytvo&#345;ilo <a href="https://webzitra.cz" target="_blank" rel="noopener noreferrer">WebZ&iacute;tra</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="cookie-banner" id="cookieBanner" hidden>
+        <div class="cookie-inner">
+            <p data-i18n="cookie.text">Tento web pou&#382;&iacute;v&aacute; cookies pro zlep&scaron;en&iacute; va&scaron;eho z&aacute;&#382;itku. Pokra&#269;ov&aacute;n&iacute;m souhlas&iacute;te s jejich pou&#382;it&iacute;m.</p>
+            <div class="cookie-actions">
+                <button class="btn btn-sm btn-primary" id="cookieAccept" data-i18n="cookie.accept">P&#345;ijmout</button>
+                <button class="btn btn-sm btn-outline" id="cookieDecline" data-i18n="cookie.decline">Odm&iacute;tnout</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/i18n.js?v=5"></script>
+    <script src="/js/main.js?v=5"></script>
+    <script src="/js/track.js?v=5" defer></script>
+</body>
+</html>

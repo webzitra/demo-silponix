@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="cs-CZ" class="no-js scheme_default">
+<head>
+			<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="profile" href="http://gmpg.org/xfn/11">
+		<link rel="pingback" href="https://silponix.cz/xmlrpc.php">
+		<title>Stránka nebyla nalezena &#8211; Silponix</title>
+<link rel='dns-prefetch' href='//ajax.googleapis.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Silponix &raquo; RSS zdroj" href="https://silponix.cz/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Silponix &raquo; RSS komentářů" href="https://silponix.cz/comments/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11.2.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11.2.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/silponix.cz\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.1.19"}};
+			!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode;p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0);e=i.toDataURL();return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])?!1:!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([55358,56760,9792,65039],[55358,56760,8203,9792,65039])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(n=t.source||{}).concatemoji?c(n.concatemoji):n.wpemoji&&n.twemoji&&(c(n.twemoji),c(n.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link property="stylesheet" rel='stylesheet' id='wp-block-library-css'  href='https://silponix.cz/wp-includes/css/dist/block-library/style.min.css?ver=5.1.19' type='text/css' media='all' />
+<link property="stylesheet" rel='stylesheet' id='contact-form-7-css'  href='https://silponix.cz/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.0.4' type='text/css' media='all' />
+<link property="stylesheet" rel='stylesheet' id='jquery-ui-theme-css'  href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.min.css?ver=1.11.4' type='text/css' media='all' />
+<link property="stylesheet" rel='stylesheet' id='jquery-ui-timepicker-css'  href='https://silponix.cz/wp-content/plugins/contact-form-7-datepicker/js/jquery-ui-timepicker/jquery-ui-timepicker-addon.min.css?ver=5.1.19' type='text/css' media='all' />
+<link property="stylesheet" rel='stylesheet' id='essential-grid-plugin-settings-css'  href='https://silponix.cz/wp-content/plugins/essential-grid/public/assets/css/settings.css?ver=2.2.4.2' type='text/css' media='all' />
+<link property="stylesheet" rel='stylesheet' id='tp-open-sans-css'  href='https://fonts.googleapis.com/css?family=Open+Sans%3A300%2C400%2C600%2C700%2C800&#038;ver=5.1.19' type='text/css' media='all' />
+<link property="stylesheet" rel='stylesheet' id='tp-raleway-css'  href='https://fonts.googleapis.com/css?family=Raleway%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900&#038;ver=5.1.19' type='text/css' media='all' />
+<link property="stylesheet" rel='stylesheet' id='tp-droid-serif-css'  href='https://fonts.googleapis.com/css?family=Droid+Serif%3A400%2C700&#038;ver=5.1.19' type='text/css' media='all' />
+<link property="stylesheet" rel='stylesheet' id='tp-montserrat-css'  href='https://fonts.googleapis.com/css?family=Montserrat%3A300%2C300i%2C400%2C400i%2C500%2C500i%2C600%2C600i%2C700%2C700i&#038;ver=5.1.19' type='text/css' media='all' />
+<link property="stylesheet" rel='stylesheet' id='tp-fontello-css'  href='https://silponix.cz/wp-content/plugins/essential-grid/public/assets/font/fontello/css/fontello.css?ver=2.2.4.2' type='text/css' media='all' />
+<link property="stylesheet" rel='stylesheet' id='popupaoc-public-style-css'  href='https://silponix.cz/wp-content/plugins/popup-anything-on-click/assets/css/popupaoc-public-style.css?ver=1.3' type='text/css' media='all' />
+<link property="stylesheet" rel='stylesheet' id='rs-plugin-settings-css'  href='https://silponix.cz/wp-content/plugins/revslider/public/assets/css/settings.css?ver=5.4.7.4' type='text/css' media='all' />
+<style id='rs-plugin-settings-inline-css' type='text/css'>
+#rs-demo-id {}
+</style>
+<link property="stylesheet" rel='stylesheet' id='trx_addons-icons-css'  href='https://silponix.cz/wp-content/plugins/trx_addons/css/font-icons/css/trx_addons_icons-embedded.css?ver=5.1.19' type='text/css' media='all' />
+<link property="stylesheet" rel='stylesheet' id='swiperslider-css'  href='https://silponix.cz/wp-content/plugins/trx_addons/js/swiper/swiper.min.css' type='text/css' media='all' />
+<link property="stylesheet" rel='stylesheet' id='magnific-popup-css'  href='https://silponix.cz/wp-content/plugins/trx_addons/js/magnific/magnific-popup.min.css' type='text/css' media='all' />
+<link property="stylesheet" rel='stylesheet' id='trx_addons-css'  href='https://silponix.cz/wp-content/plugins/trx_addons/css/trx_addons.css' type='text/css' media='all' />
+<link property="stylesheet" rel='stylesheet' id='trx_addons-animation-css'  href='https://silponix.cz/wp-content/plugins/trx_addons/css/trx_addons.animation.css?ver=5.1.19' type='text/css' media='all' />
+<link property="stylesheet" rel='stylesheet' id='js_composer_custom_css-css'  href='//silponix.cz/wp-content/uploads/js_composer/custom.css?ver=5.5.2' type='text/css' media='all' />
+<link property="stylesheet" rel='stylesheet' id='autoparts-font-Montserrat-css'  href='https://silponix.cz/wp-content/themes/autoparts/css/font-face/Montserrat/stylesheet.css?ver=5.1.19' type='text/css' media='all' />
+<link property="stylesheet" rel='stylesheet' id='autoparts-font-google_fonts-css'  href='https://fonts.googleapis.com/css?family=Ubuntu%3A300%2C300italic%2C400%2C400italic%2C700%2C700italic&#038;subset=latin%2Clatin-ext&#038;ver=5.1.19' type='text/css' media='all' />
+<link property="stylesheet" rel='stylesheet' id='autoparts-fontello-css'  href='https://silponix.cz/wp-content/themes/autoparts/css/fontello/css/fontello-embedded.css?ver=5.1.19' type='text/css' media='all' />
+<link property="stylesheet" rel='stylesheet' id='autoparts-main-css'  href='https://silponix.cz/wp-content/themes/autoparts/style.css' type='text/css' media='all' />
+<link property="stylesheet" rel='stylesheet' id='autoparts-styles-css'  href='https://silponix.cz/wp-content/themes/autoparts/css/__styles.css?ver=5.1.19' type='text/css' media='all' />
+<link property="stylesheet" rel='stylesheet' id='autoparts-colors-css'  href='https://silponix.cz/wp-content/themes/autoparts/css/__colors.css?ver=5.1.19' type='text/css' media='all' />
+<link property="stylesheet" rel='stylesheet' id='mediaelement-css'  href='https://silponix.cz/wp-includes/js/mediaelement/mediaelementplayer-legacy.min.css?ver=4.2.6-78496d1' type='text/css' media='all' />
+<link property="stylesheet" rel='stylesheet' id='wp-mediaelement-css'  href='https://silponix.cz/wp-includes/js/mediaelement/wp-mediaelement.min.css?ver=5.1.19' type='text/css' media='all' />
+<link property="stylesheet" rel='stylesheet' id='autoparts-responsive-css'  href='https://silponix.cz/wp-content/themes/autoparts/css/responsive.css?ver=5.1.19' type='text/css' media='all' />
+<script type='text/javascript' src='https://silponix.cz/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='https://silponix.cz/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript' src='https://silponix.cz/wp-content/plugins/essential-grid/public/assets/js/jquery.esgbox.min.js?ver=2.2.4.2'></script>
+<script type='text/javascript' src='https://silponix.cz/wp-content/plugins/essential-grid/public/assets/js/jquery.themepunch.tools.min.js?ver=2.2.4.2'></script>
+<script type='text/javascript' src='https://silponix.cz/wp-content/plugins/revslider/public/assets/js/jquery.themepunch.revolution.min.js?ver=5.4.7.4'></script>
+<script type='text/javascript'>
+var mejsL10n = {"language":"cs","strings":{"mejs.install-flash":"Pou\u017e\u00edv\u00e1te prohl\u00ed\u017ee\u010d, kter\u00fd nem\u00e1 nainstalovan\u00fd nebo povolen\u00fd Flash Player. Zapn\u011bte Flash Player nebo si st\u00e1hn\u011bte nejnov\u011bj\u0161\u00ed verzi z adresy https:\/\/get.adobe.com\/flashplayer\/","mejs.fullscreen-off":"Zru\u0161it re\u017eim cel\u00e9 obrazovky","mejs.fullscreen-on":"Cel\u00e1 obrazovka","mejs.download-video":"St\u00e1hnout video","mejs.fullscreen":"Cel\u00e1 obrazovka","mejs.time-jump-forward":["Vp\u0159ed o 1 sekundu","Vp\u0159ed o %1 sekund"],"mejs.loop":"Ovl\u00e1d\u00e1n\u00ed opakov\u00e1n\u00ed","mejs.play":"P\u0159ehr\u00e1t","mejs.pause":"Pozastavit","mejs.close":"Zav\u0159\u00edt","mejs.time-slider":"\u010casov\u00fd posuvn\u00edk","mejs.time-help-text":"Pou\u017eit\u00edm \u0161ipek vlevo\/vpravo se posunete o jednu sekundu, \u0161ipkami nahoru\/dol\u016f se posunete o deset sekund.","mejs.time-skip-back":["Zp\u011bt on 1 sekundu","Vr\u00e1tit se zp\u011bt o %1 sekund"],"mejs.captions-subtitles":"Titulky","mejs.captions-chapters":"Kapitoly","mejs.none":"\u017d\u00e1dn\u00e1","mejs.mute-toggle":"Ovl\u00e1d\u00e1n\u00ed zvuku","mejs.volume-help-text":"Pou\u017eit\u00edm \u0161ipek nahoru\/dol\u016f zv\u00fd\u0161\u00edte nebo sn\u00ed\u017e\u00edte \u00farove\u0148 hlasitosti.","mejs.unmute":"Zapnout zvuk","mejs.mute":"Ztlumit","mejs.volume-slider":"Ovl\u00e1d\u00e1n\u00ed hlasitosti","mejs.video-player":"Video p\u0159ehr\u00e1va\u010d","mejs.audio-player":"Audio p\u0159ehr\u00e1va\u010d","mejs.ad-skip":"P\u0159esko\u010dit reklamu","mejs.ad-skip-info":["P\u0159esko\u010dit na video budete moci za 1 sekundu","P\u0159esko\u010dit na video budete moci za %1 sekund"],"mejs.source-chooser":"V\u00fdb\u011br zdroje","mejs.stop":"Zastavit","mejs.speed-rate":"Rychlost","mejs.live-broadcast":"\u017div\u011b","mejs.afrikaans":"Afrik\u00e1n\u0161tina","mejs.albanian":"Alb\u00e1n\u0161tina","mejs.arabic":"Arab\u0161tina","mejs.belarusian":"B\u011bloru\u0161tina","mejs.bulgarian":"Bulhar\u0161tina","mejs.catalan":"Katal\u00e1n\u0161tina","mejs.chinese":"\u010c\u00edn\u0161tina","mejs.chinese-simplified":"\u010c\u00edn\u0161tina (zjednodu\u0161en\u00e1)","mejs.chinese-traditional":"\u010c\u00edn\u0161tina (tradi\u010dn\u00ed)","mejs.croatian":"Chorvat\u0161tina","mejs.czech":"\u010ce\u0161tina","mejs.danish":"D\u00e1n\u0161tina","mejs.dutch":"Holand\u0161tina","mejs.english":"Angli\u010dtina","mejs.estonian":"Eston\u0161tina","mejs.filipino":"Filip\u00edn\u0161tina","mejs.finnish":"Dokon\u010dit","mejs.french":"Francou\u017e\u0161tina","mejs.galician":"Galicij\u0161tina","mejs.german":"N\u011bm\u010dina","mejs.greek":"\u0158e\u010dtina","mejs.haitian-creole":"Haitsk\u00e1 kreol\u0161tina","mejs.hebrew":"Hebrej\u0161tina","mejs.hindi":"Hind\u0161tina","mejs.hungarian":"Ma\u010far\u0161tina","mejs.icelandic":"Island\u0161tina","mejs.indonesian":"Indon\u00e9\u0161tina","mejs.irish":"Ir\u0161tina","mejs.italian":"Ital\u0161tina","mejs.japanese":"Japon\u0161tina","mejs.korean":"Korej\u0161tina","mejs.latvian":"Loty\u0161tina","mejs.lithuanian":"Litev\u0161tina","mejs.macedonian":"Makedon\u0161tina","mejs.malay":"Malaj\u0161tina","mejs.maltese":"Malt\u0161tina","mejs.norwegian":"Nor\u0161tina","mejs.persian":"Per\u0161tina","mejs.polish":"Pol\u0161tina","mejs.portuguese":"Portugal\u0161tina","mejs.romanian":"Rumun\u0161tina","mejs.russian":"Ru\u0161tina","mejs.serbian":"Srb\u0161tina","mejs.slovak":"Sloven\u0161tina","mejs.slovenian":"Slovin\u0161tina","mejs.spanish":"\u0160pan\u011bl\u0161tina","mejs.swahili":"Svahil\u0161tina","mejs.swedish":"\u0160v\u00e9d\u0161tina","mejs.tagalog":"Tagal\u0161tina","mejs.thai":"Thaj\u0161tina","mejs.turkish":"Ture\u010dtina","mejs.ukrainian":"Ukrajin\u0161tina","mejs.vietnamese":"Vietnam\u0161tina","mejs.welsh":"Vel\u0161tina","mejs.yiddish":"Jidi\u0161"}};
+</script>
+<script type='text/javascript' src='https://silponix.cz/wp-includes/js/mediaelement/mediaelement-and-player.min.js?ver=4.2.6-78496d1'></script>
+<script type='text/javascript' src='https://silponix.cz/wp-includes/js/mediaelement/mediaelement-migrate.min.js?ver=5.1.19'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var _wpmejsSettings = {"pluginPath":"\/wp-includes\/js\/mediaelement\/","classPrefix":"mejs-","stretching":"responsive"};
+/* ]]> */
+</script>
+<link rel='https://api.w.org/' href='https://silponix.cz/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://silponix.cz/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://silponix.cz/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.1.19" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-148004218-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-148004218-1');
+</script>		<script type="text/javascript">
+			var ajaxRevslider;
+			
+			jQuery(document).ready(function() {
+				// CUSTOM AJAX CONTENT LOADING FUNCTION
+				ajaxRevslider = function(obj) {
+				
+					// obj.type : Post Type
+					// obj.id : ID of Content to Load
+					// obj.aspectratio : The Aspect Ratio of the Container / Media
+					// obj.selector : The Container Selector where the Content of Ajax will be injected. It is done via the Essential Grid on Return of Content
+					
+					var content = "";
+
+					data = {};
+					
+					data.action = 'revslider_ajax_call_front';
+					data.client_action = 'get_slider_html';
+					data.token = 'db2525314b';
+					data.type = obj.type;
+					data.id = obj.id;
+					data.aspectratio = obj.aspectratio;
+					
+					// SYNC AJAX REQUEST
+					jQuery.ajax({
+						type:"post",
+						url:"https://silponix.cz/wp-admin/admin-ajax.php",
+						dataType: 'json',
+						data:data,
+						async:false,
+						success: function(ret, textStatus, XMLHttpRequest) {
+							if(ret.success == true)
+								content = ret.data;								
+						},
+						error: function(e) {
+							console.log(e);
+						}
+					});
+					
+					 // FIRST RETURN THE CONTENT WHEN IT IS LOADED !!
+					 return content;						 
+				};
+				
+				// CUSTOM AJAX FUNCTION TO REMOVE THE SLIDER
+				var ajaxRemoveRevslider = function(obj) {
+					return jQuery(obj.selector+" .rev_slider").revkill();
+				};
+
+				// EXTEND THE AJAX CONTENT LOADING TYPES WITH TYPE AND FUNCTION
+				var extendessential = setInterval(function() {
+					if (jQuery.fn.tpessential != undefined) {
+						clearInterval(extendessential);
+						if(typeof(jQuery.fn.tpessential.defaults) !== 'undefined') {
+							jQuery.fn.tpessential.defaults.ajaxTypes.push({type:"revslider",func:ajaxRevslider,killfunc:ajaxRemoveRevslider,openAnimationSpeed:0.3});   
+							// type:  Name of the Post to load via Ajax into the Essential Grid Ajax Container
+							// func: the Function Name which is Called once the Item with the Post Type has been clicked
+							// killfunc: function to kill in case the Ajax Window going to be removed (before Remove function !
+							// openAnimationSpeed: how quick the Ajax Content window should be animated (default is 0.3)
+						}
+					}
+				},30);
+			});
+		</script>
+		<meta name="generator" content="Powered by WPBakery Page Builder - drag and drop page builder for WordPress."/>
+<!--[if lte IE 9]><link rel="stylesheet" type="text/css" href="https://silponix.cz/wp-content/plugins/js_composer/assets/css/vc_lte_ie9.min.css" media="screen"><![endif]--><meta name="generator" content="Powered by Slider Revolution 5.4.7.4 - responsive, Mobile-Friendly Slider Plugin for WordPress with comfortable drag and drop interface." />
+<script type="text/javascript">function setREVStartSize(e){									
+						try{ e.c=jQuery(e.c);var i=jQuery(window).width(),t=9999,r=0,n=0,l=0,f=0,s=0,h=0;
+							if(e.responsiveLevels&&(jQuery.each(e.responsiveLevels,function(e,f){f>i&&(t=r=f,l=e),i>f&&f>r&&(r=f,n=e)}),t>r&&(l=n)),f=e.gridheight[l]||e.gridheight[0]||e.gridheight,s=e.gridwidth[l]||e.gridwidth[0]||e.gridwidth,h=i/s,h=h>1?1:h,f=Math.round(h*f),"fullscreen"==e.sliderLayout){var u=(e.c.width(),jQuery(window).height());if(void 0!=e.fullScreenOffsetContainer){var c=e.fullScreenOffsetContainer.split(",");if (c) jQuery.each(c,function(e,i){u=jQuery(i).length>0?u-jQuery(i).outerHeight(!0):u}),e.fullScreenOffset.split("%").length>1&&void 0!=e.fullScreenOffset&&e.fullScreenOffset.length>0?u-=jQuery(window).height()*parseInt(e.fullScreenOffset,0)/100:void 0!=e.fullScreenOffset&&e.fullScreenOffset.length>0&&(u-=parseInt(e.fullScreenOffset,0))}f=u}else void 0!=e.minHeight&&f<e.minHeight&&(f=e.minHeight);e.c.closest(".rev_slider_wrapper").css({height:f})					
+						}catch(d){console.log("Failure at Presize of Slider:"+d)}						
+					};</script>
+		<style type="text/css" id="wp-custom-css">
+			/*
+Zde můžete přidat své vlastní CSS.
+
+Pro více informací klikněte výše
+na ikonu nápovědy.
+*/
+
+.scheme_default .sc_layouts_menu_nav > li > a {
+font-weight: 600 !important; }
+
+
+input[type="text"] {
+    text-transform: none !important;
+}
+input[type="email"] {
+text-transform: none !important;
+}
+input[type="tel"] {
+text-transform: none !important;
+}
+textarea {
+text-transform: none !important;
+}
+
+.eg-brands-skin-wrapper .esg-media-poster {
+    filter: none !important;
+    -webkit-filter: none !important;
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    /* filter: grayscale(100%); */
+    /* filter: grayscale(1); */
+    filter: gray;
+    -webkit-transition: all ease 0.3s;
+    -moz-transition: all ease 0.3s;
+    /* transition: all ease 0.3s; */
+}
+
+.sc_icons_item_description {
+    font-size: 1.3em !important;
+    line-height: 1.6em;
+    font-weight: 400;
+    font-style: normal;
+}
+
+div#sc_icons_502048568_icon-trophy {
+    clear: both !important;
+    margin: 0em 0em 1em 0;
+}
+
+		</style>
+		<noscript><style type="text/css"> .wpb_animate_when_almost_visible { opacity: 1; }</style></noscript></head>
+
+<body class="error404 body_tag scheme_default blog_mode_blog body_style_wide  is_stream blog_style_excerpt sidebar_hide expand_content header_style_header-default header_position_default menu_style_top no_layout wpb-js-composer js-comp-ver-5.5.2 vc_responsive">
+
+	
+	<div class="body_wrap">
+
+		<div class="page_wrap">
+
+			<header class="top_panel top_panel_default default_header default_header_bg_img  without_bg_image scheme_dark"><div class="top_panel_navi sc_layouts_row sc_layouts_row_type_narrow sc_layouts_row_fixed
+			scheme_dark">
+	<div class="content_wrap_header_default">
+		<div class="columns_wrap">
+			<div class="sc_layouts_column sc_layouts_column_align_left sc_layouts_column_icons_position_left column-3_4">
+				<div class="sc_layouts_item"><a class="sc_layouts_logo" href="https://silponix.cz/"><span class="logo_text">Silponix</span></a></div>
+
+
+				<div class="sc_layouts_item">
+					<nav class="menu_main_nav_area sc_layouts_menu sc_layouts_menu_default sc_layouts_hide_on_mobile"><ul id="menu_main" class="sc_layouts_menu_nav menu_main_nav"><li id="menu-item-740" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-740"><a href="https://silponix.cz/"><span>Úvod</span></a></li><li id="menu-item-231" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-231"><a href="https://silponix.cz/kontakty-a-informace/"><span>KONTAKTY a INFORMACE</span></a></li><li id="menu-item-4240" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4240"><a href="https://silponix.cz/spoluprace/"><span>SPOLUPRÁCE</span></a></li><li id="menu-item-4700" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4700"><a href="https://silponix.cz/dulezite-aktuality/"><span>DŮLEŽITÉ AKTUALITY</span></a></li><li id="menu-item-4953" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4953"><a href="http://www.silponix-shop.cz/"><span>Silponix &#8211; E-shop</span></a></li></ul></nav>					<div class="sc_layouts_iconed_text sc_layouts_menu_mobile_button">
+						<a class="sc_layouts_item_link sc_layouts_iconed_text_link" href="#">
+							<span class="sc_layouts_item_icon sc_layouts_iconed_text_icon trx_addons_icon-menu"></span>
+						</a>
+					</div>
+				</div>
+			</div>		</div><!-- /.sc_layouts_row -->
+	</div><!-- /.content_wrap -->
+</div><!-- /.top_panel_navi -->	<div class="top_panel_title sc_layouts_row sc_layouts_row_type_normal">
+		<div class="content_wrap">
+			<div class="sc_layouts_column sc_layouts_column_align_left">
+				<div class="sc_layouts_item">
+					<div class="sc_layouts_title sc_align_left">
+						<div class="sc_layouts_title_title">							<h1 class="sc_layouts_title_caption">URL not found</h1>
+							</div><div class="sc_layouts_title_breadcrumbs"><div class="breadcrumbs"><a class="breadcrumbs_item home" href="https://silponix.cz/">Home</a><span class="breadcrumbs_delimiter"></span><span class="breadcrumbs_item current">URL not found</span></div></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</header><div class="menu_mobile_overlay"></div>
+<div class="menu_mobile menu_mobile_fullscreen scheme_dark">
+	<div class="menu_mobile_inner">
+		<a class="menu_mobile_close icon-cancel"></a><a class="sc_layouts_logo" href="https://silponix.cz/"><span class="logo_text">Silponix</span></a><nav class="menu_mobile_nav_area"><ul id="menu_mobile" class=" menu_mobile_nav"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-740"><a href="https://silponix.cz/"><span>Úvod</span></a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-231"><a href="https://silponix.cz/kontakty-a-informace/"><span>KONTAKTY a INFORMACE</span></a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4240"><a href="https://silponix.cz/spoluprace/"><span>SPOLUPRÁCE</span></a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4700"><a href="https://silponix.cz/dulezite-aktuality/"><span>DŮLEŽITÉ AKTUALITY</span></a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4953"><a href="http://www.silponix-shop.cz/"><span>Silponix &#8211; E-shop</span></a></li></ul></nav><div class="search_wrap search_style_normal search_mobile">
+	<div class="search_form_wrap">
+		<form role="search" method="get" class="search_form" action="https://silponix.cz/">
+			<input type="text" class="search_field" placeholder="Search" value="" name="s">
+			<button type="submit" class="search_submit trx_addons_icon-search"></button>
+					</form>
+	</div>
+	</div>	</div>
+</div>
+
+			<div class="page_content_wrap scheme_default">
+
+								<div class="content_wrap">
+				
+									
+
+					<div class="content">
+										
+<article class="post_item_single post_item_404 post-4676 post type-post status-publish format-status has-post-thumbnail hentry category-uncategorized post_format-post-format-status">
+	<div class="post_content">
+		<h1 class="page_title">404</h1>
+		<div class="page_info">
+			<h1 class="page_subtitle">Oops...</h1>
+			<p class="page_description">We're sorry, but <br>something went wrong.</p>
+			<a href="https://silponix.cz/" class="go_home theme_button">Homepage</a>
+		</div>
+	</div>
+</article>
+				
+					</div><!-- </.content> -->
+
+					</div><!-- </.content_wrap> -->			</div><!-- </.page_content_wrap> -->
+
+			<footer class="footer_wrap footer_default scheme_dark">
+	 
+<div class="footer_copyright_wrap scheme_">
+	<div class="footer_copyright_inner">
+		<div class="content_wrap">
+			<div class="copyright_text">ThemeREX &copy; 2026. All rights reserved. Terms of use and Privacy Policy</div>
+		</div>
+	</div>
+</div>
+</footer><!-- /.footer_wrap -->
+
+		</div><!-- /.page_wrap -->
+
+	</div><!-- /.body_wrap -->
+
+	
+	<script type='text/javascript'>
+/* <![CDATA[ */
+var wpcf7 = {"apiSettings":{"root":"https:\/\/silponix.cz\/wp-json\/contact-form-7\/v1","namespace":"contact-form-7\/v1"},"recaptcha":{"messages":{"empty":"Potvr\u010fte pros\u00edm, \u017ee nejste robot."}}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://silponix.cz/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=5.0.4'></script>
+<script type='text/javascript' src='https://silponix.cz/wp-includes/js/jquery/ui/core.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://silponix.cz/wp-includes/js/jquery/ui/datepicker.min.js?ver=1.11.4'></script>
+<script type='text/javascript'>
+jQuery(document).ready(function(jQuery){jQuery.datepicker.setDefaults({"closeText":"Zav\u0159\u00edt","currentText":"Dnes","monthNames":["Leden","\u00danor","B\u0159ezen","Duben","Kv\u011bten","\u010cerven","\u010cervenec","Srpen","Z\u00e1\u0159\u00ed","\u0158\u00edjen","Listopad","Prosinec"],"monthNamesShort":["Led","\u00dano","B\u0159e","Dub","Kv\u011b","\u010cvn","\u010cvc","Srp","Z\u00e1\u0159","\u0158\u00edj","Lis","Pro"],"nextText":"Dal\u0161\u00ed","prevText":"P\u0159edchoz\u00ed","dayNames":["Ned\u011ble","Pond\u011bl\u00ed","\u00dater\u00fd","St\u0159eda","\u010ctvrtek","P\u00e1tek","Sobota"],"dayNamesShort":["Ne","Po","\u00dat","St","\u010ct","P\u00e1","So"],"dayNamesMin":["Ne","Po","\u00dat","St","\u010ct","P\u00e1","So"],"dateFormat":"d. mm. yy","firstDay":1,"isRTL":false});});
+</script>
+<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/i18n/datepicker-cs.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://silponix.cz/wp-content/plugins/contact-form-7-datepicker/js/jquery-ui-timepicker/jquery-ui-timepicker-addon.min.js?ver=5.1.19'></script>
+<script type='text/javascript' src='https://silponix.cz/wp-content/plugins/contact-form-7-datepicker/js/jquery-ui-timepicker/i18n/jquery-ui-timepicker-cs.js?ver=5.1.19'></script>
+<script type='text/javascript' src='https://silponix.cz/wp-includes/js/jquery/ui/widget.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://silponix.cz/wp-includes/js/jquery/ui/mouse.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://silponix.cz/wp-includes/js/jquery/ui/slider.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://silponix.cz/wp-includes/js/jquery/ui/button.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://silponix.cz/wp-content/plugins/contact-form-7-datepicker/js/jquery-ui-sliderAccess.js?ver=5.1.19'></script>
+<script type='text/javascript' src='https://silponix.cz/wp-content/plugins/trx_addons/js/swiper/swiper.jquery.min.js'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var su_magnific_popup = {"close":"Zav\u0159\u00edt (Esc)","loading":"Nahr\u00e1v\u00e1n\u00ed","prev":"P\u0159edchoz\u00ed (kl\u00e1vesa - \u0161ipka vlevo)","next":"N\u00e1sleduj\u00edc\u00ed (kl\u00e1vesa - \u0161ipka vpravo)","counter":"%curr% z %total%","error":"Nepoda\u0159ilo se na\u010d\u00edst tento odkaz. <a href=\"%url%\" target=\"_blank\"><u>Otev\u0159\u00edt odkaz<\/u><\/a>."};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://silponix.cz/wp-content/plugins/trx_addons/js/magnific/jquery.magnific-popup.min.js'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var TRX_ADDONS_STORAGE = {"ajax_url":"https:\/\/silponix.cz\/wp-admin\/admin-ajax.php","ajax_nonce":"7c137687c1","site_url":"https:\/\/silponix.cz","post_id":"4676","vc_edit_mode":"0","popup_engine":"magnific","animate_inner_links":"0","user_logged_in":"0","email_mask":"^([a-zA-Z0-9_\\-]+\\.)*[a-zA-Z0-9_\\-]+@[a-z0-9_\\-]+(\\.[a-z0-9_\\-]+)*\\.[a-z]{2,6}$","msg_ajax_error":"Invalid server answer!","msg_magnific_loading":"Loading image","msg_magnific_error":"Error loading image","msg_error_like":"Error saving your like! Please, try again later.","msg_field_name_empty":"The name can't be empty","msg_field_email_empty":"Too short (or empty) email address","msg_field_email_not_valid":"Invalid email address","msg_field_text_empty":"The message text can't be empty","msg_search_error":"Search error! Try again later.","msg_send_complete":"Send message complete!","msg_send_error":"Transmit failed!","ajax_views":"","menu_cache":[".menu_mobile_inner > nav > ul"],"login_via_ajax":"1","msg_login_empty":"The Login field can't be empty","msg_login_long":"The Login field is too long","msg_password_empty":"The password can't be empty and shorter then 4 characters","msg_password_long":"The password is too long","msg_login_success":"Login success! The page should be reloaded in 3 sec.","msg_login_error":"Login failed!","msg_not_agree":"Please, read and check 'Terms and Conditions'","msg_email_long":"E-mail address is too long","msg_email_not_valid":"E-mail address is invalid","msg_password_not_equal":"The passwords in both fields are not equal","msg_registration_success":"Registration success! Please log in!","msg_registration_error":"Registration failed!","msg_sc_googlemap_not_avail":"Googlemap service is not available","msg_sc_googlemap_geocoder_error":"Error while geocode address"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://silponix.cz/wp-content/plugins/trx_addons/js/trx_addons.js'></script>
+<script type='text/javascript' src='https://silponix.cz/wp-content/themes/autoparts/js/superfish.js'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var AUTOPARTS_STORAGE = {"ajax_url":"https:\/\/silponix.cz\/wp-admin\/admin-ajax.php","ajax_nonce":"7c137687c1","site_url":"https:\/\/silponix.cz","theme_url":"https:\/\/silponix.cz\/wp-content\/themes\/autoparts","site_scheme":"scheme_default","user_logged_in":"","mobile_layout_width":"767","mobile_device":"","menu_side_stretch":"1","menu_side_icons":"1","background_video":"","use_mediaelements":"1","comment_maxlength":"1000","admin_mode":"","email_mask":"^([a-zA-Z0-9_\\-]+\\.)*[a-zA-Z0-9_\\-]+@[a-z0-9_\\-]+(\\.[a-z0-9_\\-]+)*\\.[a-z]{2,6}$","strings":{"ajax_error":"Invalid server answer!","error_global":"Error data validation!","name_empty":"The name can&#039;t be empty","name_long":"Too long name","email_empty":"Too short (or empty) email address","email_long":"Too long email address","email_not_valid":"Invalid email address","text_empty":"The message text can&#039;t be empty","text_long":"Too long message text"},"alter_link_color":"#1e1e1e","button_hover":"default"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://silponix.cz/wp-content/themes/autoparts/js/__scripts.js'></script>
+<script type='text/javascript' src='https://silponix.cz/wp-includes/js/mediaelement/wp-mediaelement.min.js?ver=5.1.19'></script>
+<script type='text/javascript' src='https://silponix.cz/wp-includes/js/wp-embed.min.js?ver=5.1.19'></script>
+<a href="#" class="trx_addons_scroll_to_top trx_addons_icon-up" title="Scroll to top"></a>
+</body>
+</html>

@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="cs" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin &mdash; Silponix</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" href="/img/favicon-32.png" type="image/png">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+    <link rel="stylesheet" href="/css/style.css?v=6">
+    <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>
+    <script>(function(){var t=localStorage.getItem('theme');if(t){document.documentElement.setAttribute('data-theme',t)}else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches){document.documentElement.setAttribute('data-theme','light')}})();</script>
+</head>
+<body class="admin-body">
+
+    <!-- LOGIN -->
+    <div class="admin-login" id="adminLogin">
+        <div class="admin-login-card">
+            <div class="admin-login-logo">
+                <img src="/img/logo-white.png" alt="Silponix" width="48" height="48" class="logo-img">
+                <h1>Silponix Admin</h1>
+                <p>Spr&aacute;va e-shopu a obsahu</p>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="admin-email" class="form-label">E-mail</label>
+                    <input type="email" id="admin-email" class="form-input" placeholder="admin@silponix.cz" required autofocus>
+                </div>
+                <div class="form-group">
+                    <label for="admin-password" class="form-label">Heslo</label>
+                    <input type="password" id="admin-password" class="form-input" placeholder="Zadejte heslo" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg btn-block" id="loginBtn">P&#345;ihl&aacute;sit se</button>
+                <p class="admin-login-error" id="loginError" hidden>Neplatn&eacute; &uacute;daje nebo nem&aacute;te opr&aacute;vn&#283;n&iacute;.</p>
+            </form>
+            <p class="admin-login-hint">Demo: <code>test_admin@mail.cz</code> / <code>demo123</code></p>
+        </div>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div class="admin-dashboard" id="adminDashboard" hidden>
+        <!-- Admin Navbar -->
+        <nav class="admin-nav">
+            <div class="admin-nav-inner">
+                <a href="/" class="navbar-logo" target="_blank">
+                    <img src="/img/logo.png" alt="Silponix" width="32" height="32" class="logo-img logo-dark"><img src="/img/logo-white.png" alt="" width="32" height="32" class="logo-img logo-light" aria-hidden="true">
+                    <span class="logo-text">Silponix Admin</span>
+                </a>
+                <div class="admin-nav-actions">
+                    <span class="admin-user-name" id="adminUserName"></span>
+                    <button class="theme-toggle" id="themeToggle" aria-label="T&eacute;ma">
+                        <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                        <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    </button>
+                    <button class="btn btn-sm btn-outline" id="logoutBtn">Odhl&aacute;sit</button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Tabs -->
+        <div class="admin-tabs">
+            <button class="admin-tab active" data-tab="overview" title="P&#345;ehled">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+            </button>
+            <button class="admin-tab" data-tab="stats" title="Statistika">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+            </button>
+            <button class="admin-tab" data-tab="products" title="Produkty">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            </button>
+            <button class="admin-tab" data-tab="blog" title="Blog">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            </button>
+            <button class="admin-tab" data-tab="media" title="M&eacute;dia">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            </button>
+            <button class="admin-tab" data-tab="orders" title="Objedn&aacute;vky">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            </button>
+            <button class="admin-tab" data-tab="newsletter" title="Newsletter">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </button>
+            <button class="admin-tab" data-tab="messages" title="Zpr&aacute;vy">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </button>
+            <button class="admin-tab" data-tab="settings" title="Nastaven&iacute;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            </button>
+        </div>
+
+        <!-- ==================== OVERVIEW ==================== -->
+        <div class="admin-content admin-panel active" id="panel-overview">
+            <div class="admin-stats-grid">
+                <div class="admin-stat-card">
+                    <div class="admin-stat-icon" style="background: rgba(189,20,27,0.1); color: #bd141b;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                    </div>
+                    <div>
+                        <span class="admin-stat-number" id="statProducts">—</span>
+                        <span class="admin-stat-label">Produkt&#367;</span>
+                    </div>
+                </div>
+                <div class="admin-stat-card">
+                    <div class="admin-stat-icon" style="background: rgba(16,185,129,0.1); color: #10b981;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                    </div>
+                    <div>
+                        <span class="admin-stat-number" id="statOrders">—</span>
+                        <span class="admin-stat-label">Objedn&aacute;vek</span>
+                    </div>
+                </div>
+                <div class="admin-stat-card">
+                    <div class="admin-stat-icon" style="background: rgba(245,158,11,0.1); color: #f59e0b;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    </div>
+                    <div>
+                        <span class="admin-stat-number" id="statRevenue">—</span>
+                        <span class="admin-stat-label">Tr&#382;by</span>
+                    </div>
+                </div>
+                <div class="admin-stat-card">
+                    <div class="admin-stat-icon" style="background: rgba(99,102,241,0.1); color: #6366f1;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <div>
+                        <span class="admin-stat-number" id="statCustomers">—</span>
+                        <span class="admin-stat-label">Z&aacute;kazn&iacute;k&#367;</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chart -->
+            <div class="admin-chart-section">
+                <div class="admin-chart-header">
+                    <h3>N&aacute;v&scaron;t&#283;vnost</h3>
+                    <div class="admin-chart-period">
+                        <button class="admin-period-btn active" data-period="7">7 dn&iacute;</button>
+                        <button class="admin-period-btn" data-period="30">30 dn&iacute;</button>
+                    </div>
+                </div>
+                <div class="admin-chart" id="viewsChart">
+                    <div class="admin-chart-bars" id="viewsChartBars"></div>
+                    <div class="admin-chart-labels" id="viewsChartLabels"></div>
+                </div>
+            </div>
+
+            <!-- Recent Orders -->
+            <div class="admin-recent">
+                <h3>Posledn&iacute; objedn&aacute;vky</h3>
+                <div class="admin-table-wrap">
+                    <table class="admin-table" id="recentOrdersTable">
+                        <thead>
+                            <tr><th>#</th><th>Z&aacute;kazn&iacute;k</th><th>Produkty</th><th>Celkem</th><th>Stav</th><th>Datum</th></tr>
+                        </thead>
+                        <tbody id="recentOrders"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== STATISTICS ==================== -->
+        <div class="admin-content admin-panel" id="panel-stats">
+            <div class="admin-toolbar">
+                <h3>Statistika</h3>
+                <div class="admin-chart-period">
+                    <button class="admin-period-btn stats-period-btn active" data-period="7">7 dn&iacute;</button>
+                    <button class="admin-period-btn stats-period-btn" data-period="30">30 dn&iacute;</button>
+                    <button class="admin-period-btn stats-period-btn" data-period="90">90 dn&iacute;</button>
+                </div>
+            </div>
+
+            <!-- Summary cards -->
+            <div class="admin-stats-grid" id="statsSummary">
+                <div class="admin-stat-card">
+                    <div class="admin-stat-icon" style="background: rgba(99,102,241,0.1); color: #6366f1;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    </div>
+                    <div><span class="admin-stat-number" id="statsViews">&mdash;</span><span class="admin-stat-label">Celkov&aacute; zobrazen&iacute;</span></div>
+                </div>
+                <div class="admin-stat-card">
+                    <div class="admin-stat-icon" style="background: rgba(16,185,129,0.1); color: #10b981;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                    </div>
+                    <div><span class="admin-stat-number" id="statsUnique">&mdash;</span><span class="admin-stat-label">Unik&aacute;tn&iacute; n&aacute;v&scaron;t&#283;vn&iacute;ci</span></div>
+                </div>
+                <div class="admin-stat-card">
+                    <div class="admin-stat-icon" style="background: rgba(245,158,11,0.1); color: #f59e0b;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                    </div>
+                    <div><span class="admin-stat-number" id="statsAvg">&mdash;</span><span class="admin-stat-label">Pr&#367;m&#283;r / den</span></div>
+                </div>
+                <div class="admin-stat-card">
+                    <div class="admin-stat-icon" style="background: rgba(189,20,27,0.1); color: #bd141b;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+                    </div>
+                    <div><span class="admin-stat-number" id="statsTopPage">&mdash;</span><span class="admin-stat-label">Nejnav&scaron;t&#283;vovan&#283;j&scaron;&iacute;</span></div>
+                </div>
+            </div>
+
+            <!-- Chart -->
+            <div class="admin-chart-section">
+                <div class="admin-chart-header"><h3>N&aacute;v&scaron;t&#283;vnost za obdob&iacute;</h3></div>
+                <div class="admin-chart" id="statsChart">
+                    <div class="admin-chart-bars" id="statsChartBars"></div>
+                    <div class="admin-chart-labels" id="statsChartLabels"></div>
+                </div>
+            </div>
+
+            <!-- Top pages -->
+            <div class="admin-recent" style="margin-bottom: 2rem;">
+                <h3>TOP str&aacute;nky</h3>
+                <div class="admin-table-wrap">
+                    <table class="admin-table" id="statsPagesTable">
+                        <thead><tr><th>Str&aacute;nka</th><th>Zobrazen&iacute;</th></tr></thead>
+                        <tbody id="statsPages"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Order stats -->
+            <div class="admin-recent" style="margin-bottom: 2rem;">
+                <h3>Objedn&aacute;vky &mdash; p&#345;ehled</h3>
+                <div class="admin-stats-grid admin-stats-grid-sm" id="statsOrders">
+                    <div class="admin-stat-card"><div><span class="admin-stat-number" id="statsOrderNew">&mdash;</span><span class="admin-stat-label">Nov&eacute;</span></div></div>
+                    <div class="admin-stat-card"><div><span class="admin-stat-number" id="statsOrderProc">&mdash;</span><span class="admin-stat-label">Zpracov&aacute;v&aacute; se</span></div></div>
+                    <div class="admin-stat-card"><div><span class="admin-stat-number" id="statsOrderShip">&mdash;</span><span class="admin-stat-label">Odesl&aacute;no</span></div></div>
+                    <div class="admin-stat-card"><div><span class="admin-stat-number" id="statsOrderDone">&mdash;</span><span class="admin-stat-label">Dokon&#269;eno</span></div></div>
+                </div>
+            </div>
+
+            <!-- Revenue summary -->
+            <div class="admin-recent">
+                <h3>Tr&#382;by</h3>
+                <div class="admin-stats-grid" style="grid-template-columns: repeat(2, 1fr);">
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-icon" style="background: rgba(16,185,129,0.1); color: #10b981;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        </div>
+                        <div><span class="admin-stat-number" id="statsRevTotal">&mdash;</span><span class="admin-stat-label">Celkov&eacute; tr&#382;by</span></div>
+                    </div>
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-icon" style="background: rgba(245,158,11,0.1); color: #f59e0b;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+                        </div>
+                        <div><span class="admin-stat-number" id="statsRevAvg">&mdash;</span><span class="admin-stat-label">Pr&#367;m&#283;rn&yacute; ko&scaron;&iacute;k</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== PRODUCTS ==================== -->
+        <div class="admin-content admin-panel" id="panel-products">
+            <div class="admin-toolbar">
+                <h3>Produkty</h3>
+                <button class="btn btn-primary btn-sm" id="addProductBtn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    P&#345;idat produkt
+                </button>
+            </div>
+            <div class="admin-table-wrap">
+                <table class="admin-table">
+                    <thead>
+                        <tr><th>Foto</th><th>N&aacute;zev</th><th>Kategorie</th><th>Cena</th><th>Skladem</th><th>Akce</th></tr>
+                    </thead>
+                    <tbody id="productsTable"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ==================== BLOG ==================== -->
+        <div class="admin-content admin-panel" id="panel-blog">
+            <div class="admin-toolbar">
+                <h3>Blog</h3>
+                <button class="btn btn-primary btn-sm" id="addPostBtn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    Nov&yacute; &#269;l&aacute;nek
+                </button>
+            </div>
+            <div class="admin-table-wrap">
+                <table class="admin-table">
+                    <thead>
+                        <tr><th>N&aacute;zev</th><th>Kategorie</th><th>Datum</th><th>Stav</th><th>Akce</th></tr>
+                    </thead>
+                    <tbody id="postsTable"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ==================== MEDIA ==================== -->
+        <div class="admin-content admin-panel" id="panel-media">
+            <div class="admin-toolbar">
+                <h3>M&eacute;dia</h3>
+                <button class="btn btn-primary btn-sm" id="uploadMediaBtn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                    Nahr&aacute;t
+                </button>
+            </div>
+            <div class="admin-upload-zone" id="uploadZone">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                <p>P&#345;et&aacute;hn&#283;te soubory sem nebo klikn&#283;te</p>
+                <span>Obr&aacute;zky (JPG, PNG, WebP) a videa (MP4)</span>
+                <input type="file" id="uploadInput" multiple accept="image/*,video/mp4" hidden>
+            </div>
+            <div class="admin-upload-progress" id="uploadProgress" hidden>
+                <div class="admin-progress-bar"><div class="admin-progress-fill" id="uploadProgressFill"></div></div>
+                <span id="uploadProgressText">Nahr&aacute;v&aacute;m...</span>
+            </div>
+            <div class="admin-media-grid" id="mediaGrid"></div>
+        </div>
+
+        <!-- ==================== ORDERS ==================== -->
+        <div class="admin-content admin-panel" id="panel-orders">
+            <div class="admin-toolbar">
+                <h3>Objedn&aacute;vky</h3>
+                <div class="admin-toolbar-filters">
+                    <select class="form-input form-select form-input-sm" id="orderFilter">
+                        <option value="all">V&scaron;echny</option>
+                        <option value="new">Nov&eacute;</option>
+                        <option value="processing">Zpracov&aacute;v&aacute; se</option>
+                        <option value="shipped">Odesl&aacute;no</option>
+                        <option value="completed">Dokon&#269;eno</option>
+                    </select>
+                </div>
+            </div>
+            <div class="admin-table-wrap">
+                <table class="admin-table">
+                    <thead>
+                        <tr><th>#</th><th>Z&aacute;kazn&iacute;k</th><th>E-mail</th><th>Produkty</th><th>Celkem</th><th>Stav</th><th>Datum</th><th>Akce</th></tr>
+                    </thead>
+                    <tbody id="ordersTable"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ==================== NEWSLETTER ==================== -->
+        <div class="admin-content admin-panel" id="panel-newsletter">
+            <div class="admin-toolbar">
+                <h3>Newsletter</h3>
+                <button class="btn btn-primary" id="btnNewNewsletter">+ Nov&yacute; newsletter</button>
+            </div>
+
+            <!-- Subscribers -->
+            <div class="admin-setting-card" style="margin-bottom:1.5rem">
+                <h4>Odb&#283;ratel&eacute; <span id="subscriberCount" style="color:var(--text-muted);font-weight:400"></span></h4>
+                <div class="admin-table-wrap">
+                    <table class="admin-table" id="nlSubscriberTable">
+                        <thead><tr><th>E-mail</th><th>P&#345;ihl&aacute;&scaron;en</th><th>Akce</th></tr></thead>
+                        <tbody id="nlSubscriberList"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Drafts -->
+            <div class="admin-setting-card" style="margin-bottom:1.5rem">
+                <h4>Koncepty</h4>
+                <div class="admin-table-wrap">
+                    <table class="admin-table" id="nlDraftsTable">
+                        <thead><tr><th>P&#345;edm&#283;t</th><th>Posledn&iacute; &uacute;prava</th><th>Akce</th></tr></thead>
+                        <tbody id="nlDraftsList"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Sent history -->
+            <div class="admin-setting-card">
+                <h4>Historie odesl&aacute;n&iacute;</h4>
+                <div class="admin-table-wrap">
+                    <table class="admin-table" id="nlHistoryTable">
+                        <thead><tr><th>P&#345;edm&#283;t</th><th>Odesl&aacute;no</th><th>P&#345;&iacute;jemc&#367;</th></tr></thead>
+                        <tbody id="nlHistoryList"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== MESSAGES ==================== -->
+        <div class="admin-content admin-panel" id="panel-messages">
+            <div class="admin-toolbar">
+                <h3>Zpr&aacute;vy z kontaktn&iacute;ho formul&aacute;&#345;e</h3>
+                <span id="messagesCount" style="color:var(--text-muted)"></span>
+            </div>
+            <div class="admin-table-wrap">
+                <table class="admin-table">
+                    <thead>
+                        <tr><th>Jm&eacute;no</th><th>E-mail</th><th>P&#345;edm&#283;t</th><th>Datum</th><th>Akce</th></tr>
+                    </thead>
+                    <tbody id="messagesTable"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Message detail modal -->
+        <div class="admin-modal" id="messageModal" hidden>
+            <div class="admin-modal-overlay"></div>
+            <div class="admin-modal-content">
+                <div class="admin-modal-header">
+                    <h3 id="messageModalTitle">Zpr&aacute;va</h3>
+                    <button class="admin-modal-close" data-close-modal="messageModal">&times;</button>
+                </div>
+                <div id="messageModalBody" style="padding: 0 0 1.5rem;"></div>
+                <div class="admin-modal-actions">
+                    <button class="btn btn-outline" data-close-modal="messageModal">Zav&#345;&iacute;t</button>
+                    <button class="btn btn-outline btn-danger" id="btnDeleteMessage">Smazat</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== SETTINGS ==================== -->
+        <div class="admin-content admin-panel" id="panel-settings">
+            <h3>Nastaven&iacute; e-shopu</h3>
+            <div class="admin-settings-grid">
+                <div class="admin-setting-card">
+                    <h4>Kontakt</h4>
+                    <div class="form-group">
+                        <label class="form-label">E-mail pro objedn&aacute;vky</label>
+                        <input type="email" class="form-input" id="settingEmail" value="mezihorak@silponix.cz">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Telefon</label>
+                        <input type="tel" class="form-input" id="settingPhone" value="+420 739 657 624">
+                    </div>
+                </div>
+                <div class="admin-setting-card">
+                    <h4>Doprava</h4>
+                    <div class="form-group">
+                        <label class="form-label">Cena dopravy (K&#269;)</label>
+                        <input type="number" class="form-input" id="settingShipping" value="149">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Dob&iacute;rka (K&#269;)</label>
+                        <input type="number" class="form-input" id="settingCOD" value="39">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Doprava zdarma od (K&#269;)</label>
+                        <input type="number" class="form-input" id="settingFreeShipping" value="20000">
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-primary" id="saveSettings">Ulo&#382;it nastaven&iacute;</button>
+
+            <!-- Categories management -->
+            <h3 style="margin-top: 2.5rem; margin-bottom: 1.5rem;">Kategorie</h3>
+            <div class="admin-settings-grid">
+                <div class="admin-setting-card">
+                    <h4>Kategorie produkt&#367;</h4>
+                    <div id="productCategoriesList" class="admin-category-list"></div>
+                    <div class="form-row" style="margin-top: 0.75rem; gap: 0.5rem;">
+                        <input type="text" class="form-input form-input-sm" id="newProdCatId" placeholder="ID (nap&#345;. motor)">
+                        <input type="text" class="form-input form-input-sm" id="newProdCatName" placeholder="N&aacute;zev (nap&#345;. Motor)">
+                        <button class="btn btn-sm btn-primary" id="addProdCatBtn">P&#345;idat</button>
+                    </div>
+                </div>
+                <div class="admin-setting-card">
+                    <h4>Kategorie blogu</h4>
+                    <div id="postCategoriesList" class="admin-category-list"></div>
+                    <div class="form-row" style="margin-top: 0.75rem; gap: 0.5rem;">
+                        <input type="text" class="form-input form-input-sm" id="newPostCatName" placeholder="N&aacute;zev kategorie">
+                        <button class="btn btn-sm btn-primary" id="addPostCatBtn">P&#345;idat</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Company info & Account -->
+            <h3 style="margin-top: 2.5rem; margin-bottom: 1.5rem;">Firemn&iacute; &uacute;daje &amp; &uacute;&#269;et</h3>
+            <div class="admin-settings-grid">
+                <div class="admin-setting-card">
+                    <h4>Firemn&iacute; &uacute;daje</h4>
+                    <div class="form-group">
+                        <label class="form-label">N&aacute;zev firmy</label>
+                        <input type="text" class="form-input" id="settingCompanyName" placeholder="Silponix s.r.o.">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Adresa</label>
+                        <input type="text" class="form-input" id="settingCompanyAddress" placeholder="K. H. M&aacute;chy 34, 765 02 Otrokovice">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">I&#268;O</label>
+                        <input type="text" class="form-input" id="settingCompanyIco" placeholder="12345678">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Ve&#345;ejn&yacute; e-mail</label>
+                        <input type="email" class="form-input" id="settingCompanyEmail" placeholder="info@silponix.cz">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Ve&#345;ejn&yacute; telefon</label>
+                        <input type="tel" class="form-input" id="settingCompanyPhone" placeholder="+420 ...">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Otev&iacute;rac&iacute; doba</label>
+                        <input type="text" class="form-input" id="settingCompanyHours" placeholder="Po&ndash;P&aacute; 8:00 &ndash; 17:00">
+                    </div>
+                    <button class="btn btn-primary btn-sm" id="saveCompanyInfo">Ulo&#382;it firemn&iacute; &uacute;daje</button>
+                </div>
+                <div class="admin-setting-card">
+                    <h4>M&#367;j &uacute;&#269;et</h4>
+                    <div class="form-group">
+                        <label class="form-label">Jm&eacute;no</label>
+                        <input type="text" class="form-input" id="settingAdminName" placeholder="Va&scaron;e jm&eacute;no">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">E-mail</label>
+                        <input type="email" class="form-input" id="settingAdminEmail" placeholder="admin@silponix.cz">
+                    </div>
+                    <hr style="border:none;border-top:1px solid var(--surface-border);margin:1rem 0">
+                    <h4>Zm&#283;na hesla</h4>
+                    <div class="form-group">
+                        <label class="form-label">Aktu&aacute;ln&iacute; heslo</label>
+                        <input type="password" class="form-input" id="settingCurrentPw" placeholder="Aktu&aacute;ln&iacute; heslo">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Nov&eacute; heslo</label>
+                        <input type="password" class="form-input" id="settingNewPw" placeholder="Nov&eacute; heslo (min. 6 znak&#367;)">
+                    </div>
+                    <button class="btn btn-primary btn-sm" id="saveAdminAccount">Ulo&#382;it &uacute;&#269;et</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ==================== NEWSLETTER COMPOSE MODAL ==================== -->
+        <div class="admin-modal" id="newsletterModal" hidden>
+            <div class="admin-modal-overlay"></div>
+            <div class="admin-modal-content admin-modal-wide">
+                <div class="admin-modal-header">
+                    <h3 id="newsletterModalTitle">Nov&yacute; newsletter</h3>
+                    <button class="admin-modal-close" onclick="closeModal('newsletterModal')">&times;</button>
+                </div>
+                <div class="form-group" style="margin-bottom:1rem">
+                    <label class="form-label">P&#345;edm&#283;t</label>
+                    <input type="text" class="form-input" id="nlSubject" placeholder="P&#345;edm&#283;t e-mailu">
+                </div>
+                <div class="form-group" style="margin-bottom:1rem">
+                    <label class="form-label">Obr&aacute;zek</label>
+                    <div style="display:flex;align-items:center;gap:0.75rem">
+                        <button type="button" class="btn btn-sm btn-outline" id="btnNlImage">Nahr&aacute;t obr&aacute;zek</button>
+                        <input type="file" id="nlImageUpload" accept="image/*" hidden>
+                        <span id="nlImageStatus" style="font-size:0.8rem;color:var(--text-muted)"></span>
+                    </div>
+                </div>
+                <div class="form-group" style="margin-bottom:1rem">
+                    <label class="form-label">Obsah</label>
+                    <div id="nlContentEditor" class="admin-quill-editor"></div>
+                </div>
+                <div id="nlPreviewWrap" style="display:none;margin-bottom:1rem">
+                    <label class="form-label">N&aacute;hled</label>
+                    <iframe id="nlPreviewFrame" class="newsletter-preview-frame"></iframe>
+                </div>
+                <div class="admin-modal-actions">
+                    <button class="btn btn-outline" onclick="closeModal('newsletterModal')">Zru&scaron;it</button>
+                    <button class="btn btn-outline" id="btnNlPreview">N&aacute;hled</button>
+                    <button class="btn btn-outline" id="btnNlSaveDraft">Ulo&zcaron;it koncept</button>
+                    <button class="btn btn-primary" id="btnNlSend">Odeslat</button>
+                </div>
+                <input type="hidden" id="nlDraftId" value="">
+            </div>
+        </div>
+
+        <!-- ==================== PRODUCT MODAL ==================== -->
+        <div class="admin-modal" id="productModal" hidden>
+            <div class="admin-modal-overlay"></div>
+            <div class="admin-modal-content admin-modal-wide">
+                <div class="admin-modal-header">
+                    <h3 id="productModalTitle">P&#345;idat produkt</h3>
+                    <button class="admin-modal-close" data-close-modal="productModal">&times;</button>
+                </div>
+                <form id="productForm">
+                    <input type="hidden" id="prodId">
+                    <div class="form-group">
+                        <label class="form-label">N&aacute;zev</label>
+                        <input type="text" id="prodName" class="form-input" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Cena (K&#269;)</label>
+                            <input type="number" id="prodPrice" class="form-input" step="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Kategorie</label>
+                            <select id="prodCategory" class="form-input form-select">
+                                <option value="ecu">ECU &amp; Elektronika</option>
+                                <option value="silentbloky">Silentbloky PU</option>
+                                <option value="motor">Motor &amp; P&#345;evodovky</option>
+                                <option value="podvozek">Podvozek &amp; Brzdy</option>
+                                <option value="karoserie">Karoserie &amp; V&yacute;fuky</option>
+                                <option value="baterie">Baterie</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Kr&aacute;tk&yacute; popis</label>
+                        <textarea id="prodDesc" class="form-input form-textarea" rows="2"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Podrobn&yacute; popis</label>
+                        <div id="prodDescLongEditor" class="admin-quill-editor"></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Skladem (ks)</label>
+                            <input type="number" id="prodStock" class="form-input" value="10">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">&Scaron;t&iacute;tek</label>
+                            <select id="prodBadge" class="form-input form-select">
+                                <option value="">&#381;&aacute;dn&yacute;</option>
+                                <option value="new">Novinka</option>
+                                <option value="sale">Sleva</option>
+                                <option value="bestseller">Bestseller</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Image upload -->
+                    <div class="form-group">
+                        <label class="form-label">Fotky produktu</label>
+                        <div class="admin-img-upload" id="prodImageUpload">
+                            <div class="admin-img-preview" id="prodImagePreview"></div>
+                            <button type="button" class="btn btn-sm btn-outline" id="prodImageBtn">P&#345;idat fotku</button>
+                            <input type="file" id="prodImageInput" accept="image/*" multiple hidden>
+                        </div>
+                    </div>
+                    <div class="admin-modal-actions">
+                        <button type="button" class="btn btn-outline" data-close-modal="productModal">Zru&scaron;it</button>
+                        <button type="submit" class="btn btn-primary" id="productSaveBtn">Ulo&#382;it</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- ==================== POST MODAL ==================== -->
+        <div class="admin-modal" id="postModal" hidden>
+            <div class="admin-modal-overlay"></div>
+            <div class="admin-modal-content admin-modal-wide">
+                <div class="admin-modal-header">
+                    <h3 id="postModalTitle">Nov&yacute; &#269;l&aacute;nek</h3>
+                    <button class="admin-modal-close" data-close-modal="postModal">&times;</button>
+                </div>
+                <form id="postForm">
+                    <input type="hidden" id="postSlug">
+                    <div class="form-group">
+                        <label class="form-label">Titulek</label>
+                        <input type="text" id="postTitle" class="form-input" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Kategorie</label>
+                            <select id="postCategory" class="form-input form-select">
+                                <option value="Tuning">Tuning</option>
+                                <option value="Motorsport">Motorsport</option>
+                                <option value="Recenze">Recenze</option>
+                                <option value="N&aacute;vod">N&aacute;vod</option>
+                                <option value="Novinka">Novinka</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Stav</label>
+                            <select id="postPublished" class="form-input form-select">
+                                <option value="0">Koncept</option>
+                                <option value="1">Publikov&aacute;no</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">V&yacute;&#328;atek</label>
+                        <textarea id="postExcerpt" class="form-input form-textarea" rows="2" placeholder="Kr&aacute;tk&yacute; popis pro blog kartu..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Obsah</label>
+                        <div id="postContentEditor" class="admin-quill-editor"></div>
+                    </div>
+                    <!-- Cover image -->
+                    <div class="form-group">
+                        <label class="form-label">&Uacute;vodn&iacute; obr&aacute;zek</label>
+                        <div class="admin-img-upload" id="postCoverUpload">
+                            <div class="admin-img-preview" id="postCoverPreview"></div>
+                            <button type="button" class="btn btn-sm btn-outline" id="postCoverBtn">Vybrat obr&aacute;zek</button>
+                            <input type="file" id="postCoverInput" accept="image/*" hidden>
+                        </div>
+                    </div>
+                    <!-- Gallery images -->
+                    <div class="form-group">
+                        <label class="form-label">Obr&aacute;zky do galerie</label>
+                        <div class="admin-img-upload" id="postGalleryUpload">
+                            <div class="admin-img-preview" id="postGalleryPreview"></div>
+                            <button type="button" class="btn btn-sm btn-outline" id="postGalleryBtn">P&#345;idat do galerie</button>
+                            <input type="file" id="postGalleryInput" accept="image/*" multiple hidden>
+                        </div>
+                    </div>
+                    <div class="admin-modal-actions">
+                        <button type="button" class="btn btn-outline" data-close-modal="postModal">Zru&scaron;it</button>
+                        <button type="submit" class="btn btn-primary" id="postSaveBtn">Ulo&#382;it</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Notification container -->
+        <div id="adminNotifications"></div>
+    </div>
+
+    <script src="/js/main.js?v=5"></script>
+    <script src="/js/admin.js?v=5"></script>
+</body>
+</html>

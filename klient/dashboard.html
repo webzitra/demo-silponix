@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="cs" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M&#367;j &uacute;&#269;et &mdash; Silponix</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" href="/img/favicon-32.png" type="image/png">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+    <meta name="theme-color" content="#bd141b">
+    <link rel="stylesheet" href="/css/style.css?v=5">
+    <script>(function(){var t=localStorage.getItem('theme');if(t){document.documentElement.setAttribute('data-theme',t)}else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches){document.documentElement.setAttribute('data-theme','light')}})();</script>
+    <style>
+        .dash-container { max-width: 900px; margin: calc(var(--navbar-height) + 2rem) auto 2rem; padding: 0 1rem; }
+        .dash-welcome { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
+        .dash-welcome h1 { font-size: 1.75rem; font-weight: 700; }
+        .dash-card { background: var(--surface); border: 1px solid var(--surface-border); border-radius: var(--radius-xl); padding: 1.5rem; margin-bottom: 1.5rem; }
+        .dash-card h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; }
+        .dash-profile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+        .dash-profile-item label { font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; }
+        .dash-profile-item p { font-size: 1rem; font-weight: 500; margin-top: 0.25rem; }
+        .dash-orders-empty { text-align: center; padding: 2rem; color: var(--text-secondary); }
+        .dash-table { width: 100%; border-collapse: collapse; }
+        .dash-table th { text-align: left; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); padding: 0.75rem; border-bottom: 1px solid var(--surface-border); }
+        .dash-table td { padding: 0.75rem; border-bottom: 1px solid var(--surface-border); }
+        .status-badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; }
+        .status-new { background: rgba(99,102,241,0.15); color: #818cf8; }
+        .status-processing { background: rgba(245,158,11,0.15); color: #f59e0b; }
+        .status-shipped { background: rgba(96,165,250,0.15); color: #60a5fa; }
+        .status-completed { background: rgba(52,211,153,0.15); color: #34d399; }
+        .dash-loading { text-align: center; padding: 3rem; color: var(--text-secondary); }
+        .dash-back-link { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem; font-size: 0.875rem; color: var(--primary); }
+        .dash-back-link:hover { text-decoration: underline; }
+        .dash-table-wrap { overflow-x: auto; }
+        @media (max-width: 600px) {
+            .dash-welcome h1 { font-size: 1.35rem; }
+            .dash-table th, .dash-table td { padding: 0.5rem; font-size: 0.875rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Hlavn&iacute; navigace">
+        <div class="container navbar-inner">
+            <a href="/" class="navbar-logo">
+                <img src="/img/logo.png" alt="Silponix" width="64" height="64" class="logo-img logo-dark">
+                <img src="/img/logo-white.png" alt="" width="64" height="64" class="logo-img logo-light" aria-hidden="true">
+                <span class="logo-text">Silponix</span>
+            </a>
+            <div class="navbar-menu" id="navbarMenu" role="menubar">
+                <a href="/" class="navbar-link" role="menuitem">Dom&#367;</a>
+                <a href="/shop.html" class="navbar-link" role="menuitem">Shop</a>
+                <a href="/sluzby.html" class="navbar-link" role="menuitem">Slu&#382;by</a>
+                <a href="/blog.html" class="navbar-link" role="menuitem">Blog</a>
+                <a href="/galerie.html" class="navbar-link" role="menuitem">Galerie</a>
+                <a href="/o-nas.html" class="navbar-link" role="menuitem">O&nbsp;n&aacute;s</a>
+                <a href="/kontakt.html" class="navbar-link" role="menuitem">Kontakt</a>
+                <a href="/klient/dashboard.html" class="navbar-link active" role="menuitem">M&#367;j &uacute;&#269;et</a>
+            </div>
+            <div class="navbar-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="P&#345;epnout t&eacute;ma">
+                    <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+                <a href="/kosik.html" class="navbar-cart" id="navbarCart" aria-label="Ko&scaron;&iacute;k">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                    <span class="cart-count" id="cartCount" hidden>0</span>
+                </a>
+                <button class="navbar-hamburger" id="navbarHamburger" aria-label="Menu" aria-expanded="false" aria-controls="navbarMenu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- DASHBOARD -->
+    <main class="dash-container" id="dashContent">
+        <div class="dash-loading" id="dashLoading">Na&#269;&iacute;t&aacute;m...</div>
+
+        <div id="dashMain" hidden>
+            <!-- Welcome -->
+            <div class="dash-welcome">
+                <h1>V&iacute;tejte, <span id="userName">z&aacute;kazn&iacute;ku</span>!</h1>
+                <button class="btn btn-outline btn-sm" id="logoutBtn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                    Odhl&aacute;sit se
+                </button>
+            </div>
+
+            <!-- Profile Card -->
+            <div class="dash-card">
+                <h2>Profil</h2>
+                <div class="dash-profile-grid">
+                    <div class="dash-profile-item">
+                        <label>Jm&eacute;no</label>
+                        <p id="profileName">&mdash;</p>
+                    </div>
+                    <div class="dash-profile-item">
+                        <label>E-mail</label>
+                        <p id="profileEmail">&mdash;</p>
+                    </div>
+                    <div class="dash-profile-item">
+                        <label>Registrov&aacute;n</label>
+                        <p id="profileDate">&mdash;</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="dash-card">
+                <h2>Newsletter</h2>
+                <div class="dash-newsletter-toggle">
+                    <button class="dash-toggle" id="newsletterToggle"></button>
+                    <span id="newsletterLabel">Odb&iacute;r&aacute;m novinky</span>
+                </div>
+                <p id="newsletterMsg" class="dash-success" hidden></p>
+            </div>
+
+            <!-- Security -->
+            <div class="dash-card">
+                <h2>Zabezpe&#269;en&iacute;</h2>
+
+                <!-- Change password -->
+                <div class="dash-section" style="border-top: none; margin-top: 0; padding-top: 0;">
+                    <h3>Zm&#283;na hesla</h3>
+                    <form id="changePasswordForm">
+                        <div class="dash-form-row">
+                            <div class="form-group">
+                                <label class="form-label">Aktu&aacute;ln&iacute; heslo</label>
+                                <input type="password" id="currentPassword" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Nov&eacute; heslo (min. 6 znak&#367;)</label>
+                                <input type="password" id="newPassword" class="form-input" minlength="6" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Potvrzen&iacute;</label>
+                                <input type="password" id="confirmPassword" class="form-input" minlength="6" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-sm" style="margin-top: 0.75rem;">Zm&#283;nit heslo</button>
+                        <p id="passwordMsg" hidden></p>
+                    </form>
+                </div>
+
+                <!-- Change email -->
+                <div class="dash-section">
+                    <h3>Zm&#283;na e-mailu</h3>
+                    <form id="changeEmailForm">
+                        <div class="dash-form-row">
+                            <div class="form-group">
+                                <label class="form-label">Heslo pro ov&#283;&#345;en&iacute;</label>
+                                <input type="password" id="emailPassword" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Nov&yacute; e-mail</label>
+                                <input type="email" id="newEmail" class="form-input" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-sm" style="margin-top: 0.75rem;">Zm&#283;nit e-mail</button>
+                        <p id="emailMsg" hidden></p>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Delete account -->
+            <div class="dash-card dash-danger-zone">
+                <h3>Smazat &uacute;&#269;et</h3>
+                <p style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 1rem;">Tato akce je nevratn&aacute;. V&scaron;echna data budou smaz&aacute;na.</p>
+                <form id="deleteAccountForm">
+                    <div class="form-group" style="max-width: 300px;">
+                        <label class="form-label">Zadejte heslo pro potvrzen&iacute;</label>
+                        <input type="password" id="deletePassword" class="form-input" required>
+                    </div>
+                    <button type="submit" class="btn btn-sm" style="background: #ef4444; color: #fff;">Smazat m&#367;j &uacute;&#269;et</button>
+                    <p id="deleteMsg" hidden></p>
+                </form>
+            </div>
+
+            <!-- Orders -->
+            <div class="dash-card">
+                <h2>Historie objedn&aacute;vek</h2>
+                <div id="ordersContent">
+                    <div class="dash-orders-empty" id="ordersEmpty">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin: 0 auto 1rem; opacity: 0.4;"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                        <p>Zat&iacute;m nem&aacute;te &#382;&aacute;dn&eacute; objedn&aacute;vky.</p>
+                    </div>
+                    <div class="dash-table-wrap" id="ordersTableWrap" hidden>
+                        <table class="dash-table">
+                            <thead>
+                                <tr>
+                                    <th>Objedn&aacute;vka</th>
+                                    <th>Datum</th>
+                                    <th>Celkem</th>
+                                    <th>Stav</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ordersTableBody">
+                                <!-- Filled by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Back link -->
+            <a href="/shop.html" class="dash-back-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                Zp&#283;t do e-shopu
+            </a>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand"><a href="/" class="navbar-logo footer-logo"><img src="/img/logo.png" alt="Silponix" width="180" height="46" class="logo-img logo-dark"><img src="/img/logo-white.png" alt="" width="180" height="46" class="logo-img logo-light" aria-hidden="true"></a><p class="footer-desc">Z&aacute;vodn&iacute; d&iacute;ly Honda &amp; motorsport.</p><div class="footer-newsletter"><p style="font-size:0.875rem; font-weight:600;">Odb&iacute;rejte novinky</p><form class="footer-newsletter-form" onsubmit="event.preventDefault();var e=this.querySelector('input').value;if(!e)return;fetch('/api/newsletter',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'subscribe',email:e})}).then(function(r){return r.json()}).then(function(d){if(d.ok){var m=document.createElement('p');m.className='footer-newsletter-msg';m.textContent='P\u0159ihl\u00e1\u0161eno!';event.target.parentNode.appendChild(m);event.target.querySelector('input').value='';setTimeout(function(){m.remove()},3000)}})"><input type="email" placeholder="V&aacute;&scaron; e-mail" required><button type="submit" class="btn btn-sm btn-primary">Odeb&iacute;rat</button></form></div></div>
+                <div class="footer-links"><h4>Shop</h4><ul><li><a href="/shop.html?kat=ecu">ECU Hondata</a></li><li><a href="/shop.html?kat=silentbloky">Silentbloky</a></li></ul></div>
+                <div class="footer-links"><h4>Firma</h4><ul><li><a href="/sluzby.html">Slu&#382;by</a></li><li><a href="/kontakt.html">Kontakt</a></li></ul></div>
+                <div class="footer-contact-col"><h4>Kontakt</h4><p><a href="tel:+420739657624">+420 739 657 624</a></p><p><a href="mailto:mezihorak@silponix.cz">mezihorak@silponix.cz</a></p></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2026 Silponix.</p><p class="footer-credit">Vytvo&#345;ilo <a href="https://webzitra.cz" target="_blank" rel="noopener noreferrer">WebZ&iacute;tra</a></p></div>
+        </div>
+    </footer>
+
+    <!-- COOKIE BANNER -->
+    <div class="cookie-banner" id="cookieBanner" hidden>
+        <div class="cookie-inner">
+            <p>Tento web pou&#382;&iacute;v&aacute; cookies pro zlep&scaron;en&iacute; va&scaron;eho z&aacute;&#382;itku.</p>
+            <div class="cookie-actions">
+                <button class="btn btn-sm btn-primary" id="cookieAccept">P&#345;ijmout</button>
+                <button class="btn btn-sm btn-outline" id="cookieDecline">Odm&iacute;tnout</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/main.js?v=5"></script>
+    <script>
+    (function() {
+        'use strict';
+
+        var dashLoading = document.getElementById('dashLoading');
+        var dashMain = document.getElementById('dashMain');
+        var userNameEl = document.getElementById('userName');
+        var profileName = document.getElementById('profileName');
+        var profileEmail = document.getElementById('profileEmail');
+        var profileDate = document.getElementById('profileDate');
+        var ordersEmpty = document.getElementById('ordersEmpty');
+        var ordersTableWrap = document.getElementById('ordersTableWrap');
+        var ordersTableBody = document.getElementById('ordersTableBody');
+        var logoutBtn = document.getElementById('logoutBtn');
+
+        var sessionToken = localStorage.getItem('silponix_session');
+
+        // If no session, redirect to login
+        if (!sessionToken) {
+            window.location.href = '/klient/index.html';
+            return;
+        }
+
+        // Verify session
+        fetch('/api/auth', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ sessionToken: sessionToken })
+        })
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+            if (!data.valid || !data.client) {
+                localStorage.removeItem('silponix_session');
+                localStorage.removeItem('silponix_client');
+                window.location.href = '/klient/index.html';
+                return;
+            }
+
+            var client = data.client;
+
+            // Store client data
+            localStorage.setItem('silponix_client', JSON.stringify(client));
+
+            // Show dashboard
+            dashLoading.hidden = true;
+            dashMain.hidden = false;
+
+            // Populate profile
+            userNameEl.textContent = client.name || 'z\u00e1kazn\u00edku';
+            profileName.textContent = client.name || '\u2014';
+            profileEmail.textContent = client.email || '\u2014';
+            profileDate.textContent = client.createdAt ? formatDate(client.createdAt) : '\u2014';
+
+            // Fetch orders
+            fetchOrders();
+        })
+        .catch(function() {
+            localStorage.removeItem('silponix_session');
+            localStorage.removeItem('silponix_client');
+            window.location.href = '/klient/index.html';
+        });
+
+        function fetchOrders() {
+            fetch('/api/orders', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ sessionToken: sessionToken })
+            })
+            .then(function(res) { return res.json(); })
+            .then(function(data) {
+                if (data.orders && data.orders.length > 0) {
+                    ordersEmpty.hidden = true;
+                    ordersTableWrap.hidden = false;
+                    renderOrders(data.orders);
+                }
+            })
+            .catch(function() {
+                // Orders API not available, keep empty state
+            });
+        }
+
+        function renderOrders(orders) {
+            ordersTableBody.innerHTML = '';
+            orders.forEach(function(order) {
+                var tr = document.createElement('tr');
+                tr.innerHTML =
+                    '<td><strong>#' + escapeHtml(order.id || '') + '</strong></td>' +
+                    '<td>' + (order.date ? formatDate(order.date) : '\u2014') + '</td>' +
+                    '<td>' + escapeHtml(formatPrice(order.total)) + '</td>' +
+                    '<td>' + statusBadge(order.status) + '</td>';
+                ordersTableBody.appendChild(tr);
+            });
+        }
+
+        function statusBadge(status) {
+            var labels = {
+                'new': 'Nov\u00e1',
+                'processing': 'Zpracov\u00e1v\u00e1 se',
+                'shipped': 'Odesl\u00e1no',
+                'completed': 'Dokon\u010deno'
+            };
+            var cls = 'status-' + (status || 'new');
+            var label = labels[status] || status || 'Nov\u00e1';
+            return '<span class="status-badge ' + cls + '">' + escapeHtml(label) + '</span>';
+        }
+
+        function formatDate(dateStr) {
+            try {
+                var d = new Date(dateStr);
+                return d.toLocaleDateString('cs-CZ', { day: 'numeric', month: 'numeric', year: 'numeric' });
+            } catch (e) {
+                return dateStr;
+            }
+        }
+
+        function formatPrice(amount) {
+            if (typeof amount !== 'number') return '\u2014';
+            return amount.toLocaleString('cs-CZ') + ' K\u010d';
+        }
+
+        function escapeHtml(str) {
+            var div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        // ==================== NEWSLETTER ====================
+        var newsletterToggle = document.getElementById('newsletterToggle');
+        var newsletterLabel = document.getElementById('newsletterLabel');
+        var newsletterMsg = document.getElementById('newsletterMsg');
+
+        // Check subscription status
+        fetch('/api/auth', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ sessionToken: sessionToken, action: 'check-newsletter' })
+        })
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+            if (data.subscribed) {
+                newsletterToggle.classList.add('active');
+                newsletterLabel.textContent = 'Odebírám novinky';
+            } else {
+                newsletterLabel.textContent = 'Neodebírám novinky';
+            }
+        })
+        .catch(function() {});
+
+        if (newsletterToggle) {
+            newsletterToggle.addEventListener('click', function() {
+                var isActive = this.classList.contains('active');
+                var action = isActive ? 'unsubscribe' : 'subscribe';
+                var clientData = JSON.parse(localStorage.getItem('silponix_client') || '{}');
+                fetch('/api/newsletter', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: action, email: clientData.email })
+                })
+                .then(function(r) { return r.json(); })
+                .then(function(data) {
+                    if (data.ok) {
+                        if (isActive) {
+                            newsletterToggle.classList.remove('active');
+                            newsletterLabel.textContent = 'Neodebírám novinky';
+                            showMsg(newsletterMsg, 'Odhlášeno z newsletteru', 'dash-success');
+                        } else {
+                            newsletterToggle.classList.add('active');
+                            newsletterLabel.textContent = 'Odebírám novinky';
+                            showMsg(newsletterMsg, 'Přihlášeno k newsletteru', 'dash-success');
+                        }
+                    }
+                });
+            });
+        }
+
+        function showMsg(el, text, cls) {
+            if (!el) return;
+            el.textContent = text;
+            el.className = cls;
+            el.hidden = false;
+            setTimeout(function() { el.hidden = true; }, 3000);
+        }
+
+        // ==================== CHANGE PASSWORD ====================
+        var changePasswordForm = document.getElementById('changePasswordForm');
+        if (changePasswordForm) {
+            changePasswordForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                var cur = document.getElementById('currentPassword').value;
+                var newP = document.getElementById('newPassword').value;
+                var conf = document.getElementById('confirmPassword').value;
+                var msg = document.getElementById('passwordMsg');
+
+                if (newP !== conf) return showMsg(msg, 'Hesla se neshodují', 'dash-error');
+                if (newP.length < 6) return showMsg(msg, 'Heslo musí mít alespoň 6 znaků', 'dash-error');
+
+                fetch('/api/auth', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ sessionToken: sessionToken, action: 'change-password', currentPassword: cur, newPassword: newP })
+                })
+                .then(function(r) { return r.json(); })
+                .then(function(data) {
+                    if (data.ok) {
+                        showMsg(msg, 'Heslo úspěšně změněno', 'dash-success');
+                        changePasswordForm.reset();
+                    } else {
+                        showMsg(msg, data.error || 'Chyba při změně hesla', 'dash-error');
+                    }
+                })
+                .catch(function() { showMsg(msg, 'Chyba serveru', 'dash-error'); });
+            });
+        }
+
+        // ==================== CHANGE EMAIL ====================
+        var changeEmailForm = document.getElementById('changeEmailForm');
+        if (changeEmailForm) {
+            changeEmailForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                var pwd = document.getElementById('emailPassword').value;
+                var newE = document.getElementById('newEmail').value;
+                var msg = document.getElementById('emailMsg');
+
+                fetch('/api/auth', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ sessionToken: sessionToken, action: 'change-email', password: pwd, newEmail: newE })
+                })
+                .then(function(r) { return r.json(); })
+                .then(function(data) {
+                    if (data.ok) {
+                        showMsg(msg, 'E-mail úspěšně změněn na ' + newE, 'dash-success');
+                        profileEmail.textContent = newE;
+                        localStorage.setItem('silponix_client', JSON.stringify(data.client || data.user));
+                        changeEmailForm.reset();
+                    } else {
+                        showMsg(msg, data.error || 'Chyba při změně e-mailu', 'dash-error');
+                    }
+                })
+                .catch(function() { showMsg(msg, 'Chyba serveru', 'dash-error'); });
+            });
+        }
+
+        // ==================== DELETE ACCOUNT ====================
+        var deleteAccountForm = document.getElementById('deleteAccountForm');
+        if (deleteAccountForm) {
+            deleteAccountForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                var pwd = document.getElementById('deletePassword').value;
+                var msg = document.getElementById('deleteMsg');
+
+                if (!confirm('Opravdu chcete smazat svůj účet? Tato akce je nevratná.')) return;
+
+                fetch('/api/auth', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ sessionToken: sessionToken, action: 'delete-account', password: pwd })
+                })
+                .then(function(r) { return r.json(); })
+                .then(function(data) {
+                    if (data.ok && data.deleted) {
+                        localStorage.removeItem('silponix_session');
+                        localStorage.removeItem('silponix_client');
+                        window.location.href = '/klient/index.html';
+                    } else {
+                        showMsg(msg, data.error || 'Chyba při mazání účtu', 'dash-error');
+                    }
+                })
+                .catch(function() { showMsg(msg, 'Chyba serveru', 'dash-error'); });
+            });
+        }
+
+        // Logout
+        logoutBtn.addEventListener('click', function() {
+            localStorage.removeItem('silponix_session');
+            localStorage.removeItem('silponix_client');
+            window.location.href = '/klient/index.html';
+        });
+    })();
+    </script>
+    <script src="/js/track.js?v=5" defer></script>
+</body>
+</html>

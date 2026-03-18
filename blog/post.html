@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="cs" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Článek — Silponix</title>
+    <meta name="description" content="">
+    <link rel="icon" href="/img/favicon-32.png" type="image/png">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+    <meta name="theme-color" content="#bd141b">
+    <link rel="stylesheet" href="/css/style.css?v=5">
+    <script>(function(){var t=localStorage.getItem('theme');if(t){document.documentElement.setAttribute('data-theme',t)}else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches){document.documentElement.setAttribute('data-theme','light')}})();</script>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Hlavní navigace">
+        <div class="container navbar-inner">
+            <a href="/" class="navbar-logo logo-only" aria-label="Silponix — domů">
+                <img src="/img/logo.png" alt="Silponix" width="80" height="80" class="logo-img logo-dark">
+                <img src="/img/logo-white.png" alt="" width="80" height="80" class="logo-img logo-light" aria-hidden="true">
+                <span class="logo-text">Silponix</span>
+            </a>
+            <div class="navbar-menu" id="navbarMenu" role="menubar">
+                <a href="/" class="navbar-link" role="menuitem">Domů</a>
+                <a href="/shop.html" class="navbar-link" role="menuitem">Shop</a>
+                <a href="/sluzby.html" class="navbar-link" role="menuitem">Služby</a>
+                <a href="/blog.html" class="navbar-link active" role="menuitem">Blog</a>
+                <a href="/galerie.html" class="navbar-link" role="menuitem">Galerie</a>
+                <a href="/o-nas.html" class="navbar-link" role="menuitem">O&nbsp;nás</a>
+                <a href="/kontakt.html" class="navbar-link" role="menuitem">Kontakt</a>
+            </div>
+            <div class="navbar-actions">
+                <div class="lang-switcher" id="langSwitcher">
+                    <button class="lang-switcher-toggle" id="langToggle" aria-label="Jazyk" aria-expanded="false">
+                        <img src="/img/flags/cs.svg" alt="CZ" width="22" height="16" id="langToggleFlag">
+                    </button>
+                    <div class="lang-dropdown" role="menu">
+                        <button class="lang-btn active" data-lang="cs" role="menuitem" aria-label="Česky">
+                            <img src="/img/flags/cs.svg" alt="" width="20" height="15">Čeština
+                        </button>
+                        <button class="lang-btn" data-lang="en" role="menuitem" aria-label="English">
+                            <img src="/img/flags/en.svg" alt="" width="20" height="15">English
+                        </button>
+                    </div>
+                </div>
+                <button class="theme-toggle" id="themeToggle" aria-label="Přepnout téma">
+                    <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+                <a href="/klient/" class="navbar-user" aria-label="Můj účet">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </a>
+                <a href="/kosik.html" class="navbar-cart" id="navbarCart" aria-label="Košík">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                    <span class="cart-count" id="cartCount" hidden>0</span>
+                </a>
+                <a href="/shop.html" class="btn btn-primary btn-sm navbar-cta">Shop</a>
+                <button class="navbar-hamburger" id="navbarHamburger" aria-label="Menu" aria-expanded="false" aria-controls="navbarMenu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO (dynamic) -->
+    <section class="page-hero" id="article-main">
+        <div class="page-hero-bg" id="postHeroBg" style="background-image: url('/img/hero-1.jpg')"></div>
+        <div class="page-hero-overlay"></div>
+        <div class="container page-hero-content">
+            <span class="page-hero-badge" id="postCategory">Blog</span>
+            <h1 class="page-hero-title" id="postTitle">Načítám...</h1>
+        </div>
+    </section>
+
+    <!-- ARTICLE CONTENT -->
+    <article class="blog-post">
+        <div class="container">
+            <div class="blog-post-meta">
+                <span class="blog-post-date" id="postDate"></span>
+                <span class="blog-post-category" id="postCategoryMeta"></span>
+            </div>
+            <h1 class="blog-post-title" id="postTitleMain"></h1>
+            <div class="blog-post-content" id="postContent">
+                <p>Načítám obsah článku...</p>
+            </div>
+            <div class="blog-post-nav">
+                <a href="/blog.html">← Zpět na blog</a>
+            </div>
+        </div>
+    </article>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <a href="/" class="footer-logo"><img src="/img/logo-white.png" alt="Silponix" width="180" height="46"></a>
+                <p>Specialista na závodní díly Honda a motorsport. Výroba, tuning, servis.</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                    <a href="#" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Shop</h4>
+                <a href="/shop.html">Všechny produkty</a>
+                <a href="/shop.html?cat=ecu">ECU Hondata</a>
+                <a href="/shop.html?cat=silentbloky">Silentbloky</a>
+                <a href="/shop.html?cat=motor">Motor &amp; Převodovky</a>
+                <a href="/shop.html?cat=podvozek">Podvozek &amp; Brzdy</a>
+            </div>
+            <div class="footer-col">
+                <h4>Firma</h4>
+                <a href="/sluzby.html">Služby</a>
+                <a href="/o-nas.html">O nás</a>
+                <a href="/kontakt.html">Kontakt</a>
+                <a href="/blog.html">Blog</a>
+            </div>
+            <div class="footer-col">
+                <h4>Informace</h4>
+                <a href="/obchodni-podminky.html">Obchodní podmínky</a>
+                <a href="/ochrana-udaju.html">Ochrana údajů</a>
+                <a href="/reklamacni-rad.html">Reklamační řád</a>
+                <a href="/doprava-platby.html">Doprava a platby</a>
+            </div>
+            <div class="footer-col">
+                <h4>Kontakt</h4>
+                <p>K. H. Máchy 34<br>765 02 Otrokovice</p>
+                <p><a href="tel:+420777123456">+420 777 123 456</a></p>
+                <p><a href="mailto:info@silponix.cz">info@silponix.cz</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">&copy; 2026 Silponix. Všechna práva vyhrazena.</div>
+        </div>
+    </footer>
+
+    <script src="/js/main.js?v=5"></script>
+    <script src="/js/track.js?v=5" defer></script>
+    <script>
+    (function() {
+        'use strict';
+        var params = new URLSearchParams(window.location.search);
+        var slug = params.get('slug');
+        if (!slug) {
+            document.getElementById('postContent').innerHTML = '<p>Článek nebyl nalezen.</p>';
+            return;
+        }
+
+        fetch('/api/posts', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ action: 'get', slug: slug })
+        })
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+            if (!data.post) {
+                document.getElementById('postContent').innerHTML = '<p>Článek nebyl nalezen.</p>';
+                document.getElementById('postTitle').textContent = '404';
+                return;
+            }
+            var p = data.post;
+            document.title = p.title + ' | Silponix Blog';
+            document.getElementById('postTitle').textContent = p.title;
+            document.getElementById('postTitleMain').textContent = p.title;
+            document.getElementById('postDate').textContent = p.date || '';
+            document.getElementById('postCategoryMeta').textContent = p.category || '';
+            document.getElementById('postCategory').textContent = p.category || 'Blog';
+            document.getElementById('postContent').innerHTML = p.content || '<p>Žádný obsah.</p>';
+
+            if (p.coverImage) {
+                document.getElementById('postHeroBg').style.backgroundImage = 'url(' + p.coverImage + ')';
+            }
+
+            // Inject SEO if available
+            if (p.seo) {
+                if (p.seo.metaDescription) {
+                    var desc = document.querySelector('meta[name="description"]');
+                    if (desc) desc.content = p.seo.metaDescription;
+                }
+                if (p.seo.schemaOrg) {
+                    var s = document.createElement('script');
+                    s.type = 'application/ld+json';
+                    s.textContent = JSON.stringify(p.seo.schemaOrg);
+                    document.head.appendChild(s);
+                }
+                if (p.seo.faqSchema && p.seo.faqSchema.length) {
+                    var faq = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: p.seo.faqSchema.map(function(f) { return { '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } }; }) };
+                    var fs = document.createElement('script');
+                    fs.type = 'application/ld+json';
+                    fs.textContent = JSON.stringify(faq);
+                    document.head.appendChild(fs);
+                }
+            }
+        })
+        .catch(function() {
+            document.getElementById('postContent').innerHTML = '<p>Nepodařilo se načíst článek.</p>';
+        });
+    })();
+    </script>
+</body>
+</html>
