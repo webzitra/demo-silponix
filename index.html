@@ -151,15 +151,15 @@
                         <p class="hero-subtitle" data-i18n="hero.slide1.subtitle">Nejv&#283;t&scaron;&iacute; v&yacute;b&#283;r ECU Hondata, polyuret&aacute;nov&yacute;ch silentblok&#367; a origin&aacute;ln&iacute;ch motorsport d&iacute;l&#367; v &#268;R.</p>
                         <div class="hero-stats">
                             <div class="hero-stat">
-                                <span class="hero-stat-number" data-count="500" data-suffix="+">500+</span>
+                                <span class="hero-stat-number" data-count="500" data-suffix="+" data-stat-key="race_parts">500+</span>
                                 <span class="hero-stat-label" data-i18n="hero.slide1.stat1_label">z&aacute;vodn&iacute;ch d&iacute;l&#367;</span>
                             </div>
                             <div class="hero-stat">
-                                <span class="hero-stat-number" data-count="15" data-suffix="+">15+</span>
+                                <span class="hero-stat-number" data-count="15" data-suffix="+" data-stat-key="experience">15+</span>
                                 <span class="hero-stat-label" data-i18n="hero.slide1.stat2_label">let zku&scaron;enost&iacute;</span>
                             </div>
                             <div class="hero-stat">
-                                <span class="hero-stat-number" data-count="200" data-suffix="+">200+</span>
+                                <span class="hero-stat-number" data-count="200" data-suffix="+" data-stat-key="customers">200+</span>
                                 <span class="hero-stat-label" data-i18n="hero.slide1.stat3_label">z&aacute;kazn&iacute;k&#367;</span>
                             </div>
                         </div>
@@ -809,6 +809,53 @@
         window.addEventListener('langchange', function(e) {
             render(e.detail && e.detail.lang || 'cs');
         });
+    })();
+    </script>
+    <script>
+    // ==================== QUANTUM DATA HYDRATION ====================
+    (function () {
+        'use strict';
+        fetch('/.netlify/functions/quantum-data?type=all')
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+                // Hydrate stats
+                if (data.stats) {
+                    data.stats.forEach(function (stat) {
+                        var el = document.querySelector('[data-stat-key="' + stat.key + '"]');
+                        if (el) {
+                            el.setAttribute('data-count', stat.value);
+                            el.setAttribute('data-suffix', stat.suffix || '');
+                        }
+                    });
+                }
+                // Hydrate testimonials
+                if (data.testimonials && data.testimonials.length) {
+                    var grid = document.querySelector('#reference .testimonials-grid');
+                    if (!grid) return;
+                    grid.innerHTML = '';
+                    data.testimonials.forEach(function (t) {
+                        var stars = '';
+                        for (var i = 0; i < (t.rating || 5); i++) stars += '\u2605';
+                        var card = document.createElement('div');
+                        card.className = 'testimonial-card';
+                        card.innerHTML =
+                            '<div class="testimonial-stars"><span>' + stars + '</span></div>' +
+                            '<p class="testimonial-text">\u201E' + escapeHTML(t.text) + '\u201C</p>' +
+                            '<div class="testimonial-author">' +
+                                '<strong class="testimonial-name">' + escapeHTML(t.name) + '</strong>' +
+                                (t.company ? '<span class="testimonial-company">' + escapeHTML(t.company) + '</span>' : '') +
+                            '</div>';
+                        grid.appendChild(card);
+                    });
+                }
+            })
+            .catch(function () { /* silent fail — static content already visible */ });
+
+        function escapeHTML(str) {
+            var d = document.createElement('div');
+            d.appendChild(document.createTextNode(str || ''));
+            return d.innerHTML;
+        }
     })();
     </script>
 </body>
