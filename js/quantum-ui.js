@@ -71,17 +71,4 @@
         });
     }
 
-    // ---- 3. Glassmorphism inner-glow on scroll (intensify on hero visibility) ----
-    var heroSection = document.getElementById('hlavni');
-    if (heroSection) {
-        var heroObserver = new IntersectionObserver(function (entries) {
-            var ratio = entries[0].intersectionRatio;
-            document.querySelectorAll('.service-card, .blog-card, .process-step').forEach(function (card) {
-                var glow = 'inset 0 0 0 1px rgba(255,255,255,' + (0.06 + ratio * 0.08) + ')';
-                card.style.boxShadow = glow;
-            });
-        }, { threshold: Array.from({ length: 11 }, function (_, i) { return i / 10; }) });
-        heroObserver.observe(heroSection);
-    }
-
 })();
