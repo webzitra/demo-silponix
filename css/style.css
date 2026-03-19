@@ -616,17 +616,33 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     grid-column: span 2;
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: 1.5rem;
-    align-items: center;
+    grid-template-rows: auto auto;
+    gap: 0 1.5rem;
+    align-items: start;
 }
 
 .bento-grid .bento-featured .service-card-icon {
     width: 72px; height: 72px;
+    grid-column: 1;
+    grid-row: 1 / 3;
+    align-self: center;
+    margin-bottom: 0;
     flex-shrink: 0;
 }
 
 .bento-grid .bento-featured .service-card-title {
+    grid-column: 2;
+    grid-row: 1;
     font-size: clamp(1.25rem, 2vw, 1.625rem);
+    align-self: end;
+    margin-bottom: 0.5rem;
+}
+
+.bento-grid .bento-featured .service-card-desc {
+    grid-column: 2;
+    grid-row: 2;
+    margin: 0;
+    align-self: start;
 }
 
 /* Depth layering for bento */
