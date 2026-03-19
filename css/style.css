@@ -599,6 +599,47 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
 
 /* ==================== SERVICES GRID ==================== */
 .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 1rem; }
+
+/* ==================== BENTO GRID ==================== */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    align-items: start;
+}
+
+.bento-grid .bento-featured {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.bento-grid .bento-featured .service-card-icon {
+    width: 72px; height: 72px;
+    flex-shrink: 0;
+}
+
+.bento-grid .bento-featured .service-card-title {
+    font-size: clamp(1.25rem, 2vw, 1.625rem);
+}
+
+/* Depth layering for bento */
+/* NOTE: .service-card already has position: relative in base rule — z-index works */
+.bento-grid .service-card:nth-child(1) { z-index: 3; }
+.bento-grid .service-card:nth-child(3) { z-index: 2; transform: translateY(8px); }
+.bento-grid .service-card:nth-child(6) { z-index: 2; transform: translateY(-8px); }
+
+@media (max-width: 900px) {
+    .bento-grid { grid-template-columns: repeat(2, 1fr); }
+    .bento-grid .bento-featured { grid-column: span 2; }
+}
+@media (max-width: 600px) {
+    .bento-grid { grid-template-columns: 1fr; }
+    .bento-grid .bento-featured { grid-column: span 1; grid-template-columns: 1fr; }
+}
+
 .service-card {
     background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-lg);
     padding: 2rem; position: relative; overflow: hidden; transition: all var(--transition-base);

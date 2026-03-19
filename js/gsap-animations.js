@@ -4,7 +4,9 @@
 
     if (typeof gsap === 'undefined') return;
     gsap.registerPlugin(ScrollTrigger);
-    if (typeof SplitText !== 'undefined') gsap.registerPlugin(SplitText);
+    if (typeof SplitText  !== 'undefined') gsap.registerPlugin(SplitText);
+    if (typeof Flip       !== 'undefined') gsap.registerPlugin(Flip);
+    if (typeof Observer   !== 'undefined') gsap.registerPlugin(Observer);
 
     var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reducedMotion) return;
@@ -150,5 +152,22 @@
     window.addEventListener('resize', function () {
         ScrollTrigger.refresh();
     }, { passive: true });
+
+    // --- 10. Observer — scroll velocity tilt on cards ---
+    if (typeof Observer !== 'undefined') {
+        Observer.create({
+            target: window,
+            type: 'wheel,touch,scroll',
+            onChangeY: function (self) {
+                var vel = Math.min(Math.abs(self.velocityY) / 1500, 1);
+                gsap.to('.service-card, .blog-card', {
+                    skewY: self.velocityY > 0 ? vel * 1.5 : vel * -1.5,
+                    duration: 0.4,
+                    ease: 'power1.out',
+                    overwrite: 'auto'
+                });
+            }
+        });
+    }
 
 })();
