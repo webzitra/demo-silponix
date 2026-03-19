@@ -708,27 +708,6 @@
     }, 60);
 })();
 
-// ==================== MAGNETIC BUTTONS ====================
-(function () {
-    'use strict';
-    if (!window.matchMedia('(hover: hover)').matches) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    document.querySelectorAll('.btn-primary, .navbar-cta').forEach(function (btn) {
-        btn.addEventListener('mousemove', function (e) {
-            var rect   = btn.getBoundingClientRect();
-            var cx     = rect.left + rect.width  / 2;
-            var cy     = rect.top  + rect.height / 2;
-            var dx     = (e.clientX - cx) * 0.25;
-            var dy     = (e.clientY - cy) * 0.25;
-            btn.style.transform = 'translate(' + dx + 'px,' + dy + 'px) translateY(-2px)';
-        }, { passive: true });
-        btn.addEventListener('mouseleave', function () {
-            btn.style.transform = '';
-        });
-    });
-})();
-
 // ==================== CUSTOM CURSOR + SCROLL PROGRESS ====================
 (function () {
     'use strict';

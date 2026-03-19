@@ -2985,3 +2985,43 @@ body.cursor-clicking #cursor-ring { width: 28px; height: 28px; }
 .stat-number,
 [data-count],
 .tech-data { font-family: var(--font-mono); letter-spacing: -0.02em; }
+
+/* ==================== SHIMMER + QUANTUM UI ==================== */
+@keyframes shimmer {
+    0%   { transform: translateX(-120%) skewX(-15deg); }
+    100% { transform: translateX(220%)  skewX(-15deg); }
+}
+
+/* Shimmer on btn-primary */
+/* NOTE: .btn-primary must have position: relative for ::before to be scoped correctly */
+.btn-primary { overflow: hidden; position: relative; }
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 40%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+    transform: translateX(-120%) skewX(-15deg);
+    pointer-events: none;
+}
+.btn-primary:hover::before {
+    animation: shimmer 0.65s ease forwards;
+}
+
+/* Typing cursor blink on hero stats */
+.hero-stat-number.typing::after {
+    content: '|';
+    animation: blink 0.7s step-end infinite;
+    color: var(--primary);
+    margin-left: 1px;
+}
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* Enhanced magnetic — CSS custom property approach */
+.btn-primary, .navbar-cta {
+    --mx: 0px; --my: 0px;
+    transform: translate(var(--mx), var(--my));
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+                background 0.2s ease, box-shadow 0.25s ease;
+    will-change: transform;
+}
