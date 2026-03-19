@@ -139,9 +139,24 @@ button { cursor: pointer; }
     z-index: 2;
     pointer-events: none;
     background:
-        radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px),
-        linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0.30) 100%);
+        radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.10) 50%, rgba(0,0,0,0.35) 100%);
     background-size: 24px 24px, 100% 100%;
+}
+/* Hero bottom brand glow — Silponix red → orange */
+.hero::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(0deg,
+        rgba(189, 20, 27, 0.12) 0%,
+        rgba(245, 158, 11, 0.04) 50%,
+        transparent 100%);
+    pointer-events: none;
+    z-index: 2;
 }
 /* Hero Canvas Particles */
 .hero-canvas {
@@ -178,20 +193,10 @@ button { cursor: pointer; }
     position: absolute;
     inset: 0;
     background:
-        radial-gradient(ellipse at 15% 30%, rgba(var(--primary-rgb), 0.07) 0%, transparent 55%),
-        radial-gradient(ellipse at 85% 70%, rgba(var(--accent-rgb), 0.05) 0%, transparent 55%);
+        radial-gradient(ellipse at 15% 30%, rgba(var(--primary-rgb), 0.10) 0%, transparent 60%),
+        radial-gradient(ellipse at 85% 70%, rgba(var(--accent-rgb), 0.07) 0%, transparent 60%);
     pointer-events: none;
     z-index: 0;
-}
-.section-dark::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 0;
-    opacity: 1;
-    border-radius: inherit;
 }
 .section-dark > .container {
     position: relative;
@@ -2316,8 +2321,8 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     position: absolute;
     inset: 0;
     background:
-        radial-gradient(ellipse at 15% 30%, rgba(var(--primary-rgb), 0.07) 0%, transparent 55%),
-        radial-gradient(ellipse at 85% 70%, rgba(var(--accent-rgb), 0.05) 0%, transparent 55%);
+        radial-gradient(ellipse at 15% 30%, rgba(var(--primary-rgb), 0.10) 0%, transparent 60%),
+        radial-gradient(ellipse at 85% 70%, rgba(var(--accent-rgb), 0.07) 0%, transparent 60%);
     pointer-events: none;
     z-index: 0;
 }
@@ -2455,8 +2460,8 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
 /* Section dark ambient overlay — subtler in light mode */
 [data-theme="light"] .section-dark::after {
     background:
-        radial-gradient(ellipse at 15% 30%, rgba(var(--primary-rgb), 0.04) 0%, transparent 55%),
-        radial-gradient(ellipse at 85% 70%, rgba(var(--accent-rgb), 0.03) 0%, transparent 55%);
+        radial-gradient(ellipse at 15% 30%, rgba(var(--primary-rgb), 0.05) 0%, transparent 60%),
+        radial-gradient(ellipse at 85% 70%, rgba(var(--accent-rgb), 0.04) 0%, transparent 60%);
 }
 
 /* Process step number stays subtle */
