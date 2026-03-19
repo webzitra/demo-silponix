@@ -89,8 +89,9 @@ button { cursor: pointer; }
 
     --section-fade: 80px;
 
-    --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-heading: 'Satoshi', 'Space Grotesk', sans-serif;
+    --font-body:    'Inter', sans-serif;
+    --font-mono:    'JetBrains Mono', 'Geist Mono', monospace;
 }
 
 /* CSS @property — animated gradient borders */
@@ -325,10 +326,11 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     height: var(--navbar-height);
     display: flex;
     align-items: center;
-    background: rgba(10, 10, 10, 0.7);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    background: rgba(var(--bg-rgb, 10, 10, 10), 0.65);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: inset 0 -1px 0 rgba(255,255,255,0.06), 0 4px 32px rgba(0,0,0,0.3);
     transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 .navbar.scrolled {
@@ -337,8 +339,9 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
 }
 [data-theme="light"] .navbar {
-    background: rgba(255, 255, 255, 0.75);
+    background: rgba(255, 255, 255, 0.72);
     border-bottom-color: rgba(0, 0, 0, 0.08);
+    box-shadow: inset 0 -1px 0 rgba(0,0,0,0.06), 0 4px 24px rgba(0,0,0,0.08);
 }
 [data-theme="light"] .navbar.scrolled {
     background: rgba(255, 255, 255, 0.95);
@@ -531,6 +534,7 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     border-radius: var(--radius-lg);
     padding: 1rem 1.5rem;
     transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.10);
 }
 .hero-stat:hover {
     background: rgba(255, 255, 255, 0.08);
@@ -647,6 +651,7 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     backdrop-filter: blur(24px) saturate(150%);
     -webkit-backdrop-filter: blur(24px) saturate(150%);
     border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.10);
 }
 [data-theme="light"] .section-dark .service-card { background: rgba(255,255,255,0.6); border-color: var(--surface-border); }
 .service-card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.07); border-color: rgba(var(--primary-rgb), 0.3); }
@@ -1350,6 +1355,7 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     backdrop-filter: blur(20px) saturate(140%);
     -webkit-backdrop-filter: blur(20px) saturate(140%);
     border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.10);
 }
 [data-theme="light"] .section-dark .blog-card { background: rgba(255,255,255,0.6); border-color: var(--surface-border); }
 .blog-card:hover { transform: translateY(-4px); border-color: rgba(var(--primary-rgb), 0.3); }
@@ -1814,6 +1820,7 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     backdrop-filter: blur(28px) saturate(160%);
     -webkit-backdrop-filter: blur(28px) saturate(160%);
     border: 1px solid rgba(255, 255, 255, 0.07);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.10);
 }
 .process-step:hover {
     transform: translateY(-8px);
@@ -1902,6 +1909,7 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.10);
 }
 .testimonial-card:hover {
     transform: translateY(-5px);
@@ -2971,3 +2979,9 @@ body.cursor-clicking #cursor-ring { width: 28px; height: 28px; }
 
 @media (max-width: 768px) { .hero-scroll-indicator { display: none; } }
 @media (prefers-reduced-motion: reduce) { .hero-scroll-arrow { animation: none; } }
+
+/* Mono font for technical stat numbers */
+.hero-stat-number,
+.stat-number,
+[data-count],
+.tech-data { font-family: var(--font-mono); letter-spacing: -0.02em; }
