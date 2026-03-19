@@ -1,9 +1,7 @@
 // netlify/functions/quantum-data.js
-const { createClient } = require('@supabase/supabase-js');
+const { neon } = require('@neondatabase/serverless');
 
-const SUPABASE_URL     = process.env.SUPABASE_URL;
-const SUPABASE_KEY     = process.env.SUPABASE_SERVICE_ROLE_KEY;
-const CACHE_SECONDS    = 300; // 5 min cache
+const CACHE_SECONDS = 300; // 5 min cache
 
 exports.handler = async function (event) {
     const headers = {
@@ -12,33 +10,31 @@ exports.handler = async function (event) {
         'Access-Control-Allow-Origin': '*',
     };
 
-    if (!SUPABASE_URL || !SUPABASE_KEY) {
-        return { statusCode: 500, headers, body: JSON.stringify({ error: 'Supabase not configured' }) };
+    if (!process.env.DATABASE_URL) {
+        return { statusCode: 500, headers, body: JSON.stringify({ error: 'DATABASE_URL not configured' }) };
     }
 
-    const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
-    const type     = (event.queryStringParameters || {}).type || 'all';
+    const sql = neon(process.env.DATABASE_URL);
+    const type = (event.queryStringParameters || {}).type || 'all';
 
     try {
         const result = {};
 
         if (type === 'all' || type === 'testimonials') {
-            const { data, error } = await supabase
-                .from('testimonials')
-                .select('id, name, company, role, text, rating, avatar_url')
-                .eq('active', true)
-                .order('id');
-            if (error) throw error;
-            result.testimonials = data;
+            result.testimonials = await sql`
+                SELECT id, name, company, role, text, rating, avatar_url
+                FROM testimonials
+                WHERE active = true
+                ORDER BY id
+            `;
         }
 
         if (type === 'all' || type === 'stats') {
-            const { data, error } = await supabase
-                .from('site_stats')
-                .select('key, value, suffix, label_cs, label_en')
-                .order('id');
-            if (error) throw error;
-            result.stats = data;
+            result.stats = await sql`
+                SELECT key, value, suffix, label_cs, label_en
+                FROM site_stats
+                ORDER BY id
+            `;
         }
 
         return { statusCode: 200, headers, body: JSON.stringify(result) };

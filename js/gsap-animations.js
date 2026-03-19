@@ -34,22 +34,8 @@
         });
     }
 
-    // --- 3. Section title clip-path reveal on scroll ---
-    gsap.utils.toArray('.section-title').forEach(function (el) {
-        gsap.fromTo(el,
-            { clipPath: 'inset(0 100% 0 0)', opacity: 0 },
-            {
-                clipPath: 'inset(0 0% 0 0)', opacity: 1,
-                duration: 0.9,
-                ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: el,
-                    start: 'top 85%',
-                    once: true
-                }
-            }
-        );
-    });
+    // Section titles are inside [data-animate] containers — handled by IntersectionObserver in main.js.
+    // GSAP clip-path would conflict (sets opacity:0 while CSS already animates parent to opacity:1).
 
     // --- 4. Hero parallax ---
     gsap.utils.toArray('.hero-slide-bg').forEach(function (bg) {
@@ -65,77 +51,12 @@
         });
     });
 
-    // --- 5. Service cards GSAP stagger ---
-    var serviceCards = gsap.utils.toArray('.service-card, .service-detail');
-    if (serviceCards.length) {
-        gsap.from(serviceCards, {
-            y: 60, opacity: 0, scale: 0.96,
-            duration: 0.75,
-            stagger: { each: 0.1, from: 'start' },
-            ease: 'power3.out',
-            scrollTrigger: {
-                trigger: serviceCards[0].closest('section') || serviceCards[0],
-                start: 'top 80%',
-                once: true
-            }
-        });
-    }
+    // NOTE: service-card, process-step, testimonial-card are handled by [data-animate]
+    // IntersectionObserver in main.js — do NOT animate them here (double-animation conflict).
 
-    // --- 6. Process steps stagger ---
-    var processSteps = gsap.utils.toArray('.process-step');
-    if (processSteps.length) {
-        gsap.from(processSteps, {
-            y: 50, opacity: 0,
-            duration: 0.7,
-            stagger: { each: 0.12 },
-            ease: 'power2.out',
-            scrollTrigger: {
-                trigger: processSteps[0].closest('section') || processSteps[0],
-                start: 'top 78%',
-                once: true
-            }
-        });
-    }
+    // [data-count] count-up is handled by quantum-ui.js and main.js — skip here to avoid triple conflict.
 
-    // --- 7. Testimonial cards ---
-    var testimonials = gsap.utils.toArray('.testimonial-card');
-    if (testimonials.length) {
-        gsap.from(testimonials, {
-            y: 40, opacity: 0, rotateY: -5,
-            duration: 0.8,
-            stagger: 0.15,
-            ease: 'power2.out',
-            scrollTrigger: {
-                trigger: testimonials[0].closest('section') || testimonials[0],
-                start: 'top 82%',
-                once: true
-            }
-        });
-    }
-
-    // --- 8. Stats count-up enhanced ---
-    gsap.utils.toArray('[data-count]').forEach(function (el) {
-        var target = parseInt(el.getAttribute('data-count'), 10);
-        var suffix = el.getAttribute('data-suffix') || '';
-        var obj = { val: 0 };
-        ScrollTrigger.create({
-            trigger: el,
-            start: 'top 85%',
-            once: true,
-            onEnter: function () {
-                gsap.to(obj, {
-                    val: target,
-                    duration: 1.8,
-                    ease: 'power2.out',
-                    onUpdate: function () {
-                        el.textContent = Math.round(obj.val) + suffix;
-                    }
-                });
-            }
-        });
-    });
-
-    // --- 9. Footer reveal ---
+    // --- 6. Footer reveal ---
     gsap.from('footer .container > *', {
         y: 30, opacity: 0,
         stagger: 0.1,
@@ -153,21 +74,6 @@
         ScrollTrigger.refresh();
     }, { passive: true });
 
-    // --- 10. Observer — scroll velocity tilt on cards ---
-    if (typeof Observer !== 'undefined') {
-        Observer.create({
-            target: window,
-            type: 'wheel,touch,scroll',
-            onChangeY: function (self) {
-                var vel = Math.min(Math.abs(self.velocityY) / 1500, 1);
-                gsap.to('.service-card, .blog-card', {
-                    skewY: self.velocityY > 0 ? vel * 1.5 : vel * -1.5,
-                    duration: 0.4,
-                    ease: 'power1.out',
-                    overwrite: 'auto'
-                });
-            }
-        });
-    }
+    // Observer tilt removed — skewY on cards with existing CSS transforms causes jitter.
 
 })();
