@@ -1,16 +1,15 @@
 // netlify/functions/quantum-admin.js
-const { neon } = require('@neondatabase/serverless');
+import { neon } from '@netlify/neon';
 
 const ADMIN_TOKEN = process.env.ADMIN_SECRET || process.env.TOKEN_SECRET;
+const ALLOWED_TABLES = ['testimonials', 'site_stats'];
 
 function authenticate(event) {
     const auth = (event.headers['authorization'] || '').replace('Bearer ', '');
     return auth === ADMIN_TOKEN;
 }
 
-const ALLOWED_TABLES = ['testimonials', 'site_stats'];
-
-exports.handler = async function (event) {
+export const handler = async function (event) {
     const headers = {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
@@ -22,11 +21,7 @@ exports.handler = async function (event) {
     if (event.httpMethod !== 'POST')    return { statusCode: 405, headers, body: JSON.stringify({ error: 'Method Not Allowed' }) };
     if (!authenticate(event))           return { statusCode: 401, headers, body: JSON.stringify({ error: 'Unauthorized' }) };
 
-    if (!process.env.DATABASE_URL) {
-        return { statusCode: 500, headers, body: JSON.stringify({ error: 'DATABASE_URL not configured' }) };
-    }
-
-    const sql = neon(process.env.DATABASE_URL);
+    const sql = neon(); // uses NETLIFY_DATABASE_URL automatically
     const { action, table, id, data } = JSON.parse(event.body || '{}');
 
     if (!ALLOWED_TABLES.includes(table)) {

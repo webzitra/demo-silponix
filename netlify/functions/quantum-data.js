@@ -1,20 +1,16 @@
 // netlify/functions/quantum-data.js
-const { neon } = require('@neondatabase/serverless');
+import { neon } from '@netlify/neon';
 
-const CACHE_SECONDS = 300; // 5 min cache
+const CACHE_SECONDS = 300;
 
-exports.handler = async function (event) {
+export const handler = async function (event) {
     const headers = {
         'Content-Type': 'application/json',
         'Cache-Control': `public, max-age=${CACHE_SECONDS}, s-maxage=${CACHE_SECONDS}`,
         'Access-Control-Allow-Origin': '*',
     };
 
-    if (!process.env.DATABASE_URL) {
-        return { statusCode: 500, headers, body: JSON.stringify({ error: 'DATABASE_URL not configured' }) };
-    }
-
-    const sql = neon(process.env.DATABASE_URL);
+    const sql = neon(); // uses NETLIFY_DATABASE_URL automatically
     const type = (event.queryStringParameters || {}).type || 'all';
 
     try {
