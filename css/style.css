@@ -2481,6 +2481,20 @@ footer {
     opacity: 0.4;
 }
 
+/* ==================== METABALLS CANVAS ==================== */
+#metaballsCanvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 4;
+    opacity: 0.55;
+    mix-blend-mode: screen;
+}
+[data-theme="light"] #metaballsCanvas { opacity: 0.25; }
+@media (prefers-reduced-motion: reduce) { #metaballsCanvas { display: none; } }
+
 main, .hero, .section, footer { position: relative; z-index: 1; }
 
 /* ==================== HERO ENTRANCE ANIMATIONS ==================== */
