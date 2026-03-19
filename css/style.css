@@ -222,15 +222,21 @@ button { cursor: pointer; }
     position: absolute;
     bottom: -8px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(calc(-50%)) scaleX(0);
+    transform-origin: center;
     width: 48px;
     height: 3px;
     background: linear-gradient(90deg, var(--primary), #f87171, var(--accent));
     border-radius: 2px;
+    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.25s;
+}
+.section-header.animated .section-title::after,
+[data-animate].animated .section-title::after {
+    transform: translateX(calc(-50%)) scaleX(1);
 }
 .section-header .section-title::after {
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(calc(-50%)) scaleX(0);
 }
 .section-subtitle { font-size: 1.0625rem; color: var(--text-secondary); line-height: 1.7; }
 .section-dark .section-subtitle { color: #d1d5db; }
@@ -1447,9 +1453,9 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
 /* ==================== SCROLL ANIMATIONS ==================== */
 [data-animate] {
     opacity: 0;
-    transform: translateY(32px);
-    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    transform: translateY(20px);
+    transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
 [data-animate].animated {
     opacity: 1;

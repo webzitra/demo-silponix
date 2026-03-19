@@ -37,6 +37,20 @@
     // Section titles are inside [data-animate] containers — handled by IntersectionObserver in main.js.
     // GSAP clip-path would conflict (sets opacity:0 while CSS already animates parent to opacity:1).
 
+    // --- 3. Section badge stagger ---
+    gsap.utils.toArray('.section-badge').forEach(function (badge) {
+        gsap.from(badge, {
+            opacity: 0, y: -12, scale: 0.9,
+            duration: 0.5,
+            ease: 'back.out(1.5)',
+            scrollTrigger: {
+                trigger: badge,
+                start: 'top 88%',
+                once: true
+            }
+        });
+    });
+
     // --- 4. Hero parallax ---
     gsap.utils.toArray('.hero-slide-bg').forEach(function (bg) {
         gsap.to(bg, {
