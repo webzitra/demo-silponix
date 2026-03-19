@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="cs" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Admin — Silponix</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link href="https://fonts.bunny.net/css?family=satoshi:400,500,600,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --bg: #050505; --surface: rgba(255,255,255,0.04);
+            --border: rgba(255,255,255,0.08); --text: #e1e1e1; --muted: #888;
+            --primary: #bd141b; --accent: #f59e0b;
+            --font: 'Satoshi', sans-serif; --mono: 'JetBrains Mono', monospace;
+            --radius: 12px;
+        }
+        [data-theme="light"] { --bg: #f8f8f8; --surface: rgba(0,0,0,0.03); --border: rgba(0,0,0,0.1); --text: #111; --muted: #666; }
+        body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; }
+
+        .qa-header { padding: 1.5rem 2rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 1rem; }
+        .qa-header h1 { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.02em; }
+        .qa-header .badge { font-family: var(--mono); font-size: 0.7rem; padding: 0.2rem 0.6rem; border-radius: 999px; background: var(--primary); color: #fff; }
+
+        #loginScreen { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+        .login-card { width: 320px; padding: 2rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); }
+        .login-card h2 { font-size: 1.2rem; margin-bottom: 1.5rem; }
+
+        .qa-layout { display: grid; grid-template-columns: 200px 1fr; min-height: calc(100vh - 65px); }
+        .qa-sidebar { padding: 1.5rem 1rem; border-right: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.4rem; }
+        .qa-nav-btn { padding: 0.6rem 1rem; border-radius: 8px; border: none; cursor: pointer; text-align: left; font-family: var(--font); font-size: 0.875rem; background: transparent; color: var(--muted); transition: all 0.15s; }
+        .qa-nav-btn.active, .qa-nav-btn:hover { background: var(--surface); color: var(--text); }
+        .qa-content { padding: 2rem; }
+
+        .panel { display: none; }
+        .panel.active { display: block; }
+
+        table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+        th { text-align: left; padding: 0.6rem 1rem; border-bottom: 1px solid var(--border); font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+        td { padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); vertical-align: top; max-width: 300px; }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: var(--surface); }
+
+        .btn { padding: 0.5rem 1rem; border-radius: 8px; border: none; cursor: pointer; font-family: var(--font); font-size: 0.875rem; font-weight: 600; transition: all 0.15s; }
+        .btn-primary { background: var(--primary); color: #fff; }
+        .btn-danger  { background: rgba(239,68,68,0.15); color: #ef4444; }
+        .btn-sm { padding: 0.3rem 0.75rem; font-size: 0.8rem; }
+        .btn + .btn { margin-left: 0.5rem; }
+
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { display: block; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.4rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+        input, textarea, select { width: 100%; padding: 0.6rem 0.875rem; border-radius: 8px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font-family: var(--font); font-size: 0.9rem; }
+        textarea { resize: vertical; min-height: 80px; }
+        input:focus, textarea:focus { outline: 2px solid var(--primary); border-color: transparent; }
+
+        .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); display: none; align-items: center; justify-content: center; z-index: 1000; }
+        .modal-overlay.open { display: flex; }
+        .modal { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; width: min(90vw, 480px); }
+        .modal h3 { font-size: 1rem; font-weight: 700; margin-bottom: 1.25rem; }
+        .modal-footer { display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 1.25rem; }
+
+        .toast { position: fixed; bottom: 1.5rem; right: 1.5rem; padding: 0.75rem 1.25rem; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; font-size: 0.875rem; transform: translateY(80px); opacity: 0; transition: all 0.3s; z-index: 9999; }
+        .toast.show { transform: translateY(0); opacity: 1; }
+        .toast.success { border-color: #22c55e; color: #22c55e; }
+        .toast.error   { border-color: #ef4444; color: #ef4444; }
+    </style>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="loginScreen">
+        <div class="login-card">
+            <h2>Quantum Admin</h2>
+            <div class="form-group">
+                <label>Admin Token</label>
+                <input type="password" id="loginToken" placeholder="Zadej admin token…">
+            </div>
+            <button class="btn btn-primary" id="loginBtn" style="width:100%">Přihlásit se</button>
+        </div>
+    </div>
+
+    <!-- Dashboard (hidden until auth) -->
+    <div id="dashboard" hidden>
+        <header class="qa-header">
+            <h1>Quantum Admin</h1>
+            <span class="badge">SILPONIX</span>
+        </header>
+        <div class="qa-layout">
+            <nav class="qa-sidebar">
+                <button class="qa-nav-btn active" data-panel="panelTestimonials">Testimonials</button>
+                <button class="qa-nav-btn" data-panel="panelStats">Site Stats</button>
+            </nav>
+            <main class="qa-content">
+                <div id="panelTestimonials" class="panel active">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;">
+                        <h2 style="font-size:1.1rem;font-weight:700">Testimonials</h2>
+                        <button class="btn btn-primary btn-sm" id="addTestimonialBtn">+ Přidat</button>
+                    </div>
+                    <table id="testimonialsTable">
+                        <thead><tr><th>Jméno</th><th>Firma</th><th>Hodnocení</th><th>Aktivní</th><th></th></tr></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <div id="panelStats" class="panel">
+                    <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:1.25rem">Site Stats</h2>
+                    <table id="statsTable">
+                        <thead><tr><th>Klíč</th><th>Hodnota</th><th>Přípona</th><th>Popisek CZ</th><th></th></tr></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <h3 id="modalTitle">Editace</h3>
+            <div id="modalBody"></div>
+            <div class="modal-footer">
+                <button class="btn" id="modalCancel">Zrušit</button>
+                <button class="btn btn-primary" id="modalSave">Uložit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <script src="/admin/quantum.js?v=12"></script>
+</body>
+</html>
