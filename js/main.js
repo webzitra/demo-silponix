@@ -269,6 +269,24 @@
             if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
         }
 
+        function resetInterval() {
+            clearInterval(autoTimer);
+            autoTimer = setInterval(nextSlide, slideInterval);
+        }
+
+        var prevBtn = document.querySelector('.hero-prev');
+        var nextBtn = document.querySelector('.hero-next');
+        if (prevBtn) prevBtn.addEventListener('click', function () {
+            var prev = (currentSlide - 1 + slides.length) % slides.length;
+            goToSlide(prev);
+            resetInterval();
+        });
+        if (nextBtn) nextBtn.addEventListener('click', function () {
+            var next = (currentSlide + 1) % slides.length;
+            goToSlide(next);
+            resetInterval();
+        });
+
         startAutoplay();
 
         heroCarousel.addEventListener('mouseenter', stopAutoplay);
@@ -287,41 +305,7 @@
 
 })();
 
-// ==================== ANIMATED COUNTERS ====================
-(function() {
-    'use strict';
-    function animateCounter(el) {
-        var target = parseInt(el.getAttribute('data-count'), 10);
-        var suffix = el.getAttribute('data-suffix') || '';
-        if (!target || el.dataset.counted) return;
-        el.dataset.counted = '1';
-        var duration = 1800;
-        var start = null;
-        function easeOutQuart(t) { return 1 - Math.pow(1 - t, 4); }
-        function step(ts) {
-            if (!start) start = ts;
-            var progress = Math.min((ts - start) / duration, 1);
-            var current = Math.floor(easeOutQuart(progress) * target);
-            el.textContent = current + suffix;
-            if (progress < 1) requestAnimationFrame(step);
-            else el.textContent = target + suffix;
-        }
-        requestAnimationFrame(step);
-    }
-
-    var counterObserver = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-                animateCounter(entry.target);
-                counterObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
-
-    document.querySelectorAll('[data-count]').forEach(function(el) {
-        counterObserver.observe(el);
-    });
-})();
+// [data-count] counter handled by quantum-ui.js (typing cursor version)
 
 // ==================== HERO CANVAS PARTICLES ====================
 (function() {
@@ -508,5 +492,105 @@
                 });
             });
         });
+    }
+})();
+
+
+// ==================== CURSOR-TRACKING CARD GLOW ====================
+(function() {
+    'use strict';
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!window.matchMedia('(hover: hover)').matches) return;
+
+    var SELECTORS = ['.blog-card', '.service-card', '.testimonial-card', '.process-step', '.product-card'];
+
+    function attachGlow(card) {
+        card.addEventListener('mousemove', function(e) {
+            var rect = card.getBoundingClientRect();
+            var x = ((e.clientX - rect.left) / rect.width) * 100;
+            var y = ((e.clientY - rect.top) / rect.height) * 100;
+            card.style.setProperty('--mouse-x', x.toFixed(1) + '%');
+            card.style.setProperty('--mouse-y', y.toFixed(1) + '%');
+        }, { passive: true });
+    }
+
+    SELECTORS.forEach(function(sel) {
+        document.querySelectorAll(sel).forEach(attachGlow);
+    });
+})();
+
+// ==================== PAGE LOADER ====================
+(function () {
+    'use strict';
+    var loader  = document.getElementById('pageLoader');
+    var bar     = document.getElementById('loaderBar');
+    if (!loader || !bar) return;
+
+    var progress = 0;
+    var interval = setInterval(function () {
+        progress += Math.random() * 18 + 8;
+        if (progress >= 100) {
+            progress = 100;
+            clearInterval(interval);
+            bar.style.width = '100%';
+            setTimeout(function () {
+                loader.classList.add('hidden');
+                setTimeout(function () { loader.remove(); }, 800);
+            }, 200);
+        } else {
+            bar.style.width = progress + '%';
+        }
+    }, 60);
+})();
+
+// ==================== CUSTOM CURSOR + SCROLL PROGRESS ====================
+(function () {
+    'use strict';
+    // Touch device check
+    if (!window.matchMedia('(hover: hover)').matches) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var cursor = document.getElementById('cursor');
+    var dot    = document.getElementById('cursor-dot');
+    var ring   = document.getElementById('cursor-ring');
+    var progress = document.getElementById('scrollProgress');
+
+    if (!cursor || !dot || !ring) return;
+
+    var mouseX = 0, mouseY = 0;
+    var ringX  = 0, ringY  = 0;
+
+    // Smooth ring lag
+    function animateCursor() {
+        ringX += (mouseX - ringX) * 0.12;
+        ringY += (mouseY - ringY) * 0.12;
+        cursor.style.transform = 'translate(' + mouseX + 'px,' + mouseY + 'px)';
+        ring.style.transform   = 'translate(' + (ringX - mouseX) + 'px,' + (ringY - mouseY) + 'px) translate(-50%,-50%)';
+        dot.style.transform    = 'translate(-50%,-50%)';
+        requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    document.addEventListener('mousemove', function (e) {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    }, { passive: true });
+
+    // Hover state
+    var hoverEls = 'a, button, [role="button"], .btn, .card, .service-card, .blog-card, .process-step, .gallery-item, label, input, textarea, select';
+    document.querySelectorAll(hoverEls).forEach(function (el) {
+        el.addEventListener('mouseenter', function () { document.body.classList.add('cursor-hover'); });
+        el.addEventListener('mouseleave', function () { document.body.classList.remove('cursor-hover'); });
+    });
+    document.addEventListener('mousedown', function () { document.body.classList.add('cursor-clicking'); });
+    document.addEventListener('mouseup',   function () { document.body.classList.remove('cursor-clicking'); });
+
+    // Scroll progress
+    if (progress) {
+        window.addEventListener('scroll', function () {
+            var scrolled = document.documentElement.scrollTop || document.body.scrollTop;
+            var total    = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            progress.style.width = (total > 0 ? (scrolled / total) * 100 : 0).toFixed(2) + '%';
+        }, { passive: true });
     }
 })();

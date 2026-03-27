@@ -22,15 +22,19 @@
     <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
     <meta name="theme-color" content="#bd141b">
 
-    <!-- Google Fonts — Space Grotesk + Inter -->
+    <!-- Satoshi (Bunny Fonts CDN) -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=satoshi:400,500,600,700,900&display=swap" rel="stylesheet">
+
+    <!-- Google Fonts — Space Grotesk + Inter + JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"></noscript>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
 
     <!-- CSS -->
-    <link rel="preload" href="/css/style.css?v=7" as="style">
-    <link rel="stylesheet" href="/css/style.css?v=7">
+    <link rel="preload" href="/css/style.css?v=13" as="style">
+    <link rel="stylesheet" href="/css/style.css?v=13">
 
     <!-- Theme: follow system preference, respect manual override -->
     <script>
@@ -58,6 +62,24 @@
     </script>
 </head>
 <body>
+    <!-- Page loader -->
+    <div id="pageLoader" aria-hidden="true">
+        <div class="loader-inner">
+            <div class="loader-logo">
+                <img src="/img/logo.png" alt="Silponix" width="120" height="40" loading="eager">
+            </div>
+            <div class="loader-bar-wrap">
+                <div class="loader-bar" id="loaderBar"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Custom cursor -->
+    <div id="cursor" aria-hidden="true">
+        <div id="cursor-dot"></div>
+        <div id="cursor-ring"></div>
+    </div>
+    <!-- Scroll progress bar -->
+    <div id="scrollProgress" aria-hidden="true"></div>
     <a href="#hlavni" class="skip-nav">P&#345;esko&#269;it na obsah</a>
 
     <!-- ==================== NAVBAR ==================== -->
@@ -71,8 +93,7 @@
 
             <div class="navbar-menu" id="navbarMenu" role="menubar">
                 <a href="/" class="navbar-link active" role="menuitem" data-i18n="nav.home">Domů</a>
-                <a href="/shop.html" class="navbar-link" role="menuitem" data-i18n="nav.eshop">Shop</a>
-                <a href="/sluzby.html" class="navbar-link" role="menuitem" data-i18n="nav.services">Služby</a>
+<a href="/sluzby.html" class="navbar-link" role="menuitem" data-i18n="nav.services">Služby</a>
                 <a href="/blog.html" class="navbar-link" role="menuitem" data-i18n="nav.blog">Novinky</a>
                 <a href="/galerie.html" class="navbar-link" role="menuitem" data-i18n="nav.gallery">Galerie</a>
                 <a href="/o-nas.html" class="navbar-link" role="menuitem" data-i18n="nav.about">O&nbsp;n&aacute;s</a>
@@ -104,8 +125,7 @@
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
                     <span class="cart-count" id="cartCount" hidden>0</span>
                 </a>
-                <a href="/shop.html" class="btn btn-primary btn-sm navbar-cta">Shop</a>
-                <button class="navbar-hamburger" id="navbarHamburger" aria-label="Menu" aria-expanded="false" aria-controls="navbarMenu">
+<button class="navbar-hamburger" id="navbarHamburger" aria-label="Menu" aria-expanded="false" aria-controls="navbarMenu">
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
@@ -129,15 +149,15 @@
                         <p class="hero-subtitle" data-i18n="hero.slide1.subtitle">Nejv&#283;t&scaron;&iacute; v&yacute;b&#283;r ECU Hondata, polyuret&aacute;nov&yacute;ch silentblok&#367; a origin&aacute;ln&iacute;ch motorsport d&iacute;l&#367; v &#268;R.</p>
                         <div class="hero-stats">
                             <div class="hero-stat">
-                                <span class="hero-stat-number" data-count="500" data-suffix="+">500+</span>
+                                <span class="hero-stat-number" data-count="500" data-suffix="+" data-stat-key="race_parts">500+</span>
                                 <span class="hero-stat-label" data-i18n="hero.slide1.stat1_label">z&aacute;vodn&iacute;ch d&iacute;l&#367;</span>
                             </div>
                             <div class="hero-stat">
-                                <span class="hero-stat-number" data-count="15" data-suffix="+">15+</span>
+                                <span class="hero-stat-number" data-count="15" data-suffix="+" data-stat-key="experience">15+</span>
                                 <span class="hero-stat-label" data-i18n="hero.slide1.stat2_label">let zku&scaron;enost&iacute;</span>
                             </div>
                             <div class="hero-stat">
-                                <span class="hero-stat-number" data-count="200" data-suffix="+">200+</span>
+                                <span class="hero-stat-number" data-count="200" data-suffix="+" data-stat-key="customers">200+</span>
                                 <span class="hero-stat-label" data-i18n="hero.slide1.stat3_label">z&aacute;kazn&iacute;k&#367;</span>
                             </div>
                         </div>
@@ -180,7 +200,27 @@
                 </div>
             </div>
 
+                <button class="hero-prev" aria-label="Předchozí slide">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 18l-6-6 6-6"/>
+                    </svg>
+                </button>
+                <button class="hero-next" aria-label="Další slide">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                </button>
+
         </div>
+            <div class="hero-scroll-indicator" aria-hidden="true">
+                <span class="hero-scroll-text">Scrolluj níže</span>
+                <div class="hero-scroll-arrow">
+                    <svg width="20" height="30" viewBox="0 0 20 30" fill="none">
+                        <rect x="9" y="0" width="2" height="20" rx="1" fill="currentColor" opacity="0.4"/>
+                        <path d="M10 26 L4 20 M10 26 L16 20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+                    </svg>
+                </div>
+            </div>
     </section>
     <div class="hero-transition"></div>
 
@@ -188,7 +228,7 @@
     <section class="section section-dark" id="novinky">
         <div class="container">
             <div class="section-header" data-animate>
-                <span class="section-badge" data-i18n="blog.badge">Novinky</span>
+                <span class="section-badge" data-animate="blur-in" data-i18n="blog.badge">Novinky</span>
                 <h2 class="section-title" data-i18n="blog.title">Ze sv&#283;ta motorsportu</h2>
                 <p class="section-subtitle" data-i18n="blog.subtitle">Aktu&aacute;ln&iacute; zpr&aacute;vy z rally, z&aacute;vod&#367; a ze &#382;ivota Silponix.</p>
             </div>
@@ -240,7 +280,7 @@
     <section class="section" id="sponzori">
         <div class="container">
             <div class="section-header" data-animate>
-                <span class="section-badge" data-i18n="sponsors.badge">Partne&#345;i</span>
+                <span class="section-badge" data-animate="blur-in" data-i18n="sponsors.badge">Partne&#345;i</span>
                 <h2 class="section-title" data-i18n="sponsors.title">Na&scaron;i partne&#345;i &amp; sponzo&#345;i</h2>
                 <p class="section-subtitle" data-i18n="sponsors.subtitle">Spolupracujeme s p&#345;edn&iacute;mi firmami v motorsportu.</p>
             </div>
@@ -263,7 +303,7 @@
     <section class="section section-dark" id="reference">
         <div class="container">
             <div class="section-header" data-animate>
-                <span class="section-badge">Reference</span>
+                <span class="section-badge" data-animate="blur-in">Reference</span>
                 <h2 class="section-title">Co říkají zákazníci</h2>
                 <p class="section-subtitle">Zkušenosti závodníků a motorsport nadšenců, kteří nám důvěřují.</p>
             </div>
@@ -328,7 +368,7 @@
         <div class="container">
             <div class="about-grid">
                 <div class="about-content" data-animate>
-                    <span class="section-badge" data-i18n="about.badge">O n&aacute;s</span>
+                    <span class="section-badge" data-animate="blur-in" data-i18n="about.badge">O n&aacute;s</span>
                     <h2 class="section-title" data-i18n="about.title">Pro&#269; Silponix?</h2>
                     <p class="about-text" data-i18n="about.text">
                         Silponix je &#269;esk&aacute; firma se s&iacute;dlem v Otrokovic&iacute;ch, kter&aacute; se specializuje na motorsport a &uacute;pravy voz&#367; Honda. Na&scaron;e zku&scaron;enosti z rally, rallycrossu a okruhov&yacute;ch z&aacute;vod&#367; p&#345;en&aacute;&scaron;&iacute;me do ka&#382;d&eacute;ho produktu a slu&#382;by.
@@ -354,19 +394,19 @@
                     <a href="/kontakt.html" class="btn btn-primary btn-lg" data-i18n="about.cta_btn1">Kontaktujte n&aacute;s</a>
                 </div>
                 <div class="about-stats" data-animate data-delay="200">
-                    <div class="stat-card">
+                    <div class="stat-card" data-animate="zoom-in">
                         <span class="stat-number" data-count="15" data-suffix="+" data-i18n="about.stat1_number">15+</span>
                         <span class="stat-label" data-i18n="about.stat1_label">Let zku&scaron;enost&iacute;</span>
                     </div>
-                    <div class="stat-card">
+                    <div class="stat-card" data-animate="zoom-in" data-delay="100">
                         <span class="stat-number" data-count="50" data-suffix="+" data-i18n="about.stat2_number">50+</span>
                         <span class="stat-label" data-i18n="about.stat2_label">Postaven&yacute;ch voz&#367;</span>
                     </div>
-                    <div class="stat-card">
+                    <div class="stat-card" data-animate="zoom-in" data-delay="200">
                         <span class="stat-number" data-count="500" data-suffix="+" data-i18n="about.stat3_number">500+</span>
                         <span class="stat-label" data-i18n="about.stat3_label">Produkt&#367; v e-shopu</span>
                     </div>
-                    <div class="stat-card">
+                    <div class="stat-card" data-animate="zoom-in" data-delay="300">
                         <span class="stat-number" data-count="100" data-suffix="%" data-i18n="about.stat4_number">100%</span>
                         <span class="stat-label" data-i18n="about.stat4_label">Testov&aacute;no na trati</span>
                     </div>
@@ -420,23 +460,6 @@
         </div>
     </section>
 
-    <!-- ==================== CTA ==================== -->
-    <section class="section section-dark section-cta-block">
-        <div class="container">
-            <div class="cta-block" data-animate>
-                <h2 class="cta-title" data-i18n="cta.title">Pot&#345;ebujete poradit s v&yacute;b&#283;rem d&iacute;l&#367;?</h2>
-                <p class="cta-desc" data-i18n="cta.desc">Kontaktujte n&aacute;s a r&aacute;di v&aacute;m pomůžeme s v&yacute;b&#283;rem spr&aacute;vn&yacute;ch komponent&#367; pro v&aacute;&scaron; v&#367;z.</p>
-                <div class="cta-actions">
-                    <a href="tel:+420739657624" class="btn btn-primary btn-lg">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                        <span data-i18n="cta.phone">+420 739 657 624</span>
-                    </a>
-                    <a href="/kontakt.html" class="btn btn-outline btn-lg" data-i18n="cta.message">Napsat zpr&aacute;vu</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- ==================== SERVICES ==================== -->
     <section class="section section-dark" id="sluzby">
         <div class="container">
@@ -445,8 +468,8 @@
                 <h2 class="section-title" data-i18n="services.title">Co pro v&aacute;s d&#283;l&aacute;me</h2>
                 <p class="section-subtitle" data-i18n="services.subtitle">Kompletn&iacute; servis pro z&aacute;vodn&iacute; i civiln&iacute; vozy Honda.</p>
             </div>
-            <div class="services-grid">
-                <div class="service-card" data-animate>
+            <div class="bento-grid" id="servicesGrid">
+                <div class="service-card bento-featured" data-animate>
                     <div class="service-card-icon">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
                     </div>
@@ -467,7 +490,7 @@
                     <h3 class="service-card-title" data-i18n="services.s3_title">Stavba motor&#367; &amp; p&#345;evodovek</h3>
                     <p class="service-card-desc" data-i18n="services.s3_desc">Kompletn&iacute; stavba a repase motor&#367; a p&#345;evodovek Honda pro z&aacute;vodn&iacute; i civiln&iacute; pou&#382;it&iacute;.</p>
                 </div>
-                <div class="service-card" data-animate data-delay="300">
+                <div class="service-card bento-featured" data-animate data-delay="300">
                     <div class="service-card-icon">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
                     </div>
@@ -505,21 +528,6 @@
             </div>
             <div class="section-cta" data-animate>
                 <a href="/sluzby.html" class="btn btn-outline btn-lg" data-i18n="services.view_all">V&scaron;echny slu&#382;by &rarr;</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==================== PRODUCTS ==================== -->
-    <section class="section" id="produkty">
-        <div class="container">
-            <div class="section-header" data-animate>
-                <span class="section-badge" data-i18n="products.badge">E-shop</span>
-                <h2 class="section-title" data-i18n="products.title">Popul&aacute;rn&iacute; produkty</h2>
-                <p class="section-subtitle" data-i18n="products.subtitle">Nejprod&aacute;van&#283;j&scaron;&iacute; d&iacute;ly a p&#345;&iacute;slu&scaron;enstv&iacute; z na&scaron;eho e-shopu.</p>
-            </div>
-            <div class="products-grid" id="featuredProducts"></div>
-            <div class="section-cta" data-animate>
-                <a href="/shop.html" class="btn btn-primary btn-lg" data-i18n="products.view_all">Prohl&eacute;dnout e-shop &rarr;</a>
             </div>
         </div>
     </section>
@@ -703,9 +711,17 @@
         </div>
     </div>
 
-    <script src="/js/i18n.js?v=7"></script>
-    <script src="/js/main.js?v=7"></script>
-    <script src="/js/eshop.js?v=7"></script>
+    <script src="/js/i18n.js?v=8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Observer.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script src="/js/main.js?v=13"></script>
+    <script src="/js/gsap-animations.js?v=13"></script>
+    <script src="/js/eshop.js?v=8"></script>
+    <script src="/js/quantum-ui.js?v=13"></script>
     <script src="/js/track.js?v=6" defer></script>
     <script>
     /* Homepage mini-gallery: random images from full Galerie */
@@ -782,6 +798,53 @@
         window.addEventListener('langchange', function(e) {
             render(e.detail && e.detail.lang || 'cs');
         });
+    })();
+    </script>
+    <script>
+    // ==================== QUANTUM DATA HYDRATION ====================
+    (function () {
+        'use strict';
+        fetch('/.netlify/functions/quantum-data?type=all')
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+                // Hydrate stats
+                if (data.stats) {
+                    data.stats.forEach(function (stat) {
+                        var el = document.querySelector('[data-stat-key="' + stat.key + '"]');
+                        if (el) {
+                            el.setAttribute('data-count', stat.value);
+                            el.setAttribute('data-suffix', stat.suffix || '');
+                        }
+                    });
+                }
+                // Hydrate testimonials
+                if (data.testimonials && data.testimonials.length) {
+                    var grid = document.querySelector('#reference .testimonials-grid');
+                    if (!grid) return;
+                    grid.innerHTML = '';
+                    data.testimonials.forEach(function (t) {
+                        var stars = '';
+                        for (var i = 0; i < (t.rating || 5); i++) stars += '\u2605';
+                        var card = document.createElement('div');
+                        card.className = 'testimonial-card';
+                        card.innerHTML =
+                            '<div class="testimonial-stars"><span>' + stars + '</span></div>' +
+                            '<p class="testimonial-text">\u201E' + escapeHTML(t.text) + '\u201C</p>' +
+                            '<div class="testimonial-author">' +
+                                '<strong class="testimonial-name">' + escapeHTML(t.name) + '</strong>' +
+                                (t.company ? '<span class="testimonial-company">' + escapeHTML(t.company) + '</span>' : '') +
+                            '</div>';
+                        grid.appendChild(card);
+                    });
+                }
+            })
+            .catch(function () { /* silent fail — static content already visible */ });
+
+        function escapeHTML(str) {
+            var d = document.createElement('div');
+            d.appendChild(document.createTextNode(str || ''));
+            return d.innerHTML;
+        }
     })();
     </script>
 </body>
