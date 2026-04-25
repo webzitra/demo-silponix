@@ -170,6 +170,138 @@
 
     initAnimations();
 
+    /* ==================== LIT-CARD SCROLL-SPY ====================
+       For each [data-spy-group]:
+       1) On enter viewport: sequential reveal — each card lights up
+          for 900ms with 220ms stagger, then dims.
+       2) After reveal: keep one card lit at a time, switching every
+          ~3.6s to a random sibling ("scanning lights" idle).
+       3) :hover always overrides .lit (CSS hover wins visually).
+       4) Reduced motion: skip the cycle, just static.
+    ============================================================ */
+    /* ───── Inject .ig-scan element into every animated card ─────
+       Used by Silponix Ignition for telemetry scan-line sweep on hover/lit. */
+    (function injectScanOverlays() {
+        var selectors = [
+            '.process-step', '.service-card', '.testimonial-card',
+            '.blog-card', '.stat-card', '.product-card',
+            '.hero-stat-card', '.gallery-item', '.faq-item', '.lit-card'
+        ].join(',');
+        var nodes = document.querySelectorAll(selectors);
+        nodes.forEach(function (el) {
+            if (el.querySelector(':scope > .ig-scan')) return;
+            var scan = document.createElement('span');
+            scan.className = 'ig-scan';
+            scan.setAttribute('aria-hidden', 'true');
+            el.insertBefore(scan, el.firstChild);
+        });
+    })();
+
+    function initLitSpy() {
+        var groups = document.querySelectorAll('[data-spy-group]');
+        if (!groups.length) return;
+        var prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        groups.forEach(function (group) {
+            var cards = group.querySelectorAll('.lit-card');
+            if (!cards.length) return;
+
+            var revealed = false;
+            var idleTimer = null;
+            var currentLit = -1;
+
+            function clearAllLit() {
+                cards.forEach(function (c) { c.classList.remove('lit'); });
+            }
+
+            function pickNextLit() {
+                if (cards.length < 2) {
+                    currentLit = 0;
+                    return 0;
+                }
+                var next;
+                do { next = Math.floor(Math.random() * cards.length); }
+                while (next === currentLit);
+                currentLit = next;
+                return next;
+            }
+
+            function startIdleCycle() {
+                if (prefersReduce || idleTimer) return;
+                idleTimer = setInterval(function () {
+                    // Skip cycle if user is hovering any card (hover already overrides)
+                    var hovering = group.querySelector('.lit-card:hover');
+                    if (hovering) return;
+                    clearAllLit();
+                    var idx = pickNextLit();
+                    cards[idx].classList.add('lit');
+                }, 3600);
+            }
+
+            function stopIdleCycle() {
+                if (idleTimer) { clearInterval(idleTimer); idleTimer = null; }
+            }
+
+            function sequentialReveal() {
+                if (revealed) return;
+                revealed = true;
+                if (prefersReduce) {
+                    cards[0].classList.add('lit');
+                    currentLit = 0;
+                    return;
+                }
+                // Phase 1: cascade flash — each card lights for ~900ms then dims
+                cards.forEach(function (card, i) {
+                    setTimeout(function () { card.classList.add('lit'); }, i * 220);
+                    setTimeout(function () { card.classList.remove('lit'); }, i * 220 + 900);
+                });
+                // Phase 2: pick a single resting card + start idle cycle
+                setTimeout(function () {
+                    cards.forEach(function (c) { c.classList.remove('lit'); });
+                    var idx = pickNextLit();
+                    cards[idx].classList.add('lit');
+                    startIdleCycle();
+                }, cards.length * 220 + 1100);
+            }
+
+            // Visibility observer — reveal on enter, pause cycle on leave
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        sequentialReveal();
+                        if (revealed) startIdleCycle();
+                    } else {
+                        stopIdleCycle();
+                    }
+                });
+            }, { threshold: 0.25 });
+
+            io.observe(group);
+
+            // Pause idle cycle when tab is hidden (saves CPU)
+            document.addEventListener('visibilitychange', function () {
+                if (document.hidden) stopIdleCycle();
+                else if (revealed) startIdleCycle();
+            });
+        });
+
+        // Process-rail SVG fill animation when process grid enters viewport
+        var processGrid = document.querySelector('.process-grid');
+        if (processGrid) {
+            var railIo = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        processGrid.classList.add('rail-active');
+                        railIo.unobserve(processGrid);
+                    }
+                });
+            }, { threshold: 0.3 });
+            railIo.observe(processGrid);
+        }
+    }
+
+    initLitSpy();
+
     /* ==================== CONTACT FORM ==================== */
     if (contactForm) {
         contactForm.addEventListener('submit', function (e) {

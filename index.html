@@ -114,72 +114,51 @@
         </div>
     </nav>
 
-    <!-- ==================== HERO CAROUSEL ==================== -->
-    <section class="hero" id="hlavni">
+    <!-- ==================== HERO STATIC ==================== -->
+    <section class="hero-static" id="hlavni">
+        <div class="hero-static-bg" aria-hidden="true"></div>
+        <div class="hero-static-veil" aria-hidden="true"></div>
         <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
-        <div class="hero-carousel" id="heroCarousel">
-            <!-- Slide 1: Shop -->
-            <div class="hero-slide active" data-slide="0">
-                <div class="hero-slide-bg" style="background-image: url('/img/hero-bg.jpg')"></div>
-                <div class="hero-slide-gradient"></div>
-                <div class="container hero-slide-inner">
-                    <div class="hero-slide-content">
-                        <span class="hero-badge" data-i18n="hero.slide1.badge">Shop &bull; Z&aacute;vodn&iacute; d&iacute;ly</span>
-                        <h1 class="hero-title" data-i18n-html="hero.slide1.title">Z&aacute;vodn&iacute; d&iacute;ly<br><span class="text-gradient">Honda &amp; Motorsport</span></h1>
-                        <p class="hero-subtitle" data-i18n="hero.slide1.subtitle">Nejv&#283;t&scaron;&iacute; v&yacute;b&#283;r ECU Hondata, polyuret&aacute;nov&yacute;ch silentblok&#367; a origin&aacute;ln&iacute;ch motorsport d&iacute;l&#367; v &#268;R.</p>
-                        <div class="hero-stats">
-                            <div class="hero-stat">
-                                <span class="hero-stat-number" data-count="500" data-suffix="+">500+</span>
-                                <span class="hero-stat-label" data-i18n="hero.slide1.stat1_label">z&aacute;vodn&iacute;ch d&iacute;l&#367;</span>
-                            </div>
-                            <div class="hero-stat">
-                                <span class="hero-stat-number" data-count="15" data-suffix="+">15+</span>
-                                <span class="hero-stat-label" data-i18n="hero.slide1.stat2_label">let zku&scaron;enost&iacute;</span>
-                            </div>
-                            <div class="hero-stat">
-                                <span class="hero-stat-number" data-count="200" data-suffix="+">200+</span>
-                                <span class="hero-stat-label" data-i18n="hero.slide1.stat3_label">z&aacute;kazn&iacute;k&#367;</span>
-                            </div>
+        <div class="container">
+            <div class="hero-static-inner">
+                <span class="hero-static-badge">Motorsport &middot; 2026</span>
+                <h1 class="hero-static-title">Závodní díly<br><span class="text-gradient">Honda &amp; Motorsport</span></h1>
+                <p class="hero-static-subtitle">Specialista na stavbu závodních vozů Honda, ECU tuning Hondata, výrobu polyuretanových silentbloků a prodej motorsport dílů.</p>
+                <div class="hero-static-cta">
+                    <a href="/shop.html" class="btn btn-primary btn-lg">Prohlédnout shop</a>
+                    <a href="/sluzby.html" class="btn btn-outline btn-lg">Naše služby</a>
+                </div>
+                <div class="hero-static-stats" data-spy-group>
+                    <div class="hero-stat-card lit-card" data-animate>
+                        <div class="hero-stat-card-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
                         </div>
-                        <div class="hero-cta">
-                            <a href="/shop.html" class="btn btn-primary btn-lg" data-i18n="hero.slide1.cta">Prohl&eacute;dnout shop</a>
-                            <a href="/sluzby.html" class="btn btn-outline btn-lg" data-i18n="hero.slide1.cta2">Na&scaron;e slu&#382;by</a>
+                        <div class="hero-stat-card-value">15+ let</div>
+                        <div class="hero-stat-card-label">zkušeností v motorsportu</div>
+                    </div>
+                    <div class="hero-stat-card lit-card" data-animate data-delay="100">
+                        <div class="hero-stat-card-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
                         </div>
+                        <div class="hero-stat-card-value">500+ dílů</div>
+                        <div class="hero-stat-card-label">v e-shopu skladem</div>
+                    </div>
+                    <div class="hero-stat-card lit-card" data-animate data-delay="200">
+                        <div class="hero-stat-card-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+                        </div>
+                        <div class="hero-stat-card-value">Hondata</div>
+                        <div class="hero-stat-card-label">certifikovaný dealer</div>
+                    </div>
+                    <div class="hero-stat-card lit-card" data-animate data-delay="300">
+                        <div class="hero-stat-card-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                        </div>
+                        <div class="hero-stat-card-value">100%</div>
+                        <div class="hero-stat-card-label">testováno na trati</div>
                     </div>
                 </div>
             </div>
-
-            <!-- Slide 2: Slu&#382;by -->
-            <div class="hero-slide" data-slide="1">
-                <div class="hero-slide-bg" style="background-image: url('/img/hero-slide2.jpg')"></div>
-                <div class="hero-slide-gradient"></div>
-                <div class="container hero-slide-inner">
-                    <div class="hero-slide-content">
-                        <span class="hero-badge" data-i18n="hero.slide2.badge">Slu&#382;by &bull; Motorsport</span>
-                        <h1 class="hero-title" data-i18n-html="hero.slide2.title">Stavba voz&#367;<br><span class="text-gradient">Tuning &amp; Servis</span></h1>
-                        <p class="hero-subtitle" data-i18n="hero.slide2.subtitle">Stavba z&aacute;vodn&iacute;ch voz&#367;, ECU tuning Hondata, pron&aacute;jem z&aacute;vodn&iacute;ch aut a kompletn&iacute; servis Honda.</p>
-                        <div class="hero-stats">
-                            <div class="hero-stat">
-                                <span class="hero-stat-number" data-count="50" data-suffix="+">50+</span>
-                                <span class="hero-stat-label" data-i18n="hero.slide2.stat1_label">postaven&yacute;ch voz&#367;</span>
-                            </div>
-                            <div class="hero-stat">
-                                <span class="hero-stat-number" data-count="8" data-suffix="">8</span>
-                                <span class="hero-stat-label" data-i18n="hero.slide2.stat2_label">slu&#382;eb</span>
-                            </div>
-                            <div class="hero-stat">
-                                <span class="hero-stat-number" data-count="100" data-suffix="%">100%</span>
-                                <span class="hero-stat-label" data-i18n="hero.slide2.stat3_label">testov&aacute;no na trati</span>
-                            </div>
-                        </div>
-                        <div class="hero-cta">
-                            <a href="/sluzby.html" class="btn btn-primary btn-lg" data-i18n="hero.slide2.cta1">Na&scaron;e slu&#382;by</a>
-                            <a href="/kontakt.html" class="btn btn-outline btn-lg" data-i18n="hero.slide2.cta2">Kontaktujte n&aacute;s</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </section>
     <div class="hero-transition"></div>
@@ -188,13 +167,13 @@
     <section class="section section-dark" id="novinky">
         <div class="container">
             <div class="section-header" data-animate>
-                <span class="section-badge" data-i18n="blog.badge">Novinky</span>
+                <span class="section-badge section-badge-live" data-i18n="blog.badge">Novinky</span>
                 <h2 class="section-title" data-i18n="blog.title">Ze sv&#283;ta motorsportu</h2>
                 <p class="section-subtitle" data-i18n="blog.subtitle">Aktu&aacute;ln&iacute; zpr&aacute;vy z rally, z&aacute;vod&#367; a ze &#382;ivota Silponix.</p>
             </div>
-            <div class="blog-grid">
+            <div class="blog-grid" data-spy-group>
                 <a href="/blog/rally-magazin.html" class="blog-card-link" data-animate>
-                <article class="blog-card">
+                <article class="blog-card lit-card">
                     <div class="blog-card-img">
                         <img src="/img/blog/rally-magazin.jpg" alt="Rally Magaz&iacute;n" loading="lazy">
                     </div>
@@ -206,7 +185,7 @@
                 </article>
                 </a>
                 <a href="/blog/bratri-hemerkovi.html" class="blog-card-link" data-animate data-delay="100">
-                <article class="blog-card">
+                <article class="blog-card lit-card">
                     <div class="blog-card-img">
                         <img src="/img/blog/bratri-hemerkovi.jpg" alt="Brat&#345;i Hemerkovi" loading="lazy">
                     </div>
@@ -218,7 +197,7 @@
                 </article>
                 </a>
                 <a href="/blog/rally-vyskov.html" class="blog-card-link" data-animate data-delay="200">
-                <article class="blog-card">
+                <article class="blog-card lit-card">
                     <div class="blog-card-img">
                         <img src="/img/blog/rally-vyskov.jpg" alt="Rally Vy&scaron;kov" loading="lazy">
                     </div>
@@ -244,17 +223,17 @@
                 <h2 class="section-title" data-i18n="sponsors.title">Na&scaron;i partne&#345;i &amp; sponzo&#345;i</h2>
                 <p class="section-subtitle" data-i18n="sponsors.subtitle">Spolupracujeme s p&#345;edn&iacute;mi firmami v motorsportu.</p>
             </div>
-            <div class="sponsors-grid" data-animate>
-                <div class="sponsor-item"><img src="/img/sponsors/sforza.png" alt="SForza Racing" loading="lazy"></div>
-                <div class="sponsor-item"><img src="/img/sponsors/motoforza.png" alt="MotoForza" loading="lazy"></div>
-                <div class="sponsor-item"><img src="/img/sponsors/protlum.jpg" alt="Protlum" loading="lazy"></div>
-                <div class="sponsor-item"><img src="/img/sponsors/dvh.png" alt="DVH Racing" loading="lazy"></div>
-                <div class="sponsor-item"><img src="/img/sponsors/vrakoviste-honda.png" alt="Vrakov&iacute;&scaron;t&#283; Honda" loading="lazy"></div>
-                <div class="sponsor-item"><img src="/img/sponsors/krob.png" alt="KROB" loading="lazy"></div>
-                <div class="sponsor-item"><img src="/img/sponsors/odiss.jpg" alt="ODISS" loading="lazy"></div>
-                <div class="sponsor-item"><img src="/img/sponsors/zitec.png" alt="ZiTEC" loading="lazy"></div>
-                <div class="sponsor-item"><img src="/img/sponsors/baterie-novak.jpg" alt="AutoBaterie Nov&aacute;k" loading="lazy"></div>
-                <div class="sponsor-item"><img src="/img/sponsors/honda.png" alt="Honda" loading="lazy"></div>
+            <div class="sponsors-grid" data-animate data-spy-group>
+                <div class="sponsor-item lit-card"><img src="/img/sponsors/sforza.png" alt="SForza Racing" loading="lazy"></div>
+                <div class="sponsor-item lit-card"><img src="/img/sponsors/motoforza.png" alt="MotoForza" loading="lazy"></div>
+                <div class="sponsor-item lit-card"><img src="/img/sponsors/protlum.jpg" alt="Protlum" loading="lazy"></div>
+                <div class="sponsor-item lit-card"><img src="/img/sponsors/dvh.png" alt="DVH Racing" loading="lazy"></div>
+                <div class="sponsor-item lit-card"><img src="/img/sponsors/vrakoviste-honda.png" alt="Vrakov&iacute;&scaron;t&#283; Honda" loading="lazy"></div>
+                <div class="sponsor-item lit-card"><img src="/img/sponsors/krob.png" alt="KROB" loading="lazy"></div>
+                <div class="sponsor-item lit-card"><img src="/img/sponsors/odiss.jpg" alt="ODISS" loading="lazy"></div>
+                <div class="sponsor-item lit-card"><img src="/img/sponsors/zitec.png" alt="ZiTEC" loading="lazy"></div>
+                <div class="sponsor-item lit-card"><img src="/img/sponsors/baterie-novak.jpg" alt="AutoBaterie Nov&aacute;k" loading="lazy"></div>
+                <div class="sponsor-item lit-card"><img src="/img/sponsors/honda.png" alt="Honda" loading="lazy"></div>
             </div>
         </div>
     </section>
@@ -263,12 +242,12 @@
     <section class="section section-dark" id="reference">
         <div class="container">
             <div class="section-header" data-animate>
-                <span class="section-badge">Reference</span>
+                <span class="section-badge section-badge-live">Reference</span>
                 <h2 class="section-title">Co říkají zákazníci</h2>
                 <p class="section-subtitle">Zkušenosti závodníků a motorsport nadšenců, kteří nám důvěřují.</p>
             </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card" data-animate>
+            <div class="testimonials-grid" data-spy-group>
+                <div class="testimonial-card lit-card" data-step="&#8220;" data-animate>
                     <div class="testimonial-rating">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -285,7 +264,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card" data-animate data-delay="100">
+                <div class="testimonial-card lit-card" data-step="&#8220;" data-animate data-delay="100">
                     <div class="testimonial-rating">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -302,7 +281,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card" data-animate data-delay="200">
+                <div class="testimonial-card lit-card" data-step="&#8220;" data-animate data-delay="200">
                     <div class="testimonial-rating">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -353,20 +332,20 @@
                     </div>
                     <a href="/kontakt.html" class="btn btn-primary btn-lg" data-i18n="about.cta_btn1">Kontaktujte n&aacute;s</a>
                 </div>
-                <div class="about-stats" data-animate data-delay="200">
-                    <div class="stat-card">
+                <div class="about-stats" data-animate data-delay="200" data-spy-group>
+                    <div class="stat-card lit-card">
                         <span class="stat-number" data-count="15" data-suffix="+" data-i18n="about.stat1_number">15+</span>
                         <span class="stat-label" data-i18n="about.stat1_label">Let zku&scaron;enost&iacute;</span>
                     </div>
-                    <div class="stat-card">
+                    <div class="stat-card lit-card">
                         <span class="stat-number" data-count="50" data-suffix="+" data-i18n="about.stat2_number">50+</span>
                         <span class="stat-label" data-i18n="about.stat2_label">Postaven&yacute;ch voz&#367;</span>
                     </div>
-                    <div class="stat-card">
+                    <div class="stat-card lit-card">
                         <span class="stat-number" data-count="500" data-suffix="+" data-i18n="about.stat3_number">500+</span>
                         <span class="stat-label" data-i18n="about.stat3_label">Produkt&#367; v e-shopu</span>
                     </div>
-                    <div class="stat-card">
+                    <div class="stat-card lit-card">
                         <span class="stat-number" data-count="100" data-suffix="%" data-i18n="about.stat4_number">100%</span>
                         <span class="stat-label" data-i18n="about.stat4_label">Testov&aacute;no na trati</span>
                     </div>
@@ -379,37 +358,52 @@
     <section class="section section-dark" id="jak-to-funguje">
         <div class="container">
             <div class="section-header" data-animate>
-                <span class="section-badge">Postup</span>
+                <span class="section-badge section-badge-live">Postup</span>
                 <h2 class="section-title">Jak to funguje?</h2>
                 <p class="section-subtitle">Od poptávky po výsledek na trati — čtyři jednoduché kroky.</p>
             </div>
-            <div class="process-grid">
-                <div class="process-step" data-animate>
-                    <div class="process-step-number">01</div>
+            <div class="process-grid" data-spy-group>
+                <div class="process-rail" aria-hidden="true">
+                    <svg viewBox="0 0 1000 2" preserveAspectRatio="none">
+                        <defs>
+                            <linearGradient id="processRailGradient" x1="0" y1="0" x2="1" y2="0">
+                                <stop offset="0%" stop-color="rgb(189,20,27)" stop-opacity="0"/>
+                                <stop offset="20%" stop-color="rgb(189,20,27)" stop-opacity="1"/>
+                                <stop offset="50%" stop-color="rgb(245,158,11)" stop-opacity="1"/>
+                                <stop offset="80%" stop-color="rgb(189,20,27)" stop-opacity="1"/>
+                                <stop offset="100%" stop-color="rgb(189,20,27)" stop-opacity="0"/>
+                            </linearGradient>
+                        </defs>
+                        <line class="process-rail-track" x1="0" y1="1" x2="1000" y2="1"/>
+                        <line class="process-rail-glow" x1="0" y1="1" x2="1000" y2="1" pathLength="1000"/>
+                    </svg>
+                </div>
+                <div class="process-step lit-card" data-step="01" data-animate>
+                    <span class="lit-card-aura"></span>
                     <div class="process-step-icon">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                     </div>
                     <h3 class="process-step-title">Poptávka</h3>
                     <p class="process-step-desc">Kontaktujte nás telefonicky, e-mailem nebo přes kontaktní formulář. Popište váš projekt nebo potřebný díl.</p>
                 </div>
-                <div class="process-step" data-animate data-delay="100">
-                    <div class="process-step-number">02</div>
+                <div class="process-step lit-card" data-step="02" data-animate data-delay="100">
+                    <span class="lit-card-aura"></span>
                     <div class="process-step-icon">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
                     </div>
                     <h3 class="process-step-title">Konzultace</h3>
                     <p class="process-step-desc">Probereme vaše požadavky, navrhneme řešení a připravíme kalkulaci. Technická konzultace je zdarma.</p>
                 </div>
-                <div class="process-step" data-animate data-delay="200">
-                    <div class="process-step-number">03</div>
+                <div class="process-step lit-card" data-step="03" data-animate data-delay="200">
+                    <span class="lit-card-aura"></span>
                     <div class="process-step-icon">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
                     </div>
                     <h3 class="process-step-title">Realizace</h3>
                     <p class="process-step-desc">Tým Silponix realizuje objednávku — výroba, montáž nebo příprava dílu s maximální precizností.</p>
                 </div>
-                <div class="process-step" data-animate data-delay="300">
-                    <div class="process-step-number">04</div>
+                <div class="process-step lit-card" data-step="04" data-animate data-delay="300">
+                    <span class="lit-card-aura"></span>
                     <div class="process-step-icon">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
                     </div>
@@ -441,61 +435,61 @@
     <section class="section section-dark" id="sluzby">
         <div class="container">
             <div class="section-header" data-animate>
-                <span class="section-badge" data-i18n="services.badge">Slu&#382;by</span>
+                <span class="section-badge section-badge-live" data-i18n="services.badge">Slu&#382;by</span>
                 <h2 class="section-title" data-i18n="services.title">Co pro v&aacute;s d&#283;l&aacute;me</h2>
                 <p class="section-subtitle" data-i18n="services.subtitle">Kompletn&iacute; servis pro z&aacute;vodn&iacute; i civiln&iacute; vozy Honda.</p>
             </div>
-            <div class="services-grid">
-                <div class="service-card" data-animate>
+            <div class="services-grid" data-spy-group>
+                <div class="service-card lit-card" data-animate>
                     <div class="service-card-icon">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
                     </div>
                     <h3 class="service-card-title" data-i18n="services.s1_title">Stavba z&aacute;vodn&iacute;ch voz&#367;</h3>
                     <p class="service-card-desc" data-i18n="services.s1_desc">Kompletn&iacute; stavba a p&#345;&iacute;prava z&aacute;vodn&iacute;ch voz&#367; Honda pro rally, rallycross a okruhov&eacute; z&aacute;vody.</p>
                 </div>
-                <div class="service-card" data-animate data-delay="100">
+                <div class="service-card lit-card" data-animate data-delay="100">
                     <div class="service-card-icon">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
                     </div>
                     <h3 class="service-card-title" data-i18n="services.s2_title">Pron&aacute;jem z&aacute;vodn&iacute;ch voz&#367;</h3>
                     <p class="service-card-desc" data-i18n="services.s2_desc">Pron&aacute;jem z&aacute;vodn&iacute;ch voz&#367; Honda, z&aacute;&#382;itkov&eacute; j&iacute;zdy a coaching za&#269;&aacute;te&#269;n&iacute;k&#367;.</p>
                 </div>
-                <div class="service-card" data-animate data-delay="200">
+                <div class="service-card lit-card" data-animate data-delay="200">
                     <div class="service-card-icon">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
                     </div>
                     <h3 class="service-card-title" data-i18n="services.s3_title">Stavba motor&#367; &amp; p&#345;evodovek</h3>
                     <p class="service-card-desc" data-i18n="services.s3_desc">Kompletn&iacute; stavba a repase motor&#367; a p&#345;evodovek Honda pro z&aacute;vodn&iacute; i civiln&iacute; pou&#382;it&iacute;.</p>
                 </div>
-                <div class="service-card" data-animate data-delay="300">
+                <div class="service-card lit-card" data-animate data-delay="300">
                     <div class="service-card-icon">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
                     </div>
                     <h3 class="service-card-title" data-i18n="services.s4_title">Lad&#283;n&iacute; ECU Hondata</h3>
                     <p class="service-card-desc" data-i18n="services.s4_desc">Profesion&aacute;ln&iacute; lad&#283;n&iacute; a servisn&iacute; podpora ECU Hondata. K-Pro, S300, FlashPro.</p>
                 </div>
-                <div class="service-card" data-animate data-delay="400">
+                <div class="service-card lit-card" data-animate data-delay="400">
                     <div class="service-card-icon">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
                     </div>
                     <h3 class="service-card-title" data-i18n="services.s5_title">V&yacute;roba sou&#269;&aacute;stek</h3>
                     <p class="service-card-desc" data-i18n="services.s5_desc">V&yacute;roba z&aacute;vodn&iacute;ch i civiln&iacute;ch automobilov&yacute;ch sou&#269;&aacute;stek na m&iacute;ru.</p>
                 </div>
-                <div class="service-card" data-animate data-delay="500">
+                <div class="service-card lit-card" data-animate data-delay="500">
                     <div class="service-card-icon">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                     </div>
                     <h3 class="service-card-title" data-i18n="services.s6_title">PU silentbloky</h3>
                     <p class="service-card-desc" data-i18n="services.s6_desc">Vlastn&iacute; v&yacute;roba polyuret&aacute;nov&yacute;ch silentblok&#367; pro Honda a dal&scaron;&iacute; zna&#269;ky.</p>
                 </div>
-                <div class="service-card" data-animate data-delay="100">
+                <div class="service-card lit-card" data-animate data-delay="100">
                     <div class="service-card-icon">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
                     </div>
                     <h3 class="service-card-title" data-i18n="services.s7_title">Servis Honda &amp; pneuservis</h3>
                     <p class="service-card-desc" data-i18n="services.s7_desc">Kompletn&iacute; servis voz&#367; Honda. Pneuservis, diagnostika, pravideln&eacute; prohl&iacute;dky.</p>
                 </div>
-                <div class="service-card" data-animate data-delay="200">
+                <div class="service-card lit-card" data-animate data-delay="200">
                     <div class="service-card-icon">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 18v3c0 .6.4 1 1 1h4v-3h3v-3h2l1.4-1.4a6.5 6.5 0 1 0-4-4Z"/><circle cx="16.5" cy="7.5" r=".5"/></svg>
                     </div>
@@ -517,7 +511,7 @@
                 <h2 class="section-title" data-i18n="products.title">Popul&aacute;rn&iacute; produkty</h2>
                 <p class="section-subtitle" data-i18n="products.subtitle">Nejprod&aacute;van&#283;j&scaron;&iacute; d&iacute;ly a p&#345;&iacute;slu&scaron;enstv&iacute; z na&scaron;eho e-shopu.</p>
             </div>
-            <div class="products-grid" id="featuredProducts"></div>
+            <div class="products-grid" id="featuredProducts" data-spy-group></div>
             <div class="section-cta" data-animate>
                 <a href="/shop.html" class="btn btn-primary btn-lg" data-i18n="products.view_all">Prohl&eacute;dnout e-shop &rarr;</a>
             </div>
@@ -532,33 +526,33 @@
                 <h2 class="section-title" data-i18n="gallery.title">Z na&scaron;&iacute; d&iacute;lny</h2>
                 <p class="section-subtitle" data-i18n="gallery.subtitle">Nahl&eacute;dn&#283;te do na&scaron;&iacute; pr&aacute;ce &mdash; z&aacute;vodn&iacute; vozy, v&yacute;roba d&iacute;l&#367; a motorsport.</p>
             </div>
-            <div class="gallery-grid" id="homepageGallery">
+            <div class="gallery-grid" id="homepageGallery" data-spy-group>
                 <!-- Filled by JS with random images from Galerie — static fallback below -->
-                <div class="gallery-item gallery-item-large" data-animate>
+                <div class="gallery-item gallery-item-large lit-card" data-animate>
                     <img src="/img/gallery/race-car.jpg" alt="Z&aacute;vodn&iacute; Honda Civic" loading="lazy">
                     <div class="gallery-overlay"><span>Z&aacute;vodn&iacute; Honda Civic</span></div>
                 </div>
-                <div class="gallery-item" data-animate data-delay="100">
+                <div class="gallery-item lit-card" data-animate data-delay="100">
                     <img src="/img/gallery/pu-silentbloky.png" alt="PU silentbloky" loading="lazy">
                     <div class="gallery-overlay"><span>PU silentbloky</span></div>
                 </div>
-                <div class="gallery-item gallery-item-tall" data-animate data-delay="200">
+                <div class="gallery-item gallery-item-tall lit-card" data-animate data-delay="200">
                     <img src="/img/gallery/mezihorak.jpg" alt="Petr Mezihor&aacute;k" loading="lazy">
                     <div class="gallery-overlay"><span>Petr Mezihor&aacute;k</span></div>
                 </div>
-                <div class="gallery-item" data-animate data-delay="100">
+                <div class="gallery-item lit-card" data-animate data-delay="100">
                     <img src="/img/gallery/remenice.png" alt="CNC &#345;emenice B-series" loading="lazy">
                     <div class="gallery-overlay"><span>CNC &#345;emenice B-series</span></div>
                 </div>
-                <div class="gallery-item" data-animate data-delay="200">
+                <div class="gallery-item lit-card" data-animate data-delay="200">
                     <img src="/img/gallery/kovoobrabeeni.png" alt="V&yacute;roba komponent&#367;" loading="lazy">
                     <div class="gallery-overlay"><span>V&yacute;roba komponent&#367;</span></div>
                 </div>
-                <div class="gallery-item gallery-item-wide" data-animate data-delay="100">
+                <div class="gallery-item gallery-item-wide lit-card" data-animate data-delay="100">
                     <img src="/img/gallery/servis.png" alt="Servis &amp; &uacute;dr&#382;ba" loading="lazy">
                     <div class="gallery-overlay"><span>Servis &amp; &uacute;dr&#382;ba</span></div>
                 </div>
-                <div class="gallery-item" data-animate data-delay="200">
+                <div class="gallery-item lit-card" data-animate data-delay="200">
                     <img src="/img/blog/koprivnice.jpg" alt="Zlat&yacute; v&#283;nec Kop&#345;ivnice" loading="lazy">
                     <div class="gallery-overlay"><span>Zlat&yacute; v&#283;nec Kop&#345;ivnice</span></div>
                 </div>

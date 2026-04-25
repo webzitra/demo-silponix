@@ -257,7 +257,7 @@
         var quickViewLabel = lang === 'en' ? 'Quick view' : 'Rychlý náhled';
 
         var card = document.createElement('div');
-        card.className = 'product-card';
+        card.className = 'product-card lit-card';
         card.setAttribute('data-product-id', product.id);
         card.innerHTML =
             '<div class="product-card-img-wrap">' +
@@ -280,6 +280,11 @@
                     (inStock ? (lang === 'en' ? 'Add to cart' : 'Koupit') : stockLabel) +
                 '</button>' +
             '</div>';
+        // Inject Silponix Ignition scan-line overlay (used by hover sweep effect)
+        var scan = document.createElement('span');
+        scan.className = 'ig-scan';
+        scan.setAttribute('aria-hidden', 'true');
+        card.insertBefore(scan, card.firstChild);
         return card;
     }
 
