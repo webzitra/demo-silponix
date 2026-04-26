@@ -2283,17 +2283,26 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
         box-shadow var(--ig-duration-btn) var(--ig-ease) !important;
 }
 .auth-input::placeholder { color: rgba(255, 255, 255, 0.3); }
+
+/* HOVER — visible bg + border tint + subtle glow */
+.auth-input-wrap:hover .auth-input,
 .auth-input:hover {
-    border-color: rgba(var(--primary-rgb), 0.3) !important;
-    background: rgba(255, 255, 255, 0.06) !important;
+    border-color: rgba(var(--primary-rgb), 0.5) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 0 16px rgba(var(--primary-rgb), 0.14) !important;
 }
+.auth-input-wrap:hover .auth-input-icon {
+    color: rgba(var(--primary-rgb), 0.75);
+}
+
+/* FOCUS — stronger glow + full red */
 .auth-input:focus {
     outline: none !important;
-    border-color: rgba(var(--primary-rgb), 0.6) !important;
-    background: rgba(255, 255, 255, 0.07) !important;
+    border-color: rgba(var(--primary-rgb), 0.65) !important;
+    background: rgba(255, 255, 255, 0.09) !important;
     box-shadow:
-        0 0 0 3px rgba(var(--primary-rgb), 0.14),
-        0 0 22px rgba(var(--primary-rgb), 0.18) !important;
+        0 0 0 3px rgba(var(--primary-rgb), 0.16),
+        0 0 24px rgba(var(--primary-rgb), 0.22) !important;
 }
 .auth-input:focus ~ .auth-input-icon,
 .auth-input-wrap:focus-within .auth-input-icon {
