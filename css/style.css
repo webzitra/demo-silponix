@@ -2923,7 +2923,9 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
 }
 
 /* ────────────────────────────────────────────────────────────
-   BUTTONS — shimmer + lift + glow
+   BUTTONS — Ignition signature: top frame + shimmer + lift + glow
+   Stejné prvky jako karty: gradient frame nahoře (base subtle,
+   full on hover), shimmer pas přes celé tělo, lift -2px, glow.
    ──────────────────────────────────────────────────────────── */
 .btn,
 .btn-primary,
@@ -2941,34 +2943,67 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
         transform var(--ig-duration-btn) var(--ig-ease) !important;
 }
 
-/* Shimmer pass — left→right diagonal sweep */
+/* ░░ TOP GRADIENT FRAME — stejný jako karty (base subtle, full on hover) ░░ */
 .btn::before,
 .btn-primary::before,
 .btn-outline::before,
 .btn-danger::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -150%;
-    width: 80%;
-    height: 100%;
-    background: linear-gradient(120deg,
-        transparent 0%,
-        rgba(255, 255, 255, 0.25) 50%,
-        transparent 100%);
-    transform: skewX(-20deg);
-    pointer-events: none;
-    transition: left var(--ig-duration-shimmer) var(--ig-ease);
-    z-index: 2;
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: auto !important;
+    height: 2px !important;
+    background: var(--ig-gradient-90) !important;
+    transform: scaleX(0.5) !important;
+    transform-origin: 50% 50% !important;
+    opacity: 0.55 !important;
+    transition: transform 0.5s var(--ig-ease), opacity 0.4s var(--ig-ease) !important;
+    z-index: 4 !important;
+    pointer-events: none !important;
+    box-shadow: 0 0 8px rgba(var(--primary-rgb), 0.5) !important;
+    border-radius: 0 !important;
 }
 .btn:hover::before,
 .btn-primary:hover::before,
 .btn-outline:hover::before,
 .btn-danger:hover::before {
-    left: 150%;
+    transform: scaleX(1) !important;
+    opacity: 1 !important;
 }
 
-/* Lift + glow */
+/* ░░ SHIMMER — diagonal light pass (přebije původní btn-primary::after) ░░ */
+.btn::after,
+.btn-primary::after,
+.btn-outline::after,
+.btn-danger::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -150% !important;
+    width: 80% !important;
+    height: 100% !important;
+    background: linear-gradient(120deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.32) 50%,
+        transparent 100%) !important;
+    transform: skewX(-20deg) !important;
+    pointer-events: none !important;
+    opacity: 1 !important;
+    transition: left var(--ig-duration-shimmer) var(--ig-ease) !important;
+    z-index: 3 !important;
+    border-radius: 0 !important;
+    inset: auto !important;
+}
+.btn:hover::after,
+.btn-primary:hover::after,
+.btn-outline:hover::after,
+.btn-danger:hover::after {
+    left: 150% !important;
+}
+
+/* ░░ LIFT + GLOW ░░ */
 .btn:hover,
 .btn-primary:hover,
 .btn-danger:hover {
@@ -2985,13 +3020,22 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     color: var(--primary) !important;
     background: rgba(var(--primary-rgb), 0.08) !important;
     box-shadow:
-        0 0 22px rgba(var(--primary-rgb), 0.25),
-        inset 0 0 18px rgba(var(--primary-rgb), 0.06) !important;
+        0 0 22px rgba(var(--primary-rgb), 0.3),
+        inset 0 0 18px rgba(var(--primary-rgb), 0.08) !important;
 }
 .section-dark .btn-outline:hover {
     background: var(--primary) !important;
     color: #fff !important;
     box-shadow: var(--ig-glow-btn) !important;
+}
+
+/* Make sure button text/icons sit above shimmer + frame */
+.btn > *,
+.btn-primary > *,
+.btn-outline > *,
+.btn-danger > * {
+    position: relative;
+    z-index: 5;
 }
 
 /* ────────────────────────────────────────────────────────────
