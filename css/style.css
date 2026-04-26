@@ -2143,8 +2143,8 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     overflow: visible;
     text-align: center;
 }
-/* Override inherited overflow:hidden from .lit-card so aura can extend outside */
-.auth-card.lit-card { overflow: visible !important; }
+/* Auth card doesn't inherit lit-card hover (no lift/scan/border change on hover) */
+.auth-card { overflow: visible !important; }
 
 /* Top gradient frame — same as Ignition cards but full width */
 .auth-card::before {
@@ -2163,8 +2163,8 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     border-radius: 0 !important;
 }
 
-/* Aura — radial halo extending below */
-.auth-card.lit-card .lit-card-aura {
+/* Aura — static radial halo extending below (NOT a hover effect) */
+.auth-card .lit-card-aura {
     position: absolute;
     inset: -50% -20% -40% -20%;
     background: radial-gradient(ellipse at 50% 100%,
@@ -2175,6 +2175,16 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     filter: blur(28px);
     z-index: -1;
     pointer-events: none;
+}
+
+/* Force NO hover on auth-card itself — only on its inputs/buttons/links */
+.auth-card,
+.auth-card:hover {
+    transform: none !important;
+}
+.auth-card::before {
+    /* Top frame stays static at scaleX(0.85), no scale change on hover */
+    transform: scaleX(0.85) !important;
 }
 
 /* ─────  AUTH BADGE — F1 telemetry style ───── */
