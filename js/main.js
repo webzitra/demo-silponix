@@ -124,8 +124,8 @@
 
     /* ==================== NAV PILL — sliding active background ==================== */
     (function navPillActiveSlide() {
-        var pill = document.querySelector('.nav-pill .nav-active-pill');
-        var linksContainer = document.querySelector('.nav-pill .nav-links');
+        var pill = document.querySelector('.nav-bar .nav-active-pill');
+        var linksContainer = document.querySelector('.nav-bar .nav-links');
         if (!pill || !linksContainer) return;
 
         var links = linksContainer.querySelectorAll('.navbar-link');

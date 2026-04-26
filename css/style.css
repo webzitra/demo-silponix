@@ -3816,229 +3816,125 @@ a:hover { color: var(--primary-hover); }
 }
 
 /* ════════════════════════════════════════════════════════════
-   ░░░  N A V   P I L L  —  Floating Glass Cockpit  ░░░
-   Plovoucí pill s vnitřními kompartmenty (brand / links / actions),
-   vertikální dividery, sliding gradient active-pill, scroll-shrink,
-   gradient border ring na scroll. Inspirace: F1 cockpit telemetry.
+   ░░░  N A V - B A R  —  Full-width line bar  ░░░
+   Plný bar přes celou šířku, persistent gradient line vždy viditelná,
+   sliding gradient active-pill, kompaktní 5 linků centrovaných,
+   hamburger HIDDEN na desktopu, no Shop CTA duplikát.
    ════════════════════════════════════════════════════════════ */
 
 :root {
-    --np-margin: 14px;
-    --np-margin-scrolled: 10px;
-    --np-padding-x: 0.5rem;
-    --np-padding-y: 0.5rem;
-    --np-height: 60px;
-    --np-radius: 999px;
-    --np-bg: rgba(15, 15, 15, 0.55);
-    --np-bg-scrolled: rgba(12, 12, 12, 0.78);
-    --np-border: rgba(255, 255, 255, 0.08);
-    --np-divider: rgba(255, 255, 255, 0.06);
+    --nb-height: 64px;
+    --nb-bg: rgba(10, 10, 10, 0.65);
+    --nb-bg-scrolled: rgba(10, 10, 10, 0.88);
+    --nb-border: rgba(255, 255, 255, 0.04);
 }
 [data-theme="light"] {
-    --np-bg: rgba(255, 255, 255, 0.65);
-    --np-bg-scrolled: rgba(255, 255, 255, 0.85);
-    --np-border: rgba(0, 0, 0, 0.06);
-    --np-divider: rgba(0, 0, 0, 0.05);
+    --nb-bg: rgba(255, 255, 255, 0.7);
+    --nb-bg-scrolled: rgba(255, 255, 255, 0.92);
+    --nb-border: rgba(0, 0, 0, 0.04);
 }
 
-/* Outer wrapper — fixed top, centered, max-width */
-.nav-pill {
+/* ───── BAR — full width, glass, persistent gradient line ───── */
+.nav-bar {
     position: fixed !important;
-    top: var(--np-margin) !important;
-    left: var(--np-margin) !important;
-    right: var(--np-margin) !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
     z-index: var(--z-navbar) !important;
-    height: var(--np-height) !important;
-    max-width: calc(var(--container-max) + 60px) !important;
-    margin: 0 auto !important;
-    padding: 0 !important;
-    background: transparent !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
+    height: var(--nb-height) !important;
+    background: var(--nb-bg) !important;
+    backdrop-filter: blur(24px) saturate(200%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(200%) !important;
     border: none !important;
-    transition:
-        top var(--ig-duration-card) var(--ig-ease),
-        left var(--ig-duration-card) var(--ig-ease),
-        right var(--ig-duration-card) var(--ig-ease),
-        height var(--ig-duration-card) var(--ig-ease) !important;
-    pointer-events: none;
-}
-.nav-pill::after { display: none !important; }
-.nav-pill.scrolled {
-    top: var(--np-margin-scrolled) !important;
-    height: calc(var(--np-height) - 4px) !important;
-}
-
-/* Inner pill — the glass surface */
-.nav-pill .nav-pill-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: var(--np-padding-y) var(--np-padding-x);
-    background: var(--np-bg);
-    backdrop-filter: blur(28px) saturate(200%);
-    -webkit-backdrop-filter: blur(28px) saturate(200%);
-    border: 1px solid var(--np-border);
-    border-radius: var(--np-radius);
-    box-shadow:
-        0 12px 40px -12px rgba(0, 0, 0, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid var(--nb-border) !important;
+    padding: 0 !important;
     transition:
         background var(--ig-duration-card) var(--ig-ease),
         backdrop-filter var(--ig-duration-card) var(--ig-ease),
-        border-color var(--ig-duration-card) var(--ig-ease),
-        box-shadow var(--ig-duration-card) var(--ig-ease);
-    pointer-events: auto;
+        border-color var(--ig-duration-card) var(--ig-ease) !important;
     isolation: isolate;
 }
-.nav-pill.scrolled .nav-pill-inner {
-    background: var(--np-bg-scrolled);
-    backdrop-filter: blur(36px) saturate(220%);
-    -webkit-backdrop-filter: blur(36px) saturate(220%);
-    border-color: rgba(var(--primary-rgb), 0.18);
-    box-shadow:
-        0 16px 50px -10px rgba(0, 0, 0, 0.5),
-        0 0 0 1px rgba(var(--primary-rgb), 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+.nav-bar.scrolled {
+    background: var(--nb-bg-scrolled) !important;
+    backdrop-filter: blur(32px) saturate(220%) !important;
+    -webkit-backdrop-filter: blur(32px) saturate(220%) !important;
 }
 
-/* Conic gradient border ring — appears on scroll */
-.nav-pill .nav-pill-inner::before {
-    content: '';
-    position: absolute;
-    inset: -1px;
-    border-radius: inherit;
-    padding: 1px;
-    background: conic-gradient(
-        from var(--np-angle, 0deg),
-        transparent 0deg,
-        rgba(var(--primary-rgb), 0.6) 60deg,
-        rgba(var(--accent-rgb), 0.7) 90deg,
-        rgba(var(--primary-rgb), 0.6) 120deg,
-        transparent 180deg,
-        transparent 360deg
-    );
-    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-            mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-            mask-composite: exclude;
-    opacity: 0;
-    transition: opacity 0.6s var(--ig-ease);
-    pointer-events: none;
-    z-index: 0;
+/* Persistent gradient line — vždy viditelná na bottom */
+.nav-bar::after {
+    content: '' !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 80% !important;
+    max-width: 1100px !important;
+    height: 1px !important;
+    background: var(--ig-gradient-90) !important;
+    opacity: 0.5 !important;
+    box-shadow: 0 0 8px rgba(var(--primary-rgb), 0.4) !important;
+    pointer-events: none !important;
+    transition: opacity 0.5s var(--ig-ease), width 0.5s var(--ig-ease) !important;
+    display: block !important;
 }
-.nav-pill.scrolled .nav-pill-inner::before { opacity: 1; }
-@property --np-angle {
-    syntax: '<angle>';
-    initial-value: 0deg;
-    inherits: false;
-}
-.nav-pill.scrolled .nav-pill-inner {
-    animation: np-conic-rotate 12s linear infinite;
-}
-@keyframes np-conic-rotate {
-    to { --np-angle: 360deg; }
+.nav-bar.scrolled::after {
+    opacity: 1 !important;
+    width: 90% !important;
 }
 
-/* ─────  COMPARTMENTS  ───── */
-.nav-pill .nav-compartment {
+/* ───── INNER LAYOUT — centered content with max-width ───── */
+.nav-bar .nav-bar-inner {
+    height: 100%;
     display: flex;
     align-items: center;
-    gap: 0.25rem;
-    height: 100%;
-    position: relative;
-    z-index: 1;
-}
-.nav-pill .nav-brand {
-    padding-left: 0.85rem;
-    gap: 0.65rem;
-    flex-shrink: 0;
-}
-.nav-pill .nav-links {
-    flex: 1;
-    justify-content: center;
-    gap: 0.15rem;
-    position: relative;
-}
-.nav-pill .nav-actions {
-    padding-right: 0.4rem;
-    gap: 0.25rem;
-    flex-shrink: 0;
-}
-
-/* Vertical dividers between compartments */
-.nav-pill .nav-divider {
-    width: 1px;
-    height: 22px;
-    background: linear-gradient(180deg,
-        transparent 0%,
-        var(--np-divider) 30%,
-        var(--np-divider) 70%,
-        transparent 100%);
-    flex-shrink: 0;
+    justify-content: space-between;
+    gap: 2rem;
     position: relative;
     z-index: 1;
 }
 
-/* ─────  BRAND ─────  */
-.nav-pill .navbar-logo {
+/* ───── LOGO (left, compact) ───── */
+.nav-bar .navbar-logo {
     display: flex !important;
     align-items: center !important;
     height: 100% !important;
     padding: 0 !important;
     background: none !important;
     border: none !important;
+    flex-shrink: 0;
     transition: filter var(--ig-duration-btn) var(--ig-ease),
                 transform var(--ig-duration-btn) var(--ig-ease) !important;
 }
-.nav-pill .navbar-logo .logo-img {
+.nav-bar .navbar-logo .logo-img {
     width: auto !important;
-    height: 28px !important;
+    height: 32px !important;
     object-fit: contain;
-    transition: filter var(--ig-duration-btn) var(--ig-ease);
 }
-.nav-pill .navbar-logo:hover {
+.nav-bar .navbar-logo:hover {
     transform: translateY(-1px) !important;
     filter: drop-shadow(0 0 14px rgba(var(--primary-rgb), 0.55)) !important;
 }
+.nav-bar .logo-text { display: none !important; }
 
-/* Live status indicator — racing telemetry */
-.nav-pill .nav-status {
-    display: inline-flex;
+/* ───── MENU (CENTER — fills remaining space, content centered) ───── */
+.nav-bar .navbar-menu {
+    flex: 1;
+    display: flex;
     align-items: center;
-    gap: 0.4rem;
-    padding: 0.2rem 0.55rem;
-    background: rgba(var(--primary-rgb), 0.1);
-    border: 1px solid rgba(var(--primary-rgb), 0.25);
-    border-radius: 999px;
-    font-size: 0.62rem;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    color: var(--primary);
-    font-family: var(--font-heading);
-    user-select: none;
-}
-.nav-pill .nav-status-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--primary);
-    box-shadow: 0 0 0 0 rgba(var(--primary-rgb), 0.6);
-    animation: badge-live-pulse 2s ease-out infinite;
-    flex-shrink: 0;
+    justify-content: center;
+    gap: 0.2rem;
+    position: relative;
+    height: 100%;
 }
 
-/* ─────  NAV LINKS — sliding active pill ─────  */
-.nav-pill .navbar-link {
+/* ───── NAV LINKS ───── */
+.nav-bar .navbar-link {
     position: relative !important;
-    height: 36px !important;
+    height: 38px !important;
     display: inline-flex !important;
     align-items: center !important;
-    padding: 0 1rem !important;
-    font-size: 0.875rem !important;
+    padding: 0 1.1rem !important;
+    font-size: 0.9rem !important;
     font-weight: 500 !important;
     color: var(--text-secondary) !important;
     background: transparent !important;
@@ -4047,24 +3943,18 @@ a:hover { color: var(--primary-hover); }
     z-index: 2;
     transition: color var(--ig-duration-btn) var(--ig-ease) !important;
 }
-.nav-pill .navbar-link::before,
-.nav-pill .navbar-link::after { display: none !important; }
-.nav-pill .navbar-link:hover {
-    color: var(--text) !important;
-    background: rgba(var(--primary-rgb), 0.08) !important;
-}
-.nav-pill .navbar-link.active {
-    color: #fff !important;
-    background: transparent !important;
-}
+.nav-bar .navbar-link::before,
+.nav-bar .navbar-link::after { display: none !important; }
+.nav-bar .navbar-link:hover { color: var(--text) !important; }
+.nav-bar .navbar-link.active { color: #fff !important; }
 
-/* The sliding active-pill background — animovaný backdrop pro .active link */
-.nav-pill .nav-active-pill {
+/* ───── SLIDING ACTIVE PILL (gradient bg) ───── */
+.nav-bar .nav-active-pill {
     position: absolute;
     top: 50%;
     left: 0;
     transform: translate(0, -50%);
-    height: 36px;
+    height: 38px;
     width: 0;
     background: var(--ig-gradient);
     border-radius: 999px;
@@ -4079,15 +3969,23 @@ a:hover { color: var(--primary-hover); }
         width 0.45s cubic-bezier(0.4, 0, 0.2, 1),
         opacity 0.3s var(--ig-ease);
 }
-.nav-pill .nav-active-pill.ready { opacity: 1; }
+.nav-bar .nav-active-pill.ready { opacity: 1; }
 
-/* ─────  ICONS ─────  */
-.nav-pill .nav-icon-btn,
-.nav-pill .theme-toggle,
-.nav-pill .navbar-user,
-.nav-pill .navbar-cart,
-.nav-pill .lang-switcher-toggle,
-.nav-pill .navbar-hamburger {
+/* ───── ACTIONS (right, 4 ikony) ───── */
+.nav-bar .navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    flex-shrink: 0;
+}
+
+/* ───── ICON BUTTONS — uniform 36px circles ───── */
+.nav-bar .nav-icon-btn,
+.nav-bar .theme-toggle,
+.nav-bar .navbar-user,
+.nav-bar .navbar-cart,
+.nav-bar .lang-switcher-toggle,
+.nav-bar .navbar-hamburger {
     width: 36px !important;
     height: 36px !important;
     border-radius: 50% !important;
@@ -4106,12 +4004,12 @@ a:hover { color: var(--primary-hover); }
         box-shadow var(--ig-duration-btn) var(--ig-ease),
         transform var(--ig-duration-btn) var(--ig-ease) !important;
 }
-.nav-pill .nav-icon-btn:hover,
-.nav-pill .theme-toggle:hover,
-.nav-pill .navbar-user:hover,
-.nav-pill .navbar-cart:hover,
-.nav-pill .lang-switcher-toggle:hover,
-.nav-pill .navbar-hamburger:hover {
+.nav-bar .nav-icon-btn:hover,
+.nav-bar .theme-toggle:hover,
+.nav-bar .navbar-user:hover,
+.nav-bar .navbar-cart:hover,
+.nav-bar .lang-switcher-toggle:hover,
+.nav-bar .navbar-hamburger:hover {
     color: var(--primary) !important;
     background: rgba(var(--primary-rgb), 0.12) !important;
     border-color: rgba(var(--primary-rgb), 0.3) !important;
@@ -4119,16 +4017,16 @@ a:hover { color: var(--primary-hover); }
     transform: translateY(-1px) !important;
 }
 
-/* Lang flag inside icon button — proper sizing */
-.nav-pill .lang-switcher-toggle img {
+/* Lang flag */
+.nav-bar .lang-switcher-toggle img {
     width: 18px !important;
     height: 13px !important;
     border-radius: 2px !important;
     object-fit: cover !important;
 }
 
-/* Cart count — adapted for smaller circle */
-.nav-pill .navbar-cart .cart-count {
+/* Cart count badge */
+.nav-bar .navbar-cart .cart-count {
     position: absolute !important;
     top: -3px !important;
     right: -3px !important;
@@ -4136,7 +4034,7 @@ a:hover { color: var(--primary-hover); }
     height: 16px !important;
     padding: 0 4px !important;
     background: var(--ig-gradient) !important;
-    border: 2px solid var(--np-bg-scrolled) !important;
+    border: 2px solid var(--nb-bg-scrolled) !important;
     border-radius: 999px !important;
     font-size: 0.625rem !important;
     font-weight: 700 !important;
@@ -4145,78 +4043,38 @@ a:hover { color: var(--primary-hover); }
     animation: cart-badge-pulse 2.4s ease-in-out infinite;
 }
 
-/* ─────  CTA — Shop button inside navbar ─────  */
-.nav-pill .navbar-cta {
-    height: 36px !important;
-    padding: 0 1rem !important;
-    margin-left: 0.35rem !important;
-    font-size: 0.78rem !important;
-    font-weight: 600 !important;
-    letter-spacing: 0.04em !important;
-    text-transform: uppercase !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    gap: 0.5rem !important;
-    background: var(--ig-gradient) !important;
-    border-radius: 999px !important;
-    color: #fff !important;
-    border: none !important;
-    box-shadow:
-        0 0 18px rgba(var(--primary-rgb), 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.18) !important;
-}
-.nav-pill .navbar-cta svg { flex-shrink: 0; }
-.nav-pill .navbar-cta:hover {
-    box-shadow:
-        0 0 32px rgba(var(--primary-rgb), 0.6),
-        0 8px 24px -4px rgba(var(--accent-rgb), 0.35),
-        inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
-}
+/* Hamburger — HIDDEN on desktop */
+.nav-bar .navbar-hamburger { display: none !important; }
 
-/* ─────  HAMBURGER (mobile)  ─────  */
-.nav-pill .navbar-hamburger { display: none !important; }
+/* Lang dropdown */
+.nav-bar .lang-dropdown { top: calc(100% + 8px) !important; }
 
-/* Hide redundant logo-text */
-.nav-pill .logo-text { display: none !important; }
+/* Body padding compensation — fixed bar */
+body { padding-top: var(--nb-height); }
+.hero-static { padding-top: 4rem !important; }
 
-/* Lang dropdown — repositioned */
-.nav-pill .lang-dropdown {
-    top: calc(100% + 8px) !important;
-}
-
-/* Body padding compensation — nav-pill is fixed but page content needs space */
-body { padding-top: calc(var(--np-height) + var(--np-margin) * 2 + 4px); }
-
-/* Hero static padding adjustment — pill takes ~88px top */
-.hero-static {
-    padding-top: 4rem !important;
-}
-
-/* ─────  RESPONSIVE  ───── */
+/* ───── RESPONSIVE ───── */
 @media (max-width: 1100px) {
-    .nav-pill .navbar-link {
-        padding: 0 0.75rem !important;
+    .nav-bar .navbar-link {
+        padding: 0 0.85rem !important;
         font-size: 0.85rem !important;
     }
-    .nav-pill .nav-status { display: none; }
 }
 @media (max-width: 900px) {
-    .nav-pill { --np-margin: 10px; }
-    .nav-pill .nav-pill-inner { padding: 0.4rem 0.5rem; }
-    .nav-pill .nav-divider { display: none; }
-    .nav-pill .nav-links {
+    .nav-bar .nav-bar-inner { gap: 0.75rem; }
+    .nav-bar .navbar-menu {
         position: fixed;
-        top: calc(var(--np-height) + var(--np-margin) * 2);
-        left: var(--np-margin);
-        right: var(--np-margin);
+        top: var(--nb-height);
+        left: 0;
+        right: 0;
         flex-direction: column;
-        background: var(--np-bg-scrolled);
+        background: var(--nb-bg-scrolled);
         backdrop-filter: blur(36px) saturate(200%);
         -webkit-backdrop-filter: blur(36px) saturate(200%);
-        border: 1px solid var(--np-border);
-        border-radius: var(--radius-lg);
-        padding: 0.5rem;
-        box-shadow: 0 16px 50px -10px rgba(0, 0, 0, 0.5);
+        border-bottom: 1px solid var(--nb-border);
+        padding: 1rem;
+        gap: 0.25rem;
+        box-shadow: 0 16px 40px -8px rgba(0, 0, 0, 0.5);
         opacity: 0;
         visibility: hidden;
         transform: translateY(-8px);
@@ -4224,23 +4082,22 @@ body { padding-top: calc(var(--np-height) + var(--np-margin) * 2 + 4px); }
                     visibility 0.3s var(--ig-ease),
                     transform 0.3s var(--ig-ease);
     }
-    .nav-pill .nav-links.is-open {
+    .nav-bar .navbar-menu.is-open {
         opacity: 1;
         visibility: visible;
         transform: translateY(0);
     }
-    .nav-pill .navbar-link {
+    .nav-bar .navbar-link {
         width: 100% !important;
         height: 44px !important;
         justify-content: flex-start !important;
-        font-size: 0.95rem !important;
+        font-size: 1rem !important;
     }
-    .nav-pill .nav-active-pill { display: none !important; }
-    .nav-pill .navbar-hamburger { display: inline-flex !important; }
-    .nav-pill .navbar-cta span { display: none !important; }
-    .nav-pill .navbar-cta { width: 36px !important; padding: 0 !important; justify-content: center !important; }
+    .nav-bar .nav-active-pill { display: none !important; }
+    /* Show hamburger on mobile */
+    .nav-bar .navbar-hamburger { display: inline-flex !important; }
 }
 @media (max-width: 600px) {
-    .nav-pill .lang-switcher,
-    .nav-pill .navbar-user { display: none !important; }
+    .nav-bar .lang-switcher,
+    .nav-bar .navbar-user { display: none !important; }
 }
