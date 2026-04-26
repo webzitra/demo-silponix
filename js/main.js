@@ -1,6 +1,6 @@
 /* ============================================================
    SILPONIX DEMO — MAIN.JS
-   Core functionality: theme, menu, navbar, animations, forms, cookies
+   Core functionality: menu, navbar, animations, forms, cookies
    ============================================================ */
 
 (function () {
@@ -9,104 +9,11 @@
     /* ==================== DOM REFERENCES ==================== */
     var navbar = document.getElementById('navbar');
     var navbarMenu = document.getElementById('navbarMenu');
-    var navbarHamburger = document.getElementById('navbarHamburger');
-    var themeToggle = document.getElementById('themeToggle');
     var cookieBanner = document.getElementById('cookieBanner');
     var cookieAccept = document.getElementById('cookieAccept');
     var cookieDecline = document.getElementById('cookieDecline');
     var contactForm = document.querySelector('[data-wz-contact]');
     var navbarLinks = document.querySelectorAll('.navbar-link');
-
-    /* ==================== THEME TOGGLE ==================== */
-    function setTheme(theme) {
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
-    }
-
-    function toggleTheme() {
-        var current = document.documentElement.getAttribute('data-theme') || 'dark';
-        setTheme(current === 'dark' ? 'light' : 'dark');
-    }
-
-    if (themeToggle) {
-        themeToggle.addEventListener('click', toggleTheme);
-    }
-
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
-        if (!localStorage.getItem('theme')) {
-            setTheme(e.matches ? 'dark' : 'light');
-        }
-    });
-
-    /* ==================== MOBILE MENU ==================== */
-    function openMenu() {
-        if (!navbarMenu || !navbarHamburger) return;
-        navbarMenu.classList.add('open');
-        navbarHamburger.setAttribute('aria-expanded', 'true');
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closeMenu() {
-        if (!navbarMenu || !navbarHamburger) return;
-        navbarMenu.classList.remove('open');
-        navbarHamburger.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-    }
-
-    function toggleMenu() {
-        if (navbarMenu && navbarMenu.classList.contains('open')) {
-            closeMenu();
-        } else {
-            openMenu();
-        }
-    }
-
-    if (navbarHamburger) {
-        navbarHamburger.addEventListener('click', toggleMenu);
-    }
-
-    navbarLinks.forEach(function (link) {
-        link.addEventListener('click', function () {
-            if (navbarMenu && navbarMenu.classList.contains('open')) closeMenu();
-        });
-    });
-
-    document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && navbarMenu && navbarMenu.classList.contains('open')) {
-            closeMenu();
-            if (navbarHamburger) navbarHamburger.focus();
-        }
-    });
-
-    document.addEventListener('click', function (e) {
-        if (navbarMenu && navbarMenu.classList.contains('open') &&
-            !navbarMenu.contains(e.target) &&
-            navbarHamburger && !navbarHamburger.contains(e.target)) {
-            closeMenu();
-        }
-    });
-
-    // Close menu on resize past breakpoint
-    window.addEventListener('resize', function () {
-        if (window.innerWidth > 1024 && navbarMenu && navbarMenu.classList.contains('open')) {
-            closeMenu();
-        }
-    });
-
-    // Swipe to close
-    (function () {
-        var startX = 0, startY = 0, threshold = 80;
-        if (!navbarMenu) return;
-        navbarMenu.addEventListener('touchstart', function (e) {
-            startX = e.touches[0].clientX;
-            startY = e.touches[0].clientY;
-        }, { passive: true });
-        navbarMenu.addEventListener('touchend', function (e) {
-            var diffX = e.changedTouches[0].clientX - startX;
-            var diffY = Math.abs(e.changedTouches[0].clientY - startY);
-            if (diffX > threshold && diffY < 100) closeMenu();
-        }, { passive: true });
-    })();
 
     /* ==================== STICKY NAVBAR ==================== */
     function handleNavbarScroll() {
@@ -167,24 +74,6 @@
         });
     })();
 
-    /* ==================== NAV PILL — hamburger toggle (is-open) ==================== */
-    (function navPillHamburger() {
-        var ham = document.getElementById('navbarHamburger');
-        var menu = document.getElementById('navbarMenu');
-        if (!ham || !menu) return;
-        ham.addEventListener('click', function (e) {
-            e.preventDefault();
-            var isOpen = menu.classList.toggle('is-open');
-            ham.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-        });
-        // Close on link click
-        menu.querySelectorAll('.navbar-link').forEach(function (link) {
-            link.addEventListener('click', function () {
-                menu.classList.remove('is-open');
-                ham.setAttribute('aria-expanded', 'false');
-            });
-        });
-    })();
 
 
     /* ==================== SMOOTH SCROLL ==================== */
