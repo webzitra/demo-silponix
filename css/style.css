@@ -191,7 +191,7 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     background: var(--primary);
     color: #fff;
     border: none;
-    border-radius: 50px;
+    border-radius: 12px;
     font-size: 0.9rem;
     font-weight: 600;
     cursor: pointer;
@@ -227,7 +227,7 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     background: transparent;
     color: var(--text);
     border: 1px solid var(--surface-border);
-    border-radius: 50px;
+    border-radius: 12px;
     font-size: 0.9rem;
     font-weight: 500;
     cursor: pointer;
@@ -353,7 +353,7 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     background: var(--primary);
     color: #fff;
     border: none;
-    border-radius: 50px;
+    border-radius: 12px;
     font-size: 0.875rem;
     font-weight: 600;
     text-decoration: none;
@@ -1777,7 +1777,7 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
 }
 .gallery-filter-btn {
     padding: 0.45rem 1.1rem;
-    border-radius: 50px;
+    border-radius: 10px;
     border: 1px solid var(--surface-border);
     background: var(--surface);
     color: var(--text-secondary);
@@ -2047,7 +2047,7 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     background: var(--accent);
     color: #0a0a0a;
     border: none;
-    border-radius: 50px;
+    border-radius: 12px;
     font-size: 0.9rem;
     font-weight: 600;
     cursor: pointer;
@@ -3229,8 +3229,7 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
 
 /* ────────────────────────────────────────────────────────────
    BUTTONS — Ignition signature: top frame + shimmer + lift + glow
-   Stejné prvky jako karty: gradient frame nahoře (base subtle,
-   full on hover), shimmer pas přes celé tělo, lift -2px, glow.
+   Rounded-square shape (12px) — matches inputs and panels.
    ──────────────────────────────────────────────────────────── */
 .btn,
 .btn-primary,
@@ -3239,7 +3238,7 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
 .btn-sm,
 .btn-lg {
     overflow: hidden;
-    border-radius: 50px !important;
+    border-radius: 12px !important;
     transition:
         background var(--ig-duration-btn) var(--ig-ease),
         border-color var(--ig-duration-btn) var(--ig-ease),
@@ -3594,7 +3593,7 @@ select:focus {
 .kategorie-pill,
 .filter-pill,
 .tag-pill {
-    border-radius: 50px !important;
+    border-radius: 10px !important;
     border: 1px solid var(--surface-border) !important;
     transition:
         background var(--ig-duration-btn) var(--ig-ease),
@@ -4228,7 +4227,7 @@ a:hover { color: var(--primary-hover); }
     font-weight: 500 !important;
     color: var(--text-secondary) !important;
     background: transparent !important;
-    border-radius: 999px !important;
+    border-radius: 10px !important;
     letter-spacing: 0.005em !important;
     overflow: hidden !important;
     isolation: isolate;
