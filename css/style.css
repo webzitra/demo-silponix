@@ -3512,3 +3512,305 @@ input[type="radio"]:checked::after {
     .footer-social a:hover, .gallery-filter-btn:hover,
     .lang-btn:hover, .pagination a:hover { transform: none !important; }
 }
+
+/* ════════════════════════════════════════════════════════════
+   ░░░  I G N I T I O N  —  F I N A L  S W E E P  ░░░
+   Pokrývá zbývající hovery, které nebyly dosud sjednoceny
+   + modernizace nav menu k nové stránce.
+   ════════════════════════════════════════════════════════════ */
+
+/* ─────  CART ITEM — full card ignition ───── */
+.cart-item {
+    border-radius: var(--radius-lg) !important;
+    border: 1px solid var(--surface-border) !important;
+    transition:
+        border-color var(--ig-duration-card) var(--ig-ease),
+        box-shadow var(--ig-duration-card) var(--ig-ease),
+        transform var(--ig-duration-card) var(--ig-ease) !important;
+}
+.cart-item:hover {
+    border-color: rgba(var(--primary-rgb), 0.45) !important;
+    box-shadow: var(--ig-glow-card-soft) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* ─────  ADMIN UPLOAD ZONE — Ignition feel ───── */
+.admin-upload-zone {
+    border-radius: var(--radius-lg) !important;
+    transition:
+        border-color var(--ig-duration-card) var(--ig-ease),
+        background var(--ig-duration-card) var(--ig-ease),
+        box-shadow var(--ig-duration-card) var(--ig-ease),
+        color var(--ig-duration-card) var(--ig-ease) !important;
+}
+.admin-upload-zone:hover,
+.admin-upload-zone.dragover {
+    border-color: rgba(var(--primary-rgb), 0.55) !important;
+    background: rgba(var(--primary-rgb), 0.06) !important;
+    box-shadow: var(--ig-glow-card-soft) !important;
+    color: var(--primary) !important;
+}
+
+/* ─────  TEXT LINKS — sjednocená hover-color sweep ───── */
+.footer-contact-col a,
+.footer-credit a,
+.product-detail-breadcrumb a,
+.form-gdpr-text a,
+.auth-links a,
+.blog-post-nav a {
+    position: relative;
+    transition: color var(--ig-duration-btn) var(--ig-ease) !important;
+}
+.footer-contact-col a:hover,
+.footer-credit a:hover,
+.product-detail-breadcrumb a:hover,
+.form-gdpr-text a:hover,
+.auth-links a:hover,
+.blog-post-nav a:hover {
+    color: var(--primary) !important;
+    text-decoration: none !important;
+}
+
+/* ─────  FAQ QUESTION — smooth color shift, no underline ───── */
+.faq-question {
+    transition: color var(--ig-duration-btn) var(--ig-ease) !important;
+}
+.faq-question:hover,
+.faq-question[aria-expanded="true"] {
+    color: var(--primary) !important;
+}
+.faq-icon {
+    transition: transform 0.4s var(--ig-ease) !important;
+}
+
+/* ─────  LIGHTBOX PREV/NEXT — Ignition glow ───── */
+.lightbox-prev,
+.lightbox-next,
+.lightbox-close {
+    transition:
+        background var(--ig-duration-btn) var(--ig-ease),
+        box-shadow var(--ig-duration-btn) var(--ig-ease),
+        color var(--ig-duration-btn) var(--ig-ease),
+        transform var(--ig-duration-btn) var(--ig-ease) !important;
+}
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    background: rgba(var(--primary-rgb), 0.85) !important;
+    box-shadow: var(--ig-glow-btn) !important;
+    color: #fff !important;
+    transform: translateY(-50%) scale(1.08) !important;
+}
+
+/* ─────  QUICK-VIEW-CLOSE — Ignition ───── */
+.quick-view-close:hover {
+    background: var(--ig-gradient) !important;
+    color: #fff !important;
+    border-color: transparent !important;
+    box-shadow: var(--ig-glow-btn) !important;
+    transform: rotate(90deg) !important;
+}
+
+/* ─────  BODY <a> default — globální subtle red shift ───── */
+a {
+    transition: color var(--ig-duration-btn) var(--ig-ease) !important;
+}
+a:hover { color: var(--primary-hover); }
+
+/* ════════════════════════════════════════════════════════════
+   ░░░  N A V B A R   M O D E R N I Z A T I O N  ░░░
+   Tighter spacing, glassier feel, gradient bottom border on scroll,
+   logo glow, link gradient underline = ig-gradient.
+   ════════════════════════════════════════════════════════════ */
+
+.navbar {
+    background: rgba(10, 10, 10, 0.55) !important;
+    backdrop-filter: blur(28px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+    transition:
+        background var(--ig-duration-card) var(--ig-ease),
+        backdrop-filter var(--ig-duration-card) var(--ig-ease),
+        box-shadow var(--ig-duration-card) var(--ig-ease),
+        border-color var(--ig-duration-card) var(--ig-ease) !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--z-navbar);
+}
+[data-theme="light"] .navbar {
+    background: rgba(255, 255, 255, 0.65) !important;
+    border-bottom-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Gradient line bottom — appears on scroll */
+.navbar::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 1px;
+    background: var(--ig-gradient-90);
+    box-shadow: 0 0 8px rgba(var(--primary-rgb), 0.5);
+    opacity: 0;
+    transition: width 0.6s var(--ig-ease), opacity 0.4s var(--ig-ease);
+    pointer-events: none;
+}
+.navbar.scrolled::after {
+    width: 60%;
+    opacity: 1;
+}
+.navbar.scrolled {
+    background: rgba(10, 10, 10, 0.85) !important;
+    backdrop-filter: blur(36px) saturate(200%) !important;
+    -webkit-backdrop-filter: blur(36px) saturate(200%) !important;
+    box-shadow: 0 12px 40px -12px rgba(0, 0, 0, 0.5) !important;
+}
+[data-theme="light"] .navbar.scrolled {
+    background: rgba(255, 255, 255, 0.88) !important;
+    box-shadow: 0 12px 40px -12px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* ─────  LOGO — subtle ignite on hover ───── */
+.navbar-logo {
+    position: relative;
+    transition: transform var(--ig-duration-btn) var(--ig-ease),
+                filter var(--ig-duration-btn) var(--ig-ease) !important;
+}
+.navbar-logo:hover {
+    transform: translateY(-1px) !important;
+    filter: drop-shadow(0 0 12px rgba(var(--primary-rgb), 0.5)) !important;
+}
+.navbar-logo:hover .logo-img {
+    filter: drop-shadow(0 0 14px rgba(var(--primary-rgb), 0.4));
+}
+
+/* ─────  NAV LINKS — gradient underline (ig-gradient místo solid red) ───── */
+.navbar-link {
+    position: relative !important;
+    padding: 0.55rem 0.95rem !important;
+    border-radius: 8px !important;
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+    font-size: 0.92rem !important;
+    letter-spacing: 0.005em !important;
+    transition:
+        color var(--ig-duration-btn) var(--ig-ease),
+        background var(--ig-duration-btn) var(--ig-ease) !important;
+}
+.navbar-link::after {
+    content: '' !important;
+    position: absolute !important;
+    bottom: 4px !important;
+    left: 50% !important;
+    transform: translateX(-50%) scaleX(0) !important;
+    width: 22px !important;
+    height: 2px !important;
+    background: var(--ig-gradient) !important;
+    border-radius: 2px !important;
+    box-shadow: 0 0 8px rgba(var(--primary-rgb), 0.7) !important;
+    transform-origin: center !important;
+    transition: transform 0.4s var(--ig-ease), width 0.3s var(--ig-ease) !important;
+    background-color: transparent !important;
+    background-image: var(--ig-gradient) !important;
+}
+.navbar-link:hover {
+    color: var(--text) !important;
+    background: rgba(var(--primary-rgb), 0.06) !important;
+}
+.navbar-link:hover::after {
+    transform: translateX(-50%) scaleX(1) !important;
+    width: 14px !important;
+}
+.navbar-link.active {
+    color: var(--text) !important;
+    background: transparent !important;
+}
+.navbar-link.active::after {
+    transform: translateX(-50%) scaleX(1) !important;
+    width: 24px !important;
+}
+
+/* ─────  NAVBAR ACTIONS — tighter spacing + circular icons ───── */
+.navbar-actions {
+    gap: 0.35rem !important;
+}
+
+/* All circular icon buttons in navbar — uniform 40px circles */
+.theme-toggle,
+.navbar-cart,
+.navbar-user,
+.lang-switcher-toggle,
+.navbar-hamburger {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: var(--text-secondary) !important;
+    background: transparent !important;
+    border: 1px solid transparent !important;
+    transition:
+        background var(--ig-duration-btn) var(--ig-ease),
+        border-color var(--ig-duration-btn) var(--ig-ease),
+        color var(--ig-duration-btn) var(--ig-ease),
+        box-shadow var(--ig-duration-btn) var(--ig-ease),
+        transform var(--ig-duration-btn) var(--ig-ease) !important;
+}
+.theme-toggle:hover,
+.navbar-cart:hover,
+.navbar-user:hover,
+.lang-switcher-toggle:hover {
+    color: var(--primary) !important;
+    background: rgba(var(--primary-rgb), 0.1) !important;
+    border-color: rgba(var(--primary-rgb), 0.3) !important;
+    box-shadow: 0 0 18px rgba(var(--primary-rgb), 0.25) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* ─────  CART COUNT — repositioned for circular icon ───── */
+.navbar-cart .cart-count,
+.cart-toggle .cart-count {
+    top: -2px !important;
+    right: -2px !important;
+    background: var(--ig-gradient) !important;
+    border: 2px solid var(--bg) !important;
+}
+[data-theme="light"] .navbar-cart .cart-count {
+    border-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* ─────  NAVBAR CTA "Shop" — full Ignition btn ───── */
+.navbar-cta {
+    margin-left: 0.4rem !important;
+    padding: 0.5rem 1.3rem !important;
+    font-size: 0.85rem !important;
+    letter-spacing: 0.02em !important;
+}
+
+/* ─────  HAMBURGER — modernized ───── */
+.navbar-hamburger {
+    flex-direction: column !important;
+    gap: 4px !important;
+}
+.navbar-hamburger:hover {
+    color: var(--primary) !important;
+    background: rgba(var(--primary-rgb), 0.1) !important;
+    border-color: rgba(var(--primary-rgb), 0.3) !important;
+    box-shadow: 0 0 18px rgba(var(--primary-rgb), 0.25) !important;
+    transform: translateY(-1px) !important;
+}
+.navbar-hamburger:hover .hamburger-line {
+    background: var(--primary);
+}
+
+/* ─────  MOBILE NAV ─────  */
+@media (max-width: 900px) {
+    .navbar-link {
+        font-size: 1rem !important;
+        padding: 0.75rem 1rem !important;
+    }
+}
