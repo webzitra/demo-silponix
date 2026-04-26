@@ -15,13 +15,14 @@
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"></noscript>
     <link rel="stylesheet" href="/css/style.css?v=7">
+    
 </head>
 <body>
     <a href="#kosik-main" class="skip-nav">P&#345;esko&#269;it na obsah</a>
 
     <!-- NAVBAR -->
-    <nav class="navbar" id="navbar" role="navigation" aria-label="Hlavn&iacute; navigace">
-        <div class="container navbar-inner">
+    <nav class="navbar nav-bar" id="navbar" role="navigation" aria-label="Hlavn&iacute; navigace">
+        <div class="container nav-bar-inner">
             <a href="/" class="navbar-logo logo-only"><img src="/img/logo.png" alt="Silponix" width="80" height="80" class="logo-img logo-dark"><img src="/img/logo-white.png" alt="" width="80" height="80" class="logo-img logo-light" aria-hidden="true"><span class="logo-text">Silponix</span></a>
             <div class="navbar-menu" id="navbarMenu" role="menubar">
                 <a href="/" class="navbar-link" role="menuitem" data-i18n="nav.home">Dom&#367;</a>
@@ -44,6 +45,126 @@
                         </button>
                     </div>
                 </div>
+                
+                <a href="/klient/" class="navbar-user" aria-label="M&#367;j &uacute;&#269;et">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </a>
+                <a href="/kosik.html" class="navbar-cart active" id="navbarCart" aria-label="Ko&scaron;&iacute;k"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span class="cart-count" id="cartCount" hidden>0</span></a>
+                
+            </div>
+        </div>
+    </nav>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero" id="kosik-main">
+        <div class="page-hero-bg" style="background-image: url('/img/hero-bg.jpg')"></div>
+        <div class="page-hero-overlay"></div>
+        <div class="container">
+            <span class="section-badge" data-i18n="cart.badge">Ko&scaron;&iacute;k</span>
+            <h1 class="page-hero-title" data-i18n="cart.title">V&aacute;&scaron; ko&scaron;&iacute;k</h1>
+        </div>
+    </section>
+
+    <!-- CART CONTENT -->
+    <section class="section">
+        <div class="container">
+            <div class="cart-layout">
+                <!-- Cart Items -->
+                <div class="cart-items" id="cartItems">
+                    <!-- Filled by JS -->
+                </div>
+
+                <!-- Cart empty state -->
+                <div class="cart-empty" id="cartEmpty" hidden>
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                    <h2 data-i18n="cart.empty_title">Ko&scaron;&iacute;k je pr&aacute;zdn&yacute;</h2>
+                    <p data-i18n="cart.empty_desc">Prohl&eacute;dn&#283;te si n&aacute;&scaron; e-shop a p&#345;idejte produkty do ko&scaron;&iacute;ku.</p>
+                    <a href="/shop.html" class="btn btn-primary btn-lg" data-i18n="cart.go_to_eshop">P&#345;ej&iacute;t do e-shopu</a>
+                </div>
+
+                <!-- Cart Summary -->
+                <div class="cart-summary" id="cartSummary" hidden>
+                    <h3 class="cart-summary-title" data-i18n="cart.summary_title">Shrnut&iacute; objedn&aacute;vky</h3>
+                    <div class="cart-summary-rows">
+                        <div class="cart-summary-row">
+                            <span data-i18n="cart.subtotal">Mezisou&#269;et</span>
+                            <span id="cartSubtotal">0 K&#269;</span>
+                        </div>
+                        <div class="cart-summary-row">
+                            <span data-i18n="cart.shipping">Doprava</span>
+                            <span id="cartShipping">Vypo&#269;&iacute;t&aacute; se</span>
+                        </div>
+                        <div class="cart-summary-row cart-summary-total">
+                            <span data-i18n="cart.total">Celkem</span>
+                            <span id="cartTotal">0 K&#269;</span>
+                        </div>
+                    </div>
+                    <div class="cart-summary-note">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        Doprava zdarma nad 20&nbsp;000&nbsp;K&#269;
+                    </div>
+
+                    <!-- Checkout Form -->
+                    <div class="checkout-form" id="checkoutForm">
+                        <h4 class="checkout-title" data-i18n="cart.checkout_title">Doru&#269;ovac&iacute; &uacute;daje</h4>
+                        <div class="form-group">
+                            <label for="checkout-name" class="form-label" data-i18n="cart.name_label">Jm&eacute;no a p&#345;&iacute;jmen&iacute;</label>
+                            <input type="text" id="checkout-name" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkout-email" class="form-label" data-i18n="cart.email_label">E-mail</label>
+                            <input type="email" id="checkout-email" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkout-phone" class="form-label" data-i18n="cart.phone_label">Telefon</label>
+                            <input type="tel" id="checkout-phone" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkout-address" class="form-label" data-i18n="cart.address_label">Adresa</label>
+                            <input type="text" id="checkout-address" class="form-input" placeholder="Ulice a &#269;&iacute;slo" required data-i18n-placeholder="cart.address_placeholder">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="checkout-city" class="form-label" data-i18n="cart.city_label">M&#283;sto</label>
+                                <input type="text" id="checkout-city" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="checkout-zip" class="form-label" data-i18n="cart.zip_label">PS&#268;</label>
+                                <input type="text" id="checkout-zip" class="form-input" pattern="[0-9]{3}\s?[0-9]{2}" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkout-note" class="form-label" data-i18n="cart.note_label">Pozn&aacute;mka</label>
+                            <textarea id="checkout-note" class="form-input form-textarea" rows="3" placeholder="Volitelná pozn&aacute;mka..." data-i18n-placeholder="cart.note_placeholder"></textarea>
+                        </div>
+                        <button class="btn btn-primary btn-lg btn-block" id="checkoutBtn" data-sandbox="true">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            Odeslat objedn&aacute;vku
+                        </button>
+                    </div>
+
+                    <!-- Checkout success -->
+                    <div class="checkout-success" id="checkoutSuccess" hidden>
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        <h3 data-i18n="cart.success_title">Objedn&aacute;vka odesl&aacute;na!</h3>
+                        <p data-i18n="cart.success_desc">D&#283;kujeme za va&scaron;i objedn&aacute;vku. Potvrdzen&iacute; v&aacute;m p&#345;ijde e-mailem.</p>
+                        <a href="/shop.html" class="btn btn-primary" data-i18n="cart.continue_shopping">Pokra&#269;ovat v n&aacute;kupu</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <a href="/" class="navbar-logo footer-logo">
+                        <img src="/img/logo.png" alt="Silponix" width="180" height="46" class="logo-img logo-dark"><img src="/img/logo-white.png" alt="" width="180" height="46" class="logo-img logo-light" aria-hidden="true">
+                    </a>
+                    <p class="footer-desc" data-i18n="footer.desc">Specialista na z&aacute;vodn&iacute; d&iacute;ly Honda a motorsport. V&yacute;roba, tuning, servis.</p>
+                    <div class="footer-newsletter"><p style="font-size:0.875rem; font-weight:600;">Odebírejte novinky</p><form class="footer-newsletter-form" onsubmit="event.preventDefault();var e=this.querySelector(&#39;input&#39;).value;if(!e)return;fetch(&#39;/api/newsletter&#39;,{method:&#39;POST&#39;,headers:{&#39;Content-Type&#39;:&#39;application/json&#39;},body:JSON.stringify({action:&#39;subscribe&#39;,email:e})}).then(function(r){return r.json()}).then(function(d){if(d.ok){var m=document.createElement(&#39;p&#39;);m.className=&#39;footer-newsletter-msg&#39;;m.textContent=&#39;Přihlášeno!&#39;;event.target.parentNode.appendChild(m);event.target.querySelector(&#39;input&#39;).value=&#39;&#39;;setTimeout(function(){m.remove()},3000)}})"><input type="email" placeholder="Váš e-mail" required><button type="submit" class="btn btn-sm btn-primary">Odebírat</button></form></div>
                     <div class="footer-social">
                         <a href="https://www.facebook.com/SilponixHondaMotorsport/" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>

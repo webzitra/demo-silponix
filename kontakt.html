@@ -15,13 +15,14 @@
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"></noscript>
     <link rel="stylesheet" href="/css/style.css?v=7">
+    
 </head>
 <body>
     <a href="#kontakt-main" class="skip-nav">P&#345;esko&#269;it na obsah</a>
 
     <!-- NAVBAR -->
-    <nav class="navbar" id="navbar" role="navigation" aria-label="Hlavn&iacute; navigace">
-        <div class="container navbar-inner">
+    <nav class="navbar nav-bar" id="navbar" role="navigation" aria-label="Hlavn&iacute; navigace">
+        <div class="container nav-bar-inner">
             <a href="/" class="navbar-logo logo-only"><img src="/img/logo.png" alt="Silponix" width="80" height="80" class="logo-img logo-dark"><img src="/img/logo-white.png" alt="" width="80" height="80" class="logo-img logo-light" aria-hidden="true"><span class="logo-text">Silponix</span></a>
             <div class="navbar-menu" id="navbarMenu" role="menubar">
                 <a href="/" class="navbar-link" role="menuitem" data-i18n="nav.home">Dom&#367;</a>
@@ -44,6 +45,144 @@
                         </button>
                     </div>
                 </div>
+                
+                <a href="/klient/" class="navbar-user" aria-label="M&#367;j &uacute;&#269;et">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </a>
+                <a href="/kosik.html" class="navbar-cart" id="navbarCart" aria-label="Ko&scaron;&iacute;k"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span class="cart-count" id="cartCount" hidden>0</span></a>
+                
+            </div>
+        </div>
+    </nav>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero" id="kontakt-main">
+        <div class="page-hero-bg" style="background-image: url('/img/gallery/mezihorak.jpg')"></div>
+        <div class="page-hero-overlay"></div>
+        <div class="container">
+            <span class="section-badge" data-i18n="contact.badge">Kontakt</span>
+            <h1 class="page-hero-title" data-i18n="contact.title">Ozv&#283;te se n&aacute;m</h1>
+            <p class="page-hero-subtitle" data-i18n="contact.subtitle">R&aacute;di v&aacute;m porad&iacute;me s v&yacute;b&#283;rem d&iacute;l&#367; nebo slu&#382;eb.</p>
+        </div>
+    </section>
+    <div class="page-hero-transition"></div>
+
+    <!-- CONTACT -->
+    <section class="section">
+        <div class="container">
+            <div class="contact-grid">
+                <form class="contact-form" data-wz-contact>
+                    <div class="form-group">
+                        <label for="name" class="form-label" data-i18n="contact.name_label">Jm&eacute;no</label>
+                        <input type="text" id="name" name="name" class="form-input" placeholder="Va&scaron;e jm&eacute;no" required data-i18n-placeholder="contact.name_placeholder">
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label" data-i18n="contact.email_label">E-mail</label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="vas@email.cz" required data-i18n-placeholder="contact.email_placeholder">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="form-label" data-i18n="contact.phone_label">Telefon</label>
+                        <input type="tel" id="phone" name="phone" class="form-input" placeholder="+420 ..." data-i18n-placeholder="contact.phone_placeholder">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject" class="form-label" data-i18n="contact.subject_label">P&#345;edm&#283;t</label>
+                        <select id="subject" name="subject" class="form-input form-select">
+                            <option value="" data-i18n="contact.subject_default">Vyberte...</option>
+                            <option value="eshop" data-i18n="contact.subject_eshop">Dotaz k e-shopu</option>
+                            <option value="tuning" data-i18n="contact.subject_tuning">ECU tuning</option>
+                            <option value="stavba" data-i18n="contact.subject_stavba">Stavba vozu</option>
+                            <option value="silentbloky" data-i18n="contact.subject_silentbloky">Silentbloky</option>
+                            <option value="servis" data-i18n="contact.subject_servis">Servis</option>
+                            <option value="jine" data-i18n="contact.subject_other">Jin&eacute;</option>
+                        </select>
+                    </div>
+                    <div class="form-group-full">
+                        <label for="message" class="form-label" data-i18n="contact.message_label">Zpr&aacute;va</label>
+                        <textarea id="message" name="message" class="form-input form-textarea" placeholder="Va&scaron;e zpr&aacute;va..." rows="5" required data-i18n-placeholder="contact.message_placeholder"></textarea>
+                    </div>
+                    <div class="form-group-full">
+                        <label class="form-gdpr-label">
+                            <input type="checkbox" name="gdpr" class="form-gdpr-checkbox" required>
+                            <span class="form-gdpr-text">
+                                Souhlas&iacute;m se <a href="/ochrana-udaju.html" target="_blank" rel="noopener">zpracov&aacute;n&iacute;m osobn&iacute;ch &uacute;daj&#367;</a> za &uacute;&#269;elem odpov&#283;di na mou zpr&aacute;vu. Odesl&aacute;n&iacute;m formul&aacute;&#345;e potvrzuji, &#382;e jsem byl informov&aacute;n o zpracov&aacute;n&iacute; dle GDPR.
+                            </span>
+                        </label>
+                    </div>
+                    <div class="form-group-full">
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">
+                            <span class="btn-text" data-i18n="contact.submit">Odeslat zpr&aacute;vu</span>
+                            <span class="btn-loading" hidden data-i18n="contact.submitting">Odes&iacute;l&aacute;m...</span>
+                        </button>
+                    </div>
+                    <div class="form-success form-group-full" hidden data-i18n="contact.success">Zpr&aacute;va byla &uacute;sp&#283;&scaron;n&#283; odesl&aacute;na. Ozveme se v&aacute;m co nejd&#345;&iacute;ve.</div>
+                    <div class="form-error form-group-full" hidden data-i18n="contact.error">N&#283;co se pokazilo. Zkuste to pros&iacute;m znovu.</div>
+                </form>
+
+                <div class="contact-info" data-animate>
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div>
+                            <strong data-i18n="contact.address_label">Adresa</strong>
+                            <span>K. H. M&aacute;chy 34<br>765 02 Otrokovice</span>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <div>
+                            <strong data-i18n="contact.phone_label">Telefon</strong>
+                            <a href="tel:+420739657624">+420 739 657 624</a>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </div>
+                        <div>
+                            <strong data-i18n="contact.email_label">E-mail</strong>
+                            <a href="mailto:mezihorak@silponix.cz">mezihorak@silponix.cz</a>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <div>
+                            <strong data-i18n="contact.hours_label">Otev&iacute;rac&iacute; doba</strong>
+                            <span data-i18n="contact.hours_value">Po&ndash;P&aacute; 8:00 &ndash; 17:00</span>
+                        </div>
+                    </div>
+                    <div class="contact-social">
+                        <a href="https://www.facebook.com/SilponixHondaMotorsport/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">Facebook</a>
+                        <a href="https://www.instagram.com/silponix_honda_motorsport/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">Instagram</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAP -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="map-embed" data-animate>
+                <iframe src="https://www.google.com/maps?q=K.H.+M%C3%A1chy+34,+765+02+Otrokovice,+Czech+Republic&output=embed" width="100%" height="400" style="border:0; border-radius: var(--radius-lg);" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <a href="/" class="navbar-logo footer-logo">
+                        <img src="/img/logo.png" alt="Silponix" width="180" height="46" class="logo-img logo-dark"><img src="/img/logo-white.png" alt="" width="180" height="46" class="logo-img logo-light" aria-hidden="true">
+                    </a>
+                    <p class="footer-desc" data-i18n="footer.desc">Specialista na z&aacute;vodn&iacute; d&iacute;ly Honda a motorsport. V&yacute;roba, tuning, servis.</p>
+                    <div class="footer-newsletter"><p style="font-size:0.875rem; font-weight:600;">Odebírejte novinky</p><form class="footer-newsletter-form" onsubmit="event.preventDefault();var e=this.querySelector(&#39;input&#39;).value;if(!e)return;fetch(&#39;/api/newsletter&#39;,{method:&#39;POST&#39;,headers:{&#39;Content-Type&#39;:&#39;application/json&#39;},body:JSON.stringify({action:&#39;subscribe&#39;,email:e})}).then(function(r){return r.json()}).then(function(d){if(d.ok){var m=document.createElement(&#39;p&#39;);m.className=&#39;footer-newsletter-msg&#39;;m.textContent=&#39;Přihlášeno!&#39;;event.target.parentNode.appendChild(m);event.target.querySelector(&#39;input&#39;).value=&#39;&#39;;setTimeout(function(){m.remove()},3000)}})"><input type="email" placeholder="Váš e-mail" required><button type="submit" class="btn btn-sm btn-primary">Odebírat</button></form></div>
                     <div class="footer-social">
                         <a href="https://www.facebook.com/SilponixHondaMotorsport/" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>

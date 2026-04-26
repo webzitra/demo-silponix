@@ -15,13 +15,14 @@
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"></noscript>
     <link rel="stylesheet" href="/css/style.css?v=7">
+    
 </head>
 <body>
     <a href="#onas-main" class="skip-nav">P&#345;esko&#269;it na obsah</a>
 
     <!-- NAVBAR -->
-    <nav class="navbar" id="navbar" role="navigation" aria-label="Hlavn&iacute; navigace">
-        <div class="container navbar-inner">
+    <nav class="navbar nav-bar" id="navbar" role="navigation" aria-label="Hlavn&iacute; navigace">
+        <div class="container nav-bar-inner">
             <a href="/" class="navbar-logo logo-only"><img src="/img/logo.png" alt="Silponix" width="80" height="80" class="logo-img logo-dark"><img src="/img/logo-white.png" alt="" width="80" height="80" class="logo-img logo-light" aria-hidden="true"><span class="logo-text">Silponix</span></a>
             <div class="navbar-menu" id="navbarMenu" role="menubar">
                 <a href="/" class="navbar-link" role="menuitem" data-i18n="nav.home">Dom&#367;</a>
@@ -44,6 +45,201 @@
                         </button>
                     </div>
                 </div>
+                
+                <a href="/klient/" class="navbar-user" aria-label="M&#367;j &uacute;&#269;et">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </a>
+                <a href="/kosik.html" class="navbar-cart" id="navbarCart" aria-label="Ko&scaron;&iacute;k"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span class="cart-count" id="cartCount" hidden>0</span></a>
+                
+            </div>
+        </div>
+    </nav>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero" id="onas-main">
+        <div class="page-hero-bg" style="background-image: url('/img/gallery/mezihorak.jpg')"></div>
+        <div class="page-hero-overlay"></div>
+        <div class="container">
+            <span class="section-badge" data-i18n="about.badge">O n&aacute;s</span>
+            <h1 class="page-hero-title" data-i18n="about.title">SILPONIX</h1>
+            <p class="page-hero-subtitle" data-i18n="about.page_subtitle">&#268;esk&aacute; firma se s&iacute;dlem v Otrokovic&iacute;ch, specializovan&aacute; na motorsport a &uacute;pravy voz&#367; Honda.</p>
+        </div>
+    </section>
+    <div class="page-hero-transition"></div>
+
+    <!-- COMPANY STORY -->
+    <section class="section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content" data-animate>
+                    <span class="section-badge" data-i18n="about.story_badge">N&aacute;&scaron; p&#345;&iacute;b&#283;h</span>
+                    <h2 class="section-title" data-i18n="about.story_title">N&aacute;&scaron; p&#345;&iacute;b&#283;h</h2>
+                    <p class="about-text" data-i18n="about.story_text">
+                        Silponix je &#269;esk&aacute; firma se s&iacute;dlem v Otrokovic&iacute;ch, kterou zalo&#382;ili brat&#345;i Mezihor&aacute;ci &mdash; aktivn&iacute; z&aacute;vodn&iacute;ci v rally, rallycrossu a z&aacute;vodech do vrchu. Na&scaron;e zku&scaron;enosti z motorsportu p&#345;en&aacute;&scaron;&iacute;me do ka&#382;d&eacute;ho produktu a slu&#382;by. Od roku 2009 stav&iacute;me z&aacute;vodn&iacute; vozy, lad&iacute;me motory a vyr&aacute;b&iacute;me polyuretanov&eacute; silentbloky pro Honda a dal&scaron;&iacute; zna&#269;ky. Jsme certifikovan&yacute; Hondata dealer pro &#268;eskou republiku.
+                    </p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span data-i18n="about.feature1">Vlastn&iacute; v&yacute;voj a v&yacute;roba d&iacute;l&#367;</span>
+                        </div>
+                        <div class="about-feature">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span data-i18n="about.feature2">Certifikovan&yacute; Hondata dealer</span>
+                        </div>
+                        <div class="about-feature">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span data-i18n="about.feature3">Aktivn&iacute; &uacute;&#269;ast v motorsportu</span>
+                        </div>
+                        <div class="about-feature">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span data-i18n="about.feature4">Osobn&iacute; p&#345;&iacute;stup ke ka&#382;d&eacute;mu z&aacute;kazn&iacute;kovi</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image" data-animate>
+                    <img src="/img/gallery/workshop.jpg" alt="Silponix d&iacute;lna &mdash; v&yacute;roba z&aacute;vodn&iacute;ch d&iacute;l&#367;" loading="lazy" width="600" height="400">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="about-stats" data-animate>
+                <div class="stat-card">
+                    <span class="stat-number" data-i18n="about.stat1_number">15+</span>
+                    <span class="stat-label" data-i18n="about.stat1_label">Let zku&scaron;enost&iacute;</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" data-i18n="about.stat2_number">50+</span>
+                    <span class="stat-label" data-i18n="about.stat2_label">Postaven&yacute;ch voz&#367;</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" data-i18n="about.stat3_number">500+</span>
+                    <span class="stat-label" data-i18n="about.stat3_label">Produkt&#367; v e-shopu</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" data-i18n="about.stat4_number">100%</span>
+                    <span class="stat-label" data-i18n="about.stat4_label">Testov&aacute;no na trati</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header" data-animate>
+                <span class="section-badge" data-i18n="about.badge">T&yacute;m</span>
+                <h2 class="section-title" data-i18n="about.team_title">N&aacute;&scaron; t&yacute;m</h2>
+                <p class="section-subtitle" data-i18n="about.team_text">Jsme parta nad&scaron;enc&#367; do motorsportu. Brat&#345;i Mezihor&aacute;ci a t&yacute;m zku&scaron;en&yacute;ch mechanik&#367;, konstrukt&eacute;r&#367; a z&aacute;vodn&iacute;k&#367;. Ka&#382;d&yacute; z n&aacute;s p&#345;in&aacute;&scaron;&iacute; sv&eacute; zku&scaron;enosti z trati p&#345;&iacute;mo do d&iacute;lny.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PARTNERS -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="section-header" data-animate>
+                <span class="section-badge" data-i18n="sponsors.badge">Partne&#345;i</span>
+                <h2 class="section-title" data-i18n="about.partners_title">Na&scaron;i partne&#345;i</h2>
+                <p class="section-subtitle" data-i18n="about.partners_subtitle">Spolupracujeme s p&#345;edn&iacute;mi firmami v motorsportu.</p>
+            </div>
+            <div class="sponsors-grid" data-animate>
+                <div class="sponsor-item"><img src="/img/sponsors/sforza.png" alt="SForza Racing" loading="lazy"></div>
+                <div class="sponsor-item"><img src="/img/sponsors/motoforza.svg" alt="MotoForza" loading="lazy"></div>
+                <div class="sponsor-item"><img src="/img/sponsors/protlum.jpg" alt="Protlum" loading="lazy"></div>
+                <div class="sponsor-item"><img src="/img/sponsors/dvh.png" alt="DVH Racing" loading="lazy"></div>
+                <div class="sponsor-item"><img src="/img/sponsors/vrakoviste-honda.png" alt="Vrakov&iacute;&scaron;t&#283; Honda" loading="lazy"></div>
+                <div class="sponsor-item"><img src="/img/sponsors/krob.png" alt="KROB" loading="lazy"></div>
+                <div class="sponsor-item"><img src="/img/sponsors/odiss.jpg" alt="ODISS" loading="lazy"></div>
+                <div class="sponsor-item"><img src="/img/sponsors/zitec.png" alt="ZiTEC" loading="lazy"></div>
+                <div class="sponsor-item"><img src="/img/sponsors/baterie-novak.jpg" alt="AutoBaterie Nov&aacute;k" loading="lazy"></div>
+                <div class="sponsor-item"><img src="/img/sponsors/honda.png" alt="Honda" loading="lazy"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section section-dark section-cta-block">
+        <div class="container">
+            <div class="cta-block" data-animate>
+                <h2 class="cta-title" data-i18n="about.cta_title">M&aacute;te z&aacute;jem o spolupr&aacute;ci?</h2>
+                <div class="cta-actions">
+                    <a href="/kontakt.html" class="btn btn-primary btn-lg" data-i18n="about.cta_btn1">Kontaktovat</a>
+                    <a href="tel:+420739657624" class="btn btn-outline btn-lg" data-i18n="about.cta_btn2">+420 739 657 624</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <a href="/" class="navbar-logo footer-logo">
+                        <img src="/img/logo.png" alt="Silponix" width="180" height="46" class="logo-img logo-dark"><img src="/img/logo-white.png" alt="" width="180" height="46" class="logo-img logo-light" aria-hidden="true">
+                    </a>
+                    <p class="footer-desc" data-i18n="footer.desc">Specialista na z&aacute;vodn&iacute; d&iacute;ly Honda a motorsport. V&yacute;roba, tuning, servis.</p>
+                    <div class="footer-newsletter"><p style="font-size:0.875rem; font-weight:600;">Odebírejte novinky</p><form class="footer-newsletter-form" onsubmit="event.preventDefault();var e=this.querySelector(&#39;input&#39;).value;if(!e)return;fetch(&#39;/api/newsletter&#39;,{method:&#39;POST&#39;,headers:{&#39;Content-Type&#39;:&#39;application/json&#39;},body:JSON.stringify({action:&#39;subscribe&#39;,email:e})}).then(function(r){return r.json()}).then(function(d){if(d.ok){var m=document.createElement(&#39;p&#39;);m.className=&#39;footer-newsletter-msg&#39;;m.textContent=&#39;Přihlášeno!&#39;;event.target.parentNode.appendChild(m);event.target.querySelector(&#39;input&#39;).value=&#39;&#39;;setTimeout(function(){m.remove()},3000)}})"><input type="email" placeholder="Váš e-mail" required><button type="submit" class="btn btn-sm btn-primary">Odebírat</button></form></div>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/SilponixHondaMotorsport/" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
+                        <a href="https://www.instagram.com/silponix_honda_motorsport/" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4 data-i18n="footer.eshop">Shop</h4>
+                    <ul>
+                        <li><a href="/shop.html" data-i18n="footer.all_products">V&scaron;echny produkty</a></li>
+                        <li><a href="/shop.html?kat=ecu" data-i18n="footer.ecu">ECU Hondata</a></li>
+                        <li><a href="/shop.html?kat=silentbloky" data-i18n="footer.silentbloky">Silentbloky</a></li>
+                        <li><a href="/shop.html?kat=motor" data-i18n="footer.motor">Motor &amp; P&#345;evodovky</a></li>
+                        <li><a href="/shop.html?kat=podvozek" data-i18n="footer.podvozek">Podvozek &amp; Brzdy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4 data-i18n="footer.company">Firma</h4>
+                    <ul>
+                        <li><a href="/sluzby.html" data-i18n="footer.services">Slu&#382;by</a></li>
+                        <li><a href="/o-nas.html" data-i18n="footer.about">O n&aacute;s</a></li>
+                        <li><a href="/kontakt.html" data-i18n="footer.contact">Kontakt</a></li>
+                        <li><a href="/blog.html" data-i18n="footer.blog">Novinky</a></li>
+                        <li><a href="/galerie.html" data-i18n="footer.gallery">Galerie</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Informace</h4>
+                    <ul>
+                        <li><a href="/obchodni-podminky.html">Obchodn&iacute; podm&iacute;nky</a></li>
+                        <li><a href="/ochrana-udaju.html">Ochrana &uacute;daj&#367;</a></li>
+                        <li><a href="/reklamacni-rad.html">Reklama&#269;n&iacute; &#345;&aacute;d</a></li>
+                        <li><a href="/doprava-platby.html">Doprava a platby</a></li>
+                        <li><a href="/cookies.html">Cookies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact-col">
+                    <h4 data-i18n="footer.contact_heading">Kontakt</h4>
+                    <p>K. H. M&aacute;chy 34<br>765 02 Otrokovice</p>
+                    <p><a href="tel:+420739657624">+420 739 657 624</a></p>
+                    <p><a href="mailto:mezihorak@silponix.cz">mezihorak@silponix.cz</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-divider"></div>
+        <div class="container">
+            <div class="footer-bottom">
+                <p data-i18n="footer.copyright">&copy; 2026 Silponix. V&scaron;echna pr&aacute;va vyhrazena.</p>
+                <p class="footer-credit" data-i18n-html="footer.credit_html">Vytvo&#345;ilo <a href="https://webzitra.cz" target="_blank" rel="noopener noreferrer">WebZ&iacute;tra</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="cookie-banner" id="cookieBanner" hidden><div class="cookie-inner"><p data-i18n="cookie.text_minimal">Tento web pou&#382;&iacute;v&aacute; cookies.</p><div class="cookie-actions"><button class="btn btn-sm btn-primary" id="cookieAccept" data-i18n="cookie.accept">P&#345;ijmout</button><button class="btn btn-sm btn-outline" id="cookieDecline" data-i18n="cookie.decline">Odm&iacute;tnout</button></div></div></div>
 
     <script src="/js/i18n.js?v=7"></script>
     <script src="/js/main.js?v=7"></script>

@@ -15,13 +15,14 @@
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"></noscript>
     <link rel="stylesheet" href="/css/style.css?v=7">
+    
 </head>
 <body>
     <a href="#galerie-main" class="skip-nav">P&#345;esko&#269;it na obsah</a>
 
     <!-- NAVBAR -->
-    <nav class="navbar" id="navbar" role="navigation" aria-label="Hlavn&iacute; navigace">
-        <div class="container navbar-inner">
+    <nav class="navbar nav-bar" id="navbar" role="navigation" aria-label="Hlavn&iacute; navigace">
+        <div class="container nav-bar-inner">
             <a href="/" class="navbar-logo logo-only"><img src="/img/logo.png" alt="Silponix" width="80" height="80" class="logo-img logo-dark"><img src="/img/logo-white.png" alt="" width="80" height="80" class="logo-img logo-light" aria-hidden="true"><span class="logo-text">Silponix</span></a>
             <div class="navbar-menu" id="navbarMenu" role="menubar">
                 <a href="/" class="navbar-link" role="menuitem" data-i18n="nav.home">Dom&#367;</a>
@@ -44,6 +45,34 @@
                         </button>
                     </div>
                 </div>
+                
+                <a href="/klient/" class="navbar-user" aria-label="M&#367;j &uacute;&#269;et">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </a>
+                <a href="/kosik.html" class="navbar-cart" id="navbarCart" aria-label="Ko&scaron;&iacute;k"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span class="cart-count" id="cartCount" hidden>0</span></a>
+                
+            </div>
+        </div>
+    </nav>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero" id="galerie-main">
+        <div class="page-hero-bg" style="background-image: url('/img/gallery/race-car.jpg')"></div>
+        <div class="page-hero-overlay"></div>
+        <div class="container">
+            <span class="section-badge" data-i18n="gallery.badge">Galerie</span>
+            <h1 class="page-hero-title" data-i18n="gallery.title">Z na&scaron;&iacute; d&iacute;lny</h1>
+            <p class="page-hero-subtitle" data-i18n="gallery.subtitle">Nahl&eacute;dn&#283;te do na&scaron;&iacute; pr&aacute;ce &mdash; z&aacute;vodn&iacute; vozy, v&yacute;roba d&iacute;l&#367; a motorsport.</p>
+        </div>
+    </section>
+    <div class="page-hero-transition"></div>
+
+    <!-- GALLERY FILTERS -->
+    <div class="gallery-filters" id="galleryFilters">
+        <div class="container">
+            <div class="gallery-filter-btns">
+                <button class="gallery-filter-btn active" data-filter="vse">V&#353;e</button>
+                <button class="gallery-filter-btn" data-filter="zavodni-vozy">Z&aacute;vodn&iacute; vozy</button>
                 <button class="gallery-filter-btn" data-filter="vyroba">V&yacute;roba &amp; d&iacute;lna</button>
                 <button class="gallery-filter-btn" data-filter="zavody">Z&aacute;vody</button>
             </div>
