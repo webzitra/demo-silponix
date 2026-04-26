@@ -3814,3 +3814,433 @@ a:hover { color: var(--primary-hover); }
         padding: 0.75rem 1rem !important;
     }
 }
+
+/* ════════════════════════════════════════════════════════════
+   ░░░  N A V   P I L L  —  Floating Glass Cockpit  ░░░
+   Plovoucí pill s vnitřními kompartmenty (brand / links / actions),
+   vertikální dividery, sliding gradient active-pill, scroll-shrink,
+   gradient border ring na scroll. Inspirace: F1 cockpit telemetry.
+   ════════════════════════════════════════════════════════════ */
+
+:root {
+    --np-margin: 14px;
+    --np-margin-scrolled: 10px;
+    --np-padding-x: 0.5rem;
+    --np-padding-y: 0.5rem;
+    --np-height: 60px;
+    --np-radius: 999px;
+    --np-bg: rgba(15, 15, 15, 0.55);
+    --np-bg-scrolled: rgba(12, 12, 12, 0.78);
+    --np-border: rgba(255, 255, 255, 0.08);
+    --np-divider: rgba(255, 255, 255, 0.06);
+}
+[data-theme="light"] {
+    --np-bg: rgba(255, 255, 255, 0.65);
+    --np-bg-scrolled: rgba(255, 255, 255, 0.85);
+    --np-border: rgba(0, 0, 0, 0.06);
+    --np-divider: rgba(0, 0, 0, 0.05);
+}
+
+/* Outer wrapper — fixed top, centered, max-width */
+.nav-pill {
+    position: fixed !important;
+    top: var(--np-margin) !important;
+    left: var(--np-margin) !important;
+    right: var(--np-margin) !important;
+    z-index: var(--z-navbar) !important;
+    height: var(--np-height) !important;
+    max-width: calc(var(--container-max) + 60px) !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
+    transition:
+        top var(--ig-duration-card) var(--ig-ease),
+        left var(--ig-duration-card) var(--ig-ease),
+        right var(--ig-duration-card) var(--ig-ease),
+        height var(--ig-duration-card) var(--ig-ease) !important;
+    pointer-events: none;
+}
+.nav-pill::after { display: none !important; }
+.nav-pill.scrolled {
+    top: var(--np-margin-scrolled) !important;
+    height: calc(var(--np-height) - 4px) !important;
+}
+
+/* Inner pill — the glass surface */
+.nav-pill .nav-pill-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: var(--np-padding-y) var(--np-padding-x);
+    background: var(--np-bg);
+    backdrop-filter: blur(28px) saturate(200%);
+    -webkit-backdrop-filter: blur(28px) saturate(200%);
+    border: 1px solid var(--np-border);
+    border-radius: var(--np-radius);
+    box-shadow:
+        0 12px 40px -12px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    transition:
+        background var(--ig-duration-card) var(--ig-ease),
+        backdrop-filter var(--ig-duration-card) var(--ig-ease),
+        border-color var(--ig-duration-card) var(--ig-ease),
+        box-shadow var(--ig-duration-card) var(--ig-ease);
+    pointer-events: auto;
+    isolation: isolate;
+}
+.nav-pill.scrolled .nav-pill-inner {
+    background: var(--np-bg-scrolled);
+    backdrop-filter: blur(36px) saturate(220%);
+    -webkit-backdrop-filter: blur(36px) saturate(220%);
+    border-color: rgba(var(--primary-rgb), 0.18);
+    box-shadow:
+        0 16px 50px -10px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(var(--primary-rgb), 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Conic gradient border ring — appears on scroll */
+.nav-pill .nav-pill-inner::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: conic-gradient(
+        from var(--np-angle, 0deg),
+        transparent 0deg,
+        rgba(var(--primary-rgb), 0.6) 60deg,
+        rgba(var(--accent-rgb), 0.7) 90deg,
+        rgba(var(--primary-rgb), 0.6) 120deg,
+        transparent 180deg,
+        transparent 360deg
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.6s var(--ig-ease);
+    pointer-events: none;
+    z-index: 0;
+}
+.nav-pill.scrolled .nav-pill-inner::before { opacity: 1; }
+@property --np-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+.nav-pill.scrolled .nav-pill-inner {
+    animation: np-conic-rotate 12s linear infinite;
+}
+@keyframes np-conic-rotate {
+    to { --np-angle: 360deg; }
+}
+
+/* ─────  COMPARTMENTS  ───── */
+.nav-pill .nav-compartment {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+}
+.nav-pill .nav-brand {
+    padding-left: 0.85rem;
+    gap: 0.65rem;
+    flex-shrink: 0;
+}
+.nav-pill .nav-links {
+    flex: 1;
+    justify-content: center;
+    gap: 0.15rem;
+    position: relative;
+}
+.nav-pill .nav-actions {
+    padding-right: 0.4rem;
+    gap: 0.25rem;
+    flex-shrink: 0;
+}
+
+/* Vertical dividers between compartments */
+.nav-pill .nav-divider {
+    width: 1px;
+    height: 22px;
+    background: linear-gradient(180deg,
+        transparent 0%,
+        var(--np-divider) 30%,
+        var(--np-divider) 70%,
+        transparent 100%);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+}
+
+/* ─────  BRAND ─────  */
+.nav-pill .navbar-logo {
+    display: flex !important;
+    align-items: center !important;
+    height: 100% !important;
+    padding: 0 !important;
+    background: none !important;
+    border: none !important;
+    transition: filter var(--ig-duration-btn) var(--ig-ease),
+                transform var(--ig-duration-btn) var(--ig-ease) !important;
+}
+.nav-pill .navbar-logo .logo-img {
+    width: auto !important;
+    height: 28px !important;
+    object-fit: contain;
+    transition: filter var(--ig-duration-btn) var(--ig-ease);
+}
+.nav-pill .navbar-logo:hover {
+    transform: translateY(-1px) !important;
+    filter: drop-shadow(0 0 14px rgba(var(--primary-rgb), 0.55)) !important;
+}
+
+/* Live status indicator — racing telemetry */
+.nav-pill .nav-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.2rem 0.55rem;
+    background: rgba(var(--primary-rgb), 0.1);
+    border: 1px solid rgba(var(--primary-rgb), 0.25);
+    border-radius: 999px;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--primary);
+    font-family: var(--font-heading);
+    user-select: none;
+}
+.nav-pill .nav-status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--primary);
+    box-shadow: 0 0 0 0 rgba(var(--primary-rgb), 0.6);
+    animation: badge-live-pulse 2s ease-out infinite;
+    flex-shrink: 0;
+}
+
+/* ─────  NAV LINKS — sliding active pill ─────  */
+.nav-pill .navbar-link {
+    position: relative !important;
+    height: 36px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    padding: 0 1rem !important;
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+    color: var(--text-secondary) !important;
+    background: transparent !important;
+    border-radius: 999px !important;
+    letter-spacing: 0.005em !important;
+    z-index: 2;
+    transition: color var(--ig-duration-btn) var(--ig-ease) !important;
+}
+.nav-pill .navbar-link::before,
+.nav-pill .navbar-link::after { display: none !important; }
+.nav-pill .navbar-link:hover {
+    color: var(--text) !important;
+    background: rgba(var(--primary-rgb), 0.08) !important;
+}
+.nav-pill .navbar-link.active {
+    color: #fff !important;
+    background: transparent !important;
+}
+
+/* The sliding active-pill background — animovaný backdrop pro .active link */
+.nav-pill .nav-active-pill {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%);
+    height: 36px;
+    width: 0;
+    background: var(--ig-gradient);
+    border-radius: 999px;
+    box-shadow:
+        0 0 22px rgba(var(--primary-rgb), 0.5),
+        0 6px 18px -4px rgba(var(--primary-rgb), 0.4);
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+    transition:
+        transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+        width 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.3s var(--ig-ease);
+}
+.nav-pill .nav-active-pill.ready { opacity: 1; }
+
+/* ─────  ICONS ─────  */
+.nav-pill .nav-icon-btn,
+.nav-pill .theme-toggle,
+.nav-pill .navbar-user,
+.nav-pill .navbar-cart,
+.nav-pill .lang-switcher-toggle,
+.nav-pill .navbar-hamburger {
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 50% !important;
+    background: transparent !important;
+    border: 1px solid transparent !important;
+    color: var(--text-secondary) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative;
+    overflow: visible;
+    transition:
+        background var(--ig-duration-btn) var(--ig-ease),
+        border-color var(--ig-duration-btn) var(--ig-ease),
+        color var(--ig-duration-btn) var(--ig-ease),
+        box-shadow var(--ig-duration-btn) var(--ig-ease),
+        transform var(--ig-duration-btn) var(--ig-ease) !important;
+}
+.nav-pill .nav-icon-btn:hover,
+.nav-pill .theme-toggle:hover,
+.nav-pill .navbar-user:hover,
+.nav-pill .navbar-cart:hover,
+.nav-pill .lang-switcher-toggle:hover,
+.nav-pill .navbar-hamburger:hover {
+    color: var(--primary) !important;
+    background: rgba(var(--primary-rgb), 0.12) !important;
+    border-color: rgba(var(--primary-rgb), 0.3) !important;
+    box-shadow: 0 0 18px rgba(var(--primary-rgb), 0.3) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Lang flag inside icon button — proper sizing */
+.nav-pill .lang-switcher-toggle img {
+    width: 18px !important;
+    height: 13px !important;
+    border-radius: 2px !important;
+    object-fit: cover !important;
+}
+
+/* Cart count — adapted for smaller circle */
+.nav-pill .navbar-cart .cart-count {
+    position: absolute !important;
+    top: -3px !important;
+    right: -3px !important;
+    min-width: 16px !important;
+    height: 16px !important;
+    padding: 0 4px !important;
+    background: var(--ig-gradient) !important;
+    border: 2px solid var(--np-bg-scrolled) !important;
+    border-radius: 999px !important;
+    font-size: 0.625rem !important;
+    font-weight: 700 !important;
+    color: #fff !important;
+    box-shadow: 0 0 10px rgba(var(--primary-rgb), 0.6) !important;
+    animation: cart-badge-pulse 2.4s ease-in-out infinite;
+}
+
+/* ─────  CTA — Shop button inside navbar ─────  */
+.nav-pill .navbar-cta {
+    height: 36px !important;
+    padding: 0 1rem !important;
+    margin-left: 0.35rem !important;
+    font-size: 0.78rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.04em !important;
+    text-transform: uppercase !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    background: var(--ig-gradient) !important;
+    border-radius: 999px !important;
+    color: #fff !important;
+    border: none !important;
+    box-shadow:
+        0 0 18px rgba(var(--primary-rgb), 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18) !important;
+}
+.nav-pill .navbar-cta svg { flex-shrink: 0; }
+.nav-pill .navbar-cta:hover {
+    box-shadow:
+        0 0 32px rgba(var(--primary-rgb), 0.6),
+        0 8px 24px -4px rgba(var(--accent-rgb), 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+}
+
+/* ─────  HAMBURGER (mobile)  ─────  */
+.nav-pill .navbar-hamburger { display: none !important; }
+
+/* Hide redundant logo-text */
+.nav-pill .logo-text { display: none !important; }
+
+/* Lang dropdown — repositioned */
+.nav-pill .lang-dropdown {
+    top: calc(100% + 8px) !important;
+}
+
+/* Body padding compensation — nav-pill is fixed but page content needs space */
+body { padding-top: calc(var(--np-height) + var(--np-margin) * 2 + 4px); }
+
+/* Hero static padding adjustment — pill takes ~88px top */
+.hero-static {
+    padding-top: 4rem !important;
+}
+
+/* ─────  RESPONSIVE  ───── */
+@media (max-width: 1100px) {
+    .nav-pill .navbar-link {
+        padding: 0 0.75rem !important;
+        font-size: 0.85rem !important;
+    }
+    .nav-pill .nav-status { display: none; }
+}
+@media (max-width: 900px) {
+    .nav-pill { --np-margin: 10px; }
+    .nav-pill .nav-pill-inner { padding: 0.4rem 0.5rem; }
+    .nav-pill .nav-divider { display: none; }
+    .nav-pill .nav-links {
+        position: fixed;
+        top: calc(var(--np-height) + var(--np-margin) * 2);
+        left: var(--np-margin);
+        right: var(--np-margin);
+        flex-direction: column;
+        background: var(--np-bg-scrolled);
+        backdrop-filter: blur(36px) saturate(200%);
+        -webkit-backdrop-filter: blur(36px) saturate(200%);
+        border: 1px solid var(--np-border);
+        border-radius: var(--radius-lg);
+        padding: 0.5rem;
+        box-shadow: 0 16px 50px -10px rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-8px);
+        transition: opacity 0.3s var(--ig-ease),
+                    visibility 0.3s var(--ig-ease),
+                    transform 0.3s var(--ig-ease);
+    }
+    .nav-pill .nav-links.is-open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    .nav-pill .navbar-link {
+        width: 100% !important;
+        height: 44px !important;
+        justify-content: flex-start !important;
+        font-size: 0.95rem !important;
+    }
+    .nav-pill .nav-active-pill { display: none !important; }
+    .nav-pill .navbar-hamburger { display: inline-flex !important; }
+    .nav-pill .navbar-cta span { display: none !important; }
+    .nav-pill .navbar-cta { width: 36px !important; padding: 0 !important; justify-content: center !important; }
+}
+@media (max-width: 600px) {
+    .nav-pill .lang-switcher,
+    .nav-pill .navbar-user { display: none !important; }
+}

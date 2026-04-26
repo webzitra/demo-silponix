@@ -122,6 +122,70 @@
     window.addEventListener('scroll', handleNavbarScroll, { passive: true });
     handleNavbarScroll();
 
+    /* ==================== NAV PILL — sliding active background ==================== */
+    (function navPillActiveSlide() {
+        var pill = document.querySelector('.nav-pill .nav-active-pill');
+        var linksContainer = document.querySelector('.nav-pill .nav-links');
+        if (!pill || !linksContainer) return;
+
+        var links = linksContainer.querySelectorAll('.navbar-link');
+
+        function moveTo(target) {
+            if (!target) return;
+            var containerRect = linksContainer.getBoundingClientRect();
+            var rect = target.getBoundingClientRect();
+            var x = rect.left - containerRect.left;
+            var w = rect.width;
+            pill.style.width = w + 'px';
+            pill.style.transform = 'translate(' + x + 'px, -50%)';
+        }
+
+        function snapToActive() {
+            var active = linksContainer.querySelector('.navbar-link.active') || links[0];
+            moveTo(active);
+            requestAnimationFrame(function () { pill.classList.add('ready'); });
+        }
+
+        // Initial
+        if (document.readyState === 'complete') snapToActive();
+        else window.addEventListener('load', snapToActive);
+
+        // Hover slide
+        links.forEach(function (link) {
+            link.addEventListener('mouseenter', function () { moveTo(link); });
+        });
+        linksContainer.addEventListener('mouseleave', function () {
+            var active = linksContainer.querySelector('.navbar-link.active') || links[0];
+            moveTo(active);
+        });
+
+        // Re-snap on resize
+        var resizeTimer = null;
+        window.addEventListener('resize', function () {
+            if (resizeTimer) clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(snapToActive, 100);
+        });
+    })();
+
+    /* ==================== NAV PILL — hamburger toggle (is-open) ==================== */
+    (function navPillHamburger() {
+        var ham = document.getElementById('navbarHamburger');
+        var menu = document.getElementById('navbarMenu');
+        if (!ham || !menu) return;
+        ham.addEventListener('click', function (e) {
+            e.preventDefault();
+            var isOpen = menu.classList.toggle('is-open');
+            ham.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+        // Close on link click
+        menu.querySelectorAll('.navbar-link').forEach(function (link) {
+            link.addEventListener('click', function () {
+                menu.classList.remove('is-open');
+                ham.setAttribute('aria-expanded', 'false');
+            });
+        });
+    })();
+
 
     /* ==================== SMOOTH SCROLL ==================== */
     document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
