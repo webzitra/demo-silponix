@@ -2973,42 +2973,39 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     opacity: 1 !important;
 }
 
-/* ░░ SHIMMER — diagonal light pass (přebije původní btn-primary::after) ░░ */
+/* ░░ SCAN-LINE — stejný vertikální sweep jako karty (přebije původní ::after) ░░ */
 .btn::after,
 .btn-primary::after,
 .btn-outline::after,
 .btn-danger::after {
     content: '' !important;
     position: absolute !important;
-    top: 0 !important;
-    left: -150% !important;
-    width: 80% !important;
-    height: 100% !important;
-    background: linear-gradient(120deg,
+    inset: 0 !important;
+    background: linear-gradient(180deg,
         transparent 0%,
-        rgba(255, 255, 255, 0.32) 50%,
+        rgba(var(--primary-rgb), 0.10) 30%,
+        rgba(var(--accent-rgb), 0.18) 50%,
+        rgba(var(--primary-rgb), 0.10) 70%,
         transparent 100%) !important;
-    transform: skewX(-20deg) !important;
+    transform: translateY(-100%) !important;
     pointer-events: none !important;
-    opacity: 1 !important;
-    transition: left var(--ig-duration-shimmer) var(--ig-ease) !important;
+    opacity: 0 !important;
     z-index: 3 !important;
-    border-radius: 0 !important;
-    inset: auto !important;
+    border-radius: inherit !important;
 }
 .btn:hover::after,
 .btn-primary:hover::after,
 .btn-outline:hover::after,
 .btn-danger:hover::after {
-    left: 150% !important;
+    animation: ig-scan-sweep var(--ig-duration-scan) var(--ig-ease) !important;
 }
 
-/* ░░ LIFT + GLOW ░░ */
+/* ░░ LIFT + GLOW — stejný stack jako karty (silnější than předchozí --ig-glow-btn) ░░ */
 .btn:hover,
 .btn-primary:hover,
 .btn-danger:hover {
     transform: translateY(var(--ig-lift-btn)) !important;
-    box-shadow: var(--ig-glow-btn) !important;
+    box-shadow: var(--ig-glow-card) !important;
 }
 .btn:active,
 .btn-primary:active,
@@ -3019,17 +3016,15 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     border-color: var(--primary) !important;
     color: var(--primary) !important;
     background: rgba(var(--primary-rgb), 0.08) !important;
-    box-shadow:
-        0 0 22px rgba(var(--primary-rgb), 0.3),
-        inset 0 0 18px rgba(var(--primary-rgb), 0.08) !important;
+    box-shadow: var(--ig-glow-card) !important;
 }
 .section-dark .btn-outline:hover {
     background: var(--primary) !important;
     color: #fff !important;
-    box-shadow: var(--ig-glow-btn) !important;
+    box-shadow: var(--ig-glow-card) !important;
 }
 
-/* Make sure button text/icons sit above shimmer + frame */
+/* Text/ikony sedí nad frame + scan */
 .btn > *,
 .btn-primary > *,
 .btn-outline > *,
