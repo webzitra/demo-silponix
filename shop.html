@@ -79,30 +79,6 @@
                 <kbd class="shop-search-kbd" aria-hidden="true">⌘ K</kbd>
             </form>
 
-            <div class="shop-vehicle-picker" id="shopVehiclePicker">
-                <div class="shop-vehicle-display" id="vehicleDisplay">
-                    <svg class="shop-vehicle-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a1 1 0 0 0-.8-.4H5.24a2 2 0 0 0-1.8 1.1l-.8 1.63A6 6 0 0 0 2 12.42V15a1 1 0 0 0 1 1h2"/>
-                        <circle cx="6.5" cy="16.5" r="2.5"/>
-                        <circle cx="16.5" cy="16.5" r="2.5"/>
-                    </svg>
-                    <div class="shop-vehicle-text">
-                        <span class="shop-vehicle-label">Váš vůz</span>
-                        <span class="shop-vehicle-value" id="vehicleValue">Vyberte vůz pro zobrazení kompatibility</span>
-                    </div>
-                    <button type="button" class="shop-vehicle-toggle btn btn-sm btn-outline" id="vehicleToggleBtn">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-                        <span>Vybrat</span>
-                    </button>
-                    <button type="button" class="shop-vehicle-clear" id="vehicleClearBtn" hidden aria-label="Zrušit výběr vozu">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                    </button>
-                </div>
-                <div class="shop-vehicle-dropdown" id="vehicleDropdown" hidden>
-                    <div class="shop-vehicle-grid" id="vehicleGrid"></div>
-                </div>
-            </div>
-
             <div class="shop-hero-stats" data-spy-group>
                 <div class="shop-stat lit-card">
                     <span class="shop-stat-value" id="statTotalProducts">25</span>
@@ -119,6 +95,35 @@
                 <div class="shop-stat lit-card">
                     <span class="shop-stat-value">24h</span>
                     <span class="shop-stat-label">expedice</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ VEHICLE COMPATIBILITY PICKER ═══════════ -->
+    <section class="shop-vehicle-section">
+        <div class="container">
+            <div class="shop-vehicle-picker" id="shopVehiclePicker">
+                <div class="shop-vehicle-display" id="vehicleDisplay">
+                    <span class="shop-vehicle-icon" aria-hidden="true">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M5 3.5a1 1 0 0 1 1-1h1.5a1 1 0 0 1 1 1V10h7V3.5a1 1 0 0 1 1-1H18a1 1 0 0 1 1 1V20.5a1 1 0 0 1-1 1h-1.5a1 1 0 0 1-1-1V14h-7v6.5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1z"/>
+                        </svg>
+                    </span>
+                    <div class="shop-vehicle-text">
+                        <span class="shop-vehicle-label">Váš vůz Honda</span>
+                        <span class="shop-vehicle-value" id="vehicleValue">Vyberte vůz pro zobrazení kompatibility</span>
+                    </div>
+                    <button type="button" class="shop-vehicle-toggle btn btn-sm btn-outline" id="vehicleToggleBtn">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                        <span>Vybrat</span>
+                    </button>
+                    <button type="button" class="shop-vehicle-clear" id="vehicleClearBtn" hidden aria-label="Zrušit výběr vozu">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    </button>
+                </div>
+                <div class="shop-vehicle-dropdown" id="vehicleDropdown" hidden>
+                    <div class="shop-vehicle-grid" id="vehicleGrid"></div>
                 </div>
             </div>
         </div>
