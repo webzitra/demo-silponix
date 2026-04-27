@@ -184,6 +184,29 @@
                         </div>
                     </div>
 
+                    <div class="shop-sidebar-section">
+                        <header class="shop-sidebar-header">
+                            <h3 class="shop-sidebar-title">Rychlé filtry</h3>
+                        </header>
+                        <div class="shop-quick-filters">
+                            <label class="shop-toggle-row">
+                                <input type="checkbox" id="toggleInStock">
+                                <span class="shop-toggle-track"><span class="shop-toggle-thumb"></span></span>
+                                <span class="shop-toggle-label">Pouze skladem</span>
+                            </label>
+                            <label class="shop-toggle-row">
+                                <input type="checkbox" id="toggleSale">
+                                <span class="shop-toggle-track"><span class="shop-toggle-thumb"></span></span>
+                                <span class="shop-toggle-label">Ve slevě</span>
+                            </label>
+                            <label class="shop-toggle-row">
+                                <input type="checkbox" id="toggleWithReviews">
+                                <span class="shop-toggle-track"><span class="shop-toggle-thumb"></span></span>
+                                <span class="shop-toggle-label">S hodnocením</span>
+                            </label>
+                        </div>
+                    </div>
+
                     <div class="shop-sidebar-info">
                         <div class="shop-info-card">
                             <span class="shop-info-icon">
@@ -228,6 +251,7 @@
                                 <label for="sortSelect" class="sr-only">Řazení</label>
                                 <select id="sortSelect" class="shop-sort-select">
                                     <option value="default" data-i18n="products.sort_default">Doporučené</option>
+                                    <option value="rating">Nejlépe hodnocené</option>
                                     <option value="price-asc" data-i18n="products.sort_price_asc">Cena: nejnižší</option>
                                     <option value="price-desc" data-i18n="products.sort_price_desc">Cena: nejvyšší</option>
                                     <option value="name-asc" data-i18n="products.sort_name_asc">Název: A-Z</option>
@@ -241,6 +265,8 @@
                             </button>
                         </div>
                     </div>
+
+                    <div class="active-filters-bar" id="activeFiltersBar" aria-live="polite"></div>
 
                     <div class="products-grid shop-products-grid" id="productsGrid" data-spy-group>
                         <!-- Filled by JS -->

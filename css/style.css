@@ -5674,6 +5674,142 @@ a.product-card,
     body { padding-bottom: 80px; }
 }
 
+/* ════════════════════════════════════════════════════════════
+   ░░░  QUICK FILTERS (sidebar toggles)  ░░░
+   ════════════════════════════════════════════════════════════ */
+.shop-quick-filters {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+.shop-toggle-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background var(--ig-duration-btn) var(--ig-ease);
+}
+.shop-toggle-row:hover { background: rgba(255, 255, 255, 0.04); }
+.shop-toggle-row input[type="checkbox"] {
+    position: absolute;
+    width: 1px; height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+.shop-toggle-track {
+    position: relative;
+    width: 36px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+    flex-shrink: 0;
+    transition: background var(--ig-duration-btn) var(--ig-ease),
+                border-color var(--ig-duration-btn) var(--ig-ease);
+}
+.shop-toggle-thumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 14px;
+    height: 14px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    transition: transform var(--ig-duration-btn) var(--ig-ease),
+                background var(--ig-duration-btn) var(--ig-ease);
+}
+.shop-toggle-row input:checked ~ .shop-toggle-track {
+    background: var(--ig-gradient);
+    border-color: transparent;
+    box-shadow: 0 0 14px rgba(var(--primary-rgb), 0.4);
+}
+.shop-toggle-row input:checked ~ .shop-toggle-track .shop-toggle-thumb {
+    transform: translateX(16px);
+    background: #fff;
+}
+.shop-toggle-row input:focus-visible ~ .shop-toggle-track {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+.shop-toggle-label {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.8);
+    user-select: none;
+}
+
+/* ════════════════════════════════════════════════════════════
+   ░░░  ACTIVE FILTER CHIPS BAR  ░░░
+   ════════════════════════════════════════════════════════════ */
+.active-filters-bar {
+    display: none;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin-bottom: 1.25rem;
+    padding: 0.75rem 1rem;
+    background: rgba(20, 20, 20, 0.5);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+}
+.active-filters-bar.is-visible { display: flex; }
+.active-filters-label {
+    font-family: var(--font-heading);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    margin-right: 0.25rem;
+}
+.active-filter-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.32rem 0.55rem 0.32rem 0.75rem;
+    background: rgba(var(--primary-rgb), 0.12);
+    border: 1px solid rgba(var(--primary-rgb), 0.3);
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.92);
+    cursor: pointer;
+    transition: background var(--ig-duration-btn) var(--ig-ease),
+                border-color var(--ig-duration-btn) var(--ig-ease),
+                color var(--ig-duration-btn) var(--ig-ease);
+}
+.active-filter-chip:hover {
+    background: rgba(var(--primary-rgb), 0.22);
+    border-color: rgba(var(--primary-rgb), 0.55);
+    color: #fff;
+}
+.active-filter-chip svg {
+    color: rgba(255, 255, 255, 0.6);
+    transition: color var(--ig-duration-btn) var(--ig-ease);
+}
+.active-filter-chip:hover svg { color: #fff; }
+.active-filters-clear {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    margin-left: auto;
+    padding: 0.32rem 0.5rem;
+    border-radius: 6px;
+    transition: color var(--ig-duration-btn) var(--ig-ease),
+                background var(--ig-duration-btn) var(--ig-ease);
+}
+.active-filters-clear:hover {
+    color: var(--primary);
+    background: rgba(var(--primary-rgb), 0.08);
+}
+
 /* Mini variation indicator on product card */
 .product-card-variations {
     display: inline-flex;

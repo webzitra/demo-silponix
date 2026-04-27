@@ -655,6 +655,9 @@
     var currentSort = 'default';
     var priceMin = 0;
     var priceMax = Infinity;
+    var onlyInStock = false;
+    var onlyOnSale = false;
+    var onlyWithReviews = false;
 
     function filterAndRender() {
         if (!productsGrid) return;
@@ -664,6 +667,9 @@
             if (currentSearch && p.name.toLowerCase().indexOf(currentSearch.toLowerCase()) === -1 &&
                 p.desc.toLowerCase().indexOf(currentSearch.toLowerCase()) === -1) return false;
             if (p.price < priceMin || p.price > priceMax) return false;
+            if (onlyInStock && !(p.stock > 0)) return false;
+            if (onlyOnSale && !(p.compareAtPrice && p.compareAtPrice > p.price) && p.badge !== 'sale') return false;
+            if (onlyWithReviews && !(p.rating && p.reviewCount > 0)) return false;
             return true;
         });
 
@@ -672,6 +678,7 @@
         if (currentSort === 'price-desc') filtered.sort(function (a, b) { return b.price - a.price; });
         if (currentSort === 'name-asc') filtered.sort(function (a, b) { return a.name.localeCompare(b.name, 'cs'); });
         if (currentSort === 'name-desc') filtered.sort(function (a, b) { return b.name.localeCompare(a.name, 'cs'); });
+        if (currentSort === 'rating') filtered.sort(function (a, b) { return (b.rating || 0) - (a.rating || 0); });
 
         // Show skeleton shimmer briefly before rendering actual products
         showSkeletons(8);
@@ -683,8 +690,110 @@
                 eshopResults.textContent = filtered.length + ' produkt' + (filtered.length === 1 ? '' : filtered.length < 5 ? 'y' : 'ů');
             }
             if (eshopEmpty) eshopEmpty.hidden = filtered.length > 0;
+            renderActiveFilterChips();
         }, 200);
     }
+
+    // ─── Active filter chips (above grid) ───
+    function renderActiveFilterChips() {
+        var bar = document.getElementById('activeFiltersBar');
+        if (!bar) return;
+        var chips = [];
+
+        if (currentCategory !== 'all' && CATEGORIES[currentCategory]) {
+            chips.push({ key: 'category', label: CATEGORIES[currentCategory] });
+        }
+        if (currentSearch) chips.push({ key: 'search', label: '"' + currentSearch + '"' });
+        if (priceMin > 0 || priceMax < Infinity) {
+            var pl = (priceMin > 0 ? priceMin.toLocaleString('cs-CZ') : '0') + ' – ' +
+                     (priceMax < Infinity ? priceMax.toLocaleString('cs-CZ') : '∞') + ' Kč';
+            chips.push({ key: 'price', label: pl });
+        }
+        if (onlyInStock) chips.push({ key: 'stock', label: 'Pouze skladem' });
+        if (onlyOnSale) chips.push({ key: 'sale', label: 'Ve slevě' });
+        if (onlyWithReviews) chips.push({ key: 'reviews', label: 'S hodnocením' });
+
+        bar.innerHTML = '';
+        if (chips.length === 0) {
+            bar.classList.remove('is-visible');
+            return;
+        }
+        bar.classList.add('is-visible');
+
+        var label = document.createElement('span');
+        label.className = 'active-filters-label';
+        label.textContent = 'Aktivní filtry:';
+        bar.appendChild(label);
+
+        chips.forEach(function (c) {
+            var chip = document.createElement('button');
+            chip.type = 'button';
+            chip.className = 'active-filter-chip';
+            chip.setAttribute('data-clear-filter', c.key);
+            chip.appendChild(document.createTextNode(c.label));
+            var x = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            x.setAttribute('width', '12'); x.setAttribute('height', '12');
+            x.setAttribute('viewBox', '0 0 24 24'); x.setAttribute('fill', 'none');
+            x.setAttribute('stroke', 'currentColor'); x.setAttribute('stroke-width', '2.5');
+            x.setAttribute('stroke-linecap', 'round');
+            ['M18 6L6 18', 'M6 6l12 12'].forEach(function (d) {
+                var p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                p.setAttribute('d', d);
+                x.appendChild(p);
+            });
+            chip.appendChild(x);
+            bar.appendChild(chip);
+        });
+
+        // Clear all
+        var clearAll = document.createElement('button');
+        clearAll.type = 'button';
+        clearAll.className = 'active-filters-clear';
+        clearAll.setAttribute('data-clear-filter', 'all');
+        clearAll.textContent = 'Zrušit vše';
+        bar.appendChild(clearAll);
+    }
+
+    // Chip removal
+    document.addEventListener('click', function (e) {
+        var chip = e.target.closest('[data-clear-filter]');
+        if (!chip) return;
+        var key = chip.getAttribute('data-clear-filter');
+        if (key === 'category' || key === 'all') {
+            currentCategory = 'all';
+            document.querySelectorAll('.shop-cat-btn, .category-btn').forEach(function (b) {
+                b.classList.toggle('active', b.getAttribute('data-category') === 'all');
+            });
+        }
+        if (key === 'search' || key === 'all') {
+            currentSearch = '';
+            if (searchInput) searchInput.value = '';
+        }
+        if (key === 'price' || key === 'all') {
+            priceMin = 0;
+            priceMax = Infinity;
+            var mi = document.getElementById('priceMin');
+            var ma = document.getElementById('priceMax');
+            if (mi) mi.value = '';
+            if (ma) ma.value = '';
+        }
+        if (key === 'stock' || key === 'all') {
+            onlyInStock = false;
+            var t1 = document.getElementById('toggleInStock');
+            if (t1) t1.checked = false;
+        }
+        if (key === 'sale' || key === 'all') {
+            onlyOnSale = false;
+            var t2 = document.getElementById('toggleSale');
+            if (t2) t2.checked = false;
+        }
+        if (key === 'reviews' || key === 'all') {
+            onlyWithReviews = false;
+            var t3 = document.getElementById('toggleWithReviews');
+            if (t3) t3.checked = false;
+        }
+        filterAndRender();
+    });
 
     // URL param category
     if (productsGrid) {
@@ -729,6 +838,14 @@
             filterAndRender();
         });
     }
+
+    // Quick filter toggles (in-stock / sale / with reviews)
+    var toggleInStock = document.getElementById('toggleInStock');
+    var toggleSale = document.getElementById('toggleSale');
+    var toggleWithReviews = document.getElementById('toggleWithReviews');
+    if (toggleInStock) toggleInStock.addEventListener('change', function () { onlyInStock = this.checked; filterAndRender(); });
+    if (toggleSale) toggleSale.addEventListener('change', function () { onlyOnSale = this.checked; filterAndRender(); });
+    if (toggleWithReviews) toggleWithReviews.addEventListener('change', function () { onlyWithReviews = this.checked; filterAndRender(); });
 
     // Price filter
     if (priceFilterBtn) {
