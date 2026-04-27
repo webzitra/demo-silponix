@@ -207,6 +207,49 @@
         updateCartCount();
     }
 
+    // ─── Vehicle compatibility checker (localStorage) ───
+    var VEHICLES = [
+        { id: 'civic-eg', label: 'Honda Civic EG', years: '1992–1995', match: ['eg', 'civic eg', 'civic 5'] },
+        { id: 'civic-ek', label: 'Honda Civic EK', years: '1996–2000', match: ['ek', 'civic ek', 'ek3', 'ek4', 'ek9', 'civic 6'] },
+        { id: 'civic-es', label: 'Honda Civic ES/EU', years: '2001–2005', match: ['es', 'eu', 'civic 7'] },
+        { id: 'integra-dc2', label: 'Honda Integra Type R DC2', years: '1995–2001', match: ['dc2', 'integra dc2', 'integra type r', 'itr'] },
+        { id: 'integra-dc5', label: 'Honda Integra DC5', years: '2001–2006', match: ['dc5', 'integra dc5'] },
+        { id: 'crx-ee', label: 'Honda CRX', years: '1987–1991', match: ['crx'] },
+        { id: 's2000-ap1', label: 'Honda S2000 AP1', years: '1999–2003', match: ['s2000', 'ap1', 'f20c'] },
+        { id: 'accord', label: 'Honda Accord', years: '1990–2002', match: ['accord'] },
+        { id: 'cr-v-rd1', label: 'Honda CR-V RD1', years: '1995–2001', match: ['cr-v', 'crv', 'rd1'] }
+    ];
+
+    function getActiveVehicle() {
+        try {
+            var raw = localStorage.getItem('silponix-vehicle');
+            return raw ? JSON.parse(raw) : null;
+        } catch (e) { return null; }
+    }
+    function setActiveVehicle(vehicle) {
+        if (vehicle) localStorage.setItem('silponix-vehicle', JSON.stringify(vehicle));
+        else localStorage.removeItem('silponix-vehicle');
+    }
+    function findVehicleById(id) {
+        return VEHICLES.find(function (v) { return v.id === id; }) || null;
+    }
+    /**
+     * Returns true if product is compatible with given vehicle.
+     * Uses spec rows containing "Kompatibilita" / "Compatibility" — fuzzy match
+     * against vehicle.match keywords (lowercase substring search).
+     */
+    function isCompatibleWith(product, vehicle) {
+        if (!vehicle) return null; // unknown
+        var specs = product.specs || [];
+        var compatRow = specs.find(function (row) {
+            var k = (row[0] || '').toLowerCase();
+            return k.indexOf('kompatib') !== -1 || k.indexOf('použití') !== -1 || k.indexOf('motor') !== -1;
+        });
+        if (!compatRow) return null; // no compat data
+        var haystack = (compatRow[1] || '').toLowerCase();
+        return vehicle.match.some(function (kw) { return haystack.indexOf(kw.toLowerCase()) !== -1; });
+    }
+
     // ─── Wishlist (localStorage) ───
     function getWishlist() {
         try { return JSON.parse(localStorage.getItem('silponix-wishlist')) || []; }
@@ -521,6 +564,24 @@
 
         var detailLabel = lang === 'en' ? 'View details' : 'Zobrazit detail';
 
+        // Compatibility badge (relative to user-selected vehicle)
+        var activeVehicle = getActiveVehicle();
+        var compatBadge = '';
+        if (activeVehicle) {
+            var compat = isCompatibleWith(product, activeVehicle);
+            if (compat === true) {
+                compatBadge = '<div class="product-card-compat is-yes" title="Kompatibilní s ' + activeVehicle.label + '">' +
+                    '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>' +
+                    'Sedí na ' + activeVehicle.label.replace('Honda ', '') +
+                '</div>';
+            } else if (compat === false) {
+                compatBadge = '<div class="product-card-compat is-no" title="Nekompatibilní s ' + activeVehicle.label + '">' +
+                    '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>' +
+                    'Nesedí' +
+                '</div>';
+            }
+        }
+
         // Mini variation indicator (uses first group's swatches/pills)
         var variationIndicator = '';
         var groups = getVariationGroups(product);
@@ -568,6 +629,7 @@
             '<div class="product-card-body">' +
                 '<p class="product-card-category">' + (product.category || '') + '</p>' +
                 '<h3 class="product-name">' + name + '</h3>' +
+                compatBadge +
                 (product.rating ? '<div class="product-card-rating">' + renderStars(product.rating, { size: 13 }) + '<span class="product-card-rating-count">' + product.rating.toFixed(1) + ' (' + (product.reviewCount || 0) + ')</span></div>' : '') +
                 variationIndicator +
                 '<div class="product-card-footer">' +
@@ -658,6 +720,7 @@
     var onlyInStock = false;
     var onlyOnSale = false;
     var onlyWithReviews = false;
+    var onlyCompatible = false;
 
     function filterAndRender() {
         if (!productsGrid) return;
@@ -670,6 +733,11 @@
             if (onlyInStock && !(p.stock > 0)) return false;
             if (onlyOnSale && !(p.compareAtPrice && p.compareAtPrice > p.price) && p.badge !== 'sale') return false;
             if (onlyWithReviews && !(p.rating && p.reviewCount > 0)) return false;
+            if (onlyCompatible) {
+                var av = getActiveVehicle();
+                if (!av) return false;
+                if (isCompatibleWith(p, av) !== true) return false;
+            }
             return true;
         });
 
@@ -712,6 +780,10 @@
         if (onlyInStock) chips.push({ key: 'stock', label: 'Pouze skladem' });
         if (onlyOnSale) chips.push({ key: 'sale', label: 'Ve slevě' });
         if (onlyWithReviews) chips.push({ key: 'reviews', label: 'S hodnocením' });
+        if (onlyCompatible) {
+            var av = getActiveVehicle();
+            chips.push({ key: 'compat', label: 'Kompatibilní' + (av ? ' s ' + av.label.replace('Honda ', '') : '') });
+        }
 
         bar.innerHTML = '';
         if (chips.length === 0) {
@@ -792,6 +864,11 @@
             var t3 = document.getElementById('toggleWithReviews');
             if (t3) t3.checked = false;
         }
+        if (key === 'compat' || key === 'all') {
+            onlyCompatible = false;
+            var t4 = document.getElementById('toggleCompatible');
+            if (t4) t4.checked = false;
+        }
         filterAndRender();
     });
 
@@ -846,6 +923,8 @@
     if (toggleInStock) toggleInStock.addEventListener('change', function () { onlyInStock = this.checked; filterAndRender(); });
     if (toggleSale) toggleSale.addEventListener('change', function () { onlyOnSale = this.checked; filterAndRender(); });
     if (toggleWithReviews) toggleWithReviews.addEventListener('change', function () { onlyWithReviews = this.checked; filterAndRender(); });
+    var toggleCompatible = document.getElementById('toggleCompatible');
+    if (toggleCompatible) toggleCompatible.addEventListener('change', function () { onlyCompatible = this.checked; filterAndRender(); });
 
     // Price filter
     if (priceFilterBtn) {
@@ -922,6 +1001,92 @@
             grid.classList.toggle('list-view', mode === 'list');
             localStorage.setItem('silponix_shop_view', mode);
         }
+    })();
+
+    // ─── Vehicle picker ───
+    (function vehiclePicker() {
+        var picker = document.getElementById('shopVehiclePicker');
+        if (!picker) return;
+        var displayValue = document.getElementById('vehicleValue');
+        var toggleBtn = document.getElementById('vehicleToggleBtn');
+        var clearBtn = document.getElementById('vehicleClearBtn');
+        var dropdown = document.getElementById('vehicleDropdown');
+        var grid = document.getElementById('vehicleGrid');
+
+        // Build vehicle grid (createElement, no innerHTML)
+        VEHICLES.forEach(function (v) {
+            var btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'shop-vehicle-option';
+            btn.setAttribute('data-vehicle-id', v.id);
+            var label = document.createElement('span');
+            label.className = 'shop-vehicle-option-name';
+            label.textContent = v.label;
+            var years = document.createElement('span');
+            years.className = 'shop-vehicle-option-years';
+            years.textContent = v.years;
+            btn.appendChild(label);
+            btn.appendChild(years);
+            grid.appendChild(btn);
+        });
+
+        function refreshDisplay() {
+            var active = getActiveVehicle();
+            if (active) {
+                displayValue.textContent = active.label + ' · ' + active.years;
+                picker.classList.add('has-vehicle');
+                if (clearBtn) clearBtn.hidden = false;
+                if (toggleBtn) toggleBtn.querySelector('span').textContent = 'Změnit';
+            } else {
+                displayValue.textContent = 'Vyberte vůz pro zobrazení kompatibility';
+                picker.classList.remove('has-vehicle');
+                if (clearBtn) clearBtn.hidden = true;
+                if (toggleBtn) toggleBtn.querySelector('span').textContent = 'Vybrat';
+            }
+            // Mark active in grid
+            grid.querySelectorAll('.shop-vehicle-option').forEach(function (o) {
+                o.classList.toggle('is-active', !!active && o.getAttribute('data-vehicle-id') === active.id);
+            });
+        }
+
+        function openDropdown() {
+            dropdown.hidden = false;
+            picker.classList.add('is-open');
+        }
+        function closeDropdown() {
+            dropdown.hidden = true;
+            picker.classList.remove('is-open');
+        }
+
+        toggleBtn.addEventListener('click', function () {
+            if (dropdown.hidden) openDropdown();
+            else closeDropdown();
+        });
+
+        if (clearBtn) {
+            clearBtn.addEventListener('click', function () {
+                setActiveVehicle(null);
+                refreshDisplay();
+                filterAndRender();
+            });
+        }
+
+        grid.addEventListener('click', function (e) {
+            var btn = e.target.closest('.shop-vehicle-option');
+            if (!btn) return;
+            var id = btn.getAttribute('data-vehicle-id');
+            var v = findVehicleById(id);
+            setActiveVehicle(v);
+            refreshDisplay();
+            closeDropdown();
+            filterAndRender();
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!picker.contains(e.target)) closeDropdown();
+        });
+
+        refreshDisplay();
     })();
 
     // ─── Cmd+K / Ctrl+K focuses search ───
@@ -1138,10 +1303,29 @@
                     galleryHTML +
                     // ─── RIGHT: Info + Buy box + Trust ───
                     '<div class="pdetail-info">' +
-                        // Stock badge above title
-                        '<div class="pdetail-stock-top ' + (initialInStock ? 'pdetail-stock-in' : 'pdetail-stock-out') + '" id="pdetailStock">' +
-                            '<span class="pdetail-stock-dot"></span>' +
-                            '<span class="pdetail-stock-text">' + initialStockLabel + '</span>' +
+                        // Top badges row: stock + compatibility
+                        '<div class="pdetail-top-badges">' +
+                            '<div class="pdetail-stock-top ' + (initialInStock ? 'pdetail-stock-in' : 'pdetail-stock-out') + '" id="pdetailStock">' +
+                                '<span class="pdetail-stock-dot"></span>' +
+                                '<span class="pdetail-stock-text">' + initialStockLabel + '</span>' +
+                            '</div>' +
+                            (function () {
+                                var av = getActiveVehicle();
+                                if (!av) return '';
+                                var compat = isCompatibleWith(product, av);
+                                if (compat === true) {
+                                    return '<div class="pdetail-compat is-yes">' +
+                                        '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>' +
+                                        'Sedí na ' + av.label.replace('Honda ', '') +
+                                    '</div>';
+                                } else if (compat === false) {
+                                    return '<div class="pdetail-compat is-no">' +
+                                        '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>' +
+                                        'Nesedí na ' + av.label.replace('Honda ', '') +
+                                    '</div>';
+                                }
+                                return '';
+                            })() +
                         '</div>' +
                         '<span class="pdetail-category">' + catLabel + '</span>' +
                         '<h1 class="pdetail-title">' + pName + '</h1>' +
