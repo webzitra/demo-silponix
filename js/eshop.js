@@ -207,6 +207,38 @@
         updateCartCount();
     }
 
+    // ─── Wishlist (localStorage) ───
+    function getWishlist() {
+        try { return JSON.parse(localStorage.getItem('silponix-wishlist')) || []; }
+        catch (e) { return []; }
+    }
+    function saveWishlist(list) {
+        localStorage.setItem('silponix-wishlist', JSON.stringify(list));
+    }
+    function isInWishlist(productId) {
+        return getWishlist().indexOf(productId) !== -1;
+    }
+    function toggleWishlist(productId) {
+        var list = getWishlist();
+        var idx = list.indexOf(productId);
+        if (idx === -1) list.push(productId);
+        else list.splice(idx, 1);
+        saveWishlist(list);
+        return idx === -1; // true = added
+    }
+
+    // ─── Recently viewed products ───
+    function getRecentlyViewed() {
+        try { return JSON.parse(localStorage.getItem('silponix-recent')) || []; }
+        catch (e) { return []; }
+    }
+    function pushRecentlyViewed(productId) {
+        var list = getRecentlyViewed().filter(function (id) { return id !== productId; });
+        list.unshift(productId);
+        if (list.length > 8) list = list.slice(0, 8);
+        localStorage.setItem('silponix-recent', JSON.stringify(list));
+    }
+
     // ─── Reviews section render ───
     function renderReviewsSection(product, lang) {
         if (!product.rating) return '';
@@ -518,10 +550,14 @@
         card.className = 'product-card lit-card';
         card.href = '/produkt.html?id=' + product.id;
         card.setAttribute('data-product-id', product.id);
+        var inWish = isInWishlist(product.id);
         card.innerHTML =
             '<div class="product-card-img-wrap">' +
                 '<img src="' + (product.img || '') + '" alt="' + name + '" loading="lazy" class="product-card-img">' +
                 badge +
+                '<button type="button" class="product-card-wishlist' + (inWish ? ' is-active' : '') + '" data-wishlist-id="' + product.id + '" aria-label="' + (inWish ? 'Odebrat z oblíbených' : 'Přidat do oblíbených') + '" aria-pressed="' + (inWish ? 'true' : 'false') + '">' +
+                    '<svg width="16" height="16" viewBox="0 0 24 24" fill="' + (inWish ? 'currentColor' : 'none') + '" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>' +
+                '</button>' +
                 '<div class="product-card-overlay">' +
                     '<span class="product-card-overlay-label">' +
                         detailLabel +
@@ -792,6 +828,28 @@
         }
     });
 
+    // ─── Wishlist click delegation ───
+    document.addEventListener('click', function (e) {
+        var wb = e.target.closest('.product-card-wishlist, .pdetail-wishlist-btn');
+        if (!wb) return;
+        e.preventDefault();
+        e.stopPropagation();
+        var pid = parseInt(wb.getAttribute('data-wishlist-id'), 10);
+        var added = toggleWishlist(pid);
+        wb.classList.toggle('is-active', added);
+        wb.setAttribute('aria-pressed', added ? 'true' : 'false');
+        wb.setAttribute('aria-label', added ? 'Odebrat z oblíbených' : 'Přidat do oblíbených');
+        // Update heart fill
+        var path = wb.querySelector('svg path');
+        var svg = wb.querySelector('svg');
+        if (svg) svg.setAttribute('fill', added ? 'currentColor' : 'none');
+        // Notify
+        if (typeof showAddedNotification === 'function') {
+            var p = PRODUCTS.find(function (x) { return x.id === pid; });
+            if (p) showAddedNotification((added ? '❤ ' : '') + p.name + (added ? ' přidáno do oblíbených' : ' odebráno z oblíbených'));
+        }
+    });
+
     /* ==================== PRODUCT DETAIL PAGE ==================== */
     var productDetailEl = document.getElementById('productDetail');
     if (productDetailEl) {
@@ -996,6 +1054,9 @@
                                     '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>' +
                                     '<span>' + (initialInStock ? (lang === 'en' ? 'Add to cart' : 'Přidat do košíku') : (lang === 'en' ? 'Out of stock' : 'Vyprodáno')) + '</span>' +
                                 '</button>' +
+                                '<button type="button" class="pdetail-wishlist-btn' + (isInWishlist(product.id) ? ' is-active' : '') + '" data-wishlist-id="' + product.id + '" aria-label="Přidat do oblíbených" aria-pressed="' + (isInWishlist(product.id) ? 'true' : 'false') + '">' +
+                                    '<svg width="20" height="20" viewBox="0 0 24 24" fill="' + (isInWishlist(product.id) ? 'currentColor' : 'none') + '" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>' +
+                                '</button>' +
                             '</div>' +
                         '</div>' +
 
@@ -1016,6 +1077,9 @@
                     renderReviewsSection(product, lang) +
                 '</div>';
 
+            // Track this product as recently viewed (after detail is rendered)
+            pushRecentlyViewed(product.id);
+
             // Related products
             var relatedGrid = document.getElementById('relatedProducts');
             if (relatedGrid) {
@@ -1023,6 +1087,60 @@
                 if (related.length === 0) related = PRODUCTS.filter(function (p) { return p.id !== product.id; }).slice(0, 4);
                 related.forEach(function (p) { relatedGrid.appendChild(createProductCard(p)); });
             }
+
+            // Recently viewed (excluding current)
+            var recentSection = document.getElementById('recentlyViewedSection');
+            var recentGrid = document.getElementById('recentlyViewed');
+            if (recentGrid) {
+                var recentIds = getRecentlyViewed().filter(function (id) { return id !== product.id; });
+                if (recentIds.length > 0) {
+                    if (recentSection) recentSection.hidden = false;
+                    recentIds.slice(0, 4).forEach(function (id) {
+                        var p = PRODUCTS.find(function (x) { return x.id === id; });
+                        if (p) recentGrid.appendChild(createProductCard(p));
+                    });
+                }
+            }
+
+            // Sticky mobile add-to-cart bar
+            (function injectStickyBuyBar() {
+                if (document.querySelector('.pdetail-sticky-bar')) return;
+                var bar = document.createElement('div');
+                bar.className = 'pdetail-sticky-bar';
+                var inner = document.createElement('div');
+                inner.className = 'container pdetail-sticky-inner';
+                var info = document.createElement('div');
+                info.className = 'pdetail-sticky-info';
+                var nameEl = document.createElement('strong');
+                nameEl.textContent = pName;
+                var priceEl = document.createElement('span');
+                priceEl.className = 'pdetail-sticky-price';
+                priceEl.textContent = formatPrice(initialPrice);
+                priceEl.id = 'pdetailStickyPrice';
+                info.appendChild(nameEl);
+                info.appendChild(priceEl);
+                var buyEl = document.createElement('button');
+                buyEl.type = 'button';
+                buyEl.className = 'btn btn-primary pdetail-sticky-buy add-to-cart-btn';
+                buyEl.setAttribute('data-product-id', String(product.id));
+                if (!initialInStock) buyEl.disabled = true;
+                buyEl.textContent = initialInStock ? (lang === 'en' ? 'Add to cart' : 'Přidat do košíku') : (lang === 'en' ? 'Out of stock' : 'Vyprodáno');
+                inner.appendChild(info);
+                inner.appendChild(buyEl);
+                bar.appendChild(inner);
+                document.body.appendChild(bar);
+
+                // Show only when buybox scrolled out of view
+                var buyBoxRef = document.querySelector('.pdetail-buybox');
+                if ('IntersectionObserver' in window && buyBoxRef) {
+                    var io = new IntersectionObserver(function (entries) {
+                        entries.forEach(function (entry) {
+                            bar.classList.toggle('is-visible', !entry.isIntersecting);
+                        });
+                    }, { rootMargin: '0px 0px -100px 0px' });
+                    io.observe(buyBoxRef);
+                }
+            })();
 
             // ─── Quantity + variations + carousel + cart logic ───
             (function () {
@@ -1066,6 +1184,14 @@
                         buyBtn.disabled = !inStockNow;
                         var btnLabel = buyBtn.querySelector('span');
                         if (btnLabel) btnLabel.textContent = inStockNow ? (lang === 'en' ? 'Add to cart' : 'Přidat do košíku') : (lang === 'en' ? 'Out of stock' : 'Vyprodáno');
+                    }
+                    // Sync sticky mobile bar
+                    var stickyPrice = document.getElementById('pdetailStickyPrice');
+                    if (stickyPrice) stickyPrice.textContent = formatPrice(price);
+                    var stickyBuy = document.querySelector('.pdetail-sticky-buy');
+                    if (stickyBuy) {
+                        stickyBuy.disabled = !inStockNow;
+                        stickyBuy.textContent = inStockNow ? (lang === 'en' ? 'Add to cart' : 'Přidat do košíku') : (lang === 'en' ? 'Out of stock' : 'Vyprodáno');
                     }
                 }
 

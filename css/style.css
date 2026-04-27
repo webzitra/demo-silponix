@@ -5517,6 +5517,163 @@ a.product-card,
     .pdetail-rating-row { font-size: 0.85rem; }
 }
 
+/* ════════════════════════════════════════════════════════════
+   ░░░  WISHLIST  ░░░
+   ════════════════════════════════════════════════════════════ */
+.product-card-wishlist {
+    position: absolute;
+    top: 0.85rem;
+    right: 0.85rem;
+    z-index: 5;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(15, 15, 15, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.7);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition:
+        background var(--ig-duration-btn) var(--ig-ease),
+        border-color var(--ig-duration-btn) var(--ig-ease),
+        color var(--ig-duration-btn) var(--ig-ease),
+        transform var(--ig-duration-btn) var(--ig-ease);
+}
+.product-card-wishlist:hover {
+    background: rgba(var(--primary-rgb), 0.85);
+    border-color: rgba(var(--primary-rgb), 1);
+    color: #fff;
+    transform: scale(1.08);
+}
+.product-card-wishlist.is-active {
+    background: var(--ig-gradient);
+    border-color: transparent;
+    color: #fff;
+    box-shadow: 0 0 18px rgba(var(--primary-rgb), 0.5);
+    animation: heart-pop 0.4s var(--ig-ease);
+}
+@keyframes heart-pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.25); }
+    100% { transform: scale(1); }
+}
+
+/* Detail wishlist button (next to add to cart) */
+.pdetail-wishlist-btn {
+    width: 48px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.6);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition:
+        background var(--ig-duration-btn) var(--ig-ease),
+        border-color var(--ig-duration-btn) var(--ig-ease),
+        color var(--ig-duration-btn) var(--ig-ease),
+        transform var(--ig-duration-btn) var(--ig-ease);
+}
+.pdetail-wishlist-btn:hover {
+    background: rgba(var(--primary-rgb), 0.12);
+    border-color: rgba(var(--primary-rgb), 0.5);
+    color: var(--primary);
+}
+.pdetail-wishlist-btn.is-active {
+    background: rgba(var(--primary-rgb), 0.16);
+    border-color: rgba(var(--primary-rgb), 0.5);
+    color: var(--primary);
+    box-shadow: 0 0 18px rgba(var(--primary-rgb), 0.3);
+    animation: heart-pop 0.4s var(--ig-ease);
+}
+
+/* ════════════════════════════════════════════════════════════
+   ░░░  STICKY MOBILE BUY BAR  ░░░
+   ════════════════════════════════════════════════════════════ */
+.pdetail-sticky-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 90;
+    padding: 0.85rem 0 calc(0.85rem + env(safe-area-inset-bottom));
+    background: rgba(10, 10, 10, 0.92);
+    backdrop-filter: blur(28px) saturate(200%);
+    -webkit-backdrop-filter: blur(28px) saturate(200%);
+    border-top: 1px solid rgba(var(--primary-rgb), 0.18);
+    box-shadow: 0 -16px 40px -8px rgba(0, 0, 0, 0.5);
+    transform: translateY(110%);
+    visibility: hidden;
+    transition: transform 0.4s var(--ig-ease), visibility 0s linear 0.4s;
+    display: none;
+}
+@media (max-width: 768px) {
+    .pdetail-sticky-bar { display: block; }
+}
+.pdetail-sticky-bar.is-visible {
+    transform: translateY(0);
+    visibility: visible;
+    transition: transform 0.4s var(--ig-ease), visibility 0s linear;
+}
+.pdetail-sticky-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    height: 1px;
+    background: var(--ig-gradient-90);
+    opacity: 0.7;
+    pointer-events: none;
+}
+.pdetail-sticky-inner {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: space-between;
+}
+.pdetail-sticky-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+.pdetail-sticky-info strong {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 600;
+    line-height: 1.2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.pdetail-sticky-price {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.2;
+}
+.pdetail-sticky-buy {
+    flex-shrink: 0;
+    padding: 0.65rem 1.25rem !important;
+    font-size: 0.85rem !important;
+}
+
+/* Adjust footer padding when sticky bar visible */
+@media (max-width: 768px) {
+    body { padding-bottom: 80px; }
+}
+
 /* Mini variation indicator on product card */
 .product-card-variations {
     display: inline-flex;
