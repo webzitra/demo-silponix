@@ -5294,9 +5294,39 @@ a.product-card,
 
 /* Extra below grid — Description + Specs full-width */
 .pdetail-extra {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    padding-top: 2rem;
+}
+
+/* Common header for description + specs sections */
+.pdetail-extra-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.pdetail-extra-eyebrow {
+    display: inline-block;
+    padding: 0.32rem 0.85rem;
+    margin-bottom: 1rem;
+    background: rgba(var(--primary-rgb), 0.1);
+    border: 1px solid rgba(var(--primary-rgb), 0.28);
+    border-radius: 999px;
+    font-family: var(--font-heading);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--primary);
+}
+.pdetail-extra-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 600;
+    color: #fff;
+    margin: 0;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
 }
 .pdetail-category {
     display: inline-flex;
@@ -5492,92 +5522,106 @@ a.product-card,
     box-shadow: 0 0 8px rgba(var(--primary-rgb), 0.6);
 }
 
+/* ─── DESCRIPTION SECTION — narrative, centered ─── */
 .pdetail-description {
-    padding: 2rem 2rem 1.75rem;
-    background: rgba(20, 20, 20, 0.5);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 16px;
-    position: relative;
-    isolation: isolate;
+    padding: 3rem 0 1rem;
+    text-align: center;
 }
-.pdetail-description::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 1px;
-    background: var(--ig-gradient-90);
-    opacity: 0.55;
-    border-radius: 16px 16px 0 0;
-    pointer-events: none;
-}
-.pdetail-description p {
+.pdetail-description-body {
     color: rgba(255, 255, 255, 0.72);
-    line-height: 1.75;
-    font-size: 1rem;
-    margin: 0;
-    max-width: 75ch;
+    line-height: 1.8;
+    font-size: 1.075rem;
+    margin: 0 auto;
+    max-width: 68ch;
+    text-wrap: pretty;
 }
 
-/* Specs — full-width 2-column grid for elegant breathing */
+/* ─── SPECS SECTION — premium stat-card grid ─── */
 .pdetail-specs {
-    padding: 2rem;
-    background: rgba(20, 20, 20, 0.5);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 16px;
-    position: relative;
-    isolation: isolate;
-}
-.pdetail-specs::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 1px;
-    background: var(--ig-gradient-90);
-    opacity: 0.55;
-    border-radius: 16px 16px 0 0;
-    pointer-events: none;
+    padding: 1rem 0 2rem;
 }
 .pdetail-specs-list {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
     margin: 0;
-    background: transparent;
-    border: none;
-    border-radius: 0;
-    overflow: visible;
 }
-.pdetail-spec-row {
-    display: grid;
-    grid-template-columns: minmax(140px, 0.85fr) 1fr;
-    align-items: center;
-    padding: 0.95rem 1rem;
-    border-radius: 8px;
-    background: transparent;
-    transition: background var(--ig-duration-btn) var(--ig-ease);
+
+/* Each spec is a stat card */
+.pdetail-spec-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 1.5rem 1.4rem 1.4rem;
+    background: rgba(20, 20, 20, 0.55);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+    overflow: hidden;
+    isolation: isolate;
+    transition:
+        border-color var(--ig-duration-card) var(--ig-ease),
+        background var(--ig-duration-card) var(--ig-ease),
+        transform var(--ig-duration-card) var(--ig-ease);
 }
-.pdetail-spec-row:hover {
-    background: rgba(var(--primary-rgb), 0.06);
+.pdetail-spec-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: var(--ig-gradient-90);
+    opacity: 0.4;
+    transform: scaleX(0.5);
+    transition: transform 0.5s var(--ig-ease), opacity 0.4s var(--ig-ease);
+    pointer-events: none;
 }
-.pdetail-spec-row dt {
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 0.82rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    padding: 0;
-    border: none;
+.pdetail-spec-card:hover {
+    border-color: rgba(var(--primary-rgb), 0.4);
+    background: rgba(20, 20, 20, 0.7);
+    transform: translateY(-3px);
 }
-.pdetail-spec-row dd {
-    color: #fff;
-    font-size: 0.95rem;
-    font-weight: 500;
-    margin: 0;
-    padding: 0;
+.pdetail-spec-card:hover::before {
+    transform: scaleX(1);
+    opacity: 1;
+}
+
+/* Index number — subtle big tag in corner */
+.pdetail-spec-num {
+    position: absolute;
+    top: 0.85rem;
+    right: 1rem;
     font-family: var(--font-heading);
-    text-align: right;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: rgba(var(--primary-rgb), 0.45);
+    font-variant-numeric: tabular-nums;
+}
+
+.pdetail-spec-card dt {
+    font-family: var(--font-heading);
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.45);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+.pdetail-spec-card dd {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    text-align: left;
+    word-break: break-word;
 }
 
 /* Trust row */
@@ -5645,16 +5689,18 @@ a.product-card,
     .pdetail-top { grid-template-columns: 1fr; gap: 2rem; }
     .pdetail-trust { grid-template-columns: 1fr; }
     .pdetail-image-wrap { aspect-ratio: 4 / 3; }
+    .pdetail-specs-list { grid-template-columns: repeat(2, 1fr); }
+    .pdetail-extra { gap: 3rem; }
+}
+@media (max-width: 600px) {
     .pdetail-specs-list { grid-template-columns: 1fr; }
 }
 @media (max-width: 480px) {
     .pdetail-actions { flex-direction: column; }
     .pdetail-qty { width: 100%; justify-content: center; }
-    .pdetail-spec-row {
-        grid-template-columns: 1fr;
-        gap: 0.2rem;
-    }
-    .pdetail-spec-row dd { text-align: left; }
     .pdetail-price { font-size: 1.85rem; }
-    .pdetail-description, .pdetail-specs { padding: 1.5rem; }
+    .pdetail-description { padding: 2rem 0 0.5rem; }
+    .pdetail-description-body { font-size: 1rem; }
+    .pdetail-spec-card { padding: 1.25rem; }
+    .pdetail-spec-card dd { font-size: 1.1rem; }
 }

@@ -572,14 +572,19 @@
                 badgeHTML = '<span class="pdetail-flag pdetail-flag-new">' + (lang === 'en' ? 'New' : 'Nové') + '</span>';
             }
 
-            // Specs grid
+            // Specs — premium stat-card grid
             var specsHTML = '';
             if (specs && specs.length > 0) {
                 specsHTML = '<div class="pdetail-specs">' +
-                    '<h3 class="pdetail-section-title">' + (lang === 'en' ? 'Specifications' : 'Specifikace') + '</h3>' +
+                    '<header class="pdetail-extra-header">' +
+                        '<span class="pdetail-extra-eyebrow">Datasheet</span>' +
+                        '<h2 class="pdetail-extra-title">' + (lang === 'en' ? 'Specifications' : 'Technické parametry') + '</h2>' +
+                    '</header>' +
                     '<dl class="pdetail-specs-list">';
-                specs.forEach(function (row) {
-                    specsHTML += '<div class="pdetail-spec-row">' +
+                specs.forEach(function (row, i) {
+                    var num = String(i + 1).padStart(2, '0');
+                    specsHTML += '<div class="pdetail-spec-card">' +
+                        '<span class="pdetail-spec-num">' + num + '</span>' +
                         '<dt>' + row[0] + '</dt>' +
                         '<dd>' + row[1] + '</dd>' +
                         '</div>';
@@ -651,10 +656,13 @@
 
                 // ═══ BELOW GRID: Description + Specs (full-width) ═══
                 '<div class="pdetail-extra">' +
-                    '<div class="pdetail-description">' +
-                        '<h3 class="pdetail-section-title">' + (lang === 'en' ? 'Description' : 'Popis produktu') + '</h3>' +
-                        '<p>' + pDescLong + '</p>' +
-                    '</div>' +
+                    '<section class="pdetail-description">' +
+                        '<header class="pdetail-extra-header">' +
+                            '<span class="pdetail-extra-eyebrow">Story</span>' +
+                            '<h2 class="pdetail-extra-title">' + (lang === 'en' ? 'About this part' : 'O tomto dílu') + '</h2>' +
+                        '</header>' +
+                        '<p class="pdetail-description-body">' + pDescLong + '</p>' +
+                    '</section>' +
                     specsHTML +
                 '</div>';
 
