@@ -13,11 +13,13 @@
             desc_long_en: 'Hondata K-Pro4 is the most advanced standalone ECU for Honda K-series engines. Provides full access to all engine maps — fuel, ignition, VTEC, knock and more. Supports real-time datalogging, launch control, boost control (for turbo applications), traction control and dual-map switching. Ideal for racing and modified street cars.',
             specs: [['Typ', 'Standalone ECU'], ['Kompatibilita', 'Honda K20A, K20Z, K24A'], ['Připojení', 'USB + Bluetooth'], ['Software', 'KManager (PC)'], ['Datalogging', 'Ano, real-time'], ['Launch control', 'Ano'], ['Boost control', 'Ano (turbo)'], ['Trakční kontrola', 'Ano'], ['Hmotnost', '280 g'], ['Záruka', '2 roky']],
             specs_en: [['Type', 'Standalone ECU'], ['Compatibility', 'Honda K20A, K20Z, K24A'], ['Connection', 'USB + Bluetooth'], ['Software', 'KManager (PC)'], ['Datalogging', 'Yes, real-time'], ['Launch control', 'Yes'], ['Boost control', 'Yes (turbo)'], ['Traction control', 'Yes'], ['Weight', '280 g'], ['Warranty', '2 years']],
-            variations: { label: 'Připojení', label_en: 'Connection', type: 'pill', options: [
-                { id: 'usb', name: 'USB', subtitle: 'Standardní', price: 22542, stock: 5, default: true },
-                { id: 'usb-bt', name: 'USB + Bluetooth', subtitle: 'Wireless tuning', price: 24990, stock: 3 },
-                { id: 'pro-bundle', name: 'Pro Bundle', subtitle: '+ kabel + dataloger', price: 28490, stock: 2 }
-            ]} },
+            variations: [
+                { id: 'connection', label: 'Připojení', label_en: 'Connection', type: 'pill', options: [
+                    { id: 'usb', name: 'USB', subtitle: 'Standardní', price: 22542, stock: 5, default: true },
+                    { id: 'usb-bt', name: 'USB + Bluetooth', subtitle: 'Wireless tuning', price: 24990, stock: 3 },
+                    { id: 'pro-bundle', name: 'Pro Bundle', subtitle: '+ kabel + dataloger', price: 28490, stock: 2 }
+                ]}
+            ]},
         { id: 2, name: 'Hondata S300 V3', name_en: 'Hondata S300 V3', category: 'ecu', price: 18990, desc: 'Plug-in ECU pro OBD1 Honda. Datalogging, launch control, boost control.', desc_en: 'Plug-in ECU for OBD1 Honda. Datalogging, launch control, boost control.', badge: '', stock: 3, img: '/img/products/ecu-obd1.png',
             desc_long: 'Hondata S300 V3 je plug-in ECU deska, která se instaluje přímo do originální OBD1 řídící jednotky Honda. Nabízí plnou kontrolu nad palivovými a zapalovacími mapami, datalogging s rozlišením 1 ms, launch control, boost control pro turbo aplikace a možnost přepínání mezi dvěma sadami map. Ověřené řešení pro závodní Honda Civic, CRX, Integra s B-series a H-series motory.',
             desc_long_en: 'Hondata S300 V3 is a plug-in ECU board that installs directly into the original Honda OBD1 ECU. Offers full fuel and ignition map control, 1ms resolution datalogging, launch control, boost control for turbo applications and dual-map switching. Proven solution for racing Honda Civic, CRX, Integra with B-series and H-series engines.',
@@ -38,11 +40,13 @@
             desc_long_en: 'Complete Silponix polyurethane bushing set for Honda Civic 5th gen (EG, 1992–1995). Replaces all original rubber bushings in the chassis — front arms, rear axle, anti-roll bar, gear linkage. Shore 80A hardness provides significant improvement in steering precision and chassis response while maintaining acceptable comfort for road use.',
             specs: [['Materiál', 'Polyuretan (PU)'], ['Tvrdost', 'Shore 80A'], ['Kompatibilita', 'Honda Civic EG (1992–1995)'], ['Obsah sady', '22 kusů + mazivo'], ['Pozice', 'Přední ramena, zadní náprava, stabilizátor'], ['Barva', 'Červená'], ['Životnost', '3–5× delší než guma'], ['Hmotnost sady', '1.2 kg']],
             specs_en: [['Material', 'Polyurethane (PU)'], ['Hardness', 'Shore 80A'], ['Compatibility', 'Honda Civic EG (1992–1995)'], ['Set contents', '22 pieces + grease'], ['Positions', 'Front arms, rear axle, anti-roll bar'], ['Colour', 'Red'], ['Lifespan', '3–5× longer than rubber'], ['Set weight', '1.2 kg']],
-            variations: { label: 'Tvrdost', label_en: 'Hardness', type: 'pill', options: [
-                { id: '75a', name: 'Shore 75A', subtitle: 'Komfort', price: 3690, stock: 12 },
-                { id: '80a', name: 'Shore 80A', subtitle: 'Sport', price: 3890, stock: 15, default: true },
-                { id: '95a', name: 'Shore 95A', subtitle: 'Race', price: 4290, stock: 8 }
-            ]} },
+            variations: [
+                { id: 'hardness', label: 'Tvrdost', label_en: 'Hardness', type: 'pill', options: [
+                    { id: '75a', name: 'Shore 75A', subtitle: 'Komfort', price: 3690, stock: 12 },
+                    { id: '80a', name: 'Shore 80A', subtitle: 'Sport', price: 3890, stock: 15, default: true },
+                    { id: '95a', name: 'Shore 95A', subtitle: 'Race', price: 4290, stock: 8 }
+                ]}
+            ]},
         { id: 6, name: 'Set silentbloků Civic EK', name_en: 'Bushing set Civic EK', category: 'silentbloky', price: 3890, desc: 'Kompletní sada PU silentbloků pro Honda Civic EK (96–00). Shore 80A.', desc_en: 'Complete PU bushing set for Honda Civic EK (96–00). Shore 80A.', badge: '', stock: 12, img: '/img/products/silentblok-106h.png',
             desc_long: 'Kompletní sada polyuretanových silentbloků Silponix pro Honda Civic 6. generace (EK, 1996–2000). Přesně pasuje na EK3, EK4, EK9 (Type R) i EJ modely. Zajišťuje přímější odezvu řízení, lepší kontrolu v zatáčkách a eliminuje prokluz typický pro opotřebené gumové silentbloky.',
             desc_long_en: 'Complete Silponix polyurethane bushing set for Honda Civic 6th gen (EK, 1996–2000). Fits EK3, EK4, EK9 (Type R) and EJ models precisely. Provides more direct steering response, better cornering control and eliminates the slop typical of worn rubber bushings.',
@@ -63,12 +67,19 @@
             desc_long_en: 'SET of dual pulleys for Honda B-series engines (B16, B18). Includes crank pulley and water pump pulley. CNC machined 6061-T6 aluminium with hard anodising in four colour finishes. Lightweight design reduces moment of inertia and improves engine response.',
             specs: [['Materiál', 'Hliník 6061-T6'], ['Povrch', 'Tvrdý elox'], ['Kompatibilita', 'Honda B16A, B16B, B18C'], ['Obsah sady', 'Kliková + vodní čerpadlo'], ['Typ', 'Dvouřadá (2 drážky)'], ['Úspora hmotnosti', '~40 % vs. OEM'], ['Hmotnost sady', '680 g'], ['Výroba', 'CNC obrábění']],
             specs_en: [['Material', 'Aluminium 6061-T6'], ['Finish', 'Hard anodised'], ['Compatibility', 'Honda B16A, B16B, B18C'], ['Set contents', 'Crank + water pump pulley'], ['Type', 'Dual (2 grooves)'], ['Weight saving', '~40% vs. OEM'], ['Set weight', '680 g'], ['Manufacturing', 'CNC machined']],
-            variations: { label: 'Barva', label_en: 'Colour', type: 'swatch', options: [
-                { id: 'red', name: 'Červená', name_en: 'Red', swatch: '#bd141b', price: 5324, stock: 6, default: true },
-                { id: 'gold', name: 'Zlatá', name_en: 'Gold', swatch: '#d4a017', price: 5324, stock: 4 },
-                { id: 'black', name: 'Černá', name_en: 'Black', swatch: '#1a1a1a', price: 5500, stock: 8 },
-                { id: 'blue', name: 'Modrá', name_en: 'Blue', swatch: '#1e40af', price: 5500, stock: 0 }
-            ]} },
+            imgs: ['/img/products/remenice-red.png', '/img/gallery/remenice.png', '/img/gallery/kovoobrabeeni.png', '/img/products/civky-uchyt.png'],
+            variations: [
+                { id: 'color', label: 'Barva', label_en: 'Colour', type: 'swatch', options: [
+                    { id: 'red', name: 'Červená', name_en: 'Red', swatch: '#bd141b', price: 5324, stock: 6, default: true },
+                    { id: 'gold', name: 'Zlatá', name_en: 'Gold', swatch: '#d4a017', price: 5324, stock: 4 },
+                    { id: 'black', name: 'Černá', name_en: 'Black', swatch: '#1a1a1a', price: 5500, stock: 8 },
+                    { id: 'blue', name: 'Modrá', name_en: 'Blue', swatch: '#1e40af', price: 5500, stock: 0 }
+                ]},
+                { id: 'size', label: 'Velikost', label_en: 'Size', type: 'pill', options: [
+                    { id: 'std', name: 'Standard', subtitle: 'B16/B18', default: true },
+                    { id: 'xl', name: 'Race XL', subtitle: 'Lehčená 720 g', priceDelta: 850 }
+                ]}
+            ]},
         { id: 10, name: 'Jednořadá řemenice B-series', name_en: 'Single pulley B-series', category: 'motor', price: 2904, desc: 'Odlehčená jednořadá řemenice pro B16/B18. CNC obráběný hliník.', desc_en: 'Lightweight single pulley for B16/B18. CNC machined aluminium.', badge: '', stock: 8, img: '/img/products/remenice-red.png',
             desc_long: 'Odlehčená jednořadá kliková řemenice pro závodní aplikace bez klimatizace a posilovače. Maximální úspora hmotnosti pro závodní B-series motory. CNC obráběný hliník s tvrdým eloxem.',
             desc_long_en: 'Lightweight single groove crank pulley for race applications without A/C and power steering. Maximum weight saving for racing B-series engines. CNC machined aluminium with hard anodising.',
@@ -181,62 +192,102 @@
         updateCartCount();
     }
 
-    // ─── Variation helpers ───
-    function getDefaultVariation(product) {
-        if (!product || !product.variations) return null;
-        var opts = product.variations.options || [];
-        return (opts.find(function (o) { return o.default; }) || opts[0] || null);
+    // ─── Variation helpers (multi-dimension array) ───
+    function getVariationGroups(product) {
+        if (!product || !product.variations) return [];
+        // Backward compat: single object → wrap in array with auto id
+        if (!Array.isArray(product.variations)) {
+            return [Object.assign({ id: 'variant' }, product.variations)];
+        }
+        return product.variations;
     }
-    function findVariation(product, variationId) {
-        if (!product || !product.variations) return null;
-        return product.variations.options.find(function (o) { return o.id === variationId; }) || null;
+    function getDefaultSelections(product) {
+        var sel = {};
+        getVariationGroups(product).forEach(function (group) {
+            var def = (group.options.find(function (o) { return o.default; }) || group.options[0]);
+            if (def) sel[group.id] = def.id;
+        });
+        return sel;
     }
-    function effectivePrice(product, variation) {
-        return (variation && typeof variation.price === 'number') ? variation.price : product.price;
+    function findOption(group, optionId) {
+        if (!group) return null;
+        return group.options.find(function (o) { return o.id === optionId; }) || null;
     }
-    function cartItemKey(productId, variationId) {
-        return variationId ? (productId + '::' + variationId) : String(productId);
+    function getSelectedOptions(product, selections) {
+        var arr = [];
+        getVariationGroups(product).forEach(function (group) {
+            var optId = selections && selections[group.id];
+            var opt = findOption(group, optId);
+            if (opt) arr.push({ group: group, option: opt });
+        });
+        return arr;
+    }
+    function effectivePrice(product, selections) {
+        var basePrice = product.price;
+        var explicitPrice = null;
+        var totalDelta = 0;
+        getSelectedOptions(product, selections).forEach(function (sel) {
+            if (typeof sel.option.price === 'number') explicitPrice = sel.option.price;
+            if (typeof sel.option.priceDelta === 'number') totalDelta += sel.option.priceDelta;
+        });
+        return (explicitPrice !== null ? explicitPrice : basePrice) + totalDelta;
+    }
+    function effectiveStock(product, selections) {
+        var stock = product.stock;
+        getSelectedOptions(product, selections).forEach(function (sel) {
+            if (typeof sel.option.stock === 'number') stock = sel.option.stock;
+        });
+        return stock;
+    }
+    function selectionsKey(selections) {
+        if (!selections) return '';
+        return Object.keys(selections).sort().map(function (k) { return k + '=' + selections[k]; }).join('::');
+    }
+    function selectionsEqual(a, b) {
+        return selectionsKey(a || {}) === selectionsKey(b || {});
     }
 
-    function addToCart(productId, variationId) {
+    function addToCart(productId, selections) {
         var cart = getCart();
         var product = PRODUCTS.find(function (p) { return p.id === productId; });
         if (!product) return;
 
-        // Default to default variation if product has variations and none was passed
-        if (!variationId && product.variations) {
-            var def = getDefaultVariation(product);
-            if (def) variationId = def.id;
+        // Auto-fill defaults if product has variations and selections wasn't passed
+        if (product.variations && (!selections || Object.keys(selections).length === 0)) {
+            selections = getDefaultSelections(product);
         }
 
         var existing = cart.find(function (item) {
-            return item.id === productId && (item.variation || null) === (variationId || null);
+            return item.id === productId && selectionsEqual(item.selections, selections);
         });
         if (existing) {
             existing.qty += 1;
         } else {
             var entry = { id: productId, qty: 1 };
-            if (variationId) entry.variation = variationId;
+            if (selections && Object.keys(selections).length > 0) entry.selections = selections;
             cart.push(entry);
         }
         saveCart(cart);
 
-        var variation = findVariation(product, variationId);
-        var label = product.name + (variation ? ' — ' + variation.name : '');
+        var lang = (typeof getCurrentLang === 'function') ? getCurrentLang() : 'cs';
+        var variantNames = getSelectedOptions(product, selections).map(function (sel) {
+            return (lang === 'en' && sel.option.name_en) ? sel.option.name_en : sel.option.name;
+        }).join(' / ');
+        var label = product.name + (variantNames ? ' — ' + variantNames : '');
         showAddedNotification(label);
     }
 
-    function removeFromCart(productId, variationId) {
+    function removeFromCart(productId, selections) {
         var cart = getCart().filter(function (item) {
-            return !(item.id === productId && (item.variation || null) === (variationId || null));
+            return !(item.id === productId && selectionsEqual(item.selections, selections));
         });
         saveCart(cart);
     }
 
-    function updateCartQty(productId, delta, variationId) {
+    function updateCartQty(productId, delta, selections) {
         var cart = getCart();
         var item = cart.find(function (i) {
-            return i.id === productId && (i.variation || null) === (variationId || null);
+            return i.id === productId && selectionsEqual(i.selections, selections);
         });
         if (!item) return;
         item.qty += delta;
@@ -252,8 +303,7 @@
         cart.forEach(function (item) {
             var product = PRODUCTS.find(function (p) { return p.id === item.id; });
             if (!product) return;
-            var variation = findVariation(product, item.variation);
-            subtotal += effectivePrice(product, variation) * item.qty;
+            subtotal += effectivePrice(product, item.selections) * item.qty;
         });
         return subtotal;
     }
@@ -308,22 +358,27 @@
 
         var detailLabel = lang === 'en' ? 'View details' : 'Zobrazit detail';
 
-        // Mini variation indicator (swatches or count)
+        // Mini variation indicator (uses first group's swatches/pills)
         var variationIndicator = '';
-        if (product.variations && product.variations.options && product.variations.options.length > 1) {
-            var vType = product.variations.type || 'pill';
-            var opts = product.variations.options;
-            if (vType === 'swatch') {
-                var swatches = opts.slice(0, 4).map(function (o) {
-                    return '<span class="product-card-swatch" style="background:' + (o.swatch || '#888') + '" title="' + ((lang === 'en' && o.name_en) ? o.name_en : o.name) + '"></span>';
-                }).join('');
-                var more = opts.length > 4 ? '<span class="product-card-swatch-more">+' + (opts.length - 4) + '</span>' : '';
-                variationIndicator = '<div class="product-card-variations" aria-label="' + opts.length + ' barev">' + swatches + more + '</div>';
-            } else {
-                variationIndicator = '<div class="product-card-variations product-card-variations-pill">' +
-                    '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>' +
-                    opts.length + ' ' + (lang === 'en' ? 'options' : 'variant') +
-                    '</div>';
+        var groups = getVariationGroups(product);
+        if (groups.length > 0) {
+            // Prefer swatch group if any
+            var primaryGroup = groups.find(function (g) { return g.type === 'swatch'; }) || groups[0];
+            var opts = primaryGroup.options;
+            if (opts.length > 1) {
+                var vType = primaryGroup.type || 'pill';
+                if (vType === 'swatch') {
+                    var swatches = opts.slice(0, 4).map(function (o) {
+                        return '<span class="product-card-swatch" style="background:' + (o.swatch || '#888') + '" title="' + ((lang === 'en' && o.name_en) ? o.name_en : o.name) + '"></span>';
+                    }).join('');
+                    var more = opts.length > 4 ? '<span class="product-card-swatch-more">+' + (opts.length - 4) + '</span>' : '';
+                    variationIndicator = '<div class="product-card-variations" aria-label="' + opts.length + ' variant">' + swatches + more + '</div>';
+                } else {
+                    variationIndicator = '<div class="product-card-variations product-card-variations-pill">' +
+                        '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>' +
+                        opts.length + ' ' + (lang === 'en' ? 'options' : 'variant') +
+                        '</div>';
+                }
             }
         }
 
@@ -644,51 +699,93 @@
                 badgeHTML = '<span class="pdetail-flag pdetail-flag-new">' + (lang === 'en' ? 'New' : 'Nové') + '</span>';
             }
 
-            // ─── Variations selector ───
+            // ─── Variations selector (supports multiple groups) ───
             var variationsHTML = '';
-            var defaultVar = getDefaultVariation(product);
-            if (product.variations && product.variations.options.length > 0) {
-                var vLabel = (lang === 'en' && product.variations.label_en) ? product.variations.label_en : product.variations.label;
-                var vType = product.variations.type || 'pill';
-                var defaultId = defaultVar ? defaultVar.id : product.variations.options[0].id;
-                var defaultName = defaultVar ? ((lang === 'en' && defaultVar.name_en) ? defaultVar.name_en : defaultVar.name) : '';
+            var defaultSelections = getDefaultSelections(product);
+            var variationGroups = getVariationGroups(product);
 
-                variationsHTML = '<div class="pdetail-variations" data-variation-type="' + vType + '">' +
+            variationGroups.forEach(function (group) {
+                var vLabel = (lang === 'en' && group.label_en) ? group.label_en : group.label;
+                var vType = group.type || 'pill';
+                var defaultOptId = defaultSelections[group.id];
+                var defaultOpt = findOption(group, defaultOptId);
+                var defaultName = defaultOpt ? ((lang === 'en' && defaultOpt.name_en) ? defaultOpt.name_en : defaultOpt.name) : '';
+
+                variationsHTML += '<div class="pdetail-variations" data-variation-type="' + vType + '" data-group-id="' + group.id + '">' +
                     '<div class="pdetail-variations-header">' +
                         '<span class="pdetail-variations-label">' + vLabel + '</span>' +
-                        '<span class="pdetail-variations-current" id="pdetailVarCurrent">' + defaultName + '</span>' +
+                        '<span class="pdetail-variations-current" data-current-for="' + group.id + '">' + defaultName + '</span>' +
                     '</div>' +
                     '<div class="pdetail-variations-options" role="radiogroup" aria-label="' + vLabel + '">';
 
-                product.variations.options.forEach(function (opt) {
+                group.options.forEach(function (opt) {
                     var optName = (lang === 'en' && opt.name_en) ? opt.name_en : opt.name;
-                    var isDefault = opt.id === defaultId;
-                    var isOOS = opt.stock <= 0;
+                    var isDefault = opt.id === defaultOptId;
+                    var isOOS = typeof opt.stock === 'number' && opt.stock <= 0;
                     var classes = 'pdetail-variation-btn' + (isDefault ? ' active' : '') + (isOOS ? ' is-oos' : '');
-                    var dataset = 'data-variation-id="' + opt.id + '" data-price="' + opt.price + '" data-stock="' + opt.stock + '" data-name="' + optName + '"';
 
                     if (vType === 'swatch') {
-                        variationsHTML += '<button type="button" class="' + classes + '" ' + dataset + ' role="radio" aria-checked="' + (isDefault ? 'true' : 'false') + '" aria-label="' + optName + '" title="' + optName + (isOOS ? ' (vyprodáno)' : '') + '">' +
+                        variationsHTML += '<button type="button" class="' + classes + '" data-group-id="' + group.id + '" data-option-id="' + opt.id + '" role="radio" aria-checked="' + (isDefault ? 'true' : 'false') + '" aria-label="' + optName + '" title="' + optName + (isOOS ? ' (vyprodáno)' : '') + '">' +
                             '<span class="pdetail-variation-swatch" style="background:' + (opt.swatch || '#888') + '"></span>' +
                             '<span class="pdetail-variation-check" aria-hidden="true">' +
                                 '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>' +
                             '</span>' +
                         '</button>';
                     } else {
-                        variationsHTML += '<button type="button" class="' + classes + '" ' + dataset + ' role="radio" aria-checked="' + (isDefault ? 'true' : 'false') + '">' +
+                        variationsHTML += '<button type="button" class="' + classes + '" data-group-id="' + group.id + '" data-option-id="' + opt.id + '" role="radio" aria-checked="' + (isDefault ? 'true' : 'false') + '">' +
                             '<span class="pdetail-variation-name">' + optName + '</span>' +
                             (opt.subtitle ? '<span class="pdetail-variation-sub">' + opt.subtitle + '</span>' : '') +
+                            (typeof opt.priceDelta === 'number' && opt.priceDelta !== 0 ? '<span class="pdetail-variation-delta">' + (opt.priceDelta > 0 ? '+' : '') + formatPrice(opt.priceDelta) + '</span>' : '') +
                             (isOOS ? '<span class="pdetail-variation-oos">' + (lang === 'en' ? 'Out of stock' : 'Vyprodáno') + '</span>' : '') +
                         '</button>';
                     }
                 });
                 variationsHTML += '</div></div>';
-            }
+            });
 
             // Initial price/stock (after variation defaults)
-            var initialPrice = effectivePrice(product, defaultVar);
-            var initialStock = (defaultVar && typeof defaultVar.stock === 'number') ? defaultVar.stock : product.stock;
+            var initialPrice = effectivePrice(product, defaultSelections);
+            var initialStock = effectiveStock(product, defaultSelections);
             var initialInStock = initialStock > 0;
+            var initialStockLabel = initialInStock
+                ? (lang === 'en' ? 'In stock — ' : 'Skladem — ') + initialStock + ' ' + (lang === 'en' ? 'pcs' : 'ks')
+                : (lang === 'en' ? 'Out of stock' : 'Vyprodáno');
+
+            // ─── Image gallery ───
+            var galleryImages = (product.imgs && product.imgs.length > 0) ? product.imgs : (product.img ? [product.img] : []);
+            var hasMultipleImages = galleryImages.length > 1;
+            var galleryHTML =
+                '<div class="pdetail-gallery">' +
+                    '<div class="pdetail-image-wrap" data-current-idx="0">' +
+                        badgeHTML +
+                        galleryImages.map(function (src, i) {
+                            return '<img class="pdetail-image' + (i === 0 ? ' active' : '') + '" src="' + src + '" alt="' + pName + ' — ' + (i + 1) + '" data-idx="' + i + '"' + (i === 0 ? '' : ' loading="lazy"') + '>';
+                        }).join('') +
+                        (galleryImages.length === 0 ? '<div class="pdetail-image-placeholder"></div>' : '') +
+                        (hasMultipleImages ?
+                            '<button type="button" class="pdetail-gallery-nav pdetail-gallery-prev" aria-label="Předchozí obrázek">' +
+                                '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>' +
+                            '</button>' +
+                            '<button type="button" class="pdetail-gallery-nav pdetail-gallery-next" aria-label="Další obrázek">' +
+                                '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>' +
+                            '</button>' +
+                            '<div class="pdetail-gallery-dots">' +
+                                galleryImages.map(function (_, i) {
+                                    return '<button type="button" class="pdetail-gallery-dot' + (i === 0 ? ' active' : '') + '" data-idx="' + i + '" aria-label="Obrázek ' + (i + 1) + '"></button>';
+                                }).join('') +
+                            '</div>'
+                        : '') +
+                    '</div>' +
+                    (hasMultipleImages ?
+                        '<div class="pdetail-thumbs" role="tablist" aria-label="Galerie">' +
+                            galleryImages.map(function (src, i) {
+                                return '<button type="button" class="pdetail-thumb' + (i === 0 ? ' active' : '') + '" data-idx="' + i + '" role="tab" aria-selected="' + (i === 0 ? 'true' : 'false') + '">' +
+                                    '<img src="' + src + '" alt="' + pName + ' — náhled ' + (i + 1) + '" loading="lazy">' +
+                                '</button>';
+                            }).join('') +
+                        '</div>'
+                    : '') +
+                '</div>';
 
             // Specs — premium stat-card grid
             var specsHTML = '';
@@ -730,15 +827,15 @@
             productDetailEl.innerHTML =
                 // ═══ TOP GRID: Gallery + Buy panel ═══
                 '<div class="pdetail-top">' +
-                    // ─── LEFT: Gallery ───
-                    '<div class="pdetail-gallery">' +
-                        '<div class="pdetail-image-wrap">' +
-                            badgeHTML +
-                            (product.img ? '<img class="pdetail-image" src="' + product.img + '" alt="' + pName + '">' : '<div class="pdetail-image-placeholder"></div>') +
-                        '</div>' +
-                    '</div>' +
+                    // ─── LEFT: Gallery (carousel + thumbs) ───
+                    galleryHTML +
                     // ─── RIGHT: Info + Buy box + Trust ───
                     '<div class="pdetail-info">' +
+                        // Stock badge above title
+                        '<div class="pdetail-stock-top ' + (initialInStock ? 'pdetail-stock-in' : 'pdetail-stock-out') + '" id="pdetailStock">' +
+                            '<span class="pdetail-stock-dot"></span>' +
+                            '<span class="pdetail-stock-text">' + initialStockLabel + '</span>' +
+                        '</div>' +
                         '<span class="pdetail-category">' + catLabel + '</span>' +
                         '<h1 class="pdetail-title">' + pName + '</h1>' +
                         '<p class="pdetail-tagline">' + pDesc + '</p>' +
@@ -749,12 +846,6 @@
                             '<div class="pdetail-price-row">' +
                                 '<span class="pdetail-price" id="pdetailPrice">' + formatPrice(initialPrice) + '</span>' +
                                 '<span class="pdetail-vat">' + (lang === 'en' ? 'incl. VAT' : 'vč. DPH') + '</span>' +
-                            '</div>' +
-                            '<div class="pdetail-stock ' + (initialInStock ? 'pdetail-stock-in' : 'pdetail-stock-out') + '" id="pdetailStock">' +
-                                '<span class="pdetail-stock-dot"></span>' +
-                                (initialInStock
-                                    ? (lang === 'en' ? 'In stock — ' : 'Skladem — ') + initialStock + ' ' + (lang === 'en' ? 'pcs' : 'ks')
-                                    : (lang === 'en' ? 'Out of stock' : 'Vyprodáno')) +
                             '</div>' +
 
                             '<div class="pdetail-actions">' +
@@ -794,41 +885,48 @@
                 related.forEach(function (p) { relatedGrid.appendChild(createProductCard(p)); });
             }
 
-            // Quantity controls + variation selector + cart with qty/variation
+            // ─── Quantity + variations + carousel + cart logic ───
             (function () {
                 var qtyInput = document.getElementById('pdetailQty');
                 var priceEl = document.getElementById('pdetailPrice');
                 var stockEl = document.getElementById('pdetailStock');
-                var varCurrentEl = document.getElementById('pdetailVarCurrent');
                 var buyBtn = document.querySelector('.pdetail-buy');
                 if (!qtyInput) return;
 
-                // Track currently selected variation
-                var selectedVariation = defaultVar;
+                // Track current selections (object keyed by group id)
+                var selections = Object.assign({}, defaultSelections);
 
-                function updateBuyboxFor(variation) {
-                    var price = effectivePrice(product, variation);
-                    var stock = (variation && typeof variation.stock === 'number') ? variation.stock : product.stock;
+                function updateBuyboxFor() {
+                    var price = effectivePrice(product, selections);
+                    var stock = effectiveStock(product, selections);
                     var inStockNow = stock > 0;
-                    var vName = variation ? ((lang === 'en' && variation.name_en) ? variation.name_en : variation.name) : '';
 
                     if (priceEl) priceEl.textContent = formatPrice(price);
-                    if (varCurrentEl) varCurrentEl.textContent = vName;
 
                     if (stockEl) {
                         stockEl.classList.toggle('pdetail-stock-in', inStockNow);
                         stockEl.classList.toggle('pdetail-stock-out', !inStockNow);
-                        stockEl.innerHTML = '<span class="pdetail-stock-dot"></span>' +
-                            (inStockNow
-                                ? (lang === 'en' ? 'In stock — ' : 'Skladem — ') + stock + ' ' + (lang === 'en' ? 'pcs' : 'ks')
-                                : (lang === 'en' ? 'Out of stock' : 'Vyprodáno'));
+                        var stockTextEl = stockEl.querySelector('.pdetail-stock-text');
+                        var newText = inStockNow
+                            ? (lang === 'en' ? 'In stock — ' : 'Skladem — ') + stock + ' ' + (lang === 'en' ? 'pcs' : 'ks')
+                            : (lang === 'en' ? 'Out of stock' : 'Vyprodáno');
+                        if (stockTextEl) stockTextEl.textContent = newText;
                     }
+
+                    // Update each group's "current" label
+                    getSelectedOptions(product, selections).forEach(function (sel) {
+                        var labelEl = document.querySelector('[data-current-for="' + sel.group.id + '"]');
+                        if (labelEl) {
+                            labelEl.textContent = (lang === 'en' && sel.option.name_en) ? sel.option.name_en : sel.option.name;
+                        }
+                    });
+
                     qtyInput.max = Math.max(stock, 1);
                     if (parseInt(qtyInput.value, 10) > stock) qtyInput.value = Math.max(stock, 1);
                     if (buyBtn) {
                         buyBtn.disabled = !inStockNow;
-                        var label = buyBtn.querySelector('span');
-                        if (label) label.textContent = inStockNow ? (lang === 'en' ? 'Add to cart' : 'Přidat do košíku') : (lang === 'en' ? 'Out of stock' : 'Vyprodáno');
+                        var btnLabel = buyBtn.querySelector('span');
+                        if (btnLabel) btnLabel.textContent = inStockNow ? (lang === 'en' ? 'Add to cart' : 'Přidat do košíku') : (lang === 'en' ? 'Out of stock' : 'Vyprodáno');
                     }
                 }
 
@@ -844,31 +942,72 @@
                     });
                 });
 
-                // Variation selector
+                // Variation selector — handles all groups
                 document.querySelectorAll('.pdetail-variation-btn').forEach(function (btn) {
                     btn.addEventListener('click', function () {
                         if (this.classList.contains('is-oos')) return;
-                        var vid = this.getAttribute('data-variation-id');
-                        document.querySelectorAll('.pdetail-variation-btn').forEach(function (b) {
+                        var groupId = this.getAttribute('data-group-id');
+                        var optId = this.getAttribute('data-option-id');
+                        // Toggle active within same group only
+                        document.querySelectorAll('.pdetail-variation-btn[data-group-id="' + groupId + '"]').forEach(function (b) {
                             b.classList.toggle('active', b === btn);
                             b.setAttribute('aria-checked', b === btn ? 'true' : 'false');
                         });
-                        selectedVariation = findVariation(product, vid);
-                        updateBuyboxFor(selectedVariation);
+                        selections[groupId] = optId;
+                        updateBuyboxFor();
                     });
                 });
 
-                // Buy button — qty + variation aware
+                // Buy button — qty + selections aware
                 if (buyBtn) {
                     buyBtn.addEventListener('click', function (e) {
                         e.preventDefault();
                         e.stopPropagation();
                         if (buyBtn.disabled) return;
                         var qty = parseInt(qtyInput.value, 10) || 1;
-                        var vid = selectedVariation ? selectedVariation.id : null;
-                        for (var i = 0; i < qty; i++) addToCart(product.id, vid);
+                        var sel = Object.keys(selections).length > 0 ? Object.assign({}, selections) : null;
+                        for (var i = 0; i < qty; i++) addToCart(product.id, sel);
                         flyToCart(buyBtn);
                     }, true);
+                }
+
+                // ─── Image gallery carousel ───
+                var imageWrap = document.querySelector('.pdetail-image-wrap');
+                if (imageWrap && galleryImages.length > 1) {
+                    var images = imageWrap.querySelectorAll('.pdetail-image');
+                    var dots = imageWrap.querySelectorAll('.pdetail-gallery-dot');
+                    var thumbs = document.querySelectorAll('.pdetail-thumb');
+                    var prevBtn = imageWrap.querySelector('.pdetail-gallery-prev');
+                    var nextBtn = imageWrap.querySelector('.pdetail-gallery-next');
+                    var currentIdx = 0;
+
+                    function goTo(idx) {
+                        if (idx < 0) idx = galleryImages.length - 1;
+                        if (idx >= galleryImages.length) idx = 0;
+                        currentIdx = idx;
+                        images.forEach(function (img, i) { img.classList.toggle('active', i === idx); });
+                        dots.forEach(function (d, i) { d.classList.toggle('active', i === idx); });
+                        thumbs.forEach(function (t, i) {
+                            t.classList.toggle('active', i === idx);
+                            t.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+                        });
+                        imageWrap.setAttribute('data-current-idx', idx);
+                    }
+
+                    if (prevBtn) prevBtn.addEventListener('click', function (e) { e.preventDefault(); goTo(currentIdx - 1); });
+                    if (nextBtn) nextBtn.addEventListener('click', function (e) { e.preventDefault(); goTo(currentIdx + 1); });
+                    dots.forEach(function (d) {
+                        d.addEventListener('click', function () { goTo(parseInt(this.getAttribute('data-idx'), 10)); });
+                    });
+                    thumbs.forEach(function (t) {
+                        t.addEventListener('click', function () { goTo(parseInt(this.getAttribute('data-idx'), 10)); });
+                    });
+                    // Keyboard arrows when image area is focused
+                    imageWrap.addEventListener('keydown', function (e) {
+                        if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(currentIdx - 1); }
+                        if (e.key === 'ArrowRight') { e.preventDefault(); goTo(currentIdx + 1); }
+                    });
+                    imageWrap.tabIndex = 0;
                 }
             })();
         } else {
@@ -903,37 +1042,38 @@
         if (cartSummaryEl) cartSummaryEl.hidden = false;
 
         cartItemsEl.innerHTML = '';
-        cart.forEach(function (item) {
+        cart.forEach(function (item, itemIdx) {
             var product = PRODUCTS.find(function (p) { return p.id === item.id; });
             if (!product) return;
 
-            var variation = findVariation(product, item.variation);
-            var unitPrice = effectivePrice(product, variation);
+            var unitPrice = effectivePrice(product, item.selections);
             var lang = (typeof getCurrentLang === 'function') ? getCurrentLang() : 'cs';
             var pName = (lang === 'en' && product.name_en) ? product.name_en : product.name;
-            var vName = variation ? ((lang === 'en' && variation.name_en) ? variation.name_en : variation.name) : '';
-            var vKey = item.variation || '';
+            var selectedOpts = getSelectedOptions(product, item.selections);
 
-            var variationLine = variation
-                ? '<p class="cart-item-variation">' +
-                    (variation.swatch ? '<span class="cart-item-swatch" style="background:' + variation.swatch + '"></span>' : '') +
-                    '<span>' + (product.variations.label || '') + ': <strong>' + vName + '</strong></span>' +
-                  '</p>'
-                : '';
+            var variationLines = selectedOpts.map(function (sel) {
+                var optName = (lang === 'en' && sel.option.name_en) ? sel.option.name_en : sel.option.name;
+                var groupLabel = (lang === 'en' && sel.group.label_en) ? sel.group.label_en : sel.group.label;
+                return '<span class="cart-item-variation">' +
+                    (sel.option.swatch ? '<span class="cart-item-swatch" style="background:' + sel.option.swatch + '"></span>' : '') +
+                    '<span>' + groupLabel + ': <strong>' + optName + '</strong></span>' +
+                '</span>';
+            }).join('');
 
             var row = document.createElement('div');
             row.className = 'cart-item';
+            row.setAttribute('data-cart-idx', itemIdx);
             row.innerHTML =
                 '<div class="cart-item-img">' + (product.img ? '<img src="' + product.img + '" alt="' + pName + '" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">' : '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>') + '</div>' +
                 '<div class="cart-item-info">' +
                     '<h4>' + pName + '</h4>' +
-                    variationLine +
+                    (variationLines ? '<div class="cart-item-variations">' + variationLines + '</div>' : '') +
                     '<p class="cart-item-unit">' + formatPrice(unitPrice) + ' / ks</p>' +
                 '</div>' +
                 '<div class="cart-item-qty">' +
-                    '<button class="cart-qty-minus" data-id="' + product.id + '" data-variation="' + vKey + '" aria-label="Méně">&minus;</button>' +
+                    '<button class="cart-qty-minus" data-cart-idx="' + itemIdx + '" aria-label="Méně">&minus;</button>' +
                     '<span>' + item.qty + '</span>' +
-                    '<button class="cart-qty-plus" data-id="' + product.id + '" data-variation="' + vKey + '" aria-label="Více">+</button>' +
+                    '<button class="cart-qty-plus" data-cart-idx="' + itemIdx + '" aria-label="Více">+</button>' +
                 '</div>' +
                 '<span class="cart-item-price">' + formatPrice(unitPrice * item.qty) + '</span>';
             cartItemsEl.appendChild(row);
@@ -949,19 +1089,20 @@
         if (cartTotalEl) cartTotalEl.textContent = formatPrice(total);
     }
 
-    // Cart qty buttons (variation-aware)
+    // Cart qty buttons (lookup by cart index — handles all variation combos)
     if (cartItemsEl) {
         cartItemsEl.addEventListener('click', function (e) {
             var minus = e.target.closest('.cart-qty-minus');
             var plus = e.target.closest('.cart-qty-plus');
-            if (minus) {
-                updateCartQty(parseInt(minus.getAttribute('data-id')), -1, minus.getAttribute('data-variation') || null);
-                renderCart();
-            }
-            if (plus) {
-                updateCartQty(parseInt(plus.getAttribute('data-id')), 1, plus.getAttribute('data-variation') || null);
-                renderCart();
-            }
+            var btn = minus || plus;
+            if (!btn) return;
+            var idx = parseInt(btn.getAttribute('data-cart-idx'), 10);
+            var cart = getCart();
+            var item = cart[idx];
+            if (!item) return;
+            var delta = minus ? -1 : 1;
+            updateCartQty(item.id, delta, item.selections);
+            renderCart();
         });
     }
 
