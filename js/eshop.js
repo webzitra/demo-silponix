@@ -462,6 +462,61 @@
         });
     }
 
+    // Reset category-only button (sidebar header)
+    var resetCategoryBtn = document.getElementById('resetCategory');
+    if (resetCategoryBtn) {
+        resetCategoryBtn.addEventListener('click', function () {
+            currentCategory = 'all';
+            categoryBtns.forEach(function (b) { b.classList.toggle('active', b.getAttribute('data-category') === 'all'); });
+            filterAndRender();
+        });
+    }
+
+    // ─── Category counts (live numbers in sidebar pills) ───
+    (function updateCategoryCounts() {
+        var counts = { all: PRODUCTS.length };
+        PRODUCTS.forEach(function (p) {
+            counts[p.category] = (counts[p.category] || 0) + 1;
+        });
+        Object.keys(counts).forEach(function (cat) {
+            var el = document.querySelector('[data-cat-count="' + cat + '"]');
+            if (el) el.textContent = counts[cat];
+        });
+        var totalEl = document.getElementById('statTotalProducts');
+        if (totalEl) totalEl.textContent = PRODUCTS.length;
+    })();
+
+    // ─── View mode toggle (grid / list) ───
+    (function viewModeToggle() {
+        var grid = document.getElementById('productsGrid');
+        var btns = document.querySelectorAll('.shop-view-btn');
+        if (!grid || !btns.length) return;
+        var saved = localStorage.getItem('silponix_shop_view') || 'grid';
+        applyView(saved);
+        btns.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                applyView(this.getAttribute('data-view'));
+            });
+        });
+        function applyView(mode) {
+            btns.forEach(function (b) {
+                var active = b.getAttribute('data-view') === mode;
+                b.classList.toggle('active', active);
+                b.setAttribute('aria-pressed', active ? 'true' : 'false');
+            });
+            grid.classList.toggle('list-view', mode === 'list');
+            localStorage.setItem('silponix_shop_view', mode);
+        }
+    })();
+
+    // ─── Cmd+K / Ctrl+K focuses search ───
+    document.addEventListener('keydown', function (e) {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+            e.preventDefault();
+            if (searchInput) searchInput.focus();
+        }
+    });
+
     // Add to cart delegation
     document.addEventListener('click', function (e) {
         var btn = e.target.closest('.add-to-cart-btn');
