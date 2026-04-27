@@ -12,7 +12,12 @@
             desc_long: 'Hondata K-Pro4 je nejpokročilejší standalone ECU pro Honda K-series motory. Umožňuje kompletní přístup ke všem mapám motoru — palivové, zapalovací, VTEC, knock a další. Podporuje datalogging v reálném čase, launch control, boost control (pro turbo aplikace), traction control a dual-map switching. Ideální pro závodní i upravené silniční vozy.',
             desc_long_en: 'Hondata K-Pro4 is the most advanced standalone ECU for Honda K-series engines. Provides full access to all engine maps — fuel, ignition, VTEC, knock and more. Supports real-time datalogging, launch control, boost control (for turbo applications), traction control and dual-map switching. Ideal for racing and modified street cars.',
             specs: [['Typ', 'Standalone ECU'], ['Kompatibilita', 'Honda K20A, K20Z, K24A'], ['Připojení', 'USB + Bluetooth'], ['Software', 'KManager (PC)'], ['Datalogging', 'Ano, real-time'], ['Launch control', 'Ano'], ['Boost control', 'Ano (turbo)'], ['Trakční kontrola', 'Ano'], ['Hmotnost', '280 g'], ['Záruka', '2 roky']],
-            specs_en: [['Type', 'Standalone ECU'], ['Compatibility', 'Honda K20A, K20Z, K24A'], ['Connection', 'USB + Bluetooth'], ['Software', 'KManager (PC)'], ['Datalogging', 'Yes, real-time'], ['Launch control', 'Yes'], ['Boost control', 'Yes (turbo)'], ['Traction control', 'Yes'], ['Weight', '280 g'], ['Warranty', '2 years']] },
+            specs_en: [['Type', 'Standalone ECU'], ['Compatibility', 'Honda K20A, K20Z, K24A'], ['Connection', 'USB + Bluetooth'], ['Software', 'KManager (PC)'], ['Datalogging', 'Yes, real-time'], ['Launch control', 'Yes'], ['Boost control', 'Yes (turbo)'], ['Traction control', 'Yes'], ['Weight', '280 g'], ['Warranty', '2 years']],
+            variations: { label: 'Připojení', label_en: 'Connection', type: 'pill', options: [
+                { id: 'usb', name: 'USB', subtitle: 'Standardní', price: 22542, stock: 5, default: true },
+                { id: 'usb-bt', name: 'USB + Bluetooth', subtitle: 'Wireless tuning', price: 24990, stock: 3 },
+                { id: 'pro-bundle', name: 'Pro Bundle', subtitle: '+ kabel + dataloger', price: 28490, stock: 2 }
+            ]} },
         { id: 2, name: 'Hondata S300 V3', name_en: 'Hondata S300 V3', category: 'ecu', price: 18990, desc: 'Plug-in ECU pro OBD1 Honda. Datalogging, launch control, boost control.', desc_en: 'Plug-in ECU for OBD1 Honda. Datalogging, launch control, boost control.', badge: '', stock: 3, img: '/img/products/ecu-obd1.png',
             desc_long: 'Hondata S300 V3 je plug-in ECU deska, která se instaluje přímo do originální OBD1 řídící jednotky Honda. Nabízí plnou kontrolu nad palivovými a zapalovacími mapami, datalogging s rozlišením 1 ms, launch control, boost control pro turbo aplikace a možnost přepínání mezi dvěma sadami map. Ověřené řešení pro závodní Honda Civic, CRX, Integra s B-series a H-series motory.',
             desc_long_en: 'Hondata S300 V3 is a plug-in ECU board that installs directly into the original Honda OBD1 ECU. Offers full fuel and ignition map control, 1ms resolution datalogging, launch control, boost control for turbo applications and dual-map switching. Proven solution for racing Honda Civic, CRX, Integra with B-series and H-series engines.',
@@ -32,7 +37,12 @@
             desc_long: 'Kompletní sada polyuretanových silentbloků Silponix pro Honda Civic 5. generace (EG, 1992–1995). Nahrazuje všechny originální gumové silentbloky v podvozku — přední ramena, zadní náprava, stabilizátor, řazení. Tvrdost Shore 80A zajišťuje výrazné zlepšení přesnosti řízení a odezvy podvozku při zachování přijatelného komfortu pro silniční provoz.',
             desc_long_en: 'Complete Silponix polyurethane bushing set for Honda Civic 5th gen (EG, 1992–1995). Replaces all original rubber bushings in the chassis — front arms, rear axle, anti-roll bar, gear linkage. Shore 80A hardness provides significant improvement in steering precision and chassis response while maintaining acceptable comfort for road use.',
             specs: [['Materiál', 'Polyuretan (PU)'], ['Tvrdost', 'Shore 80A'], ['Kompatibilita', 'Honda Civic EG (1992–1995)'], ['Obsah sady', '22 kusů + mazivo'], ['Pozice', 'Přední ramena, zadní náprava, stabilizátor'], ['Barva', 'Červená'], ['Životnost', '3–5× delší než guma'], ['Hmotnost sady', '1.2 kg']],
-            specs_en: [['Material', 'Polyurethane (PU)'], ['Hardness', 'Shore 80A'], ['Compatibility', 'Honda Civic EG (1992–1995)'], ['Set contents', '22 pieces + grease'], ['Positions', 'Front arms, rear axle, anti-roll bar'], ['Colour', 'Red'], ['Lifespan', '3–5× longer than rubber'], ['Set weight', '1.2 kg']] },
+            specs_en: [['Material', 'Polyurethane (PU)'], ['Hardness', 'Shore 80A'], ['Compatibility', 'Honda Civic EG (1992–1995)'], ['Set contents', '22 pieces + grease'], ['Positions', 'Front arms, rear axle, anti-roll bar'], ['Colour', 'Red'], ['Lifespan', '3–5× longer than rubber'], ['Set weight', '1.2 kg']],
+            variations: { label: 'Tvrdost', label_en: 'Hardness', type: 'pill', options: [
+                { id: '75a', name: 'Shore 75A', subtitle: 'Komfort', price: 3690, stock: 12 },
+                { id: '80a', name: 'Shore 80A', subtitle: 'Sport', price: 3890, stock: 15, default: true },
+                { id: '95a', name: 'Shore 95A', subtitle: 'Race', price: 4290, stock: 8 }
+            ]} },
         { id: 6, name: 'Set silentbloků Civic EK', name_en: 'Bushing set Civic EK', category: 'silentbloky', price: 3890, desc: 'Kompletní sada PU silentbloků pro Honda Civic EK (96–00). Shore 80A.', desc_en: 'Complete PU bushing set for Honda Civic EK (96–00). Shore 80A.', badge: '', stock: 12, img: '/img/products/silentblok-106h.png',
             desc_long: 'Kompletní sada polyuretanových silentbloků Silponix pro Honda Civic 6. generace (EK, 1996–2000). Přesně pasuje na EK3, EK4, EK9 (Type R) i EJ modely. Zajišťuje přímější odezvu řízení, lepší kontrolu v zatáčkách a eliminuje prokluz typický pro opotřebené gumové silentbloky.',
             desc_long_en: 'Complete Silponix polyurethane bushing set for Honda Civic 6th gen (EK, 1996–2000). Fits EK3, EK4, EK9 (Type R) and EJ models precisely. Provides more direct steering response, better cornering control and eliminates the slop typical of worn rubber bushings.',
@@ -48,11 +58,17 @@
             desc_long_en: 'Polyurethane front lower arm bushing manufactured by Silponix. Exact replacement for the original part with significantly longer lifespan and better steering response. Suitable for Honda Civic EG, EK, Integra DC2 and CR-V RD1.',
             specs: [['Materiál', 'Polyuretan (PU)'], ['Tvrdost', 'Shore 80A'], ['Kompatibilita', 'Civic EG/EK, Integra DC2, CR-V RD1'], ['Pozice', 'Přední spodní rameno'], ['Balení', '2 ks + mazivo'], ['Barva', 'Červená'], ['Hmotnost', '120 g']],
             specs_en: [['Material', 'Polyurethane (PU)'], ['Hardness', 'Shore 80A'], ['Compatibility', 'Civic EG/EK, Integra DC2, CR-V RD1'], ['Position', 'Front lower arm'], ['Package', '2 pcs + grease'], ['Colour', 'Red'], ['Weight', '120 g']] },
-        { id: 9, name: 'Dvouřadá řemenice B-series RED', name_en: 'Dual pulley B-series RED', category: 'motor', price: 5324, desc: 'SET červená dvouřadá řemenice pro Honda B-series. Eloxovaný hliník.', desc_en: 'SET red dual pulley for Honda B-series. Anodised aluminium.', badge: 'bestseller', stock: 6, img: '/img/products/remenice-red.png',
-            desc_long: 'SET dvouřadých řemenic v červeném eloxovaném provedení pro Honda B-series motory (B16, B18). Obsahuje klikovou řemenici a řemenici vodního čerpadla. CNC obráběný hliník 6061-T6 s tvrdým eloxem. Odlehčený design snižuje moment setrvačnosti a zlepšuje odezvu motoru.',
-            desc_long_en: 'SET of dual pulleys in red anodised finish for Honda B-series engines (B16, B18). Includes crank pulley and water pump pulley. CNC machined 6061-T6 aluminium with hard anodising. Lightweight design reduces moment of inertia and improves engine response.',
-            specs: [['Materiál', 'Hliník 6061-T6'], ['Povrch', 'Červený tvrdý elox'], ['Kompatibilita', 'Honda B16A, B16B, B18C'], ['Obsah sady', 'Kliková + vodní čerpadlo'], ['Typ', 'Dvouřadá (2 drážky)'], ['Úspora hmotnosti', '~40 % vs. OEM'], ['Hmotnost sady', '680 g'], ['Výroba', 'CNC obrábění']],
-            specs_en: [['Material', 'Aluminium 6061-T6'], ['Finish', 'Red hard anodised'], ['Compatibility', 'Honda B16A, B16B, B18C'], ['Set contents', 'Crank + water pump pulley'], ['Type', 'Dual (2 grooves)'], ['Weight saving', '~40% vs. OEM'], ['Set weight', '680 g'], ['Manufacturing', 'CNC machined']] },
+        { id: 9, name: 'Dvouřadá řemenice B-series', name_en: 'Dual pulley B-series', category: 'motor', price: 5324, desc: 'SET dvouřadá řemenice pro Honda B-series. Eloxovaný hliník 6061-T6.', desc_en: 'SET dual pulley for Honda B-series. Anodised aluminium 6061-T6.', badge: 'bestseller', stock: 6, img: '/img/products/remenice-red.png',
+            desc_long: 'SET dvouřadých řemenic pro Honda B-series motory (B16, B18). Obsahuje klikovou řemenici a řemenici vodního čerpadla. CNC obráběný hliník 6061-T6 s tvrdým eloxem ve čtyřech barevných provedeních. Odlehčený design snižuje moment setrvačnosti a zlepšuje odezvu motoru.',
+            desc_long_en: 'SET of dual pulleys for Honda B-series engines (B16, B18). Includes crank pulley and water pump pulley. CNC machined 6061-T6 aluminium with hard anodising in four colour finishes. Lightweight design reduces moment of inertia and improves engine response.',
+            specs: [['Materiál', 'Hliník 6061-T6'], ['Povrch', 'Tvrdý elox'], ['Kompatibilita', 'Honda B16A, B16B, B18C'], ['Obsah sady', 'Kliková + vodní čerpadlo'], ['Typ', 'Dvouřadá (2 drážky)'], ['Úspora hmotnosti', '~40 % vs. OEM'], ['Hmotnost sady', '680 g'], ['Výroba', 'CNC obrábění']],
+            specs_en: [['Material', 'Aluminium 6061-T6'], ['Finish', 'Hard anodised'], ['Compatibility', 'Honda B16A, B16B, B18C'], ['Set contents', 'Crank + water pump pulley'], ['Type', 'Dual (2 grooves)'], ['Weight saving', '~40% vs. OEM'], ['Set weight', '680 g'], ['Manufacturing', 'CNC machined']],
+            variations: { label: 'Barva', label_en: 'Colour', type: 'swatch', options: [
+                { id: 'red', name: 'Červená', name_en: 'Red', swatch: '#bd141b', price: 5324, stock: 6, default: true },
+                { id: 'gold', name: 'Zlatá', name_en: 'Gold', swatch: '#d4a017', price: 5324, stock: 4 },
+                { id: 'black', name: 'Černá', name_en: 'Black', swatch: '#1a1a1a', price: 5500, stock: 8 },
+                { id: 'blue', name: 'Modrá', name_en: 'Blue', swatch: '#1e40af', price: 5500, stock: 0 }
+            ]} },
         { id: 10, name: 'Jednořadá řemenice B-series', name_en: 'Single pulley B-series', category: 'motor', price: 2904, desc: 'Odlehčená jednořadá řemenice pro B16/B18. CNC obráběný hliník.', desc_en: 'Lightweight single pulley for B16/B18. CNC machined aluminium.', badge: '', stock: 8, img: '/img/products/remenice-red.png',
             desc_long: 'Odlehčená jednořadá kliková řemenice pro závodní aplikace bez klimatizace a posilovače. Maximální úspora hmotnosti pro závodní B-series motory. CNC obráběný hliník s tvrdým eloxem.',
             desc_long_en: 'Lightweight single groove crank pulley for race applications without A/C and power steering. Maximum weight saving for racing B-series engines. CNC machined aluminium with hard anodising.',
@@ -165,33 +181,67 @@
         updateCartCount();
     }
 
-    function addToCart(productId) {
+    // ─── Variation helpers ───
+    function getDefaultVariation(product) {
+        if (!product || !product.variations) return null;
+        var opts = product.variations.options || [];
+        return (opts.find(function (o) { return o.default; }) || opts[0] || null);
+    }
+    function findVariation(product, variationId) {
+        if (!product || !product.variations) return null;
+        return product.variations.options.find(function (o) { return o.id === variationId; }) || null;
+    }
+    function effectivePrice(product, variation) {
+        return (variation && typeof variation.price === 'number') ? variation.price : product.price;
+    }
+    function cartItemKey(productId, variationId) {
+        return variationId ? (productId + '::' + variationId) : String(productId);
+    }
+
+    function addToCart(productId, variationId) {
         var cart = getCart();
         var product = PRODUCTS.find(function (p) { return p.id === productId; });
         if (!product) return;
 
-        var existing = cart.find(function (item) { return item.id === productId; });
+        // Default to default variation if product has variations and none was passed
+        if (!variationId && product.variations) {
+            var def = getDefaultVariation(product);
+            if (def) variationId = def.id;
+        }
+
+        var existing = cart.find(function (item) {
+            return item.id === productId && (item.variation || null) === (variationId || null);
+        });
         if (existing) {
             existing.qty += 1;
         } else {
-            cart.push({ id: productId, qty: 1 });
+            var entry = { id: productId, qty: 1 };
+            if (variationId) entry.variation = variationId;
+            cart.push(entry);
         }
         saveCart(cart);
-        showAddedNotification(product.name);
+
+        var variation = findVariation(product, variationId);
+        var label = product.name + (variation ? ' — ' + variation.name : '');
+        showAddedNotification(label);
     }
 
-    function removeFromCart(productId) {
-        var cart = getCart().filter(function (item) { return item.id !== productId; });
+    function removeFromCart(productId, variationId) {
+        var cart = getCart().filter(function (item) {
+            return !(item.id === productId && (item.variation || null) === (variationId || null));
+        });
         saveCart(cart);
     }
 
-    function updateCartQty(productId, delta) {
+    function updateCartQty(productId, delta, variationId) {
         var cart = getCart();
-        var item = cart.find(function (i) { return i.id === productId; });
+        var item = cart.find(function (i) {
+            return i.id === productId && (i.variation || null) === (variationId || null);
+        });
         if (!item) return;
         item.qty += delta;
         if (item.qty <= 0) {
-            cart = cart.filter(function (i) { return i.id !== productId; });
+            cart = cart.filter(function (i) { return i !== item; });
         }
         saveCart(cart);
     }
@@ -201,7 +251,9 @@
         var subtotal = 0;
         cart.forEach(function (item) {
             var product = PRODUCTS.find(function (p) { return p.id === item.id; });
-            if (product) subtotal += product.price * item.qty;
+            if (!product) return;
+            var variation = findVariation(product, item.variation);
+            subtotal += effectivePrice(product, variation) * item.qty;
         });
         return subtotal;
     }
@@ -256,6 +308,25 @@
 
         var detailLabel = lang === 'en' ? 'View details' : 'Zobrazit detail';
 
+        // Mini variation indicator (swatches or count)
+        var variationIndicator = '';
+        if (product.variations && product.variations.options && product.variations.options.length > 1) {
+            var vType = product.variations.type || 'pill';
+            var opts = product.variations.options;
+            if (vType === 'swatch') {
+                var swatches = opts.slice(0, 4).map(function (o) {
+                    return '<span class="product-card-swatch" style="background:' + (o.swatch || '#888') + '" title="' + ((lang === 'en' && o.name_en) ? o.name_en : o.name) + '"></span>';
+                }).join('');
+                var more = opts.length > 4 ? '<span class="product-card-swatch-more">+' + (opts.length - 4) + '</span>' : '';
+                variationIndicator = '<div class="product-card-variations" aria-label="' + opts.length + ' barev">' + swatches + more + '</div>';
+            } else {
+                variationIndicator = '<div class="product-card-variations product-card-variations-pill">' +
+                    '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>' +
+                    opts.length + ' ' + (lang === 'en' ? 'options' : 'variant') +
+                    '</div>';
+            }
+        }
+
         // Whole card is now an <a> linking to the product detail page
         var card = document.createElement('a');
         card.className = 'product-card lit-card';
@@ -275,6 +346,7 @@
             '<div class="product-card-body">' +
                 '<p class="product-card-category">' + (product.category || '') + '</p>' +
                 '<h3 class="product-name">' + name + '</h3>' +
+                variationIndicator +
                 '<div class="product-card-footer">' +
                     '<span class="product-price">' + (product.price ? product.price.toLocaleString('cs-CZ') + '\u00a0K\u010d' : '') + '</span>' +
                     '<span class="product-stock ' + stockClass + '">' + stockLabel + '</span>' +
@@ -572,6 +644,52 @@
                 badgeHTML = '<span class="pdetail-flag pdetail-flag-new">' + (lang === 'en' ? 'New' : 'Nové') + '</span>';
             }
 
+            // ─── Variations selector ───
+            var variationsHTML = '';
+            var defaultVar = getDefaultVariation(product);
+            if (product.variations && product.variations.options.length > 0) {
+                var vLabel = (lang === 'en' && product.variations.label_en) ? product.variations.label_en : product.variations.label;
+                var vType = product.variations.type || 'pill';
+                var defaultId = defaultVar ? defaultVar.id : product.variations.options[0].id;
+                var defaultName = defaultVar ? ((lang === 'en' && defaultVar.name_en) ? defaultVar.name_en : defaultVar.name) : '';
+
+                variationsHTML = '<div class="pdetail-variations" data-variation-type="' + vType + '">' +
+                    '<div class="pdetail-variations-header">' +
+                        '<span class="pdetail-variations-label">' + vLabel + '</span>' +
+                        '<span class="pdetail-variations-current" id="pdetailVarCurrent">' + defaultName + '</span>' +
+                    '</div>' +
+                    '<div class="pdetail-variations-options" role="radiogroup" aria-label="' + vLabel + '">';
+
+                product.variations.options.forEach(function (opt) {
+                    var optName = (lang === 'en' && opt.name_en) ? opt.name_en : opt.name;
+                    var isDefault = opt.id === defaultId;
+                    var isOOS = opt.stock <= 0;
+                    var classes = 'pdetail-variation-btn' + (isDefault ? ' active' : '') + (isOOS ? ' is-oos' : '');
+                    var dataset = 'data-variation-id="' + opt.id + '" data-price="' + opt.price + '" data-stock="' + opt.stock + '" data-name="' + optName + '"';
+
+                    if (vType === 'swatch') {
+                        variationsHTML += '<button type="button" class="' + classes + '" ' + dataset + ' role="radio" aria-checked="' + (isDefault ? 'true' : 'false') + '" aria-label="' + optName + '" title="' + optName + (isOOS ? ' (vyprodáno)' : '') + '">' +
+                            '<span class="pdetail-variation-swatch" style="background:' + (opt.swatch || '#888') + '"></span>' +
+                            '<span class="pdetail-variation-check" aria-hidden="true">' +
+                                '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>' +
+                            '</span>' +
+                        '</button>';
+                    } else {
+                        variationsHTML += '<button type="button" class="' + classes + '" ' + dataset + ' role="radio" aria-checked="' + (isDefault ? 'true' : 'false') + '">' +
+                            '<span class="pdetail-variation-name">' + optName + '</span>' +
+                            (opt.subtitle ? '<span class="pdetail-variation-sub">' + opt.subtitle + '</span>' : '') +
+                            (isOOS ? '<span class="pdetail-variation-oos">' + (lang === 'en' ? 'Out of stock' : 'Vyprodáno') + '</span>' : '') +
+                        '</button>';
+                    }
+                });
+                variationsHTML += '</div></div>';
+            }
+
+            // Initial price/stock (after variation defaults)
+            var initialPrice = effectivePrice(product, defaultVar);
+            var initialStock = (defaultVar && typeof defaultVar.stock === 'number') ? defaultVar.stock : product.stock;
+            var initialInStock = initialStock > 0;
+
             // Specs — premium stat-card grid
             var specsHTML = '';
             if (specs && specs.length > 0) {
@@ -625,27 +743,29 @@
                         '<h1 class="pdetail-title">' + pName + '</h1>' +
                         '<p class="pdetail-tagline">' + pDesc + '</p>' +
 
+                        variationsHTML +
+
                         '<div class="pdetail-buybox">' +
                             '<div class="pdetail-price-row">' +
-                                '<span class="pdetail-price">' + formatPrice(product.price) + '</span>' +
+                                '<span class="pdetail-price" id="pdetailPrice">' + formatPrice(initialPrice) + '</span>' +
                                 '<span class="pdetail-vat">' + (lang === 'en' ? 'incl. VAT' : 'vč. DPH') + '</span>' +
                             '</div>' +
-                            '<div class="pdetail-stock ' + (inStock ? 'pdetail-stock-in' : 'pdetail-stock-out') + '">' +
+                            '<div class="pdetail-stock ' + (initialInStock ? 'pdetail-stock-in' : 'pdetail-stock-out') + '" id="pdetailStock">' +
                                 '<span class="pdetail-stock-dot"></span>' +
-                                (inStock
-                                    ? (lang === 'en' ? 'In stock — ' : 'Skladem — ') + product.stock + ' ' + (lang === 'en' ? 'pcs' : 'ks')
+                                (initialInStock
+                                    ? (lang === 'en' ? 'In stock — ' : 'Skladem — ') + initialStock + ' ' + (lang === 'en' ? 'pcs' : 'ks')
                                     : (lang === 'en' ? 'Out of stock' : 'Vyprodáno')) +
                             '</div>' +
 
                             '<div class="pdetail-actions">' +
                                 '<div class="pdetail-qty">' +
                                     '<button type="button" class="pdetail-qty-btn" data-qty="-1" aria-label="−">−</button>' +
-                                    '<input type="number" id="pdetailQty" class="pdetail-qty-input" value="1" min="1" max="' + Math.max(product.stock, 1) + '" aria-label="' + (lang === 'en' ? 'Quantity' : 'Množství') + '">' +
+                                    '<input type="number" id="pdetailQty" class="pdetail-qty-input" value="1" min="1" max="' + Math.max(initialStock, 1) + '" aria-label="' + (lang === 'en' ? 'Quantity' : 'Množství') + '">' +
                                     '<button type="button" class="pdetail-qty-btn" data-qty="+1" aria-label="+">+</button>' +
                                 '</div>' +
-                                '<button type="button" class="btn btn-primary btn-lg pdetail-buy add-to-cart-btn" data-product-id="' + product.id + '" ' + (!inStock ? 'disabled' : '') + '>' +
+                                '<button type="button" class="btn btn-primary btn-lg pdetail-buy add-to-cart-btn" data-product-id="' + product.id + '" ' + (!initialInStock ? 'disabled' : '') + '>' +
                                     '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>' +
-                                    '<span>' + (inStock ? (lang === 'en' ? 'Add to cart' : 'Přidat do košíku') : (lang === 'en' ? 'Out of stock' : 'Vyprodáno')) + '</span>' +
+                                    '<span>' + (initialInStock ? (lang === 'en' ? 'Add to cart' : 'Přidat do košíku') : (lang === 'en' ? 'Out of stock' : 'Vyprodáno')) + '</span>' +
                                 '</button>' +
                             '</div>' +
                         '</div>' +
@@ -674,10 +794,45 @@
                 related.forEach(function (p) { relatedGrid.appendChild(createProductCard(p)); });
             }
 
-            // Quantity controls + cart respect quantity
+            // Quantity controls + variation selector + cart with qty/variation
             (function () {
                 var qtyInput = document.getElementById('pdetailQty');
+                var priceEl = document.getElementById('pdetailPrice');
+                var stockEl = document.getElementById('pdetailStock');
+                var varCurrentEl = document.getElementById('pdetailVarCurrent');
+                var buyBtn = document.querySelector('.pdetail-buy');
                 if (!qtyInput) return;
+
+                // Track currently selected variation
+                var selectedVariation = defaultVar;
+
+                function updateBuyboxFor(variation) {
+                    var price = effectivePrice(product, variation);
+                    var stock = (variation && typeof variation.stock === 'number') ? variation.stock : product.stock;
+                    var inStockNow = stock > 0;
+                    var vName = variation ? ((lang === 'en' && variation.name_en) ? variation.name_en : variation.name) : '';
+
+                    if (priceEl) priceEl.textContent = formatPrice(price);
+                    if (varCurrentEl) varCurrentEl.textContent = vName;
+
+                    if (stockEl) {
+                        stockEl.classList.toggle('pdetail-stock-in', inStockNow);
+                        stockEl.classList.toggle('pdetail-stock-out', !inStockNow);
+                        stockEl.innerHTML = '<span class="pdetail-stock-dot"></span>' +
+                            (inStockNow
+                                ? (lang === 'en' ? 'In stock — ' : 'Skladem — ') + stock + ' ' + (lang === 'en' ? 'pcs' : 'ks')
+                                : (lang === 'en' ? 'Out of stock' : 'Vyprodáno'));
+                    }
+                    qtyInput.max = Math.max(stock, 1);
+                    if (parseInt(qtyInput.value, 10) > stock) qtyInput.value = Math.max(stock, 1);
+                    if (buyBtn) {
+                        buyBtn.disabled = !inStockNow;
+                        var label = buyBtn.querySelector('span');
+                        if (label) label.textContent = inStockNow ? (lang === 'en' ? 'Add to cart' : 'Přidat do košíku') : (lang === 'en' ? 'Out of stock' : 'Vyprodáno');
+                    }
+                }
+
+                // Quantity stepper
                 document.querySelectorAll('.pdetail-qty-btn').forEach(function (btn) {
                     btn.addEventListener('click', function () {
                         var delta = parseInt(this.getAttribute('data-qty'), 10);
@@ -688,14 +843,30 @@
                         qtyInput.value = v;
                     });
                 });
-                var buyBtn = document.querySelector('.pdetail-buy');
+
+                // Variation selector
+                document.querySelectorAll('.pdetail-variation-btn').forEach(function (btn) {
+                    btn.addEventListener('click', function () {
+                        if (this.classList.contains('is-oos')) return;
+                        var vid = this.getAttribute('data-variation-id');
+                        document.querySelectorAll('.pdetail-variation-btn').forEach(function (b) {
+                            b.classList.toggle('active', b === btn);
+                            b.setAttribute('aria-checked', b === btn ? 'true' : 'false');
+                        });
+                        selectedVariation = findVariation(product, vid);
+                        updateBuyboxFor(selectedVariation);
+                    });
+                });
+
+                // Buy button — qty + variation aware
                 if (buyBtn) {
-                    var origAdd = buyBtn.cloneNode(true);
                     buyBtn.addEventListener('click', function (e) {
                         e.preventDefault();
                         e.stopPropagation();
+                        if (buyBtn.disabled) return;
                         var qty = parseInt(qtyInput.value, 10) || 1;
-                        for (var i = 0; i < qty; i++) addToCart(product.id);
+                        var vid = selectedVariation ? selectedVariation.id : null;
+                        for (var i = 0; i < qty; i++) addToCart(product.id, vid);
                         flyToCart(buyBtn);
                     }, true);
                 }
@@ -736,17 +907,35 @@
             var product = PRODUCTS.find(function (p) { return p.id === item.id; });
             if (!product) return;
 
+            var variation = findVariation(product, item.variation);
+            var unitPrice = effectivePrice(product, variation);
+            var lang = (typeof getCurrentLang === 'function') ? getCurrentLang() : 'cs';
+            var pName = (lang === 'en' && product.name_en) ? product.name_en : product.name;
+            var vName = variation ? ((lang === 'en' && variation.name_en) ? variation.name_en : variation.name) : '';
+            var vKey = item.variation || '';
+
+            var variationLine = variation
+                ? '<p class="cart-item-variation">' +
+                    (variation.swatch ? '<span class="cart-item-swatch" style="background:' + variation.swatch + '"></span>' : '') +
+                    '<span>' + (product.variations.label || '') + ': <strong>' + vName + '</strong></span>' +
+                  '</p>'
+                : '';
+
             var row = document.createElement('div');
             row.className = 'cart-item';
             row.innerHTML =
-                '<div class="cart-item-img">' + (product.img ? '<img src="' + product.img + '" alt="' + product.name + '" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">' : '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>') + '</div>' +
-                '<div class="cart-item-info"><h4>' + product.name + '</h4><p>' + formatPrice(product.price) + ' / ks</p></div>' +
-                '<div class="cart-item-qty">' +
-                    '<button class="cart-qty-minus" data-id="' + product.id + '" aria-label="Méně">&minus;</button>' +
-                    '<span>' + item.qty + '</span>' +
-                    '<button class="cart-qty-plus" data-id="' + product.id + '" aria-label="Více">+</button>' +
+                '<div class="cart-item-img">' + (product.img ? '<img src="' + product.img + '" alt="' + pName + '" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">' : '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>') + '</div>' +
+                '<div class="cart-item-info">' +
+                    '<h4>' + pName + '</h4>' +
+                    variationLine +
+                    '<p class="cart-item-unit">' + formatPrice(unitPrice) + ' / ks</p>' +
                 '</div>' +
-                '<span class="cart-item-price">' + formatPrice(product.price * item.qty) + '</span>';
+                '<div class="cart-item-qty">' +
+                    '<button class="cart-qty-minus" data-id="' + product.id + '" data-variation="' + vKey + '" aria-label="Méně">&minus;</button>' +
+                    '<span>' + item.qty + '</span>' +
+                    '<button class="cart-qty-plus" data-id="' + product.id + '" data-variation="' + vKey + '" aria-label="Více">+</button>' +
+                '</div>' +
+                '<span class="cart-item-price">' + formatPrice(unitPrice * item.qty) + '</span>';
             cartItemsEl.appendChild(row);
         });
 
@@ -760,13 +949,19 @@
         if (cartTotalEl) cartTotalEl.textContent = formatPrice(total);
     }
 
-    // Cart qty buttons
+    // Cart qty buttons (variation-aware)
     if (cartItemsEl) {
         cartItemsEl.addEventListener('click', function (e) {
             var minus = e.target.closest('.cart-qty-minus');
             var plus = e.target.closest('.cart-qty-plus');
-            if (minus) { updateCartQty(parseInt(minus.getAttribute('data-id')), -1); renderCart(); }
-            if (plus) { updateCartQty(parseInt(plus.getAttribute('data-id')), 1); renderCart(); }
+            if (minus) {
+                updateCartQty(parseInt(minus.getAttribute('data-id')), -1, minus.getAttribute('data-variation') || null);
+                renderCart();
+            }
+            if (plus) {
+                updateCartQty(parseInt(plus.getAttribute('data-id')), 1, plus.getAttribute('data-variation') || null);
+                renderCart();
+            }
         });
     }
 

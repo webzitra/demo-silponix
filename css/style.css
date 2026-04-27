@@ -739,7 +739,35 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
 .cart-item-img { width: 80px; height: 80px; background: var(--surface-alt); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; }
 .cart-item-img svg { opacity: 0.3; }
 .cart-item-info h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.25rem; }
-.cart-item-info p { font-size: 0.875rem; color: var(--text-muted); }
+.cart-item-info p { font-size: 0.875rem; color: var(--text-muted); margin: 0; }
+.cart-item-variation {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.2rem 0.55rem;
+    margin: 0.2rem 0 !important;
+    background: rgba(var(--primary-rgb), 0.08);
+    border: 1px solid rgba(var(--primary-rgb), 0.22);
+    border-radius: 6px;
+    font-size: 0.78rem !important;
+    color: rgba(255, 255, 255, 0.75) !important;
+}
+.cart-item-variation strong {
+    color: #fff;
+    font-weight: 600;
+}
+.cart-item-swatch {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+    flex-shrink: 0;
+}
+.cart-item-unit {
+    font-size: 0.82rem !important;
+    color: rgba(255, 255, 255, 0.5) !important;
+    margin-top: 0.25rem !important;
+}
 .cart-item-qty { display: flex; align-items: center; gap: 0.5rem; }
 .cart-item-qty button { width: 32px; height: 32px; border-radius: var(--radius-sm); background: var(--surface-alt); color: var(--text); display: flex; align-items: center; justify-content: center; font-size: 1.125rem; font-weight: 700; transition: all var(--transition-fast); }
 .cart-item-qty button:hover { background: var(--primary-light); color: var(--primary); }
@@ -5141,6 +5169,48 @@ a.product-card,
     transform: translateY(0);
 }
 
+/* Mini variation indicator on product card */
+.product-card-variations {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin: 0.4rem 0;
+    flex-wrap: wrap;
+}
+.product-card-swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.18),
+        0 0 0 1px rgba(0, 0, 0, 0.3);
+    transition: transform var(--ig-duration-btn) var(--ig-ease);
+}
+.product-card:hover .product-card-swatch {
+    transform: scale(1.12);
+}
+.product-card-swatch-more {
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.55);
+    margin-left: 0.15rem;
+    letter-spacing: 0.02em;
+}
+.product-card-variations-pill {
+    padding: 0.2rem 0.55rem;
+    border-radius: 6px;
+    background: rgba(var(--primary-rgb), 0.08);
+    border: 1px solid rgba(var(--primary-rgb), 0.22);
+    color: rgba(var(--primary-rgb), 0.85);
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+.product-card-variations-pill svg { color: var(--primary); }
+
 /* ════════════════════════════════════════════════════════════
    ░░░  P R O D U C T  D E T A I L  —  Premium catalog page  ░░░
    ════════════════════════════════════════════════════════════ */
@@ -5359,6 +5429,190 @@ a.product-card,
     color: rgba(255, 255, 255, 0.7);
     line-height: 1.55;
     margin: 0;
+}
+
+/* ─── VARIATIONS SELECTOR ─── */
+.pdetail-variations {
+    margin-top: 0.25rem;
+    padding: 1.1rem 1.25rem;
+    background: rgba(20, 20, 20, 0.55);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+    position: relative;
+    isolation: isolate;
+}
+.pdetail-variations::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: var(--ig-gradient-90);
+    opacity: 0.5;
+    border-radius: 14px 14px 0 0;
+    pointer-events: none;
+}
+.pdetail-variations-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.85rem;
+}
+.pdetail-variations-label {
+    font-family: var(--font-heading);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+}
+.pdetail-variations-current {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: -0.01em;
+}
+.pdetail-variations-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+/* Pill variation buttons */
+.pdetail-variation-btn {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    padding: 0.6rem 0.95rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    color: rgba(255, 255, 255, 0.85);
+    cursor: pointer;
+    transition:
+        background var(--ig-duration-btn) var(--ig-ease),
+        border-color var(--ig-duration-btn) var(--ig-ease),
+        color var(--ig-duration-btn) var(--ig-ease),
+        box-shadow var(--ig-duration-btn) var(--ig-ease),
+        transform var(--ig-duration-btn) var(--ig-ease);
+    font-family: var(--font-body);
+    text-align: left;
+}
+.pdetail-variation-btn:hover {
+    background: rgba(var(--primary-rgb), 0.08);
+    border-color: rgba(var(--primary-rgb), 0.35);
+    transform: translateY(-1px);
+}
+.pdetail-variation-btn.active {
+    background: rgba(var(--primary-rgb), 0.14);
+    border-color: rgba(var(--primary-rgb), 0.55);
+    color: #fff;
+    box-shadow:
+        inset 0 0 0 1px rgba(var(--primary-rgb), 0.3),
+        0 0 22px rgba(var(--primary-rgb), 0.18);
+}
+.pdetail-variation-name {
+    font-family: var(--font-heading);
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: inherit;
+    line-height: 1.15;
+}
+.pdetail-variation-sub {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.45);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+.pdetail-variation-btn.active .pdetail-variation-sub {
+    color: rgba(var(--primary-rgb), 0.85);
+}
+.pdetail-variation-oos {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: #fca5a5;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+.pdetail-variation-btn.is-oos {
+    opacity: 0.45;
+    cursor: not-allowed;
+    pointer-events: none;
+    background: rgba(255, 255, 255, 0.02);
+}
+.pdetail-variation-btn.is-oos::after {
+    content: '';
+    position: absolute;
+    inset: 50% 8% auto 8%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.25);
+    transform: rotate(-8deg);
+    pointer-events: none;
+}
+
+/* Swatch variation buttons (color circles) */
+.pdetail-variations[data-variation-type="swatch"] .pdetail-variations-options {
+    gap: 0.65rem;
+}
+.pdetail-variations[data-variation-type="swatch"] .pdetail-variation-btn {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 3px;
+    border-radius: 50%;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+.pdetail-variations[data-variation-type="swatch"] .pdetail-variation-btn:hover {
+    border-color: rgba(var(--primary-rgb), 0.5);
+    transform: translateY(-2px);
+}
+.pdetail-variations[data-variation-type="swatch"] .pdetail-variation-btn.active {
+    border-color: var(--primary);
+    box-shadow:
+        0 0 0 2px rgba(var(--primary-rgb), 0.18),
+        0 0 18px rgba(var(--primary-rgb), 0.4);
+}
+.pdetail-variation-swatch {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    transition: filter var(--ig-duration-btn) var(--ig-ease);
+}
+.pdetail-variations[data-variation-type="swatch"] .pdetail-variation-btn:hover .pdetail-variation-swatch {
+    filter: brightness(1.1) saturate(1.15);
+}
+.pdetail-variation-check {
+    position: absolute;
+    inset: 50% 50% auto auto;
+    transform: translate(50%, -50%);
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #fff;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translate(50%, -50%) scale(0.5);
+    transition: opacity var(--ig-duration-btn) var(--ig-ease),
+                transform var(--ig-duration-btn) var(--ig-ease);
+    pointer-events: none;
+    box-shadow: 0 0 12px rgba(var(--primary-rgb), 0.6);
+}
+.pdetail-variations[data-variation-type="swatch"] .pdetail-variation-btn.active .pdetail-variation-check {
+    opacity: 1;
+    transform: translate(50%, -50%) scale(1);
 }
 
 /* Buy box */
