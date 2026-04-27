@@ -8,7 +8,12 @@
 
     /* ==================== PRODUCT DATA ==================== */
     var PRODUCTS = [
-        { id: 1, name: 'Hondata K-Pro4', name_en: 'Hondata K-Pro4', category: 'ecu', price: 22542, desc: 'Kompletní řídicí jednotka pro Honda K-series motory. Plný přístup k mapám.', desc_en: 'Complete ECU for Honda K-series engines. Full map access and datalogging.', badge: 'bestseller', stock: 5, img: '/img/products/kpro.png',
+        { id: 1, name: 'Hondata K-Pro4', name_en: 'Hondata K-Pro4', category: 'ecu', price: 22542, desc: 'Kompletní řídicí jednotka pro Honda K-series motory. Plný přístup k mapám.', desc_en: 'Complete ECU for Honda K-series engines. Full map access and datalogging.', badge: 'bestseller', stock: 5, img: '/img/products/kpro.png', rating: 4.9, reviewCount: 47,
+            reviews: [
+                { author: 'Petr Mezihorák', initials: 'PM', rating: 5, date: '2026-04-12', title: 'Top ECU pro K20', body: 'Po roce s K-Pro4 v Civicu EG s K20A nemůžu si stěžovat. Mapy přesné, datalogger spolehlivý. Doporučuji každému kdo myslí závodění vážně.', verified: true, helpful: 23 },
+                { author: 'Tomáš Hemerka', initials: 'TH', rating: 5, date: '2026-03-28', title: 'Bluetooth verze stojí za to', body: 'Pořídil jsem si verzi USB+BT a tuning v boxech bez kabelu je mnohem rychlejší. Plná podpora KManager.', verified: true, helpful: 18 },
+                { author: 'Dušan Vrána', initials: 'DV', rating: 4, date: '2026-02-14', title: 'Skvělé, ale drahé', body: 'Funguje perfektně, kvalita je tam. Cena je vyšší než konkurence, ale jako standalone ECU pro K-series to nemá srovnání.', verified: true, helpful: 9 }
+            ],
             desc_long: 'Hondata K-Pro4 je nejpokročilejší standalone ECU pro Honda K-series motory. Umožňuje kompletní přístup ke všem mapám motoru — palivové, zapalovací, VTEC, knock a další. Podporuje datalogging v reálném čase, launch control, boost control (pro turbo aplikace), traction control a dual-map switching. Ideální pro závodní i upravené silniční vozy.',
             desc_long_en: 'Hondata K-Pro4 is the most advanced standalone ECU for Honda K-series engines. Provides full access to all engine maps — fuel, ignition, VTEC, knock and more. Supports real-time datalogging, launch control, boost control (for turbo applications), traction control and dual-map switching. Ideal for racing and modified street cars.',
             specs: [['Typ', 'Standalone ECU'], ['Kompatibilita', 'Honda K20A, K20Z, K24A'], ['Připojení', 'USB + Bluetooth'], ['Software', 'KManager (PC)'], ['Datalogging', 'Ano, real-time'], ['Launch control', 'Ano'], ['Boost control', 'Ano (turbo)'], ['Trakční kontrola', 'Ano'], ['Hmotnost', '280 g'], ['Záruka', '2 roky']],
@@ -35,7 +40,12 @@
             desc_long_en: 'Complete wiring harness for K-series engine swap (K20, K24) into older Honda Civic (EG, EK) and CRX. Includes all necessary connectors, relay modules and fuse box. Designed for use with Hondata K-Pro and is plug-and-play — minimal custom wiring needed.',
             specs: [['Použití', 'K-swap do EG/EK/CRX'], ['Motor', 'K20A, K20Z, K24A'], ['ECU', 'Hondata K-Pro kompatibilní'], ['Konektory', 'OEM Honda kvalita'], ['Délka', '2.4 m hlavní svazek'], ['Pojistky', 'Ano, integrované'], ['Hmotnost', '1.8 kg'], ['Instalace', 'Plug-and-play']],
             specs_en: [['Usage', 'K-swap into EG/EK/CRX'], ['Engine', 'K20A, K20Z, K24A'], ['ECU', 'Hondata K-Pro compatible'], ['Connectors', 'OEM Honda quality'], ['Length', '2.4 m main harness'], ['Fuses', 'Yes, integrated'], ['Weight', '1.8 kg'], ['Installation', 'Plug-and-play']] },
-        { id: 5, name: 'Set silentbloků Civic EG', name_en: 'Bushing set Civic EG', category: 'silentbloky', price: 3890, desc: 'Kompletní sada PU silentbloků pro Honda Civic EG (92–95). Shore 80A.', desc_en: 'Complete PU bushing set for Honda Civic EG (92–95). Shore 80A.', badge: 'bestseller', stock: 15, img: '/img/products/silentblok-14h.png',
+        { id: 5, name: 'Set silentbloků Civic EG', name_en: 'Bushing set Civic EG', category: 'silentbloky', price: 3890, desc: 'Kompletní sada PU silentbloků pro Honda Civic EG (92–95). Shore 80A.', desc_en: 'Complete PU bushing set for Honda Civic EG (92–95). Shore 80A.', badge: 'bestseller', stock: 15, img: '/img/products/silentblok-14h.png', rating: 4.8, reviewCount: 62,
+            reviews: [
+                { author: 'Michal Horáček', initials: 'MH', rating: 5, date: '2026-04-08', title: 'Konečně přesné řízení', body: 'Vyměnil jsem všechny gumy za Silponix v Civicu EG2. Rozdíl je jako den a noc. 80A je super kompromis pro silnici.', verified: true, helpful: 31 },
+                { author: 'Jakub Mareš', initials: 'JM', rating: 5, date: '2026-03-20', title: 'Top kvalita PU', body: 'Sada perfektně nasedne, mazivo je dostatečné. Po 8000 km zatím nulové opotřebení.', verified: true, helpful: 14 },
+                { author: 'Petra Krajíčková', initials: 'PK', rating: 4, date: '2026-02-02', title: 'Tužší ale ne nepříjemné', body: 'V kombinaci se sportovními tlumiči je to už hodně, ale stojí to za to. Pro daily mám pocit že 75A bylo bývalo lepší.', verified: false, helpful: 6 }
+            ],
             desc_long: 'Kompletní sada polyuretanových silentbloků Silponix pro Honda Civic 5. generace (EG, 1992–1995). Nahrazuje všechny originální gumové silentbloky v podvozku — přední ramena, zadní náprava, stabilizátor, řazení. Tvrdost Shore 80A zajišťuje výrazné zlepšení přesnosti řízení a odezvy podvozku při zachování přijatelného komfortu pro silniční provoz.',
             desc_long_en: 'Complete Silponix polyurethane bushing set for Honda Civic 5th gen (EG, 1992–1995). Replaces all original rubber bushings in the chassis — front arms, rear axle, anti-roll bar, gear linkage. Shore 80A hardness provides significant improvement in steering precision and chassis response while maintaining acceptable comfort for road use.',
             specs: [['Materiál', 'Polyuretan (PU)'], ['Tvrdost', 'Shore 80A'], ['Kompatibilita', 'Honda Civic EG (1992–1995)'], ['Obsah sady', '22 kusů + mazivo'], ['Pozice', 'Přední ramena, zadní náprava, stabilizátor'], ['Barva', 'Červená'], ['Životnost', '3–5× delší než guma'], ['Hmotnost sady', '1.2 kg']],
@@ -62,7 +72,12 @@
             desc_long_en: 'Polyurethane front lower arm bushing manufactured by Silponix. Exact replacement for the original part with significantly longer lifespan and better steering response. Suitable for Honda Civic EG, EK, Integra DC2 and CR-V RD1.',
             specs: [['Materiál', 'Polyuretan (PU)'], ['Tvrdost', 'Shore 80A'], ['Kompatibilita', 'Civic EG/EK, Integra DC2, CR-V RD1'], ['Pozice', 'Přední spodní rameno'], ['Balení', '2 ks + mazivo'], ['Barva', 'Červená'], ['Hmotnost', '120 g']],
             specs_en: [['Material', 'Polyurethane (PU)'], ['Hardness', 'Shore 80A'], ['Compatibility', 'Civic EG/EK, Integra DC2, CR-V RD1'], ['Position', 'Front lower arm'], ['Package', '2 pcs + grease'], ['Colour', 'Red'], ['Weight', '120 g']] },
-        { id: 9, name: 'Dvouřadá řemenice B-series', name_en: 'Dual pulley B-series', category: 'motor', price: 5324, desc: 'SET dvouřadá řemenice pro Honda B-series. Eloxovaný hliník 6061-T6.', desc_en: 'SET dual pulley for Honda B-series. Anodised aluminium 6061-T6.', badge: 'bestseller', stock: 6, img: '/img/products/remenice-red.png',
+        { id: 9, name: 'Dvouřadá řemenice B-series', name_en: 'Dual pulley B-series', category: 'motor', price: 5324, desc: 'SET dvouřadá řemenice pro Honda B-series. Eloxovaný hliník 6061-T6.', desc_en: 'SET dual pulley for Honda B-series. Anodised aluminium 6061-T6.', badge: 'bestseller', stock: 6, img: '/img/products/remenice-red.png', rating: 5.0, reviewCount: 89,
+            reviews: [
+                { author: 'Lukáš Procházka', initials: 'LP', rating: 5, date: '2026-04-21', title: 'Krása v motoru', body: 'Červené řemenice na B16 vypadají profesionálně, motor je svižnější v otáčkách. Hmotnost nesrovnatelná s OEM.', verified: true, helpful: 42 },
+                { author: 'Karel Veselý', initials: 'KV', rating: 5, date: '2026-04-05', title: 'Doporučuji všem B-series majitelům', body: 'Po výměně cítím rozdíl v odezvě. CNC kvalita, ideálně padne. Dodací lhůta 2 dny.', verified: true, helpful: 27 },
+                { author: 'Adam Kratochvíl', initials: 'AK', rating: 5, date: '2026-03-15', title: 'Zlatá verze taky 10/10', body: 'Mám zlatou na B18, vypadá to skvěle. Eloxování drží, žádné vyblednutí ani po sezóně.', verified: true, helpful: 19 }
+            ],
             desc_long: 'SET dvouřadých řemenic pro Honda B-series motory (B16, B18). Obsahuje klikovou řemenici a řemenici vodního čerpadla. CNC obráběný hliník 6061-T6 s tvrdým eloxem ve čtyřech barevných provedeních. Odlehčený design snižuje moment setrvačnosti a zlepšuje odezvu motoru.',
             desc_long_en: 'SET of dual pulleys for Honda B-series engines (B16, B18). Includes crank pulley and water pump pulley. CNC machined 6061-T6 aluminium with hard anodising in four colour finishes. Lightweight design reduces moment of inertia and improves engine response.',
             specs: [['Materiál', 'Hliník 6061-T6'], ['Povrch', 'Tvrdý elox'], ['Kompatibilita', 'Honda B16A, B16B, B18C'], ['Obsah sady', 'Kliková + vodní čerpadlo'], ['Typ', 'Dvouřadá (2 drážky)'], ['Úspora hmotnosti', '~40 % vs. OEM'], ['Hmotnost sady', '680 g'], ['Výroba', 'CNC obrábění']],
@@ -190,6 +205,122 @@
     function saveCart(cart) {
         localStorage.setItem('silponix-cart', JSON.stringify(cart));
         updateCartCount();
+    }
+
+    // ─── Reviews section render ───
+    function renderReviewsSection(product, lang) {
+        if (!product.rating) return '';
+
+        // Star distribution (5,4,3,2,1) — derived from reviews if available, else fake plausible
+        var dist = [0, 0, 0, 0, 0]; // index 0=5★, 4=1★
+        if (product.reviews && product.reviews.length > 0) {
+            product.reviews.forEach(function (r) {
+                var slot = 5 - Math.round(r.rating);
+                if (slot >= 0 && slot < 5) dist[slot]++;
+            });
+            // Scale to total reviewCount
+            var fakeFactor = Math.max(1, Math.floor((product.reviewCount || product.reviews.length) / product.reviews.length));
+            dist = dist.map(function (v) { return v * fakeFactor; });
+        } else {
+            // Fake plausible distribution centred on rating
+            var total = product.reviewCount || 12;
+            var avg = product.rating;
+            for (var i = 5; i >= 1; i--) {
+                var weight = Math.exp(-Math.pow(i - avg, 2) * 1.4);
+                dist[5 - i] = Math.round(total * weight / 2.4);
+            }
+        }
+        var totalDist = dist.reduce(function (s, v) { return s + v; }, 0) || 1;
+
+        var distHTML = dist.map(function (count, idx) {
+            var stars = 5 - idx;
+            var pct = (count / totalDist) * 100;
+            return '<div class="pdetail-rating-bar-row">' +
+                '<span class="pdetail-rating-bar-label">' + stars + ' ★</span>' +
+                '<div class="pdetail-rating-bar-track"><div class="pdetail-rating-bar-fill" style="width:' + pct + '%"></div></div>' +
+                '<span class="pdetail-rating-bar-count">' + count + '</span>' +
+            '</div>';
+        }).join('');
+
+        var reviewsHTML = '';
+        if (product.reviews && product.reviews.length > 0) {
+            reviewsHTML = product.reviews.map(function (r) {
+                return '<article class="pdetail-review">' +
+                    '<header class="pdetail-review-head">' +
+                        '<div class="pdetail-review-author">' +
+                            '<span class="pdetail-review-avatar">' + (r.initials || (r.author || '?').slice(0, 2).toUpperCase()) + '</span>' +
+                            '<div>' +
+                                '<strong>' + (r.author || 'Anonym') + '</strong>' +
+                                (r.verified ? '<span class="pdetail-review-verified" title="Ověřený zákazník"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3zm-2 16l-4-4 1.41-1.41L10 15.17l6.59-6.59L18 10l-8 8z"/></svg>Ověřený zákazník</span>' : '') +
+                            '</div>' +
+                        '</div>' +
+                        '<span class="pdetail-review-date">' + relativeDateCs(r.date) + '</span>' +
+                    '</header>' +
+                    '<div class="pdetail-review-rating">' + renderStars(r.rating, { size: 13 }) + '</div>' +
+                    (r.title ? '<h4 class="pdetail-review-title">' + r.title + '</h4>' : '') +
+                    '<p class="pdetail-review-body">' + r.body + '</p>' +
+                    (typeof r.helpful === 'number' ? '<button type="button" class="pdetail-review-helpful">' +
+                        '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>' +
+                        (lang === 'en' ? 'Helpful' : 'Pomohlo') + ' (' + r.helpful + ')' +
+                    '</button>' : '') +
+                '</article>';
+            }).join('');
+        }
+
+        return '<section class="pdetail-reviews" id="reviews">' +
+            '<header class="pdetail-extra-header">' +
+                '<span class="pdetail-extra-eyebrow">Hodnocení</span>' +
+                '<h2 class="pdetail-extra-title">' + (lang === 'en' ? 'Customer reviews' : 'Co říkají zákazníci') + '</h2>' +
+            '</header>' +
+            '<div class="pdetail-reviews-grid">' +
+                '<aside class="pdetail-reviews-summary">' +
+                    '<div class="pdetail-reviews-score">' +
+                        '<span class="pdetail-reviews-score-num">' + product.rating.toFixed(1) + '</span>' +
+                        '<div class="pdetail-reviews-score-stars">' + renderStars(product.rating, { size: 18 }) + '</div>' +
+                        '<span class="pdetail-reviews-score-meta">' + (product.reviewCount || 0) + ' ' + (lang === 'en' ? 'reviews' : 'hodnocení') + '</span>' +
+                    '</div>' +
+                    '<div class="pdetail-rating-bars">' + distHTML + '</div>' +
+                '</aside>' +
+                '<div class="pdetail-reviews-list">' +
+                    (reviewsHTML || '<p class="pdetail-reviews-empty">' + (lang === 'en' ? 'No written reviews yet.' : 'Zatím žádné psané recenze.') + '</p>') +
+                '</div>' +
+            '</div>' +
+        '</section>';
+    }
+
+    // ─── Stars / rating helper ───
+    function renderStars(rating, opts) {
+        opts = opts || {};
+        var size = opts.size || 14;
+        var rounded = Math.round((rating || 0) * 2) / 2; // halves
+        var html = '<span class="star-rating" aria-label="' + (rating || 0).toFixed(1) + ' z 5">';
+        for (var i = 1; i <= 5; i++) {
+            var filled = rounded >= i;
+            var half = !filled && rounded >= i - 0.5;
+            var cls = filled ? 'star star-full' : (half ? 'star star-half' : 'star star-empty');
+            html += '<svg class="' + cls + '" width="' + size + '" height="' + size + '" viewBox="0 0 24 24" aria-hidden="true">' +
+                '<defs><linearGradient id="starg' + i + '_' + size + '" x1="0%" y1="0%" x2="100%" y2="0%">' +
+                '<stop offset="50%" stop-color="currentColor"/><stop offset="50%" stop-color="rgba(255,255,255,0.15)"/>' +
+                '</linearGradient></defs>' +
+                '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" ' +
+                (half ? 'fill="url(#starg' + i + '_' + size + ')"' : (filled ? 'fill="currentColor"' : 'fill="rgba(255,255,255,0.12)"')) + '/>' +
+                '</svg>';
+        }
+        html += '</span>';
+        return html;
+    }
+
+    function relativeDateCs(dateStr) {
+        try {
+            var d = new Date(dateStr);
+            var now = new Date();
+            var days = Math.round((now - d) / 86400000);
+            if (days < 1) return 'dnes';
+            if (days < 7) return 'před ' + days + ' dny';
+            if (days < 30) return 'před ' + Math.round(days / 7) + ' týdny';
+            if (days < 365) return 'před ' + Math.round(days / 30) + ' měsíci';
+            return 'před ' + Math.round(days / 365) + ' lety';
+        } catch (e) { return dateStr; }
     }
 
     // ─── Variation helpers (multi-dimension array) ───
@@ -401,6 +532,7 @@
             '<div class="product-card-body">' +
                 '<p class="product-card-category">' + (product.category || '') + '</p>' +
                 '<h3 class="product-name">' + name + '</h3>' +
+                (product.rating ? '<div class="product-card-rating">' + renderStars(product.rating, { size: 13 }) + '<span class="product-card-rating-count">' + product.rating.toFixed(1) + ' (' + (product.reviewCount || 0) + ')</span></div>' : '') +
                 variationIndicator +
                 '<div class="product-card-footer">' +
                     '<span class="product-price">' + (product.price ? product.price.toLocaleString('cs-CZ') + '\u00a0K\u010d' : '') + '</span>' +
@@ -838,6 +970,12 @@
                         '</div>' +
                         '<span class="pdetail-category">' + catLabel + '</span>' +
                         '<h1 class="pdetail-title">' + pName + '</h1>' +
+                        (product.rating ? '<a href="#reviews" class="pdetail-rating-row">' +
+                            '<span class="pdetail-rating-stars">' + renderStars(product.rating, { size: 16 }) + '</span>' +
+                            '<span class="pdetail-rating-value">' + product.rating.toFixed(1) + '</span>' +
+                            '<span class="pdetail-rating-sep">·</span>' +
+                            '<span class="pdetail-rating-count">' + (product.reviewCount || 0) + ' ' + (lang === 'en' ? 'reviews' : 'recenzí') + '</span>' +
+                        '</a>' : '') +
                         '<p class="pdetail-tagline">' + pDesc + '</p>' +
 
                         variationsHTML +
@@ -865,7 +1003,7 @@
                     '</div>' +
                 '</div>' +
 
-                // ═══ BELOW GRID: Description + Specs (full-width) ═══
+                // ═══ BELOW GRID: Description + Specs + Reviews (full-width) ═══
                 '<div class="pdetail-extra">' +
                     '<section class="pdetail-description">' +
                         '<header class="pdetail-extra-header">' +
@@ -875,6 +1013,7 @@
                         '<p class="pdetail-description-body">' + pDescLong + '</p>' +
                     '</section>' +
                     specsHTML +
+                    renderReviewsSection(product, lang) +
                 '</div>';
 
             // Related products

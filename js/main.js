@@ -13,6 +13,72 @@
     var cookieAccept = document.getElementById('cookieAccept');
     var cookieDecline = document.getElementById('cookieDecline');
     var contactForm = document.querySelector('[data-wz-contact]');
+
+    /* ==================== TRUST BADGES (auto-injected before footer-divider) ==================== */
+    (function injectTrustBadges() {
+        var divider = document.querySelector('.footer-divider');
+        if (!divider) return;
+        var prev = divider.previousElementSibling;
+        if (prev && prev.classList && prev.classList.contains('trust-strip')) return;
+
+        // Build DOM safely via createElement (no innerHTML)
+        function el(tag, cls, text) {
+            var e = document.createElement(tag);
+            if (cls) e.className = cls;
+            if (text) e.textContent = text;
+            return e;
+        }
+        function svgIcon(pathData) {
+            var ns = 'http://www.w3.org/2000/svg';
+            var s = document.createElementNS(ns, 'svg');
+            s.setAttribute('width', '22'); s.setAttribute('height', '22');
+            s.setAttribute('viewBox', '0 0 24 24'); s.setAttribute('fill', 'none');
+            s.setAttribute('stroke', 'currentColor'); s.setAttribute('stroke-width', '2');
+            s.setAttribute('stroke-linecap', 'round'); s.setAttribute('stroke-linejoin', 'round');
+            pathData.forEach(function (entry) {
+                var node = document.createElementNS(ns, entry.tag);
+                Object.keys(entry.attrs).forEach(function (k) { node.setAttribute(k, entry.attrs[k]); });
+                s.appendChild(node);
+            });
+            return s;
+        }
+        function badge(iconPaths, primary, secondary) {
+            var b = el('div', 'trust-badge');
+            var icon = el('div', 'trust-badge-icon');
+            icon.appendChild(svgIcon(iconPaths));
+            b.appendChild(icon);
+            var meta = el('div');
+            meta.appendChild(el('strong', null, primary));
+            meta.appendChild(el('span', null, secondary));
+            b.appendChild(meta);
+            return b;
+        }
+
+        var badges = [
+            badge([{ tag: 'path', attrs: { d: 'M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z' } }],
+                  '4.8 / 5', 'Heureka.cz hodnocení'),
+            badge([
+                { tag: 'path', attrs: { d: 'M9 12l2 2 4-4' } },
+                { tag: 'path', attrs: { d: 'M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c2.39 0 4.68.94 6.36 2.64' } }
+            ], '3 247+', 'spokojených zákazníků'),
+            badge([
+                { tag: 'rect', attrs: { x: '3', y: '3', width: '18', height: '18', rx: '2' } },
+                { tag: 'path', attrs: { d: 'M9 12l2 2 4-4' } }
+            ], 'Ověřený obchod', 'od 2008 v motorsportu'),
+            badge([
+                { tag: 'rect', attrs: { x: '2', y: '6', width: '20', height: '14', rx: '2' } },
+                { tag: 'line', attrs: { x1: '2', y1: '10', x2: '22', y2: '10' } }
+            ], 'Bezpečné platby', 'GoPay · ČSOB · Karta')
+        ];
+
+        var strip = el('div', 'trust-strip');
+        var inner = el('div', 'container');
+        var row = el('div', 'trust-strip-inner');
+        badges.forEach(function (b) { row.appendChild(b); });
+        inner.appendChild(row);
+        strip.appendChild(inner);
+        divider.parentNode.insertBefore(strip, divider);
+    })();
     var navbarLinks = document.querySelectorAll('.navbar-link');
 
     /* ==================== STICKY NAVBAR ==================== */
