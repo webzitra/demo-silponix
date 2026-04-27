@@ -254,19 +254,22 @@
         if (product.badge === 'bestseller') badge = '<span class="product-badge product-badge--bestseller">Bestseller</span>';
         else if (product.badge === 'new') badge = '<span class="product-badge product-badge--new">' + (lang === 'en' ? 'New' : 'Nové') + '</span>';
 
-        var quickViewLabel = lang === 'en' ? 'Quick view' : 'Rychlý náhled';
+        var detailLabel = lang === 'en' ? 'View details' : 'Zobrazit detail';
 
-        var card = document.createElement('div');
+        // Whole card is now an <a> linking to the product detail page
+        var card = document.createElement('a');
         card.className = 'product-card lit-card';
+        card.href = '/produkt.html?id=' + product.id;
         card.setAttribute('data-product-id', product.id);
         card.innerHTML =
             '<div class="product-card-img-wrap">' +
                 '<img src="' + (product.img || '') + '" alt="' + name + '" loading="lazy" class="product-card-img">' +
                 badge +
                 '<div class="product-card-overlay">' +
-                    '<button class="btn btn-primary btn-sm quick-view-btn" data-id="' + product.id + '" aria-label="' + quickViewLabel + ' ' + name + '">' +
-                        quickViewLabel +
-                    '</button>' +
+                    '<span class="product-card-overlay-label">' +
+                        detailLabel +
+                        ' <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>' +
+                    '</span>' +
                 '</div>' +
             '</div>' +
             '<div class="product-card-body">' +
@@ -276,7 +279,7 @@
                     '<span class="product-price">' + (product.price ? product.price.toLocaleString('cs-CZ') + '\u00a0K\u010d' : '') + '</span>' +
                     '<span class="product-stock ' + stockClass + '">' + stockLabel + '</span>' +
                 '</div>' +
-                '<button class="btn btn-primary btn-sm add-to-cart-btn" data-product-id="' + product.id + '" ' + (!inStock ? 'disabled' : '') + '>' +
+                '<button type="button" class="btn btn-primary btn-sm add-to-cart-btn" data-product-id="' + product.id + '" ' + (!inStock ? 'disabled' : '') + '>' +
                     (inStock ? (lang === 'en' ? 'Add to cart' : 'Koupit') : stockLabel) +
                 '</button>' +
             '</div>';
@@ -517,10 +520,13 @@
         }
     });
 
-    // Add to cart delegation
+    // Add to cart delegation — stopPropagation so clicking the button
+    // inside a product-card link doesn't navigate to the detail page.
     document.addEventListener('click', function (e) {
         var btn = e.target.closest('.add-to-cart-btn');
         if (btn) {
+            e.preventDefault();
+            e.stopPropagation();
             var productId = parseInt(btn.getAttribute('data-product-id'));
             addToCart(productId);
             flyToCart(btn);
@@ -541,51 +547,109 @@
             var pDescLong = (lang === 'en' && product.desc_long_en) ? product.desc_long_en : (product.desc_long || pDesc);
             var catLabel = (lang === 'en' ? CATEGORIES_EN[product.category] : CATEGORIES[product.category]) || product.category;
             var specs = (lang === 'en' && product.specs_en) ? product.specs_en : (product.specs || []);
+            var inStock = product.stock > 0;
 
             // Breadcrumb
             var breadcrumbEl = document.getElementById('productBreadcrumb');
             if (breadcrumbEl) {
                 breadcrumbEl.innerHTML =
                     '<a href="/">' + (lang === 'en' ? 'Home' : 'Domů') + '</a>' +
-                    '<span>/</span>' +
-                    '<a href="/shop.html">' + (lang === 'en' ? 'Shop' : 'E-shop') + '</a>' +
-                    '<span>/</span>' +
+                    '<span class="pdetail-breadcrumb-sep">›</span>' +
+                    '<a href="/shop.html">' + (lang === 'en' ? 'Shop' : 'Shop') + '</a>' +
+                    '<span class="pdetail-breadcrumb-sep">›</span>' +
                     '<a href="/shop.html?kat=' + product.category + '">' + catLabel + '</a>' +
-                    '<span>/</span>' +
-                    '<span>' + pName + '</span>';
+                    '<span class="pdetail-breadcrumb-sep">›</span>' +
+                    '<span class="pdetail-breadcrumb-current">' + pName + '</span>';
             }
 
-            // Page title
             document.title = pName + ' | Silponix';
 
-            // Build specs table HTML
-            var specsHTML = '';
-            if (specs && specs.length > 0) {
-                specsHTML = '<div class="product-specs"><h3>' + (lang === 'en' ? 'Specifications' : 'Specifikace') + '</h3><table>';
-                specs.forEach(function (row) {
-                    specsHTML += '<tr><th>' + row[0] + '</th><td>' + row[1] + '</td></tr>';
-                });
-                specsHTML += '</table></div>';
+            // Badges (bestseller / new)
+            var badgeHTML = '';
+            if (product.badge === 'bestseller') {
+                badgeHTML = '<span class="pdetail-flag pdetail-flag-bestseller">Bestseller</span>';
+            } else if (product.badge === 'new') {
+                badgeHTML = '<span class="pdetail-flag pdetail-flag-new">' + (lang === 'en' ? 'New' : 'Nové') + '</span>';
             }
 
-            productDetailEl.innerHTML =
-                '<div class="product-detail-img">' +
-                    (product.img ? '<img src="' + product.img + '" alt="' + pName + '">' : '') +
-                '</div>' +
-                '<div class="product-detail-info">' +
-                    '<span class="product-detail-category">' + catLabel + '</span>' +
-                    '<h1 class="product-detail-title">' + pName + '</h1>' +
-                    '<div class="product-detail-price">' + formatPrice(product.price) + '</div>' +
-                    '<p class="product-detail-desc">' + pDescLong + '</p>' +
-                    '<div class="product-detail-stock">' +
-                        '<span class="stock-dot"></span> ' +
-                        (lang === 'en' ? 'In stock' : 'Skladem') + ' (' + product.stock + ' ' + (lang === 'en' ? 'pcs' : 'ks') + ')' +
+            // Specs grid
+            var specsHTML = '';
+            if (specs && specs.length > 0) {
+                specsHTML = '<div class="pdetail-specs">' +
+                    '<h3 class="pdetail-section-title">' + (lang === 'en' ? 'Specifications' : 'Specifikace') + '</h3>' +
+                    '<dl class="pdetail-specs-list">';
+                specs.forEach(function (row) {
+                    specsHTML += '<div class="pdetail-spec-row">' +
+                        '<dt>' + row[0] + '</dt>' +
+                        '<dd>' + row[1] + '</dd>' +
+                        '</div>';
+                });
+                specsHTML += '</dl></div>';
+            }
+
+            // Trust card row (delivery, returns, warranty)
+            var trustHTML =
+                '<div class="pdetail-trust">' +
+                    '<div class="pdetail-trust-card">' +
+                        '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>' +
+                        '<div><strong>' + (lang === 'en' ? 'Free shipping' : 'Doprava zdarma') + '</strong><span>' + (lang === 'en' ? 'over 20,000 CZK' : 'nad 20 000 Kč') + '</span></div>' +
                     '</div>' +
-                    '<button class="btn btn-primary btn-lg add-to-cart-btn" data-product-id="' + product.id + '">' +
-                        '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg> ' +
-                        (lang === 'en' ? 'Add to cart' : 'Přidat do košíku') +
-                    '</button>' +
+                    '<div class="pdetail-trust-card">' +
+                        '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>' +
+                        '<div><strong>' + (lang === 'en' ? '14-day returns' : '14 dní na vrácení') + '</strong><span>' + (lang === 'en' ? 'no questions asked' : 'bez udání důvodu') + '</span></div>' +
+                    '</div>' +
+                    '<div class="pdetail-trust-card">' +
+                        '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>' +
+                        '<div><strong>' + (lang === 'en' ? '24-month warranty' : 'Záruka 24 měsíců') + '</strong><span>' + (lang === 'en' ? 'on all parts' : 'na všechny díly') + '</span></div>' +
+                    '</div>' +
+                '</div>';
+
+            productDetailEl.innerHTML =
+                // ─── LEFT: Gallery ───
+                '<div class="pdetail-gallery">' +
+                    '<div class="pdetail-image-wrap">' +
+                        badgeHTML +
+                        (product.img ? '<img class="pdetail-image" src="' + product.img + '" alt="' + pName + '">' : '<div class="pdetail-image-placeholder"></div>') +
+                    '</div>' +
+                '</div>' +
+                // ─── RIGHT: Info + Buy box ───
+                '<div class="pdetail-info">' +
+                    '<span class="pdetail-category">' + catLabel + '</span>' +
+                    '<h1 class="pdetail-title">' + pName + '</h1>' +
+                    '<p class="pdetail-tagline">' + pDesc + '</p>' +
+
+                    '<div class="pdetail-buybox">' +
+                        '<div class="pdetail-price-row">' +
+                            '<span class="pdetail-price">' + formatPrice(product.price) + '</span>' +
+                            '<span class="pdetail-vat">' + (lang === 'en' ? 'incl. VAT' : 'vč. DPH') + '</span>' +
+                        '</div>' +
+                        '<div class="pdetail-stock ' + (inStock ? 'pdetail-stock-in' : 'pdetail-stock-out') + '">' +
+                            '<span class="pdetail-stock-dot"></span>' +
+                            (inStock
+                                ? (lang === 'en' ? 'In stock — ' : 'Skladem — ') + product.stock + ' ' + (lang === 'en' ? 'pcs' : 'ks')
+                                : (lang === 'en' ? 'Out of stock' : 'Vyprodáno')) +
+                        '</div>' +
+
+                        '<div class="pdetail-actions">' +
+                            '<div class="pdetail-qty">' +
+                                '<button type="button" class="pdetail-qty-btn" data-qty="-1" aria-label="−">−</button>' +
+                                '<input type="number" id="pdetailQty" class="pdetail-qty-input" value="1" min="1" max="' + Math.max(product.stock, 1) + '" aria-label="' + (lang === 'en' ? 'Quantity' : 'Množství') + '">' +
+                                '<button type="button" class="pdetail-qty-btn" data-qty="+1" aria-label="+">+</button>' +
+                            '</div>' +
+                            '<button type="button" class="btn btn-primary btn-lg pdetail-buy add-to-cart-btn" data-product-id="' + product.id + '" ' + (!inStock ? 'disabled' : '') + '>' +
+                                '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>' +
+                                '<span>' + (inStock ? (lang === 'en' ? 'Add to cart' : 'Přidat do košíku') : (lang === 'en' ? 'Out of stock' : 'Vyprodáno')) + '</span>' +
+                            '</button>' +
+                        '</div>' +
+                    '</div>' +
+
+                    '<div class="pdetail-description">' +
+                        '<h3 class="pdetail-section-title">' + (lang === 'en' ? 'Description' : 'Popis produktu') + '</h3>' +
+                        '<p>' + pDescLong + '</p>' +
+                    '</div>' +
+
                     specsHTML +
+                    trustHTML +
                 '</div>';
 
             // Related products
@@ -595,8 +659,35 @@
                 if (related.length === 0) related = PRODUCTS.filter(function (p) { return p.id !== product.id; }).slice(0, 4);
                 related.forEach(function (p) { relatedGrid.appendChild(createProductCard(p)); });
             }
+
+            // Quantity controls + cart respect quantity
+            (function () {
+                var qtyInput = document.getElementById('pdetailQty');
+                if (!qtyInput) return;
+                document.querySelectorAll('.pdetail-qty-btn').forEach(function (btn) {
+                    btn.addEventListener('click', function () {
+                        var delta = parseInt(this.getAttribute('data-qty'), 10);
+                        var v = (parseInt(qtyInput.value, 10) || 1) + delta;
+                        var max = parseInt(qtyInput.max, 10) || 99;
+                        if (v < 1) v = 1;
+                        if (v > max) v = max;
+                        qtyInput.value = v;
+                    });
+                });
+                var buyBtn = document.querySelector('.pdetail-buy');
+                if (buyBtn) {
+                    var origAdd = buyBtn.cloneNode(true);
+                    buyBtn.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        var qty = parseInt(qtyInput.value, 10) || 1;
+                        for (var i = 0; i < qty; i++) addToCart(product.id);
+                        flyToCart(buyBtn);
+                    }, true);
+                }
+            })();
         } else {
-            productDetailEl.innerHTML = '<p style="text-align:center;padding:3rem;color:var(--text-muted);">' + (lang === 'en' ? 'Product not found.' : 'Produkt nebyl nalezen.') + '</p>';
+            productDetailEl.innerHTML = '<div class="pdetail-not-found"><h2>' + (lang === 'en' ? 'Product not found' : 'Produkt nebyl nalezen') + '</h2><p>' + (lang === 'en' ? 'The product you are looking for does not exist or has been removed.' : 'Hledaný produkt neexistuje nebo byl odstraněn.') + '</p><a href="/shop.html" class="btn btn-primary">' + (lang === 'en' ? 'Back to shop' : 'Zpět do shopu') + '</a></div>';
         }
     }
 
@@ -739,58 +830,5 @@
 
 })();
 
-// ==================== QUICK VIEW MODAL ====================
-(function() {
-    'use strict';
-    var modal = document.getElementById('quickViewModal');
-    if (!modal) return; // Only runs on shop.html
-
-    var backdrop = document.getElementById('qvBackdrop');
-    var closeBtn = document.getElementById('qvClose');
-
-    function openModal(productId) {
-        var product = window.SILPONIX_PRODUCTS && window.SILPONIX_PRODUCTS.find(function(p) { return p.id === productId; });
-        if (!product) return;
-        var lang = (window.getCurrentLang && window.getCurrentLang()) || 'cs';
-        var name = (lang === 'en' && product.name_en) ? product.name_en : product.name;
-        var desc = (lang === 'en' && product.desc_long_en) ? product.desc_long_en : (product.desc_long || product.desc || '');
-        var specs = (lang === 'en' && product.specs_en) ? product.specs_en : (product.specs || []);
-
-        document.getElementById('qvImage').src = product.img || '';
-        document.getElementById('qvImage').alt = name;
-        document.getElementById('qvCategory').textContent = product.category || '';
-        document.getElementById('qvModalTitle').textContent = name;
-        document.getElementById('qvDesc').textContent = desc;
-        document.getElementById('qvPrice').textContent = product.price ? product.price.toLocaleString('cs-CZ') + '\u00a0K\u010d' : '';
-
-        var specsHtml = specs.slice(0, 6).map(function(s) {
-            return '<div class="quick-view-spec"><span class="quick-view-spec-label">' + s[0] + '</span><span class="quick-view-spec-value">' + s[1] + '</span></div>';
-        }).join('');
-        document.getElementById('qvSpecs').innerHTML = specsHtml;
-
-        var addBtn = document.getElementById('qvAddToCart');
-        addBtn.onclick = function() {
-            if (typeof window.SILPONIX_addToCart === 'function') window.SILPONIX_addToCart(product.id);
-            closeModal();
-        };
-
-        modal.hidden = false;
-        document.body.style.overflow = 'hidden';
-        setTimeout(function() { closeBtn.focus(); }, 50);
-    }
-
-    function closeModal() {
-        modal.hidden = true;
-        document.body.style.overflow = '';
-    }
-
-    backdrop.addEventListener('click', closeModal);
-    closeBtn.addEventListener('click', closeModal);
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && !modal.hidden) closeModal();
-    });
-    document.addEventListener('click', function(e) {
-        var btn = e.target.closest('.quick-view-btn');
-        if (btn) openModal(parseInt(btn.getAttribute('data-id'), 10));
-    });
-}());
+// Quick-view modal removed \u2014 clicking a product card now navigates directly
+// to /produkt.html?id=X (see createProductCard with <a href> wrapper).

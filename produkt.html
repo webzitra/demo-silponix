@@ -24,8 +24,6 @@
                 <a href="/" class="navbar-link" role="menuitem" data-i18n="nav.home">Dom&#367;</a>
                 <a href="/shop.html" class="navbar-link active" role="menuitem" data-i18n="nav.eshop">Shop</a>
                 <a href="/sluzby.html" class="navbar-link" role="menuitem" data-i18n="nav.services">Slu&#382;by</a>
-                <a href="/blog.html" class="navbar-link" role="menuitem" data-i18n="nav.blog">Novinky</a>
-                <a href="/galerie.html" class="navbar-link" role="menuitem" data-i18n="nav.gallery">Galerie</a>
                 <a href="/o-nas.html" class="navbar-link" role="menuitem" data-i18n="nav.about">O&nbsp;n&aacute;s</a>
                 <a href="/kontakt.html" class="navbar-link" role="menuitem" data-i18n="nav.contact">Kontakt</a>
             </div>
@@ -51,24 +49,30 @@
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
                     <span class="cart-count" id="cartCount" hidden>0</span>
                 </a>
-                <a href="/shop.html" class="btn btn-primary btn-sm navbar-cta">Shop</a>
-                
             </div>
         </div>
     </nav>
 
-    <section class="section" style="padding-top: calc(var(--navbar-height) + 2rem);">
-        <div class="container">
-            <nav class="product-detail-breadcrumb" id="productBreadcrumb" aria-label="Breadcrumb"></nav>
-            <div class="product-detail" id="productDetail"></div>
+    <!-- ═══════════ PRODUCT DETAIL HERO + CONTENT ═══════════ -->
+    <section class="pdetail-page">
+        <div class="pdetail-bg" aria-hidden="true"></div>
+        <div class="pdetail-veil" aria-hidden="true"></div>
+
+        <div class="container pdetail-container">
+            <nav class="pdetail-breadcrumb" id="productBreadcrumb" aria-label="Breadcrumb"></nav>
+            <div class="pdetail-grid" id="productDetail"></div>
         </div>
     </section>
-    <section class="section">
+
+    <!-- Related products -->
+    <section class="section pdetail-related-section">
         <div class="container">
             <div class="section-header" data-animate>
+                <span class="section-badge">Doporu&#269;eno</span>
                 <h2 class="section-title">Mohlo by v&aacute;s zaj&iacute;mat</h2>
+                <p class="section-subtitle">D&iacute;ly z podobn&eacute; kategorie, kter&eacute; vybrali ostatn&iacute; z&aacute;kazn&iacute;ci.</p>
             </div>
-            <div class="products-grid" id="relatedProducts"></div>
+            <div class="products-grid shop-products-grid" id="relatedProducts" data-spy-group></div>
         </div>
     </section>
 
