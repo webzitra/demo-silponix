@@ -605,51 +605,57 @@
                 '</div>';
 
             productDetailEl.innerHTML =
-                // ─── LEFT: Gallery ───
-                '<div class="pdetail-gallery">' +
-                    '<div class="pdetail-image-wrap">' +
-                        badgeHTML +
-                        (product.img ? '<img class="pdetail-image" src="' + product.img + '" alt="' + pName + '">' : '<div class="pdetail-image-placeholder"></div>') +
+                // ═══ TOP GRID: Gallery + Buy panel ═══
+                '<div class="pdetail-top">' +
+                    // ─── LEFT: Gallery ───
+                    '<div class="pdetail-gallery">' +
+                        '<div class="pdetail-image-wrap">' +
+                            badgeHTML +
+                            (product.img ? '<img class="pdetail-image" src="' + product.img + '" alt="' + pName + '">' : '<div class="pdetail-image-placeholder"></div>') +
+                        '</div>' +
+                    '</div>' +
+                    // ─── RIGHT: Info + Buy box + Trust ───
+                    '<div class="pdetail-info">' +
+                        '<span class="pdetail-category">' + catLabel + '</span>' +
+                        '<h1 class="pdetail-title">' + pName + '</h1>' +
+                        '<p class="pdetail-tagline">' + pDesc + '</p>' +
+
+                        '<div class="pdetail-buybox">' +
+                            '<div class="pdetail-price-row">' +
+                                '<span class="pdetail-price">' + formatPrice(product.price) + '</span>' +
+                                '<span class="pdetail-vat">' + (lang === 'en' ? 'incl. VAT' : 'vč. DPH') + '</span>' +
+                            '</div>' +
+                            '<div class="pdetail-stock ' + (inStock ? 'pdetail-stock-in' : 'pdetail-stock-out') + '">' +
+                                '<span class="pdetail-stock-dot"></span>' +
+                                (inStock
+                                    ? (lang === 'en' ? 'In stock — ' : 'Skladem — ') + product.stock + ' ' + (lang === 'en' ? 'pcs' : 'ks')
+                                    : (lang === 'en' ? 'Out of stock' : 'Vyprodáno')) +
+                            '</div>' +
+
+                            '<div class="pdetail-actions">' +
+                                '<div class="pdetail-qty">' +
+                                    '<button type="button" class="pdetail-qty-btn" data-qty="-1" aria-label="−">−</button>' +
+                                    '<input type="number" id="pdetailQty" class="pdetail-qty-input" value="1" min="1" max="' + Math.max(product.stock, 1) + '" aria-label="' + (lang === 'en' ? 'Quantity' : 'Množství') + '">' +
+                                    '<button type="button" class="pdetail-qty-btn" data-qty="+1" aria-label="+">+</button>' +
+                                '</div>' +
+                                '<button type="button" class="btn btn-primary btn-lg pdetail-buy add-to-cart-btn" data-product-id="' + product.id + '" ' + (!inStock ? 'disabled' : '') + '>' +
+                                    '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>' +
+                                    '<span>' + (inStock ? (lang === 'en' ? 'Add to cart' : 'Přidat do košíku') : (lang === 'en' ? 'Out of stock' : 'Vyprodáno')) + '</span>' +
+                                '</button>' +
+                            '</div>' +
+                        '</div>' +
+
+                        trustHTML +
                     '</div>' +
                 '</div>' +
-                // ─── RIGHT: Info + Buy box ───
-                '<div class="pdetail-info">' +
-                    '<span class="pdetail-category">' + catLabel + '</span>' +
-                    '<h1 class="pdetail-title">' + pName + '</h1>' +
-                    '<p class="pdetail-tagline">' + pDesc + '</p>' +
 
-                    '<div class="pdetail-buybox">' +
-                        '<div class="pdetail-price-row">' +
-                            '<span class="pdetail-price">' + formatPrice(product.price) + '</span>' +
-                            '<span class="pdetail-vat">' + (lang === 'en' ? 'incl. VAT' : 'vč. DPH') + '</span>' +
-                        '</div>' +
-                        '<div class="pdetail-stock ' + (inStock ? 'pdetail-stock-in' : 'pdetail-stock-out') + '">' +
-                            '<span class="pdetail-stock-dot"></span>' +
-                            (inStock
-                                ? (lang === 'en' ? 'In stock — ' : 'Skladem — ') + product.stock + ' ' + (lang === 'en' ? 'pcs' : 'ks')
-                                : (lang === 'en' ? 'Out of stock' : 'Vyprodáno')) +
-                        '</div>' +
-
-                        '<div class="pdetail-actions">' +
-                            '<div class="pdetail-qty">' +
-                                '<button type="button" class="pdetail-qty-btn" data-qty="-1" aria-label="−">−</button>' +
-                                '<input type="number" id="pdetailQty" class="pdetail-qty-input" value="1" min="1" max="' + Math.max(product.stock, 1) + '" aria-label="' + (lang === 'en' ? 'Quantity' : 'Množství') + '">' +
-                                '<button type="button" class="pdetail-qty-btn" data-qty="+1" aria-label="+">+</button>' +
-                            '</div>' +
-                            '<button type="button" class="btn btn-primary btn-lg pdetail-buy add-to-cart-btn" data-product-id="' + product.id + '" ' + (!inStock ? 'disabled' : '') + '>' +
-                                '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>' +
-                                '<span>' + (inStock ? (lang === 'en' ? 'Add to cart' : 'Přidat do košíku') : (lang === 'en' ? 'Out of stock' : 'Vyprodáno')) + '</span>' +
-                            '</button>' +
-                        '</div>' +
-                    '</div>' +
-
+                // ═══ BELOW GRID: Description + Specs (full-width) ═══
+                '<div class="pdetail-extra">' +
                     '<div class="pdetail-description">' +
                         '<h3 class="pdetail-section-title">' + (lang === 'en' ? 'Description' : 'Popis produktu') + '</h3>' +
                         '<p>' + pDescLong + '</p>' +
                     '</div>' +
-
                     specsHTML +
-                    trustHTML +
                 '</div>';
 
             // Related products
