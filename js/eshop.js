@@ -100,7 +100,7 @@
             desc_long_en: 'Lightweight single groove crank pulley for race applications without A/C and power steering. Maximum weight saving for racing B-series engines. CNC machined aluminium with hard anodising.',
             specs: [['Materiál', 'Hliník 6061-T6'], ['Kompatibilita', 'Honda B16A, B16B, B18C'], ['Typ', 'Jednořadá (1 drážka)'], ['Použití', 'Závodní (bez A/C, bez posilovače)'], ['Úspora hmotnosti', '~60 % vs. OEM'], ['Hmotnost', '220 g'], ['Výroba', 'CNC obrábění']],
             specs_en: [['Material', 'Aluminium 6061-T6'], ['Compatibility', 'Honda B16A, B16B, B18C'], ['Type', 'Single (1 groove)'], ['Usage', 'Racing (no A/C, no power steering)'], ['Weight saving', '~60% vs. OEM'], ['Weight', '220 g'], ['Manufacturing', 'CNC machined']] },
-        { id: 11, name: 'Dvouřadá řemenice B-series GOLD', name_en: 'Dual pulley B-series GOLD', category: 'motor', price: 3630, desc: 'SET zlatá dvouřadá řemenice pro Honda B-series. Eloxovaný hliník.', desc_en: 'SET gold dual pulley for Honda B-series. Anodised aluminium.', badge: 'new', stock: 4, img: '/img/products/remenice-red.png',
+        { id: 11, name: 'Dvouřadá řemenice B-series GOLD', name_en: 'Dual pulley B-series GOLD', category: 'motor', price: 3630, compareAtPrice: 4290, desc: 'SET zlatá dvouřadá řemenice pro Honda B-series. Eloxovaný hliník.', desc_en: 'SET gold dual pulley for Honda B-series. Anodised aluminium.', badge: 'sale', stock: 4, img: '/img/products/remenice-red.png',
             desc_long: 'SET dvouřadých řemenic ve zlatém eloxovaném provedení pro Honda B-series motory. Identická specifikace jako RED varianta — CNC hliník 6061-T6, dvouřadá kliková + vodní čerpadlo. Zlatý tvrdý elox pro odlišný vzhled v motorovém prostoru.',
             desc_long_en: 'SET of dual pulleys in gold anodised finish for Honda B-series engines. Same specs as RED variant — CNC aluminium 6061-T6, dual crank + water pump. Gold hard anodising for a distinctive engine bay look.',
             specs: [['Materiál', 'Hliník 6061-T6'], ['Povrch', 'Zlatý tvrdý elox'], ['Kompatibilita', 'Honda B16A, B16B, B18C'], ['Obsah sady', 'Kliková + vodní čerpadlo'], ['Typ', 'Dvouřadá (2 drážky)'], ['Úspora hmotnosti', '~40 % vs. OEM'], ['Hmotnost sady', '680 g'], ['Výroba', 'CNC obrábění']],
@@ -120,7 +120,7 @@
             desc_long_en: 'Premium lower arm ball joint from Japanese manufacturer 555 (Sankei). OEM quality guaranteeing precise dimensions and long lifespan. Direct replacement for the original part with no modifications needed. Suitable for Honda Civic (EG, EK, ES, EU), CRX, Integra (DC2, DC5), CR-V and Accord.',
             specs: [['Výrobce', '555 (Sankei), Japonsko'], ['Kvalita', 'OEM ekvivalent'], ['Kompatibilita', 'Civic EG/EK/ES, CRX, Integra, CR-V'], ['Pozice', 'Spodní rameno'], ['Balení', '1 ks'], ['Materiál', 'Kalená ocel + gumový kryt'], ['Hmotnost', '420 g']],
             specs_en: [['Manufacturer', '555 (Sankei), Japan'], ['Quality', 'OEM equivalent'], ['Compatibility', 'Civic EG/EK/ES, CRX, Integra, CR-V'], ['Position', 'Lower arm'], ['Package', '1 pc'], ['Material', 'Hardened steel + rubber boot'], ['Weight', '420 g']] },
-        { id: 15, name: 'Rohová výztuha nosníků', name_en: 'Corner brace reinforcement', category: 'podvozek', price: 726, desc: 'Rohová výztuha předních nosníků C5G, C6G, CRX. Pár (levá + pravá).', desc_en: 'Front rail corner brace C5G, C6G, CRX. Pair (left + right).', badge: 'new', stock: 8, img: '/img/products/rohova-vyztuha.jpg',
+        { id: 15, name: 'Rohová výztuha nosníků LIMITED', name_en: 'Corner brace reinforcement LIMITED', category: 'podvozek', price: 1290, compareAtPrice: 1690, desc: 'Limitovaná rohová výztuha předních nosníků s černým eloxem. 50 ks.', desc_en: 'Limited edition front rail corner brace with black anodising. 50 pcs.', badge: 'limited', stock: 8, img: '/img/products/rohova-vyztuha.jpg',
             desc_long: 'Rohová výztuha předních nosníků vlastní výroby Silponix. Zpevňuje kritické místo karoserie v oblasti uchycení předních ramen, které u sportovně využívaných Honda často praská. Dodávána jako pár (levá + pravá). Vyžaduje svaření k nosníkům.',
             desc_long_en: 'Front rail corner brace manufactured by Silponix. Reinforces the critical area of the body where front arm mounts are located, which frequently cracks on spiritedly driven Hondas. Supplied as a pair (left + right). Requires welding to the rails.',
             specs: [['Materiál', 'Ocelový plech 2 mm'], ['Kompatibilita', 'Civic EG (C5G), EK (C6G), CRX'], ['Balení', 'Pár (L + R)'], ['Montáž', 'Svařování'], ['Hmotnost', '480 g/pár'], ['Výroba', 'Laserový řez Silponix']],
@@ -160,7 +160,7 @@
             desc_long_en: 'AGM battery Exide with 60Ah capacity and 680A cranking power. Suitable for Start-Stop vehicles, cars with high electrical demand and racing applications. Resistant to deep discharge and vibrations.',
             specs: [['Technologie', 'AGM'], ['Kapacita', '60 Ah'], ['Startovací proud', '680 A (EN)'], ['Napětí', '12 V'], ['Rozměry', '242 × 175 × 190 mm'], ['Hmotnost', '17.2 kg'], ['Start-Stop', 'Ano'], ['Záruka', '2 roky']],
             specs_en: [['Technology', 'AGM'], ['Capacity', '60 Ah'], ['Cranking power', '680 A (EN)'], ['Voltage', '12 V'], ['Dimensions', '242 × 175 × 190 mm'], ['Weight', '17.2 kg'], ['Start-Stop', 'Yes'], ['Warranty', '2 years']] },
-        { id: 23, name: 'Varta Silver Dynamic', name_en: 'Varta Silver Dynamic', category: 'baterie', price: 3290, desc: 'Varta Silver Dynamic 74Ah. Vysoký startovací proud pro spolehlivý start.', desc_en: 'Varta Silver Dynamic 74Ah. High cranking power for reliable starts.', badge: 'sale', stock: 7, img: '/img/products/varta.png',
+        { id: 23, name: 'Varta Silver Dynamic', name_en: 'Varta Silver Dynamic', category: 'baterie', price: 3290, compareAtPrice: 3990, desc: 'Varta Silver Dynamic 74Ah. Vysoký startovací proud pro spolehlivý start.', desc_en: 'Varta Silver Dynamic 74Ah. High cranking power for reliable starts.', badge: 'sale', stock: 7, img: '/img/products/varta.png',
             desc_long: 'Varta Silver Dynamic — prémiová baterie s kapacitou 74Ah a startovacím proudem 750A. Technologie PowerFrame zajišťuje o 70 % lepší tok energie a vyšší odolnost proti korozi. Ideální pro vozy s vyšším počtem elektrických spotřebičů.',
             desc_long_en: 'Varta Silver Dynamic — premium battery with 74Ah capacity and 750A cranking power. PowerFrame technology provides 70% better energy flow and higher corrosion resistance. Ideal for vehicles with multiple electrical consumers.',
             specs: [['Technologie', 'PowerFrame'], ['Kapacita', '74 Ah'], ['Startovací proud', '750 A (EN)'], ['Napětí', '12 V'], ['Rozměry', '278 × 175 × 175 mm'], ['Hmotnost', '18.4 kg'], ['Záruka', '2 roky']],
@@ -561,6 +561,15 @@
         var badge = '';
         if (product.badge === 'bestseller') badge = '<span class="product-badge product-badge--bestseller">Bestseller</span>';
         else if (product.badge === 'new') badge = '<span class="product-badge product-badge--new">' + (lang === 'en' ? 'New' : 'Nové') + '</span>';
+        else if (product.badge === 'sale') badge = '<span class="product-badge product-badge--sale">' + (lang === 'en' ? 'Sale' : 'Sleva') + '</span>';
+        else if (product.badge === 'limited') badge = '<span class="product-badge product-badge--limited">' + (lang === 'en' ? 'Limited' : 'Limitovaná edice') + '</span>';
+
+        // Sale ribbon (corner) + savings calc
+        var saleRibbon = '';
+        if (product.compareAtPrice && product.compareAtPrice > product.price) {
+            var savings = Math.round(((product.compareAtPrice - product.price) / product.compareAtPrice) * 100);
+            saleRibbon = '<span class="product-card-ribbon">−' + savings + '%</span>';
+        }
 
         var detailLabel = lang === 'en' ? 'View details' : 'Zobrazit detail';
 
@@ -616,6 +625,7 @@
             '<div class="product-card-img-wrap">' +
                 '<img src="' + (product.img || '') + '" alt="' + name + '" loading="lazy" class="product-card-img">' +
                 badge +
+                saleRibbon +
                 '<button type="button" class="product-card-wishlist' + (inWish ? ' is-active' : '') + '" data-wishlist-id="' + product.id + '" aria-label="' + (inWish ? 'Odebrat z oblíbených' : 'Přidat do oblíbených') + '" aria-pressed="' + (inWish ? 'true' : 'false') + '">' +
                     '<svg width="16" height="16" viewBox="0 0 24 24" fill="' + (inWish ? 'currentColor' : 'none') + '" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>' +
                 '</button>' +
@@ -633,7 +643,10 @@
                 (product.rating ? '<div class="product-card-rating">' + renderStars(product.rating, { size: 13 }) + '<span class="product-card-rating-count">' + product.rating.toFixed(1) + ' (' + (product.reviewCount || 0) + ')</span></div>' : '') +
                 variationIndicator +
                 '<div class="product-card-footer">' +
-                    '<span class="product-price">' + (product.price ? product.price.toLocaleString('cs-CZ') + '\u00a0K\u010d' : '') + '</span>' +
+                    '<span class="product-price-block">' +
+                        (product.compareAtPrice && product.compareAtPrice > product.price ? '<span class="product-price-old">' + product.compareAtPrice.toLocaleString('cs-CZ') + '\u00a0K\u010d</span>' : '') +
+                        '<span class="product-price' + (product.compareAtPrice && product.compareAtPrice > product.price ? ' is-sale' : '') + '">' + (product.price ? product.price.toLocaleString('cs-CZ') + '\u00a0K\u010d' : '') + '</span>' +
+                    '</span>' +
                     '<span class="product-stock ' + stockClass + '">' + stockLabel + '</span>' +
                 '</div>' +
                 '<button type="button" class="btn btn-primary btn-sm add-to-cart-btn" data-product-id="' + product.id + '" ' + (!inStock ? 'disabled' : '') + '>' +
@@ -1163,12 +1176,21 @@
 
             document.title = pName + ' | Silponix';
 
-            // Badges (bestseller / new)
+            // Badges (bestseller / new / sale / limited)
             var badgeHTML = '';
             if (product.badge === 'bestseller') {
                 badgeHTML = '<span class="pdetail-flag pdetail-flag-bestseller">Bestseller</span>';
             } else if (product.badge === 'new') {
                 badgeHTML = '<span class="pdetail-flag pdetail-flag-new">' + (lang === 'en' ? 'New' : 'Nové') + '</span>';
+            } else if (product.badge === 'sale') {
+                badgeHTML = '<span class="pdetail-flag pdetail-flag-sale">' + (lang === 'en' ? 'Sale' : 'Sleva') + '</span>';
+            } else if (product.badge === 'limited') {
+                badgeHTML = '<span class="pdetail-flag pdetail-flag-limited">' + (lang === 'en' ? 'Limited Edition' : 'Limitovaná edice') + '</span>';
+            }
+            // Sale ribbon (savings %)
+            if (product.compareAtPrice && product.compareAtPrice > product.price) {
+                var savingsPct = Math.round(((product.compareAtPrice - product.price) / product.compareAtPrice) * 100);
+                badgeHTML += '<span class="pdetail-savings-ribbon">−' + savingsPct + '%</span>';
             }
 
             // ─── Variations selector (supports multiple groups) ───
@@ -1341,8 +1363,10 @@
 
                         '<div class="pdetail-buybox">' +
                             '<div class="pdetail-price-row">' +
-                                '<span class="pdetail-price" id="pdetailPrice">' + formatPrice(initialPrice) + '</span>' +
+                                (product.compareAtPrice && product.compareAtPrice > initialPrice ? '<span class="pdetail-price-old">' + formatPrice(product.compareAtPrice) + '</span>' : '') +
+                                '<span class="pdetail-price' + (product.compareAtPrice && product.compareAtPrice > initialPrice ? ' is-sale' : '') + '" id="pdetailPrice">' + formatPrice(initialPrice) + '</span>' +
                                 '<span class="pdetail-vat">' + (lang === 'en' ? 'incl. VAT' : 'vč. DPH') + '</span>' +
+                                (product.compareAtPrice && product.compareAtPrice > initialPrice ? '<span class="pdetail-savings-pill">Ušetříte ' + formatPrice(product.compareAtPrice - initialPrice) + '</span>' : '') +
                             '</div>' +
 
                             '<div class="pdetail-actions">' +
