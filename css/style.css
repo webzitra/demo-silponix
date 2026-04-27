@@ -5067,6 +5067,8 @@ body { padding-top: var(--nb-height); }
     border: 1px dashed rgba(255, 255, 255, 0.1);
     border-radius: 16px;
 }
+.shop-empty[hidden],
+.eshop-empty[hidden] { display: none !important; }
 .shop-empty-icon {
     width: 72px;
     height: 72px;
