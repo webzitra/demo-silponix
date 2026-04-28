@@ -8112,6 +8112,153 @@ a.kontakt-info-value:hover {
 }
 
 /* ════════════════════════════════════════════════════════════
+   ░░░  B U T T O N S   —   S I L P O N I X   G R A D I E N T  ░░░
+   Final unification pass: btn-primary uses red→amber brand gradient,
+   btn-outline transitions INTO the gradient on hover. Both share
+   identical sizing, padding, hover lift, glow, and scan animation
+   so they feel like a unified pair when used side by side.
+   ════════════════════════════════════════════════════════════ */
+
+/* PRIMARY — full Silponix gradient */
+.btn-primary,
+.add-to-cart-btn:not(.shop-view-btn):not(.lang-btn):not(.cart-qty-minus):not(.cart-qty-plus),
+.pdetail-buy {
+    background: linear-gradient(135deg, var(--primary) 0%, #d97706 50%, var(--accent) 100%) !important;
+    background-size: 200% 100% !important;
+    background-position: 0% 0% !important;
+    border: 1px solid rgba(var(--primary-rgb), 0.6) !important;
+    color: #fff !important;
+    transition:
+        background-position 0.6s var(--ig-ease),
+        border-color var(--ig-duration-btn) var(--ig-ease),
+        box-shadow var(--ig-duration-btn) var(--ig-ease),
+        transform var(--ig-duration-btn) var(--ig-ease) !important;
+}
+.btn-primary:hover:not(:disabled),
+.add-to-cart-btn:not(.shop-view-btn):not(.lang-btn):not(.cart-qty-minus):not(.cart-qty-plus):hover:not(:disabled),
+.pdetail-buy:hover:not(:disabled) {
+    background-position: 100% 0% !important;
+    border-color: rgba(var(--accent-rgb), 0.7) !important;
+    transform: translateY(var(--ig-lift-btn)) !important;
+    box-shadow:
+        0 0 0 1px rgba(var(--primary-rgb), 0.3),
+        0 0 30px rgba(var(--primary-rgb), 0.45),
+        0 12px 28px -6px rgba(var(--accent-rgb), 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+/* OUTLINE — sleeker base, gradient fill on hover (matches primary) */
+.btn-outline {
+    background: rgba(var(--primary-rgb), 0.04) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(var(--primary-rgb), 0.45) !important;
+    color: #fff !important;
+    transition:
+        background var(--ig-duration-btn) var(--ig-ease),
+        border-color var(--ig-duration-btn) var(--ig-ease),
+        color var(--ig-duration-btn) var(--ig-ease),
+        box-shadow var(--ig-duration-btn) var(--ig-ease),
+        transform var(--ig-duration-btn) var(--ig-ease) !important;
+}
+.btn-outline:hover:not(:disabled) {
+    background: linear-gradient(135deg, var(--primary) 0%, #d97706 50%, var(--accent) 100%) !important;
+    background-size: 200% 100% !important;
+    background-position: 100% 0% !important;
+    border-color: rgba(var(--accent-rgb), 0.7) !important;
+    color: #fff !important;
+    transform: translateY(var(--ig-lift-btn)) !important;
+    box-shadow:
+        0 0 0 1px rgba(var(--primary-rgb), 0.3),
+        0 0 30px rgba(var(--primary-rgb), 0.45),
+        0 12px 28px -6px rgba(var(--accent-rgb), 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+}
+.section-dark .btn-outline {
+    background: rgba(var(--primary-rgb), 0.06) !important;
+    color: #fff !important;
+}
+.section-dark .btn-outline:hover:not(:disabled) {
+    background: linear-gradient(135deg, var(--primary) 0%, #d97706 50%, var(--accent) 100%) !important;
+    background-size: 200% 100%;
+    background-position: 100% 0%;
+    color: #fff !important;
+}
+
+/* DANGER — same gradient base but tinted toward red end */
+.btn-danger {
+    background: linear-gradient(135deg, #8e0f14 0%, var(--primary) 100%) !important;
+    border: 1px solid rgba(var(--primary-rgb), 0.6) !important;
+    color: #fff !important;
+}
+
+/* UNIFIED SIZE — make sure btn-primary and btn-outline render at
+   identical dimensions when placed next to each other */
+.btn,
+.btn-primary,
+.btn-outline,
+.btn-danger {
+    box-sizing: border-box !important;
+    min-height: 46px;
+    padding: 0.75rem 1.75rem !important;
+    font-size: 0.92rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.02em !important;
+}
+.btn-sm {
+    min-height: 36px;
+    padding: 0.5rem 1.1rem !important;
+    font-size: 0.82rem !important;
+    font-weight: 600 !important;
+}
+.btn-lg {
+    min-height: 54px;
+    padding: 0.95rem 2.2rem !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+}
+
+/* Ensure shimmer ::after stays subtle on the new gradient bg */
+.btn-primary::after,
+.btn-outline::after,
+.btn-danger::after {
+    background: linear-gradient(180deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.16) 30%,
+        rgba(255, 255, 255, 0.22) 50%,
+        rgba(255, 255, 255, 0.16) 70%,
+        transparent 100%) !important;
+}
+
+/* Disabled keeps gradient grayscaled — already handled in disabled rule */
+.btn-primary:disabled,
+.btn-outline:disabled,
+.btn-danger:disabled,
+.add-to-cart-btn:disabled,
+.pdetail-buy:disabled {
+    background: rgba(20, 20, 20, 0.5) !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    color: rgba(255, 255, 255, 0.4) !important;
+    box-shadow: none !important;
+}
+
+/* Navbar CTA (Shop pill in nav) — keep using full gradient */
+.nav-bar .navbar-cta {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%) !important;
+    background-size: 200% 100% !important;
+    background-position: 0% 0% !important;
+    border: 1px solid rgba(var(--primary-rgb), 0.6) !important;
+    color: #fff !important;
+    transition: background-position 0.6s var(--ig-ease),
+                box-shadow var(--ig-duration-btn) var(--ig-ease),
+                transform var(--ig-duration-btn) var(--ig-ease) !important;
+}
+.nav-bar .navbar-cta:hover {
+    background-position: 100% 0% !important;
+    transform: translateY(-1px) !important;
+}
+
+/* ════════════════════════════════════════════════════════════
    ░░░  N A V   I C O N S   —   M O D E R N I Z E D  ░░░
    Theme/cart/profile/lang in navbar — consistent 36px circles
    with subtle backdrop blur, refined hover states.
