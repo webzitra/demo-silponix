@@ -1072,8 +1072,7 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
 .admin-table-img img { width: 100%; height: 100%; object-fit: cover; }
 .admin-actions-cell { white-space: nowrap; }
 .admin-actions-cell .btn { margin-right: 0.25rem; }
-.btn-danger { color: #ef4444; border-color: #ef4444; }
-.btn-danger:hover { background: rgba(239,68,68,0.1); }
+/* .btn-danger gradient defined in BUTTONS — SILPONIX GRADIENT block below */
 
 /* Admin User Name */
 .admin-user-name { font-size: 0.875rem; color: var(--text-secondary); font-weight: 500; }
@@ -1375,17 +1374,17 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
 }
 .navbar-user:hover { color: var(--primary); background: var(--primary-light); }
 
-/* ==================== RED GLOW HOVER ==================== */
-.navbar-link:hover, .navbar-link.active { box-shadow: 0 0 8px rgba(189,20,27,0.3), 0 0 16px rgba(189,20,27,0.1); }
-.theme-toggle:hover, .navbar-user:hover, .navbar-cart:hover, .lang-switcher-toggle:hover { box-shadow: 0 0 8px rgba(189,20,27,0.25); }
-.product-card:hover { box-shadow: var(--shadow-lg), 0 0 20px rgba(189,20,27,0.12); }
-.service-card:hover { box-shadow: 0 0 20px rgba(189,20,27,0.15); }
-.stat-card:hover { box-shadow: var(--shadow-md), 0 0 15px rgba(189,20,27,0.12); }
-.sponsor-item:hover { box-shadow: var(--shadow-md), 0 0 15px rgba(189,20,27,0.1); }
-.blog-card:hover { box-shadow: 0 0 20px rgba(189,20,27,0.12); }
-.gallery-item:hover { box-shadow: 0 0 20px rgba(189,20,27,0.15); }
-::selection { background: rgba(189,20,27,0.25); color: inherit; }
-::-moz-selection { background: rgba(189,20,27,0.25); color: inherit; }
+/* ==================== RED GLOW HOVER (mostly superseded by Ignition pass below) ==================== */
+.navbar-link:hover, .navbar-link.active { box-shadow: 0 0 8px rgba(var(--primary-rgb),0.3), 0 0 16px rgba(var(--primary-rgb),0.1); }
+.navbar-user:hover, .navbar-cart:hover, .lang-switcher-toggle:hover { box-shadow: 0 0 8px rgba(var(--primary-rgb),0.25); }
+.product-card:hover { box-shadow: var(--shadow-lg), 0 0 20px rgba(var(--primary-rgb),0.12); }
+.service-card:hover { box-shadow: 0 0 20px rgba(var(--primary-rgb),0.15); }
+.stat-card:hover { box-shadow: var(--shadow-md), 0 0 15px rgba(var(--primary-rgb),0.12); }
+.sponsor-item:hover { box-shadow: var(--shadow-md), 0 0 15px rgba(var(--primary-rgb),0.1); }
+.blog-card:hover { box-shadow: 0 0 20px rgba(var(--primary-rgb),0.12); }
+.gallery-item:hover { box-shadow: 0 0 20px rgba(var(--primary-rgb),0.15); }
+::selection { background: rgba(var(--primary-rgb),0.25); color: inherit; }
+::-moz-selection { background: rgba(var(--primary-rgb),0.25); color: inherit; }
 
 /* ==================== BLOG POST DETAIL ==================== */
 .blog-post { padding: var(--section-padding) 0; }
@@ -6077,15 +6076,15 @@ a.product-card,
 
 /* Card: sale badge variant */
 .product-badge--sale {
-    background: linear-gradient(135deg, #ef4444 0%, #f59e0b 100%);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
     color: #fff !important;
-    box-shadow: 0 0 18px rgba(239, 68, 68, 0.4);
+    box-shadow: 0 0 18px rgba(var(--primary-rgb), 0.4);
 }
 .product-badge--limited {
     background: rgba(15, 15, 15, 0.85);
-    color: #fbbf24;
-    border: 1px solid rgba(251, 191, 36, 0.5);
-    text-shadow: 0 0 8px rgba(251, 191, 36, 0.4);
+    color: var(--accent);
+    border: 1px solid rgba(var(--accent-rgb), 0.5);
+    text-shadow: 0 0 8px rgba(var(--accent-rgb), 0.4);
 }
 
 /* Diagonal savings ribbon (top-right corner) */
@@ -6095,7 +6094,7 @@ a.product-card,
     right: 14px;
     z-index: 4;
     padding: 0.32rem 0.65rem;
-    background: linear-gradient(135deg, #ef4444 0%, #f59e0b 100%);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
     color: #fff;
     font-family: var(--font-heading);
     font-size: 0.72rem;
@@ -6103,8 +6102,8 @@ a.product-card,
     letter-spacing: 0.04em;
     border-radius: 6px;
     box-shadow:
-        0 0 18px rgba(239, 68, 68, 0.5),
-        0 4px 12px -2px rgba(239, 68, 68, 0.4);
+        0 0 18px rgba(var(--primary-rgb), 0.5),
+        0 4px 12px -2px rgba(var(--primary-rgb), 0.4);
     pointer-events: none;
 }
 /* Hide ribbon when wishlist heart is in same corner — shift wishlist down */
@@ -6126,12 +6125,12 @@ a.product-card,
     font-weight: 600;
     color: rgba(255, 255, 255, 0.4);
     text-decoration: line-through;
-    text-decoration-color: rgba(239, 68, 68, 0.6);
+    text-decoration-color: rgba(var(--primary-rgb), 0.6);
     text-decoration-thickness: 2px;
     font-variant-numeric: tabular-nums;
 }
 .product-price.is-sale {
-    background: linear-gradient(135deg, #ef4444 0%, #f59e0b 100%);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -6140,16 +6139,16 @@ a.product-card,
 
 /* Detail: pdetail-flag-sale + limited */
 .pdetail-flag-sale {
-    background: linear-gradient(135deg, #ef4444 0%, #f59e0b 100%);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
     color: #fff;
-    box-shadow: 0 0 24px rgba(239, 68, 68, 0.5);
+    box-shadow: 0 0 24px rgba(var(--primary-rgb), 0.5);
 }
 .pdetail-flag-limited {
     background: rgba(15, 15, 15, 0.85);
-    color: #fbbf24;
-    border: 1px solid rgba(251, 191, 36, 0.5);
+    color: var(--accent);
+    border: 1px solid rgba(var(--accent-rgb), 0.5);
     backdrop-filter: blur(10px);
-    text-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+    text-shadow: 0 0 10px rgba(var(--accent-rgb), 0.5);
 }
 
 /* Detail savings ribbon (corner of image) */
@@ -6159,7 +6158,7 @@ a.product-card,
     right: 1rem;
     z-index: 4;
     padding: 0.5rem 0.85rem;
-    background: linear-gradient(135deg, #ef4444 0%, #f59e0b 100%);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
     color: #fff;
     font-family: var(--font-heading);
     font-size: 0.95rem;
@@ -6167,8 +6166,8 @@ a.product-card,
     letter-spacing: 0.02em;
     border-radius: 8px;
     box-shadow:
-        0 0 28px rgba(239, 68, 68, 0.55),
-        0 6px 18px -2px rgba(239, 68, 68, 0.45);
+        0 0 28px rgba(var(--primary-rgb), 0.55),
+        0 6px 18px -2px rgba(var(--primary-rgb), 0.45);
 }
 
 /* Detail price row: old price + savings pill */
@@ -6178,14 +6177,14 @@ a.product-card,
     font-weight: 600;
     color: rgba(255, 255, 255, 0.4);
     text-decoration: line-through;
-    text-decoration-color: rgba(239, 68, 68, 0.6);
+    text-decoration-color: rgba(var(--primary-rgb), 0.6);
     text-decoration-thickness: 2px;
     align-self: baseline;
     font-variant-numeric: tabular-nums;
     margin-right: 0.25rem;
 }
 .pdetail-price.is-sale {
-    background: linear-gradient(135deg, #ef4444 0%, #f59e0b 100%);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -6195,8 +6194,8 @@ a.product-card,
     align-self: baseline;
     margin-left: 0.5rem;
     padding: 0.32rem 0.7rem;
-    background: rgba(239, 68, 68, 0.14);
-    border: 1px solid rgba(239, 68, 68, 0.35);
+    background: rgba(var(--primary-rgb), 0.14);
+    border: 1px solid rgba(var(--primary-rgb), 0.35);
     border-radius: 8px;
     color: #fca5a5;
     font-family: var(--font-heading);
@@ -8119,15 +8118,18 @@ a.kontakt-info-value:hover {
    so they feel like a unified pair when used side by side.
    ════════════════════════════════════════════════════════════ */
 
-/* PRIMARY — full Silponix gradient */
+/* PRIMARY — full Silponix gradient
+   Stops chosen so white text passes WCAG AA Large (3:1) across the
+   whole sweep — pure --accent (#f59e0b) is too bright for white text. */
 .btn-primary,
 .add-to-cart-btn:not(.shop-view-btn):not(.lang-btn):not(.cart-qty-minus):not(.cart-qty-plus),
 .pdetail-buy {
-    background: linear-gradient(135deg, var(--primary) 0%, #d97706 50%, var(--accent) 100%) !important;
+    background: linear-gradient(135deg, var(--primary) 0%, #c2410c 55%, #b45309 100%) !important;
     background-size: 200% 100% !important;
     background-position: 0% 0% !important;
     border: 1px solid rgba(var(--primary-rgb), 0.6) !important;
     color: #fff !important;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.45);
     transition:
         background-position 0.6s var(--ig-ease),
         border-color var(--ig-duration-btn) var(--ig-ease),
@@ -8162,11 +8164,12 @@ a.kontakt-info-value:hover {
         transform var(--ig-duration-btn) var(--ig-ease) !important;
 }
 .btn-outline:hover:not(:disabled) {
-    background: linear-gradient(135deg, var(--primary) 0%, #d97706 50%, var(--accent) 100%) !important;
+    background: linear-gradient(135deg, var(--primary) 0%, #c2410c 55%, #b45309 100%) !important;
     background-size: 200% 100% !important;
     background-position: 100% 0% !important;
     border-color: rgba(var(--accent-rgb), 0.7) !important;
     color: #fff !important;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.45);
     transform: translateY(var(--ig-lift-btn)) !important;
     box-shadow:
         0 0 0 1px rgba(var(--primary-rgb), 0.3),
@@ -8179,10 +8182,11 @@ a.kontakt-info-value:hover {
     color: #fff !important;
 }
 .section-dark .btn-outline:hover:not(:disabled) {
-    background: linear-gradient(135deg, var(--primary) 0%, #d97706 50%, var(--accent) 100%) !important;
+    background: linear-gradient(135deg, var(--primary) 0%, #c2410c 55%, #b45309 100%) !important;
     background-size: 200% 100%;
     background-position: 100% 0%;
     color: #fff !important;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.45);
 }
 
 /* DANGER — same gradient base but tinted toward red end */
@@ -8242,13 +8246,14 @@ a.kontakt-info-value:hover {
     box-shadow: none !important;
 }
 
-/* Navbar CTA (Shop pill in nav) — keep using full gradient */
+/* Navbar CTA (Shop pill in nav) — same readable Silponix gradient */
 .nav-bar .navbar-cta {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%) !important;
+    background: linear-gradient(135deg, var(--primary) 0%, #c2410c 55%, #b45309 100%) !important;
     background-size: 200% 100% !important;
     background-position: 0% 0% !important;
     border: 1px solid rgba(var(--primary-rgb), 0.6) !important;
     color: #fff !important;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.45);
     transition: background-position 0.6s var(--ig-ease),
                 box-shadow var(--ig-duration-btn) var(--ig-ease),
                 transform var(--ig-duration-btn) var(--ig-ease) !important;
