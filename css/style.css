@@ -7356,6 +7356,234 @@ a.kontakt-info-value:hover {
     .onas-timeline { grid-template-columns: 1fr; }
 }
 
+/* ════════════════════════════════════════════════════════════
+   ░░░  S L U Ž B Y   P A G E  —  Premium Ignition  ░░░
+   ════════════════════════════════════════════════════════════ */
+
+/* HERO (mirrors onas-hero pattern) */
+.sluzby-hero {
+    position: relative;
+    padding-top: calc(var(--nb-height, 64px) + 4rem);
+    padding-bottom: 4rem;
+    overflow: hidden;
+    isolation: isolate;
+    background: var(--bg);
+}
+.sluzby-hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image: url('/img/gallery/race-car.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.2;
+    filter: saturate(0.85);
+}
+.sluzby-hero-veil {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+        radial-gradient(ellipse at 25% 20%, rgba(var(--primary-rgb), 0.22) 0%, transparent 55%),
+        radial-gradient(ellipse at 75% 80%, rgba(var(--accent-rgb), 0.13) 0%, transparent 55%),
+        linear-gradient(180deg, rgba(10, 10, 10, 0.6) 0%, rgba(10, 10, 10, 0.94) 100%);
+    pointer-events: none;
+}
+.sluzby-hero-inner {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 880px;
+    margin: 0 auto;
+}
+.sluzby-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.4rem 0.95rem;
+    margin-bottom: 1.5rem;
+    background: rgba(var(--primary-rgb), 0.1);
+    border: 1px solid rgba(var(--primary-rgb), 0.3);
+    border-radius: 999px;
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--primary);
+}
+.sluzby-hero-badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--primary);
+    animation: badge-live-pulse 2s ease-out infinite;
+    flex-shrink: 0;
+}
+.sluzby-hero-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 6vw, 4.25rem);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    color: #fff;
+    margin: 0 0 1rem;
+    text-wrap: balance;
+}
+.sluzby-hero-title .text-gradient {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.sluzby-hero-subtitle {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.55;
+    max-width: 660px;
+    margin: 0 auto 2.5rem;
+    text-wrap: pretty;
+}
+.sluzby-hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    max-width: 760px;
+    margin: 0 auto;
+}
+.sluzby-stat {
+    padding: 1.25rem 1rem;
+    background: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    text-align: center;
+    isolation: isolate;
+}
+.sluzby-stat-value {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 1.85rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #fff 0%, rgba(var(--primary-rgb), 0.85) 130%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.25rem;
+}
+.sluzby-stat-label {
+    display: block;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.55);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+/* SERVICES GRID */
+.sluzby-services-section { padding-top: 5rem; padding-bottom: 5rem; }
+.sluzby-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+.sluzby-card {
+    position: relative;
+    padding: 2.25rem 2rem 2rem;
+    background: rgba(20, 20, 20, 0.55);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    isolation: isolate;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+.sluzby-card-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: rgba(var(--primary-rgb), 0.12);
+    border: 1px solid rgba(var(--primary-rgb), 0.25);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    margin-bottom: 1.25rem;
+}
+.sluzby-card-icon svg { width: 28px !important; height: 28px !important; max-width: none !important; }
+.sluzby-card-eyebrow {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-heading);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--primary);
+}
+.sluzby-card-title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #fff;
+    margin: 0 0 0.75rem;
+    letter-spacing: -0.015em;
+}
+.sluzby-card-desc {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin: 0 0 1.25rem;
+}
+.sluzby-card-list {
+    list-style: none;
+    margin: 0 0 0;
+    padding: 1rem 0 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.sluzby-card-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.55rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+.sluzby-card-list li::before {
+    content: '';
+    flex-shrink: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--primary);
+    margin-top: 0.5rem;
+    box-shadow: 0 0 6px rgba(var(--primary-rgb), 0.6);
+}
+
+/* PROCESS section uses existing process-grid styles with gradient bg */
+.sluzby-process-section {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    background: linear-gradient(180deg, var(--bg) 0%, var(--bg-dark) 100%);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+    .sluzby-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 900px) {
+    .sluzby-hero-stats { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+    .sluzby-grid { grid-template-columns: 1fr; }
+}
+
 /* Mini variation indicator on product card */
 .product-card-variations {
     display: inline-flex;
