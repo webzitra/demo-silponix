@@ -7876,6 +7876,277 @@ a.kontakt-info-value:hover {
     .blog-hero-stats { grid-template-columns: repeat(2, 1fr); }
 }
 
+/* ════════════════════════════════════════════════════════════
+   ░░░  G L O B A L   I C O N S   N O R M A L I Z A T I O N  ░░░
+   Sjednocuje rendering inline SVG ikon napříč celým webem.
+   Reset má img,svg { max-width:100%; height:auto } což škáluje
+   inline SVG nepředvídatelně. Tento blok forcuje:
+     - explicit width/height z atributů (přes CSS resetu)
+     - display:inline-block pro správné baseline alignment
+     - flex-shrink:0 v inline-flex containerech
+     - stroke-width 2 default (pokud není jinak)
+     - color via currentColor
+   ════════════════════════════════════════════════════════════ */
+
+/* Universal: SVG inside any button or icon container respects its
+   declared width/height attributes — no auto-stretching. */
+.btn svg,
+.btn-primary svg,
+.btn-outline svg,
+.btn-danger svg,
+.btn-sm svg,
+.btn-lg svg,
+.kontakt-quick-icon svg,
+.kontakt-info-icon svg,
+.kontakt-social-btn svg,
+.kontakt-dept-icon svg,
+.onas-feature-icon svg,
+.onas-value-icon svg,
+.sluzby-card-icon svg,
+.process-step-icon svg,
+.service-card-icon svg,
+.testimonial-author-avatar svg,
+.contact-info-icon svg,
+.hero-stat-card-icon svg,
+.product-card-wishlist svg,
+.pdetail-wishlist-btn svg,
+.pdetail-trust-card svg,
+.pdetail-qty-btn svg,
+.shop-search-icon svg,
+.shop-cat-icon svg,
+.shop-info-icon svg,
+.shop-vehicle-icon svg,
+.shop-view-btn svg,
+.cart-toggle svg,
+.theme-toggle svg,
+.profile-trigger svg,
+.lang-switcher-toggle svg,
+.navbar-link svg,
+.footer-social a svg,
+.contact-social a svg,
+.trust-badge-icon svg,
+.shop-cat-list svg,
+.auth-input-icon,
+.auth-input-icon svg,
+.galerie-stat svg,
+.blog-stat svg,
+.onas-stat svg,
+.sluzby-stat svg,
+.shop-stat svg {
+    display: inline-block;
+    flex-shrink: 0;
+    max-width: none !important;
+    height: auto;
+}
+
+/* ════════════════════════════════════════════════════════════
+   ░░░  B U T T O N S   —   M O D E R N   P O L I S H  ░░░
+   Final pass: focus-visible rings, inset highlights, refined
+   disabled state, icon alignment, ghost variant.
+   ════════════════════════════════════════════════════════════ */
+
+/* Better focus-visible (keyboard navigation) */
+.btn:focus-visible,
+.btn-primary:focus-visible,
+.btn-outline:focus-visible,
+.btn-danger:focus-visible,
+.btn-sm:focus-visible,
+.btn-lg:focus-visible,
+.add-to-cart-btn:focus-visible,
+.pdetail-buy:focus-visible {
+    outline: none !important;
+    box-shadow:
+        0 0 0 3px rgba(var(--primary-rgb), 0.18),
+        0 0 0 1px rgba(var(--primary-rgb), 0.55),
+        var(--ig-glow-card) !important;
+}
+
+/* Subtle inner highlight on primary buttons (premium gloss feel) */
+.btn-primary,
+.add-to-cart-btn:not(.shop-view-btn):not(.lang-btn) {
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.12),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.18),
+        0 4px 12px -2px rgba(var(--primary-rgb), 0.25);
+}
+.btn-primary:hover,
+.add-to-cart-btn:not(.shop-view-btn):not(.lang-btn):hover {
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.18),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+        var(--ig-glow-card) !important;
+}
+
+/* Icon alignment + spacing inside buttons */
+.btn,
+.btn-primary,
+.btn-outline,
+.btn-danger,
+.btn-sm,
+.btn-lg {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    line-height: 1.1;
+}
+.btn svg,
+.btn-primary svg,
+.btn-outline svg,
+.btn-danger svg {
+    flex-shrink: 0;
+    transition: transform var(--ig-duration-btn) var(--ig-ease);
+}
+.btn:hover svg,
+.btn-primary:hover svg,
+.btn-danger:hover svg {
+    transform: translateX(1px);
+}
+/* SVG arrow icons get a stronger nudge on hover */
+.btn-primary:hover svg[data-arrow],
+.btn:hover svg[data-arrow] {
+    transform: translateX(3px);
+}
+
+/* Disabled state — frozen, less attention-grabbing, no hover */
+.btn:disabled,
+.btn-primary:disabled,
+.btn-outline:disabled,
+.btn-danger:disabled,
+.btn[disabled],
+.btn-primary[disabled],
+.add-to-cart-btn:disabled,
+.pdetail-buy:disabled {
+    opacity: 0.45 !important;
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+    transform: none !important;
+    filter: grayscale(0.4);
+    box-shadow: none !important;
+}
+.btn:disabled::before,
+.btn:disabled::after,
+.btn-primary:disabled::before,
+.btn-primary:disabled::after { display: none !important; }
+
+/* Active (pressed) state — subtle press-down */
+.btn:active:not(:disabled),
+.btn-primary:active:not(:disabled),
+.btn-outline:active:not(:disabled),
+.btn-danger:active:not(:disabled) {
+    transform: translateY(0) scale(0.98) !important;
+    transition-duration: 0.08s !important;
+}
+
+/* Modernized size scale — consistent paddings */
+.btn-sm {
+    padding: 0.5rem 1.1rem !important;
+    font-size: 0.82rem !important;
+    gap: 0.4rem;
+}
+.btn-lg {
+    padding: 0.95rem 2.1rem !important;
+    font-size: 0.98rem !important;
+    gap: 0.6rem;
+}
+
+/* Ghost button — subtle, no border, just text + hover bg */
+.btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.75);
+    border: 1px solid transparent;
+    border-radius: 12px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition:
+        background var(--motion-btn),
+        color var(--motion-btn),
+        border-color var(--motion-btn);
+}
+.btn-ghost:hover {
+    background: rgba(var(--primary-rgb), 0.08);
+    color: var(--primary);
+    border-color: rgba(var(--primary-rgb), 0.25);
+}
+
+/* Icon-only button variant — square, centered */
+.btn-icon {
+    width: 40px;
+    height: 40px;
+    padding: 0 !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.btn-icon.btn-sm { width: 32px; height: 32px; }
+.btn-icon.btn-lg { width: 48px; height: 48px; }
+
+/* Loading spinner inside .btn-loading */
+.btn-loading {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.btn-loading::before {
+    content: '';
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: btn-spin 0.7s linear infinite;
+    flex-shrink: 0;
+}
+@keyframes btn-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ════════════════════════════════════════════════════════════
+   ░░░  N A V   I C O N S   —   M O D E R N I Z E D  ░░░
+   Theme/cart/profile/lang in navbar — consistent 36px circles
+   with subtle backdrop blur, refined hover states.
+   ════════════════════════════════════════════════════════════ */
+.nav-bar .nav-icon-btn,
+.nav-bar .navbar-cart,
+.nav-bar .navbar-user,
+.nav-bar .lang-switcher-toggle {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+.nav-bar .nav-icon-btn svg,
+.nav-bar .navbar-cart svg,
+.nav-bar .navbar-user svg,
+.nav-bar .lang-switcher-toggle svg {
+    transition: transform var(--ig-duration-btn) var(--ig-ease);
+}
+.nav-bar .nav-icon-btn:hover svg,
+.nav-bar .navbar-cart:hover svg,
+.nav-bar .navbar-user:hover svg {
+    transform: scale(1.1);
+}
+
+/* ════════════════════════════════════════════════════════════
+   ░░░  S O C I A L   I C O N S   —   F O O T E R   /   C O N T A C T  ░░░
+   ════════════════════════════════════════════════════════════ */
+.footer-social a svg,
+.contact-social a svg {
+    transition: transform var(--ig-duration-btn) var(--ig-ease);
+}
+.footer-social a:hover svg,
+.contact-social a:hover svg {
+    transform: scale(1.15) rotate(-3deg);
+}
+
 /* Mini variation indicator on product card */
 .product-card-variations {
     display: inline-flex;
