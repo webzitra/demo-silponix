@@ -55,26 +55,51 @@
         </div>
     </nav>
 
-    <!-- PAGE HERO -->
-    <section class="page-hero" id="galerie-main">
-        <div class="page-hero-bg" style="background-image: url('/img/gallery/race-car.jpg')"></div>
-        <div class="page-hero-overlay"></div>
-        <div class="container">
-            <span class="section-badge" data-i18n="gallery.badge">Galerie</span>
-            <h1 class="page-hero-title" data-i18n="gallery.title">Z na&scaron;&iacute; d&iacute;lny</h1>
-            <p class="page-hero-subtitle" data-i18n="gallery.subtitle">Nahl&eacute;dn&#283;te do na&scaron;&iacute; pr&aacute;ce &mdash; z&aacute;vodn&iacute; vozy, v&yacute;roba d&iacute;l&#367; a motorsport.</p>
+    <!-- ═══════════ GALERIE HERO — Premium Ignition ═══════════ -->
+    <section class="galerie-hero" id="galerie-main">
+        <div class="galerie-hero-bg" aria-hidden="true"></div>
+        <div class="galerie-hero-veil" aria-hidden="true"></div>
+        <div class="container galerie-hero-inner">
+            <span class="galerie-hero-badge">
+                <span class="galerie-hero-badge-dot"></span>
+                Galerie &middot; ze života Silponix
+            </span>
+            <h1 class="galerie-hero-title">Z dílny <span class="text-gradient">přímo na trať</span></h1>
+            <p class="galerie-hero-subtitle">Nahlédněte do naší práce — závodní vozy, výroba dílů, závody a každodenní život v dílně.</p>
+
+            <!-- HERO STATS -->
+            <div class="galerie-hero-stats" data-spy-group>
+                <div class="galerie-stat lit-card">
+                    <span class="galerie-stat-value">19</span>
+                    <span class="galerie-stat-label">Fotek v galerii</span>
+                </div>
+                <div class="galerie-stat lit-card">
+                    <span class="galerie-stat-value">3</span>
+                    <span class="galerie-stat-label">Kategorie</span>
+                </div>
+                <div class="galerie-stat lit-card">
+                    <span class="galerie-stat-value">2026</span>
+                    <span class="galerie-stat-label">Aktuální sezóna</span>
+                </div>
+                <div class="galerie-stat lit-card">
+                    <span class="galerie-stat-value">∞</span>
+                    <span class="galerie-stat-label">Hodin na trati</span>
+                </div>
+            </div>
         </div>
     </section>
-    <div class="page-hero-transition"></div>
 
-    <!-- GALLERY FILTERS -->
-    <div class="gallery-filters" id="galleryFilters">
+    <!-- ═══════════ GALLERY FILTERS ═══════════ -->
+    <div class="galerie-filters-wrap" id="galleryFilters">
         <div class="container">
-            <div class="gallery-filter-btns">
-                <button class="gallery-filter-btn active" data-filter="vse">V&#353;e</button>
-                <button class="gallery-filter-btn" data-filter="zavodni-vozy">Z&aacute;vodn&iacute; vozy</button>
-                <button class="gallery-filter-btn" data-filter="vyroba">V&yacute;roba &amp; d&iacute;lna</button>
-                <button class="gallery-filter-btn" data-filter="zavody">Z&aacute;vody</button>
+            <div class="galerie-filters-inner">
+                <span class="galerie-filters-label">Filtr</span>
+                <div class="gallery-filter-btns">
+                    <button class="gallery-filter-btn active" data-filter="vse">Vše</button>
+                    <button class="gallery-filter-btn" data-filter="zavodni-vozy">Závodní vozy</button>
+                    <button class="gallery-filter-btn" data-filter="vyroba">Výroba &amp; dílna</button>
+                    <button class="gallery-filter-btn" data-filter="zavody">Závody</button>
+                </div>
             </div>
         </div>
     </div>
