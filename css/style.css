@@ -3066,15 +3066,17 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
 
     /* ────────────────────────────────────────────────────────
        SILPONIX IGNITION GRADIENT — the canonical brand recipe.
-       Red → burnt-orange → deep-orange. Warm "fire" feel, AA
-       Large readable with white text. EVERYTHING uses this:
-       buttons, active states, headline text-clips, stat numbers,
-       decorative fills — there is no other brand gradient.
+       Red → orange → amber. Warm "fire" feel, the brighter amber
+       end keeps the sunset/ignition vibe. White text uses a
+       text-shadow safety net for legibility on the bright end.
+       EVERYTHING uses this: buttons, active states, headline
+       text-clips, stat numbers, decorative fills — there is no
+       other brand gradient.
        ──────────────────────────────────────────────────────── */
-    --ig-gradient: linear-gradient(135deg, var(--primary) 0%, #c2410c 55%, #b45309 100%);
+    --ig-gradient: linear-gradient(135deg, var(--primary) 0%, #d97706 55%, var(--accent) 100%);
     /* Horizontal version — same recipe rotated 90deg, used on 3px
        top-bar accent lines that scaleX in on hover. */
-    --ig-gradient-h: linear-gradient(90deg, var(--primary) 0%, #c2410c 55%, #b45309 100%);
+    --ig-gradient-h: linear-gradient(90deg, var(--primary) 0%, #d97706 55%, var(--accent) 100%);
     /* Aliases — different names express different intents in callsites
        (buttons vs. text-clip vs. stat numbers) but all resolve to the
        same canonical Ignition gradient above. */
@@ -3083,14 +3085,14 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     --ig-gradient-stat: var(--ig-gradient);
     /* Decorative timeline rail — same Ignition palette but fades
        to transparent at the edges so it merges with the section bg. */
-    --ig-gradient-rail: linear-gradient(90deg, transparent 0%, var(--primary) 25%, #c2410c 50%, var(--primary) 75%, transparent 100%);
-    /* Scan-line sweep — animates across cards on hover. Uses warm orange
-       peak (matches the canonical Ignition gradient) instead of pure amber. */
+    --ig-gradient-rail: linear-gradient(90deg, transparent 0%, var(--primary) 25%, var(--accent) 50%, var(--primary) 75%, transparent 100%);
+    /* Scan-line sweep — animates across cards on hover. Peaks at the
+       bright amber accent for maximum punch. */
     --ig-gradient-90: linear-gradient(90deg,
         transparent 0%,
         rgba(var(--primary-rgb), 0.4) 18%,
         var(--primary) 38%,
-        #c2410c 50%,
+        var(--accent) 50%,
         var(--primary) 62%,
         rgba(var(--primary-rgb), 0.4) 82%,
         transparent 100%);
