@@ -432,7 +432,7 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     text-shadow: 0 2px 20px rgba(0,0,0,0.3);
 }
 .text-gradient {
-    background: linear-gradient(135deg, var(--primary) 0%, #f87171 50%, var(--accent) 100%);
+    background: var(--ig-gradient-text);
     -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
 }
 .hero-subtitle {
@@ -954,7 +954,7 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 3px;
-    background: linear-gradient(90deg, var(--primary), var(--accent));
+    background: var(--ig-gradient-h);
     opacity: 0;
     transition: opacity 0.25s ease;
 }
@@ -1588,7 +1588,7 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     left: calc(12.5% + 1rem);
     right: calc(12.5% + 1rem);
     height: 2px;
-    background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+    background: var(--ig-gradient-rail);
     opacity: 0.3;
     z-index: 0;
 }
@@ -1966,7 +1966,7 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(90deg, var(--primary), var(--accent));
+    background: var(--ig-gradient-h);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1982,7 +1982,7 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(90deg, var(--primary), var(--accent));
+    background: var(--ig-gradient-h);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
@@ -2014,7 +2014,7 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(90deg, var(--primary), var(--accent));
+    background: var(--ig-gradient-h);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
@@ -2030,7 +2030,7 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(90deg, var(--primary), var(--accent));
+    background: var(--ig-gradient-h);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
@@ -2046,7 +2046,7 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(90deg, var(--primary), var(--accent));
+    background: var(--ig-gradient-h);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
@@ -2264,7 +2264,7 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     text-wrap: balance;
 }
 .auth-title .text-gradient {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    background: var(--ig-gradient);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -2563,7 +2563,7 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
 }
 .page-hero-title .text-gradient,
 .eshop-hero-title .text-gradient {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%) !important;
+    background: var(--ig-gradient) !important;
     -webkit-background-clip: text !important;
     background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
@@ -2969,7 +2969,7 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     margin-bottom: 1.25rem;
 }
 .hero-static-title .text-gradient {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    background: var(--ig-gradient);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -3065,10 +3065,22 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     --ig-lift-btn: -2px;
 
     --ig-gradient: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    /* Horizontal variant — used on 3px top-bar accent lines that scaleX in on hover. */
+    --ig-gradient-h: linear-gradient(90deg, var(--primary), var(--accent));
     /* Same brand gradient but with darker amber-orange end so white text passes
        WCAG AA Large. Use this whenever text or icons sit ON TOP of the gradient
        (buttons, active filter pills, CTAs, badges with labels). */
     --ig-gradient-btn: linear-gradient(135deg, var(--primary) 0%, #c2410c 55%, #b45309 100%);
+    /* Stat / number text-clip gradient — white fading into brand red. Used on
+       big numbers (counts, prices, scores) where the gradient IS the text fill. */
+    --ig-gradient-stat: linear-gradient(135deg, #fff 0%, rgba(var(--primary-rgb), 0.85) 130%);
+    /* Headline 3-stop ignition (red → flame pink → amber) — used by .text-gradient
+       to highlight keywords inside hero titles. The lighter middle gives the
+       "flame" look that defines the Ignition brand. */
+    --ig-gradient-text: linear-gradient(135deg, var(--primary) 0%, #f87171 50%, var(--accent) 100%);
+    /* Decorative timeline rail — connects process/timeline items horizontally.
+       Fades into transparent at the edges so it merges with the section bg. */
+    --ig-gradient-rail: linear-gradient(90deg, transparent 0%, var(--primary) 30%, var(--accent) 50%, var(--primary) 70%, transparent 100%);
     --ig-gradient-90: linear-gradient(90deg,
         transparent 0%,
         rgba(var(--primary-rgb), 0.4) 18%,
@@ -4540,7 +4552,7 @@ body { padding-top: var(--nb-height); }
     margin: 0 0 1rem;
 }
 .shop-hero-title .text-gradient {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    background: var(--ig-gradient);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -5318,7 +5330,7 @@ a.product-card,
     font-size: 3rem;
     font-weight: 700;
     line-height: 1;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    background: var(--ig-gradient);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -5362,7 +5374,7 @@ a.product-card,
 }
 .pdetail-rating-bar-fill {
     height: 100%;
-    background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+    background: var(--ig-gradient-h);
     border-radius: 3px;
     box-shadow: 0 0 6px rgba(var(--primary-rgb), 0.4);
 }
@@ -5691,7 +5703,7 @@ a.product-card,
     font-family: var(--font-heading);
     font-size: 1.1rem;
     font-weight: 700;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    background: var(--ig-gradient);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -6088,8 +6100,9 @@ a.product-card,
 
 /* Card: sale badge variant */
 .product-badge--sale {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    background: var(--ig-gradient-btn);
     color: #fff !important;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
     box-shadow: 0 0 18px rgba(var(--primary-rgb), 0.4);
 }
 .product-badge--limited {
@@ -6106,8 +6119,9 @@ a.product-card,
     right: 14px;
     z-index: 4;
     padding: 0.32rem 0.65rem;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    background: var(--ig-gradient-btn);
     color: #fff;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
     font-family: var(--font-heading);
     font-size: 0.72rem;
     font-weight: 800;
@@ -6142,7 +6156,7 @@ a.product-card,
     font-variant-numeric: tabular-nums;
 }
 .product-price.is-sale {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    background: var(--ig-gradient);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -6151,8 +6165,9 @@ a.product-card,
 
 /* Detail: pdetail-flag-sale + limited */
 .pdetail-flag-sale {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    background: var(--ig-gradient-btn);
     color: #fff;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
     box-shadow: 0 0 24px rgba(var(--primary-rgb), 0.5);
 }
 .pdetail-flag-limited {
@@ -6170,8 +6185,9 @@ a.product-card,
     right: 1rem;
     z-index: 4;
     padding: 0.5rem 0.85rem;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    background: var(--ig-gradient-btn);
     color: #fff;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
     font-family: var(--font-heading);
     font-size: 0.95rem;
     font-weight: 800;
@@ -6196,7 +6212,7 @@ a.product-card,
     margin-right: 0.25rem;
 }
 .pdetail-price.is-sale {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    background: var(--ig-gradient);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -6296,7 +6312,7 @@ a.product-card,
     text-wrap: balance;
 }
 .kontakt-hero-title .text-gradient {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    background: var(--ig-gradient);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -6877,7 +6893,7 @@ a.kontakt-info-value:hover {
 .onas-hero-title .text-gradient,
 .onas-section-title .text-gradient,
 .onas-cta-title .text-gradient {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    background: var(--ig-gradient);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -6911,7 +6927,7 @@ a.kontakt-info-value:hover {
     font-family: var(--font-heading);
     font-size: 1.85rem;
     font-weight: 700;
-    background: linear-gradient(135deg, #fff 0%, rgba(var(--primary-rgb), 0.85) 130%);
+    background: var(--ig-gradient-stat);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -7084,7 +7100,7 @@ a.kontakt-info-value:hover {
     font-size: 2.5rem;
     font-weight: 700;
     line-height: 1;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    background: var(--ig-gradient);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -7120,7 +7136,7 @@ a.kontakt-info-value:hover {
     left: 12.5%;
     right: 12.5%;
     height: 2px;
-    background: linear-gradient(90deg, transparent 0%, var(--primary) 30%, var(--accent) 50%, var(--primary) 70%, transparent 100%);
+    background: var(--ig-gradient-rail);
     opacity: 0.3;
     z-index: 0;
 }
@@ -7238,7 +7254,7 @@ a.kontakt-info-value:hover {
     font-family: var(--font-heading);
     font-size: 1.45rem;
     font-weight: 700;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    background: var(--ig-gradient);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -7442,7 +7458,7 @@ a.kontakt-info-value:hover {
     text-wrap: balance;
 }
 .sluzby-hero-title .text-gradient {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    background: var(--ig-gradient);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -7476,7 +7492,7 @@ a.kontakt-info-value:hover {
     font-family: var(--font-heading);
     font-size: 1.85rem;
     font-weight: 700;
-    background: linear-gradient(135deg, #fff 0%, rgba(var(--primary-rgb), 0.85) 130%);
+    background: var(--ig-gradient-stat);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -7668,7 +7684,7 @@ a.kontakt-info-value:hover {
     text-wrap: balance;
 }
 .galerie-hero-title .text-gradient {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    background: var(--ig-gradient);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -7702,7 +7718,7 @@ a.kontakt-info-value:hover {
     font-family: var(--font-heading);
     font-size: 1.85rem;
     font-weight: 700;
-    background: linear-gradient(135deg, #fff 0%, rgba(var(--primary-rgb), 0.85) 130%);
+    background: var(--ig-gradient-stat);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -7833,7 +7849,7 @@ a.kontakt-info-value:hover {
     text-wrap: balance;
 }
 .blog-hero-title .text-gradient {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    background: var(--ig-gradient);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -7867,7 +7883,7 @@ a.kontakt-info-value:hover {
     font-family: var(--font-heading);
     font-size: 1.85rem;
     font-weight: 700;
-    background: linear-gradient(135deg, #fff 0%, rgba(var(--primary-rgb), 0.85) 130%);
+    background: var(--ig-gradient-stat);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -8929,7 +8945,7 @@ a.kontakt-info-value:hover {
     font-weight: 700;
     line-height: 1;
     letter-spacing: -0.025em;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    background: var(--ig-gradient);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
