@@ -964,6 +964,10 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
 }
 .admin-stat-card:hover::before { opacity: 1; }
 .admin-stat-icon { width: 48px; height: 48px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.admin-stat-icon--brand   { background: rgba(var(--primary-rgb), 0.1); color: var(--primary); }
+.admin-stat-icon--success { background: rgba(16, 185, 129, 0.1); color: #10b981; }
+.admin-stat-icon--warning { background: rgba(var(--accent-rgb), 0.1); color: var(--accent); }
+.admin-stat-icon--info    { background: rgba(99, 102, 241, 0.1); color: #6366f1; }
 .admin-stat-number { display: block; font-size: 1.5rem; font-weight: 800; line-height: 1.2; }
 .admin-stat-label { font-size: 0.8125rem; color: var(--text-muted); }
 
@@ -1026,7 +1030,7 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
 .admin-chart-period { display: flex; gap: 0.25rem; }
 .admin-period-btn { padding: 0.375rem 0.75rem; font-size: 0.8125rem; font-weight: 600; border-radius: var(--radius-sm); color: var(--text-muted); transition: all var(--transition-fast); cursor: pointer; }
 .admin-period-btn:hover { color: var(--text); background: var(--surface-alt); }
-.admin-period-btn.active { color: var(--text-on-primary); background: var(--primary); }
+.admin-period-btn.active { color: #fff; background: var(--ig-gradient-btn); text-shadow: 0 1px 1px rgba(0,0,0,0.4); box-shadow: 0 0 14px rgba(var(--primary-rgb), 0.35); }
 .admin-chart { height: 200px; display: flex; flex-direction: column; }
 .admin-chart-bars { flex: 1; display: flex; align-items: flex-end; gap: 4px; padding-bottom: 0.5rem; }
 .admin-chart-bar { flex: 1; background: var(--primary); border-radius: 3px 3px 0 0; min-height: 2px; transition: height 0.3s ease; opacity: 0.7; }
@@ -1097,6 +1101,7 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
 .dash-section h3 { font-size: 1rem; font-weight: 600; margin-bottom: 1rem; }
 .dash-form-row { display: flex; gap: 0.75rem; align-items: flex-end; flex-wrap: wrap; }
 .dash-form-row .form-group { flex: 1; min-width: 200px; }
+.dash-form-submit { margin-top: 0.75rem; }
 .dash-danger-zone { margin-top: 2rem; padding: 1.5rem; border: 1px solid rgba(239,68,68,0.3); border-radius: var(--radius-lg); background: rgba(239,68,68,0.05); }
 .dash-danger-zone h3 { color: #ef4444; }
 .dash-success { color: #10b981; font-size: 0.875rem; margin-top: 0.5rem; }
@@ -3060,6 +3065,10 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     --ig-lift-btn: -2px;
 
     --ig-gradient: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    /* Same brand gradient but with darker amber-orange end so white text passes
+       WCAG AA Large. Use this whenever text or icons sit ON TOP of the gradient
+       (buttons, active filter pills, CTAs, badges with labels). */
+    --ig-gradient-btn: linear-gradient(135deg, var(--primary) 0%, #c2410c 55%, #b45309 100%);
     --ig-gradient-90: linear-gradient(90deg,
         transparent 0%,
         rgba(var(--primary-rgb), 0.4) 18%,
@@ -3653,9 +3662,10 @@ select:focus {
 .kategorie-pill.active,
 .filter-pill.active,
 .tag-pill.active {
-    background: var(--ig-gradient) !important;
+    background: var(--ig-gradient-btn) !important;
     border-color: transparent !important;
     color: #fff !important;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.45);
     box-shadow:
         0 0 20px rgba(var(--primary-rgb), 0.5),
         0 8px 22px -8px rgba(var(--primary-rgb), 0.4) !important;
@@ -4798,8 +4808,9 @@ body { padding-top: var(--nb-height); }
     font-variant-numeric: tabular-nums;
 }
 .shop-cat-btn.active .shop-cat-count {
-    background: var(--ig-gradient);
+    background: var(--ig-gradient-btn);
     color: #fff;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
     box-shadow: 0 0 10px rgba(var(--primary-rgb), 0.5);
 }
 
@@ -4992,8 +5003,9 @@ body { padding-top: var(--nb-height); }
 }
 .shop-view-btn:hover { color: #fff; }
 .shop-view-btn.active {
-    background: var(--ig-gradient);
+    background: var(--ig-gradient-btn);
     color: #fff;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
     box-shadow: 0 0 14px rgba(var(--primary-rgb), 0.4);
 }
 
@@ -8124,7 +8136,7 @@ a.kontakt-info-value:hover {
 .btn-primary,
 .add-to-cart-btn:not(.shop-view-btn):not(.lang-btn):not(.cart-qty-minus):not(.cart-qty-plus),
 .pdetail-buy {
-    background: linear-gradient(135deg, var(--primary) 0%, #c2410c 55%, #b45309 100%) !important;
+    background: var(--ig-gradient-btn) !important;
     background-size: 200% 100% !important;
     background-position: 0% 0% !important;
     border: 1px solid rgba(var(--primary-rgb), 0.6) !important;
@@ -8164,7 +8176,7 @@ a.kontakt-info-value:hover {
         transform var(--ig-duration-btn) var(--ig-ease) !important;
 }
 .btn-outline:hover:not(:disabled) {
-    background: linear-gradient(135deg, var(--primary) 0%, #c2410c 55%, #b45309 100%) !important;
+    background: var(--ig-gradient-btn) !important;
     background-size: 200% 100% !important;
     background-position: 100% 0% !important;
     border-color: rgba(var(--accent-rgb), 0.7) !important;
@@ -8182,7 +8194,7 @@ a.kontakt-info-value:hover {
     color: #fff !important;
 }
 .section-dark .btn-outline:hover:not(:disabled) {
-    background: linear-gradient(135deg, var(--primary) 0%, #c2410c 55%, #b45309 100%) !important;
+    background: var(--ig-gradient-btn) !important;
     background-size: 200% 100%;
     background-position: 100% 0%;
     color: #fff !important;
@@ -8248,7 +8260,7 @@ a.kontakt-info-value:hover {
 
 /* Navbar CTA (Shop pill in nav) — same readable Silponix gradient */
 .nav-bar .navbar-cta {
-    background: linear-gradient(135deg, var(--primary) 0%, #c2410c 55%, #b45309 100%) !important;
+    background: var(--ig-gradient-btn) !important;
     background-size: 200% 100% !important;
     background-position: 0% 0% !important;
     border: 1px solid rgba(var(--primary-rgb), 0.6) !important;
