@@ -35,6 +35,19 @@ const server = createServer(async (req, res) => {
     return;
   }
 
+  if (url.pathname === '/api/inquiry' && req.method === 'POST') {
+    let body = '';
+    req.on('data', (chunk) => { body += chunk; if (body.length > 1e6) req.destroy(); });
+    req.on('end', () => {
+      let parsed = null;
+      try { parsed = JSON.parse(body); } catch (_) { /* ignore */ }
+      console.log('[inquiry]', parsed);
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ ok: true, received: !!parsed }));
+    });
+    return;
+  }
+
   let filePath = join(__dirname, decodeURIComponent(url.pathname));
 
   try {
