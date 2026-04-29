@@ -3064,28 +3064,33 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     --ig-lift-card: -4px;
     --ig-lift-btn: -2px;
 
-    --ig-gradient: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-    /* Horizontal variant — used on 3px top-bar accent lines that scaleX in on hover. */
-    --ig-gradient-h: linear-gradient(90deg, var(--primary), var(--accent));
-    /* Same brand gradient but with darker amber-orange end so white text passes
-       WCAG AA Large. Use this whenever text or icons sit ON TOP of the gradient
-       (buttons, active filter pills, CTAs, badges with labels). */
-    --ig-gradient-btn: linear-gradient(135deg, var(--primary) 0%, #c2410c 55%, #b45309 100%);
-    /* Stat / number text-clip gradient — white fading into brand red. Used on
-       big numbers (counts, prices, scores) where the gradient IS the text fill. */
-    --ig-gradient-stat: linear-gradient(135deg, #fff 0%, rgba(var(--primary-rgb), 0.85) 130%);
-    /* Headline 3-stop ignition (red → flame pink → amber) — used by .text-gradient
-       to highlight keywords inside hero titles. The lighter middle gives the
-       "flame" look that defines the Ignition brand. */
-    --ig-gradient-text: linear-gradient(135deg, var(--primary) 0%, #f87171 50%, var(--accent) 100%);
-    /* Decorative timeline rail — connects process/timeline items horizontally.
-       Fades into transparent at the edges so it merges with the section bg. */
-    --ig-gradient-rail: linear-gradient(90deg, transparent 0%, var(--primary) 30%, var(--accent) 50%, var(--primary) 70%, transparent 100%);
+    /* ────────────────────────────────────────────────────────
+       SILPONIX IGNITION GRADIENT — the canonical brand recipe.
+       Red → burnt-orange → deep-orange. Warm "fire" feel, AA
+       Large readable with white text. EVERYTHING uses this:
+       buttons, active states, headline text-clips, stat numbers,
+       decorative fills — there is no other brand gradient.
+       ──────────────────────────────────────────────────────── */
+    --ig-gradient: linear-gradient(135deg, var(--primary) 0%, #c2410c 55%, #b45309 100%);
+    /* Horizontal version — same recipe rotated 90deg, used on 3px
+       top-bar accent lines that scaleX in on hover. */
+    --ig-gradient-h: linear-gradient(90deg, var(--primary) 0%, #c2410c 55%, #b45309 100%);
+    /* Aliases — different names express different intents in callsites
+       (buttons vs. text-clip vs. stat numbers) but all resolve to the
+       same canonical Ignition gradient above. */
+    --ig-gradient-btn: var(--ig-gradient);
+    --ig-gradient-text: var(--ig-gradient);
+    --ig-gradient-stat: var(--ig-gradient);
+    /* Decorative timeline rail — same Ignition palette but fades
+       to transparent at the edges so it merges with the section bg. */
+    --ig-gradient-rail: linear-gradient(90deg, transparent 0%, var(--primary) 25%, #c2410c 50%, var(--primary) 75%, transparent 100%);
+    /* Scan-line sweep — animates across cards on hover. Uses warm orange
+       peak (matches the canonical Ignition gradient) instead of pure amber. */
     --ig-gradient-90: linear-gradient(90deg,
         transparent 0%,
         rgba(var(--primary-rgb), 0.4) 18%,
         var(--primary) 38%,
-        var(--accent) 50%,
+        #c2410c 50%,
         var(--primary) 62%,
         rgba(var(--primary-rgb), 0.4) 82%,
         transparent 100%);
