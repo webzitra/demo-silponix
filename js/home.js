@@ -1,17 +1,66 @@
 /* ════════════════════════════════════════════════════════════
-   Silponix homepage — Pitlane Editorial interactions
-   ─ Section reveal observer (data-hc-reveal + data-section-head)
-   ─ Sticky build cycle: active sector card synced to scroll
-   ─ Telemetry HUD top-right: shows current section + lap time
+   Silponix homepage — MARQUE interactions
+   ─ Custom cursor (desktop only)
+   ─ Section reveals (data-m-reveal)
+   ─ Animated counters (data-counter)
+   ─ Horizontal sticky-scroll cycle (data-cycle-pin / track)
+   ─ Voices rotator (data-voice prev/next + auto-cycle)
    ════════════════════════════════════════════════════════════ */
 (function () {
     'use strict';
 
+    const home = document.querySelector('.home[data-marque]');
+    if (!home) return;
+
     const reduceMotion = window.matchMedia &&
         window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const fineCursor = window.matchMedia &&
+        window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-    /* ─── 1. Reveal observer (hero text already animates via CSS delay) ─ */
-    const reveals = document.querySelectorAll('[data-hc-reveal], [data-section-head]');
+    /* ─── 1. Custom cursor ─────────────────────────────────── */
+    if (fineCursor) {
+        const dot = home.querySelector('.home-cursor');
+        const ring = home.querySelector('.home-cursor-ring');
+        if (dot && ring) {
+            let mx = 0, my = 0, rx = 0, ry = 0;
+            let raf = null;
+
+            const onMove = (e) => {
+                mx = e.clientX; my = e.clientY;
+                if (!raf) raf = requestAnimationFrame(loop);
+                home.classList.add('is-cursor-on');
+            };
+
+            const loop = () => {
+                rx += (mx - rx) * 0.18;
+                ry += (my - ry) * 0.18;
+                dot.style.transform = `translate3d(${mx}px, ${my}px, 0) translate(-50%, -50%)`;
+                ring.style.transform = `translate3d(${rx}px, ${ry}px, 0) translate(-50%, -50%)`;
+                if (Math.abs(mx - rx) > 0.5 || Math.abs(my - ry) > 0.5) {
+                    raf = requestAnimationFrame(loop);
+                } else {
+                    raf = null;
+                }
+            };
+
+            window.addEventListener('mousemove', onMove, { passive: true });
+            window.addEventListener('mouseleave', () => home.classList.remove('is-cursor-on'));
+            window.addEventListener('mouseenter', () => home.classList.add('is-cursor-on'));
+
+            // Hover state on interactive elements
+            const isInteractive = (el) => el && (
+                el.tagName === 'A' || el.tagName === 'BUTTON' ||
+                el.getAttribute('role') === 'button' ||
+                el.closest('a, button, [role="button"]')
+            );
+            window.addEventListener('mouseover', (e) => {
+                home.classList.toggle('is-cursor-hover', !!isInteractive(e.target));
+            });
+        }
+    }
+
+    /* ─── 2. Reveal observer ───────────────────────────────── */
+    const reveals = home.querySelectorAll('[data-m-reveal]');
     if ('IntersectionObserver' in window && reveals.length) {
         const obs = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
@@ -20,111 +69,109 @@
                     obs.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.15, rootMargin: '0px 0px -80px 0px' });
+        }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
         reveals.forEach((el) => obs.observe(el));
     } else {
         reveals.forEach((el) => el.classList.add('is-in'));
     }
 
-    /* ─── 2. Build cycle — active sector card synced ─ */
-    const cycleSection = document.querySelector('.home-cycle');
-    const cycleCards = cycleSection ? cycleSection.querySelectorAll('.home-cycle-card') : [];
-    const pinSide = cycleSection ? cycleSection.querySelector('[data-pin-target]') : null;
-    const pinNum = pinSide ? pinSide.querySelectorAll('[data-pin-num]') : [];
-    const pinTitle = pinSide ? pinSide.querySelector('[data-pin-title]') : null;
-    const pinDesc = pinSide ? pinSide.querySelector('[data-pin-desc]') : null;
-    const progItems = pinSide ? pinSide.querySelectorAll('.home-cycle-prog-item') : [];
-
-    function syncCycle() {
-        if (!cycleCards.length || !pinSide) return;
-        const vh = window.innerHeight;
-        const target = vh * 0.5;
-        let closest = null;
-        let closestDist = Infinity;
-        cycleCards.forEach((card) => {
-            const rect = card.getBoundingClientRect();
-            if (rect.bottom < 0 || rect.top > vh) return;
-            const center = rect.top + rect.height / 2;
-            const dist = Math.abs(center - target);
-            if (dist < closestDist) {
-                closestDist = dist;
-                closest = card;
-            }
-        });
-        if (!closest) return;
-        const step = closest.dataset.step || '';
-        cycleCards.forEach((c) => c.classList.toggle('is-active', c === closest));
-        pinNum.forEach((el) => { el.textContent = step; });
-        if (pinTitle) pinTitle.textContent = closest.dataset.title || '';
-        if (pinDesc) pinDesc.textContent = closest.dataset.desc || '';
-        progItems.forEach((p) => p.classList.toggle('is-active', p.dataset.step === step));
-    }
-
-    /* ─── 3. Telemetry HUD ─ */
-    const hud = document.getElementById('homeHud');
-    const hudPit = hud ? hud.querySelector('[data-hud-pit]') : null;
-    const hudSection = hud ? hud.querySelector('[data-hud-section]') : null;
-    const hudLap = hud ? hud.querySelector('[data-hud-lap]') : null;
-    const sections = document.querySelectorAll('[data-hud]');
-
-    let currentSection = null;
-    function syncHud() {
-        if (!hud || !sections.length) return;
-        const vh = window.innerHeight;
-        const target = vh * 0.4;
-        let closest = null;
-        let closestDist = Infinity;
-        sections.forEach((sec) => {
-            const rect = sec.getBoundingClientRect();
-            if (rect.bottom < 0 || rect.top > vh) return;
-            const center = rect.top + Math.min(rect.height, vh) / 2;
-            const dist = Math.abs(center - target);
-            if (dist < closestDist) {
-                closestDist = dist;
-                closest = sec;
-            }
-        });
-        if (!closest || closest === currentSection) return;
-        currentSection = closest;
-        if (hudSection) hudSection.textContent = closest.dataset.hud || '—';
-        if (hudPit) hudPit.textContent = 'PIT ' + (closest.dataset.pit || '01');
-
-        // Show HUD only after first scroll past hero
-        const heroBottom = sections[0].getBoundingClientRect().bottom;
-        hud.classList.toggle('is-on', heroBottom < vh * 0.4);
-    }
-
-    /* Lap timer — slow virtual ticker, just visual feel */
-    function startLapTimer() {
-        if (!hudLap || reduceMotion) return;
-        const start = performance.now();
-        function tick(now) {
-            const elapsed = (now - start) / 1000;
-            const m = Math.floor(elapsed / 60);
-            const s = Math.floor(elapsed % 60);
-            const ms = Math.floor((elapsed * 100) % 100);
-            hudLap.textContent =
-                String(m).padStart(2, '0') + ':' +
-                String(s).padStart(2, '0') + '.' +
-                String(ms).padStart(2, '0');
+    /* ─── 3. Animated counters ─────────────────────────────── */
+    const counters = home.querySelectorAll('[data-counter]');
+    if (counters.length && 'IntersectionObserver' in window) {
+        const animate = (el) => {
+            const target = Number(el.dataset.counter) || 0;
+            const numEl = el.querySelector('[data-counter-num]');
+            if (!numEl) return;
+            if (reduceMotion) { numEl.textContent = target; return; }
+            const duration = 1800;
+            const start = performance.now();
+            const tick = (now) => {
+                const t = Math.min((now - start) / duration, 1);
+                const eased = 1 - Math.pow(1 - t, 3);
+                numEl.textContent = Math.round(target * eased);
+                if (t < 1) requestAnimationFrame(tick);
+            };
             requestAnimationFrame(tick);
-        }
-        requestAnimationFrame(tick);
+        };
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    animate(entry.target);
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        counters.forEach((c) => obs.observe(c));
     }
 
-    /* ─── 4. Throttled scroll ─ */
-    let ticking = false;
-    function onScroll() {
-        if (ticking) return;
-        ticking = true;
-        requestAnimationFrame(() => {
-            syncCycle();
-            syncHud();
-            ticking = false;
-        });
+    /* ─── 4. Horizontal sticky-scroll cycle ────────────────── */
+    const pin = home.querySelector('[data-cycle-pin]');
+    const track = home.querySelector('[data-cycle-track]');
+    const slides = track ? track.querySelectorAll('.home-cycle-slide') : [];
+    const dots = home.querySelectorAll('[data-cycle-dot]');
+    const counterEl = home.querySelector('[data-cycle-counter]');
+
+    if (pin && track && slides.length && !reduceMotion && window.innerWidth >= 1024) {
+        const totalSlides = slides.length;
+
+        const updateCycle = () => {
+            const rect = pin.getBoundingClientRect();
+            const total = pin.offsetHeight - window.innerHeight;
+            const scrolled = -rect.top;
+            const progress = Math.max(0, Math.min(1, scrolled / total));
+            const translate = -progress * (totalSlides - 1) * 100;
+            track.style.transform = `translate3d(${translate}vw, 0, 0)`;
+
+            const activeIndex = Math.round(progress * (totalSlides - 1));
+            dots.forEach((d) => d.classList.toggle('is-active', Number(d.dataset.cycleDot) === activeIndex));
+            if (counterEl) {
+                counterEl.textContent = String(activeIndex + 1).padStart(2, '0') + ' / ' + String(totalSlides).padStart(2, '0');
+            }
+        };
+
+        let ticking = false;
+        const onScroll = () => {
+            if (ticking) return;
+            ticking = true;
+            requestAnimationFrame(() => { updateCycle(); ticking = false; });
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll, { passive: true });
+        updateCycle();
     }
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll, { passive: true });
-    onScroll();
-    startLapTimer();
+
+    /* ─── 5. Voices rotator ────────────────────────────────── */
+    const stage = home.querySelector('[data-voices-stage]');
+    const voices = stage ? stage.querySelectorAll('.home-voice') : [];
+    const voicePrev = home.querySelector('[data-voice-prev]');
+    const voiceNext = home.querySelector('[data-voice-next]');
+    const voiceCounter = home.querySelector('[data-voice-counter]');
+
+    if (stage && voices.length) {
+        let active = 0;
+        let auto = null;
+
+        const setActive = (idx) => {
+            active = (idx + voices.length) % voices.length;
+            voices.forEach((v, i) => v.classList.toggle('is-active', i === active));
+            if (voiceCounter) {
+                voiceCounter.textContent = String(active + 1).padStart(2, '0') + ' / ' +
+                    String(voices.length).padStart(2, '0');
+            }
+        };
+
+        const startAuto = () => {
+            stopAuto();
+            if (reduceMotion) return;
+            auto = setInterval(() => setActive(active + 1), 6500);
+        };
+        const stopAuto = () => { if (auto) { clearInterval(auto); auto = null; } };
+
+        if (voicePrev) voicePrev.addEventListener('click', () => { setActive(active - 1); startAuto(); });
+        if (voiceNext) voiceNext.addEventListener('click', () => { setActive(active + 1); startAuto(); });
+        stage.addEventListener('mouseenter', stopAuto);
+        stage.addEventListener('mouseleave', startAuto);
+
+        startAuto();
+    }
 })();

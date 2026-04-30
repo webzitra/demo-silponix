@@ -28,9 +28,9 @@
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"></noscript>
 
-    <!-- Pitlane Editorial homepage fonts -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:ital,wght@0,500;0,700;0,800;0,900;1,800;1,900&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:ital,wght@0,500;0,700;0,800;0,900;1,800;1,900&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
+    <!-- MARQUE homepage fonts: Bricolage Grotesque (variable display), Manrope (body), JetBrains Mono (telemetry) -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,500..800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,500..800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
 
     <!-- CSS -->
     <link rel="preload" href="/css/style.css?v=7" as="style">
@@ -103,309 +103,275 @@
         </div>
     </nav>
 
-    <!-- Telemetry HUD (fixed top-right, updates with scroll) -->
-    <aside class="home-hud" id="homeHud" aria-hidden="true">
-        <div class="home-hud-pit"><span data-hud-pit>PIT 01</span></div>
-        <div class="home-hud-row is-active"><span>SECTION</span><span data-hud-section>HERO</span></div>
-        <div class="home-hud-row"><span>LAP</span><span data-hud-lap>00:00</span></div>
-        <div class="home-hud-row"><span>POS</span><span>OTROKOVICE</span></div>
-    </aside>
+    <main id="main-content" class="home" data-marque>
 
-    <main id="main-content" class="home">
+    <!-- Custom cursor (desktop only, hydrated by JS) -->
+    <div class="home-cursor" aria-hidden="true"></div>
+    <div class="home-cursor-ring" aria-hidden="true"></div>
 
     <!-- ════════ 1. HERO ════════ -->
-    <section class="home-hero" id="hlavni" data-hud="HERO" data-pit="01">
+    <section class="home-hero" id="hlavni">
         <div class="home-hero-bg" aria-hidden="true"></div>
         <div class="home-hero-veil" aria-hidden="true"></div>
 
         <div class="home-hero-mark">
-            <span class="home-hero-mark-id">PIT 01 &mdash; HOMEPAGE / 2026 SEASON</span>
-            <span class="home-hero-mark-coord">
-                <span>49.2099&deg;N &middot; 17.5408&deg;E</span>
-                <span>OTROKOVICE &middot; CZ</span>
-            </span>
+            <span class="home-hero-mark-l">SILPONIX &middot; EST 2009</span>
+            <span class="home-hero-mark-c">HONDA / MOTORSPORT</span>
+            <span class="home-hero-mark-r">49.2099°N &middot; 17.5408°E &middot; OTROKOVICE / CZ</span>
         </div>
 
-        <div class="home-hero-content">
-            <div class="home-hero-side" aria-hidden="true">
-                <span>SILPONIX &middot; EST 2009</span>
-                <span>HONDA MOTORSPORT</span>
-            </div>
-            <div class="home-hero-main">
-                <h1 class="home-hero-title">
-                    <span class="hc-line"><span style="--hc-delay: 0.15s;">POSTAVENO</span></span>
-                    <span class="hc-line"><span style="--hc-delay: 0.32s;">PRO <em>TRA&#357;.</em></span></span>
-                </h1>
-                <p class="home-hero-lede">
-                    Bratři Mezihorákové <strong>od roku 2009</strong> stavíme závodní vozy Honda. ECU Hondata, polyuretanové silentbloky, kompletní rebuild motorů. Vlastní dílna v Otrokovicích.
-                </p>
-                <div class="home-hero-cta">
-                    <a href="/shop.html" class="btn btn-primary btn-lg">Prohlédnout shop</a>
-                    <a href="/kontakt.html" class="home-hero-link">Konzultace zdarma
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                    </a>
-                </div>
-            </div>
+        <div class="home-hero-stage">
+            <p class="home-hero-tagline">— Závodní vozy &middot; ECU tuning &middot; Vlastní výroba</p>
+            <h1 class="home-hero-title">
+                <span class="m-line"><span style="--m-delay: 0.15s;">POSTAVENO</span></span>
+                <span class="m-line"><span class="m-red" style="--m-delay: 0.32s;">PRO TRAŤ.</span></span>
+            </h1>
         </div>
 
         <div class="home-hero-foot">
-            <div class="home-hero-foot-track" aria-hidden="true">
-                <span class="home-hero-foot-item">15 YRS ON TRACK</span>
-                <span class="home-hero-foot-item is-accent">50+ BUILDS DELIVERED</span>
-                <span class="home-hero-foot-item">HONDATA CERTIFIED DEALER</span>
-                <span class="home-hero-foot-item">500+ PARTS IN STOCK</span>
-                <span class="home-hero-foot-item is-accent">RALLY &middot; RALLYCROSS &middot; TRACK</span>
-                <span class="home-hero-foot-item">B16 / B18 / K20 / F20C</span>
-                <span class="home-hero-foot-item is-accent">MADE IN CZECH REPUBLIC</span>
-                <!-- Duplicate -->
-                <span class="home-hero-foot-item">15 YRS ON TRACK</span>
-                <span class="home-hero-foot-item is-accent">50+ BUILDS DELIVERED</span>
-                <span class="home-hero-foot-item">HONDATA CERTIFIED DEALER</span>
-                <span class="home-hero-foot-item">500+ PARTS IN STOCK</span>
-                <span class="home-hero-foot-item is-accent">RALLY &middot; RALLYCROSS &middot; TRACK</span>
-                <span class="home-hero-foot-item">B16 / B18 / K20 / F20C</span>
-                <span class="home-hero-foot-item is-accent">MADE IN CZECH REPUBLIC</span>
+            <p class="home-hero-foot-l">
+                <strong>Specialisté na závodní vozy Honda</strong> — ECU Hondata, polyuretanové silentbloky, kompletní stavba motorů. Vlastní dílna v Otrokovicích, 15 let v motorsportu.
+            </p>
+            <div class="home-hero-cta">
+                <a href="/shop.html" class="home-cta home-cta--solid">
+                    <span class="home-cta-arrow">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </span>
+                    <span class="home-cta-label"><span data-text="PROHLÉDNOUT SHOP">PROHLÉDNOUT SHOP</span></span>
+                </a>
+                <a href="/kontakt.html" class="home-cta">
+                    <span class="home-cta-arrow">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </span>
+                    <span class="home-cta-label"><span data-text="KONZULTACE">KONZULTACE</span></span>
+                </a>
             </div>
         </div>
+        <span class="home-hero-scroll" aria-hidden="true"></span>
     </section>
 
-    <!-- ════════ 2. MANIFESTO ════════ -->
-    <section class="home-manifesto" data-hud="MANIFESTO" data-pit="02">
+    <!-- ════════ 2. SPEC BAND ════════ -->
+    <section class="home-spec-band" aria-label="Naše čísla">
         <div class="container">
-            <div class="home-manifesto-grid">
-                <p class="home-manifesto-tag" data-hc-reveal>PIT 02 &mdash; MANIFESTO</p>
-                <blockquote class="home-manifesto-quote" data-hc-reveal style="--hc-rd: 0.1s;">
-                    Závodní vozy <em>postavíme tak,</em> jako bychom v nich zítra startovali.
-                </blockquote>
-                <div class="home-manifesto-body">
-                    <p data-hc-reveal style="--hc-rd: 0.2s;">
-                        Začalo to v roce 2009 v malé garáži v Otrokovicích &mdash; první Honda Civic EG2 pro rally. Od té doby jsme postavili přes 50 závodních vozů, prošli desítkami sezón, vyrobili stovky vlastních dílů. Známe každý šroub.
-                    </p>
-                    <p data-hc-reveal style="--hc-rd: 0.3s;">
-                        Závodění není pro nás byznys s odstupem &mdash; je to to, čím žijeme. Sami jezdíme rally a rallycross. Auta, která stavíme, testujeme nejprve sami na trati. Odevzdáváme jen ty, kterým bychom svěřili vlastní startovní rošt.
-                    </p>
+            <div class="home-spec-band-grid">
+                <div class="home-spec-cell" data-index="01 / DECADES">
+                    <span class="home-spec-num" data-counter="15"><span data-counter-num>0</span><em>+</em></span>
+                    <span class="home-spec-label">Let v motorsportu &middot; od 2009</span>
                 </div>
-                <div class="home-manifesto-sig" data-hc-reveal style="--hc-rd: 0.4s;">
-                    <div>
-                        <strong>Petr &amp; Jiří Mezihorákové</strong>
-                        Zakladatelé &middot; Závodníci &middot; Konstruktéři
-                    </div>
-                    <div style="text-align: right;">SILPONIX &middot; OTROKOVICE / CZ</div>
+                <div class="home-spec-cell" data-index="02 / BUILDS">
+                    <span class="home-spec-num" data-counter="50"><span data-counter-num>0</span><em>+</em></span>
+                    <span class="home-spec-label">Postavených závodních vozů</span>
+                </div>
+                <div class="home-spec-cell" data-index="03 / PARTS">
+                    <span class="home-spec-num" data-counter="500"><span data-counter-num>0</span><em>+</em></span>
+                    <span class="home-spec-label">Dílů v e-shopu &middot; 24h shipping</span>
+                </div>
+                <div class="home-spec-cell" data-index="04 / TRACK">
+                    <span class="home-spec-num" data-counter="100"><span data-counter-num>0</span><em>%</em></span>
+                    <span class="home-spec-label">Testováno na trati</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ════════ 3. WORK (services bento) ════════ -->
-    <section class="home-work" id="sluzby" data-hud="WORK" data-pit="03">
+    <!-- ════════ 3. STATEMENT ════════ -->
+    <section class="home-statement">
         <div class="container">
-            <header class="home-section-head" data-section-head>
+            <p class="home-statement-eyebrow" data-m-reveal>— FILOZOFIE</p>
+            <h2 class="home-statement-text" data-m-reveal style="--m-d: 0.1s;">
+                Auta odevzdáváme jen tehdy, když bychom v nich <em>sami startovali</em> v sobotu na rally.
+            </h2>
+            <dl class="home-statement-meta" data-m-reveal style="--m-d: 0.2s;">
+                <div class="home-statement-meta-cell">
+                    <dt>HERITAGE</dt>
+                    <dd>Bratři Mezihorákové &middot; rally + rallycross závodníci od 2007</dd>
+                </div>
+                <div class="home-statement-meta-cell">
+                    <dt>CERTIFICATION</dt>
+                    <dd>Hondata authorized dealer &middot; CZ</dd>
+                </div>
+                <div class="home-statement-meta-cell">
+                    <dt>SPEC</dt>
+                    <dd>B16/B18/K20/F20C &middot; FIA-spec stavby</dd>
+                </div>
+                <div class="home-statement-meta-cell">
+                    <dt>LOCATION</dt>
+                    <dd>K. H. Máchy 34 &middot; 765 02 Otrokovice</dd>
+                </div>
+            </dl>
+        </div>
+    </section>
+
+    <!-- ════════ 4. WORK — alternating editorial cards ════════ -->
+    <section class="home-work" id="sluzby">
+        <div class="container">
+            <header class="home-work-head" data-m-reveal>
                 <div>
-                    <span class="home-section-eyebrow">PIT 03 &mdash; WORK</span>
-                    <h2 class="home-section-title">Šest věcí, <em>kterými žijeme.</em></h2>
+                    <p class="home-work-head-eyebrow">— PORTFOLIO / 06 ZÁKLADNÍCH SLUŽEB</p>
+                    <h2 class="home-work-head-title">Šest věcí,<br>kterými žijeme.</h2>
                 </div>
-                <div class="home-section-meta">
-                    01 / 06 SLU&Z;EB<br>
+                <p class="home-work-head-meta">
                     OD KOMPLETNÍ STAVBY<br>
                     PO JEDINÝ ŠROUB
-                </div>
+                </p>
             </header>
 
-            <div class="home-work-grid">
-                <a href="/sluzby.html#stavba" class="home-work-tile is-hero" data-hc-reveal>
-                    <div class="home-work-tile-img" aria-hidden="true" style="background-image: url('/img/gallery/race-car.jpg');"></div>
-                    <div class="home-work-tile-veil" aria-hidden="true"></div>
-                    <span class="home-work-tile-arrow" aria-hidden="true">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-                    </span>
-                    <span class="home-work-tile-num"><span>01</span> / VLAJKOVÁ SLUŽBA</span>
-                    <h3 class="home-work-tile-title">Stavba <em style="font-style:italic;color:var(--hc-amber);">závodních</em> vozů Honda</h3>
-                    <p class="home-work-tile-desc">Kompletní příprava pro rally, rallycross, okruh. Pětapadesát postavených aut na vlastním kontě.</p>
-                    <div class="home-work-tile-specs" aria-hidden="true">
-                        <span><strong>50+</strong> BUILDS</span>
-                        <span><strong>3-6</strong> MĚS / BUILD</span>
-                        <span><strong>FIA</strong> SPEC OPT</span>
+            <div class="home-work-list">
+                <a href="/sluzby.html#stavba" class="home-work-card" data-m-reveal>
+                    <div class="home-work-card-img" aria-hidden="true">
+                        <div style="background-image: url('/img/gallery/race-car.jpg');"></div>
+                    </div>
+                    <div class="home-work-card-body">
+                        <span class="home-work-card-num"><strong>01 — VLAJKOVÁ SLUŽBA</strong> &middot; Rally / Rallycross / Okruh</span>
+                        <h3 class="home-work-card-title">Stavba <em>závodních</em> vozů Honda</h3>
+                        <p class="home-work-card-desc">Kompletní příprava závodního vozu od holé skořepiny po startovní rošt. FIA-spec klec, závodní motor, podvozek, elektronika. Více než 50 postavených aut.</p>
+                        <span class="home-work-card-cta">VIDĚT VOZY</span>
                     </div>
                 </a>
 
-                <a href="/sluzby.html#hondata" class="home-work-tile is-tall" data-hc-reveal style="--hc-rd: 0.1s;">
-                    <div class="home-work-tile-img" aria-hidden="true" style="background-image: url('/img/gallery/kovoobrabeeni.png');"></div>
-                    <div class="home-work-tile-veil" aria-hidden="true"></div>
-                    <span class="home-work-tile-arrow" aria-hidden="true">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-                    </span>
-                    <span class="home-work-tile-num"><span>02</span> / HONDATA CERTIFIED</span>
-                    <h3 class="home-work-tile-title">ECU tuning &amp; ladění</h3>
-                    <p class="home-work-tile-desc">K-Pro, S300, FlashPro. Dyno kalibrace na míru tvému motoru.</p>
-                    <div class="home-work-tile-specs" aria-hidden="true">
-                        <span><strong>K-PRO</strong> / S300 / FLASHPRO</span>
-                        <span><strong>DYNO</strong> KALIBRACE</span>
+                <a href="/sluzby.html#hondata" class="home-work-card" data-m-reveal>
+                    <div class="home-work-card-img" aria-hidden="true">
+                        <div style="background-image: url('/img/gallery/kovoobrabeeni.png');"></div>
+                    </div>
+                    <div class="home-work-card-body">
+                        <span class="home-work-card-num"><strong>02 — HONDATA CERTIFIED</strong> &middot; K-Pro / S300 / FlashPro</span>
+                        <h3 class="home-work-card-title">ECU tuning &amp; <em>dyno</em> kalibrace</h3>
+                        <p class="home-work-card-desc">Autorizovaný Hondata dealer. Kompletní instalace, mapování na dynamometru, podpora po celou životnost ECU. Pro civilní i závodní spec.</p>
+                        <span class="home-work-card-cta">DETAIL</span>
                     </div>
                 </a>
 
-                <a href="/sluzby.html#silentbloky" class="home-work-tile is-quad" data-hc-reveal style="--hc-rd: 0.2s;">
-                    <div class="home-work-tile-img" aria-hidden="true" style="background-image: url('/img/gallery/pu-silentbloky.png');"></div>
-                    <div class="home-work-tile-veil" aria-hidden="true"></div>
-                    <span class="home-work-tile-arrow" aria-hidden="true">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-                    </span>
-                    <span class="home-work-tile-num"><span>03</span> / VLASTNÍ VÝROBA</span>
-                    <h3 class="home-work-tile-title">PU silentbloky</h3>
-                    <p class="home-work-tile-desc">Polyuretan, tužší než originál.</p>
-                    <div class="home-work-tile-specs" aria-hidden="true">
-                        <span><strong>SHORE</strong> 80-95A</span>
-                        <span><strong>CIVIC</strong> / INTEGRA / S2K</span>
+                <a href="/sluzby.html#silentbloky" class="home-work-card" data-m-reveal>
+                    <div class="home-work-card-img" aria-hidden="true">
+                        <div style="background-image: url('/img/gallery/pu-silentbloky.png');"></div>
+                    </div>
+                    <div class="home-work-card-body">
+                        <span class="home-work-card-num"><strong>03 — VLASTNÍ VÝROBA</strong> &middot; Shore 80–95A</span>
+                        <h3 class="home-work-card-title">PU silentbloky <em>tužší</em> než originál</h3>
+                        <p class="home-work-card-desc">Polyuretanové silentbloky vyrobené v naší dílně. Civic, Integra, S2000. Tužší geometrie, lepší odezva, delší životnost. Na zakázku i mimo Honda.</p>
+                        <span class="home-work-card-cta">DETAIL</span>
                     </div>
                 </a>
 
-                <a href="/sluzby.html#motor" class="home-work-tile is-quad" data-hc-reveal style="--hc-rd: 0.3s;">
-                    <div class="home-work-tile-img" aria-hidden="true" style="background-image: url('/img/gallery/remenice.png');"></div>
-                    <div class="home-work-tile-veil" aria-hidden="true"></div>
-                    <span class="home-work-tile-arrow" aria-hidden="true">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-                    </span>
-                    <span class="home-work-tile-num"><span>04</span> / ENGINE SHOP</span>
-                    <h3 class="home-work-tile-title">Motory &amp; převodovky</h3>
-                    <p class="home-work-tile-desc">Rebuild + forging. B-series, K-series, F20C.</p>
-                    <div class="home-work-tile-specs" aria-hidden="true">
-                        <span><strong>B16/18</strong> &middot; K20 &middot; F20C</span>
-                        <span><strong>FORGED</strong> INTERNALS</span>
+                <a href="/sluzby.html#motor" class="home-work-card" data-m-reveal>
+                    <div class="home-work-card-img" aria-hidden="true">
+                        <div style="background-image: url('/img/gallery/remenice.png');"></div>
+                    </div>
+                    <div class="home-work-card-body">
+                        <span class="home-work-card-num"><strong>04 — ENGINE SHOP</strong> &middot; B16 / B18 / K20 / F20C</span>
+                        <h3 class="home-work-card-title">Stavba motorů &amp; převodovek</h3>
+                        <p class="home-work-card-desc">Kompletní rebuild s forged interními komponenty. Závodní i civilní spec, vč. výroby vlastních dílů na CNC pro úpravy mimo katalog.</p>
+                        <span class="home-work-card-cta">DETAIL</span>
                     </div>
                 </a>
 
-                <a href="/sluzby.html#pronajem" class="home-work-tile is-quad" data-hc-reveal style="--hc-rd: 0.4s;">
-                    <div class="home-work-tile-img" aria-hidden="true" style="background-image: url('/img/blog/koprivnice.jpg');"></div>
-                    <div class="home-work-tile-veil" aria-hidden="true"></div>
-                    <span class="home-work-tile-arrow" aria-hidden="true">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-                    </span>
-                    <span class="home-work-tile-num"><span>05</span> / TRACK-DAY READY</span>
-                    <h3 class="home-work-tile-title">Pronájem vozu</h3>
-                    <p class="home-work-tile-desc">Civic Type R nebo Integra DC2 s mechanikem.</p>
-                    <div class="home-work-tile-specs" aria-hidden="true">
-                        <span><strong>FK8</strong> / DC2</span>
-                        <span><strong>+ MECH</strong></span>
+                <a href="/sluzby.html#pronajem" class="home-work-card" data-m-reveal>
+                    <div class="home-work-card-img" aria-hidden="true">
+                        <div style="background-image: url('/img/blog/koprivnice.jpg');"></div>
+                    </div>
+                    <div class="home-work-card-body">
+                        <span class="home-work-card-num"><strong>05 — TRACK-DAY READY</strong> &middot; Civic FK8 / Integra DC2</span>
+                        <h3 class="home-work-card-title">Pronájem <em>závodního</em> vozu</h3>
+                        <p class="home-work-card-desc">Civic Type R FK8 nebo Integra DC2 připraven pro track-day, závody nebo zážitkovou jízdu. Vůz dodáme s mechanikem na trať.</p>
+                        <span class="home-work-card-cta">REZERVOVAT</span>
                     </div>
                 </a>
 
-                <a href="/sluzby.html#servis" class="home-work-tile is-half" data-hc-reveal style="--hc-rd: 0.5s;">
-                    <div class="home-work-tile-img" aria-hidden="true" style="background-image: url('/img/gallery/servis.png');"></div>
-                    <div class="home-work-tile-veil" aria-hidden="true"></div>
-                    <span class="home-work-tile-arrow" aria-hidden="true">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-                    </span>
-                    <span class="home-work-tile-num"><span>06</span> / SEZÓNNÍ SERVIS</span>
-                    <h3 class="home-work-tile-title">Servis &amp; údržba</h3>
-                    <p class="home-work-tile-desc">Honda specialisté pro civilní i závodní vozy.</p>
-                    <div class="home-work-tile-specs" aria-hidden="true">
-                        <span><strong>OEM</strong> + RACE</span>
-                        <span><strong>HONDA</strong> ONLY</span>
+                <a href="/shop.html" class="home-work-card" data-m-reveal>
+                    <div class="home-work-card-img" aria-hidden="true">
+                        <div style="background-image: url('/img/gallery/race-car.jpg'); filter: grayscale(0.9) brightness(0.4);"></div>
                     </div>
-                </a>
-
-                <a href="/shop.html" class="home-work-tile is-half" data-hc-reveal style="--hc-rd: 0.6s;">
-                    <div class="home-work-tile-img" aria-hidden="true" style="background-image: url('/img/gallery/race-car.jpg'); filter: grayscale(0.7) brightness(0.4);"></div>
-                    <div class="home-work-tile-veil" aria-hidden="true"></div>
-                    <span class="home-work-tile-arrow" aria-hidden="true">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-                    </span>
-                    <span class="home-work-tile-num"><span>07</span> / E-SHOP</span>
-                    <h3 class="home-work-tile-title">500+ dílů <em style="font-style:italic;color:var(--hc-amber);">skladem</em></h3>
-                    <p class="home-work-tile-desc">Hondata, podvozkové komponenty, výfuky, brzdy. Expedice do 24 h.</p>
-                    <div class="home-work-tile-specs" aria-hidden="true">
-                        <span><strong>500+</strong> SKU</span>
-                        <span><strong>24H</strong> SHIPPING</span>
-                        <span><strong>CZ + EU</strong></span>
+                    <div class="home-work-card-body">
+                        <span class="home-work-card-num"><strong>06 — E-SHOP</strong> &middot; 500+ SKU &middot; 24h shipping</span>
+                        <h3 class="home-work-card-title">Díly skladem,<br>expedice <em>do 24 h</em></h3>
+                        <p class="home-work-card-desc">Hondata, podvozkové komponenty, brzdy, výfuky, silentbloky. Originální i vlastní výroba. Doprava CZ + EU.</p>
+                        <span class="home-work-card-cta">DO E-SHOPU</span>
                     </div>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- ════════ 4. BUILD CYCLE (sticky pin) ════════ -->
-    <section class="home-cycle" id="jak-to-funguje" data-hud="BUILD CYCLE" data-pit="04">
-        <div class="container">
-            <header class="home-section-head" data-section-head>
-                <div>
-                    <span class="home-section-eyebrow">PIT 04 &mdash; THE BUILD CYCLE</span>
-                    <h2 class="home-section-title">Od poptávky <em>po startovní rošt.</em></h2>
-                </div>
-                <div class="home-section-meta">
-                    4 SEKTORY<br>
-                    DELIVERY 3-6 MĚS<br>
-                    KONZULTACE FREE
-                </div>
-            </header>
-
-            <div class="home-cycle-track">
-                <aside class="home-cycle-side" data-pin-target>
-                    <p class="home-cycle-eyebrow">SEKTOR <span data-pin-num>01</span> / 04</p>
-                    <span class="home-cycle-num" data-pin-num>01</span>
-                    <h3 class="home-cycle-title" data-pin-title>Poptávka</h3>
-                    <p class="home-cycle-desc" data-pin-desc>Telefon, e-mail, formulář. Krátký popis projektu, termín. Reagujeme do 24 h.</p>
-                    <div class="home-cycle-progress" aria-hidden="true">
-                        <span class="home-cycle-prog-item is-active" data-step="01">
-                            <span class="home-cycle-prog-dot"></span>
-                            <span>POPTÁVKA</span>
-                            <span class="home-cycle-prog-time">00:00</span>
-                        </span>
-                        <span class="home-cycle-prog-item" data-step="02">
-                            <span class="home-cycle-prog-dot"></span>
-                            <span>KONZULTACE</span>
-                            <span class="home-cycle-prog-time">03:24</span>
-                        </span>
-                        <span class="home-cycle-prog-item" data-step="03">
-                            <span class="home-cycle-prog-dot"></span>
-                            <span>REALIZACE</span>
-                            <span class="home-cycle-prog-time">07:48</span>
-                        </span>
-                        <span class="home-cycle-prog-item" data-step="04">
-                            <span class="home-cycle-prog-dot"></span>
-                            <span>TESTOVÁNÍ</span>
-                            <span class="home-cycle-prog-time">11:12</span>
+    <!-- ════════ 5. CYCLE — horizontal sticky scroll ════════ -->
+    <section class="home-cycle" id="jak-to-funguje" aria-label="Jak to funguje">
+        <div class="home-cycle-pin" data-cycle-pin>
+            <div class="home-cycle-stage">
+                <div class="home-cycle-bar">
+                    <span class="home-cycle-bar-l">— THE BUILD CYCLE / 4 SEKTORY</span>
+                    <div class="home-cycle-bar-prog">
+                        <span data-cycle-counter>01 / 04</span>
+                        <span class="home-cycle-bar-prog-dots" aria-hidden="true">
+                            <span class="home-cycle-bar-prog-dot is-active" data-cycle-dot="0"></span>
+                            <span class="home-cycle-bar-prog-dot" data-cycle-dot="1"></span>
+                            <span class="home-cycle-bar-prog-dot" data-cycle-dot="2"></span>
+                            <span class="home-cycle-bar-prog-dot" data-cycle-dot="3"></span>
                         </span>
                     </div>
-                </aside>
-
-                <div class="home-cycle-rail">
-                    <article class="home-cycle-card is-active" data-step="01" data-title="Poptávka" data-desc="Telefon, e-mail, formulář. Krátký popis projektu, termín. Reagujeme do 24 h.">
-                        <span class="home-cycle-card-time">SEKTOR 01 &middot; 00:00</span>
-                        <h4 class="home-cycle-card-title">Řekněte nám, co potřebujete</h4>
-                        <p class="home-cycle-card-desc">Stačí krátký popis projektu — co chcete postavit, na jaký účel, do kdy. Telefon, e-mail nebo formulář. Reagujeme do 24 hodin a domluvíme schůzku.</p>
+                </div>
+                <div class="home-cycle-track" data-cycle-track>
+                    <article class="home-cycle-slide">
+                        <div class="home-cycle-slide-img" aria-hidden="true">
+                            <div style="background-image: url('/img/gallery/race-car.jpg');"></div>
+                        </div>
+                        <div class="home-cycle-slide-body">
+                            <h3 class="home-cycle-slide-num">01<small>/04</small></h3>
+                            <span class="home-cycle-slide-eyebrow">SEKTOR 01 &middot; POPTÁVKA</span>
+                            <h4 class="home-cycle-slide-title">Řekněte nám, co potřebujete.</h4>
+                            <p class="home-cycle-slide-desc">Stačí krátký popis projektu — co chcete postavit, na jaký účel a do kdy. Telefon, e-mail nebo formulář. Reagujeme do 24 hodin.</p>
+                        </div>
                     </article>
-                    <article class="home-cycle-card" data-step="02" data-title="Konzultace" data-desc="Sejdeme se osobně nebo online. Probereme cíle, navrhneme řešení, harmonogram, kalkulaci. Konzultace zdarma.">
-                        <span class="home-cycle-card-time">SEKTOR 02 &middot; 03:24</span>
-                        <h4 class="home-cycle-card-title">Probereme strategii bez závazku</h4>
-                        <p class="home-cycle-card-desc">Sejdeme se osobně v Otrokovicích nebo online. Probereme cíle, navrhneme technické řešení, připravíme harmonogram a transparentní kalkulaci. Konzultace je vždy zdarma.</p>
+                    <article class="home-cycle-slide">
+                        <div class="home-cycle-slide-img" aria-hidden="true">
+                            <div style="background-image: url('/img/gallery/kovoobrabeeni.png');"></div>
+                        </div>
+                        <div class="home-cycle-slide-body">
+                            <h3 class="home-cycle-slide-num">02<small>/04</small></h3>
+                            <span class="home-cycle-slide-eyebrow">SEKTOR 02 &middot; KONZULTACE</span>
+                            <h4 class="home-cycle-slide-title">Probereme strategii bez závazku.</h4>
+                            <p class="home-cycle-slide-desc">Sejdeme se osobně v Otrokovicích nebo online. Probereme cíle, navrhneme technické řešení, harmonogram a transparentní kalkulaci. Konzultace je vždy zdarma.</p>
+                        </div>
                     </article>
-                    <article class="home-cycle-card" data-step="03" data-title="Realizace" data-desc="Stavíme. Pravidelně reportujeme — fotky, video, přesný stav.">
-                        <span class="home-cycle-card-time">SEKTOR 03 &middot; 07:48</span>
-                        <h4 class="home-cycle-card-title">Stavíme. Pravidelně reportujeme.</h4>
-                        <p class="home-cycle-card-desc">Tým Silponix začíná pracovat — výroba, montáž, příprava dílů. Po klíčových milnících posíláme fotky a krátké video updaty. Klient vidí každý šroub.</p>
+                    <article class="home-cycle-slide">
+                        <div class="home-cycle-slide-img" aria-hidden="true">
+                            <div style="background-image: url('/img/gallery/remenice.png');"></div>
+                        </div>
+                        <div class="home-cycle-slide-body">
+                            <h3 class="home-cycle-slide-num">03<small>/04</small></h3>
+                            <span class="home-cycle-slide-eyebrow">SEKTOR 03 &middot; REALIZACE</span>
+                            <h4 class="home-cycle-slide-title">Stavíme. Pravidelně reportujeme.</h4>
+                            <p class="home-cycle-slide-desc">Tým Silponix začíná pracovat — výroba, montáž, příprava dílů. Po klíčových milnících posíláme fotky a krátké video updaty. Klient vidí každý šroub.</p>
+                        </div>
                     </article>
-                    <article class="home-cycle-card" data-step="04" data-title="Testování" data-desc="Každý díl i celý vůz testujeme na trati. Odevzdáváme jen tehdy, když splní naše standardy.">
-                        <span class="home-cycle-card-time">SEKTOR 04 &middot; 11:12</span>
-                        <h4 class="home-cycle-card-title">Testujeme na trati. Před odevzdáním.</h4>
-                        <p class="home-cycle-card-desc">Každý díl i celý vůz musí projít testem na trati. Odevzdáváme až tehdy, když výsledek splní naše vlastní standardy. Sami víme, co znamená spolehlivost na startu.</p>
+                    <article class="home-cycle-slide">
+                        <div class="home-cycle-slide-img" aria-hidden="true">
+                            <div style="background-image: url('/img/blog/koprivnice.jpg');"></div>
+                        </div>
+                        <div class="home-cycle-slide-body">
+                            <h3 class="home-cycle-slide-num">04<small>/04</small></h3>
+                            <span class="home-cycle-slide-eyebrow">SEKTOR 04 &middot; TESTOVÁNÍ</span>
+                            <h4 class="home-cycle-slide-title">Testujeme na trati. Před odevzdáním.</h4>
+                            <p class="home-cycle-slide-desc">Každý díl i celý vůz musí projít testem na trati. Odevzdáváme až tehdy, když výsledek splní naše vlastní standardy. Sami víme, co znamená spolehlivost na startu.</p>
+                        </div>
                     </article>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ════════ 5. PARTS ════════ -->
-    <section class="home-parts" id="produkty" data-hud="PARTS" data-pit="05">
+    <!-- ════════ 6. PARTS ════════ -->
+    <section class="home-parts" id="produkty">
         <div class="container">
-            <header class="home-section-head" data-section-head>
+            <header class="home-work-head" data-m-reveal>
                 <div>
-                    <span class="home-section-eyebrow">PIT 05 &mdash; PARTS CATALOG</span>
-                    <h2 class="home-section-title">Vybrané díly <em>skladem.</em></h2>
+                    <p class="home-work-head-eyebrow">— PARTS CATALOG / 500+ SKU SKLADEM</p>
+                    <h2 class="home-work-head-title">Vybrané díly.</h2>
                 </div>
-                <div class="home-section-meta">
-                    <a href="/shop.html" class="home-hero-link" style="display: inline-flex;">Celý katalog
+                <a href="/shop.html" class="home-cta">
+                    <span class="home-cta-arrow">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                    </a>
-                </div>
+                    </span>
+                    <span class="home-cta-label"><span data-text="CELÝ KATALOG">CELÝ KATALOG</span></span>
+                </a>
             </header>
         </div>
         <div class="home-parts-rail-wrap">
@@ -413,85 +379,69 @@
         </div>
     </section>
 
-    <!-- ════════ 6. VOICES ════════ -->
-    <section class="home-voices" id="reference" data-hud="VOICES" data-pit="06">
+    <!-- ════════ 7. VOICES — single rotating quote ════════ -->
+    <section class="home-voices" id="reference">
         <div class="container">
-            <header class="home-section-head" data-section-head>
-                <div>
-                    <span class="home-section-eyebrow">PIT 06 &mdash; VOICES</span>
-                    <h2 class="home-section-title">Důvěřují nám <em>závodníci.</em></h2>
-                </div>
-                <div class="home-section-meta">
-                    50+ POSTAVENÝCH VOZŮ<br>
-                    100% TESTOVÁNO<br>
-                    NA TRATI
+            <header class="home-voices-head" data-m-reveal>
+                <p class="home-voices-eyebrow">— VOICES / 04 ZÁKAZNÍCI</p>
+                <div class="home-voices-pager">
+                    <span data-voice-counter>01 / 04</span>
+                    <button type="button" class="home-voices-pager-btn" data-voice-prev aria-label="Předchozí">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                    </button>
+                    <button type="button" class="home-voices-pager-btn" data-voice-next aria-label="Další">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </button>
                 </div>
             </header>
 
-            <div class="home-voices-grid">
-                <div class="home-voice" data-hc-reveal>
-                    <span class="home-voice-num">01<br>VOICE</span>
-                    <blockquote class="home-voice-quote">
-                        "Silentbloky <em>výrazně tužší</em> než originál &mdash; přesně to, co jsem potřeboval pro rallycross. Montáž bez problémů, kvalita na 100 %."
-                    </blockquote>
+            <div class="home-voices-stage" data-voices-stage>
+                <article class="home-voice is-active" data-voice="0">
+                    <blockquote class="home-voice-quote">"Silentbloky <em>výrazně tužší</em> než originál — přesně to, co jsem potřeboval pro rallycross."</blockquote>
                     <div class="home-voice-attr">
-                        <strong>M. Horáček</strong>
-                        Rallycross<br>
-                        Brno &middot; 2024
+                        <span class="home-voice-name">Michal Horáček</span>
+                        <span class="home-voice-meta">Rallycross &middot; Brno &middot; 2024</span>
+                        <span class="home-voice-result">CIVIC EG6</span>
                     </div>
-                </div>
-
-                <div class="home-voice" data-hc-reveal style="--hc-rd: 0.1s;">
-                    <span class="home-voice-num">02<br>VOICE</span>
-                    <blockquote class="home-voice-quote">
-                        "Hondata K-Pro instalace proběhla <em>perfektně.</em> Kuba ví co dělá &mdash; kalibrace na dynu přesně podle požadavků."
-                    </blockquote>
+                </article>
+                <article class="home-voice" data-voice="1">
+                    <blockquote class="home-voice-quote">"Hondata K-Pro instalace <em>perfektní.</em> Kalibrace na dynu přesně podle požadavků."</blockquote>
                     <div class="home-voice-attr">
-                        <strong>T. Nevidal</strong>
-                        Civic Type R<br>
-                        Brno &middot; Okruh 2024
+                        <span class="home-voice-name">Tomáš Nevidal</span>
+                        <span class="home-voice-meta">Track-day &middot; Brno &middot; 2024</span>
+                        <span class="home-voice-result">CIVIC TYPE R</span>
                     </div>
-                </div>
-
-                <div class="home-voice" data-hc-reveal style="--hc-rd: 0.2s;">
-                    <span class="home-voice-num">03<br>VOICE</span>
-                    <blockquote class="home-voice-quote">
-                        "Stavba B18C swap do EG6 &mdash; <em>perfektní precizace</em> každého šroubu. Tým fakt ví co dělá."
-                    </blockquote>
+                </article>
+                <article class="home-voice" data-voice="2">
+                    <blockquote class="home-voice-quote">"Stavba B18C swap — <em>perfektní precizace</em> každého šroubu."</blockquote>
                     <div class="home-voice-attr">
-                        <strong>D. Vrána</strong>
-                        Honda EG6<br>
-                        Olomouc &middot; 2023
+                        <span class="home-voice-name">David Vrána</span>
+                        <span class="home-voice-meta">Olomouc &middot; 2023</span>
+                        <span class="home-voice-result">EG6 / B18C</span>
                     </div>
-                </div>
-
-                <div class="home-voice" data-hc-reveal style="--hc-rd: 0.3s;">
-                    <span class="home-voice-num">04<br>VOICE</span>
-                    <blockquote class="home-voice-quote">
-                        "Z servisu mi vyšlo <em>+12 % výkonu</em> na dynu. Vyrazilo mi to dech, jakým způsobem to udělali."
-                    </blockquote>
+                </article>
+                <article class="home-voice" data-voice="3">
+                    <blockquote class="home-voice-quote">"Z servisu mi vyšlo <em>+12 %</em> výkonu na dynu. Vyrazilo mi to dech."</blockquote>
                     <div class="home-voice-attr">
-                        <strong>R. Šimek</strong>
-                        S2000 AP1<br>
-                        Liberec &middot; 2024
+                        <span class="home-voice-name">Radek Šimek</span>
+                        <span class="home-voice-meta">Liberec &middot; 2024</span>
+                        <span class="home-voice-result">S2000 AP1</span>
                     </div>
-                </div>
+                </article>
             </div>
         </div>
     </section>
 
-    <!-- ════════ 7. CLOSER CTA ════════ -->
-    <section class="home-closer" data-hud="READY?" data-pit="07">
+    <!-- ════════ 8. CLOSER ════════ -->
+    <section class="home-closer">
         <div class="container">
-            <div class="home-closer-grid">
-                <header data-hc-reveal>
-                    <p class="home-closer-eyebrow">PIT 07 &mdash; READY?</p>
-                    <h2 class="home-closer-title">Postavme<br>&nbsp;<em>něco rychlého.</em></h2>
-                </header>
+            <p class="home-closer-eyebrow" data-m-reveal>— PŘIPRAVENI ZAČÍT?</p>
+            <h2 class="home-closer-title" data-m-reveal style="--m-d: 0.1s;">Postavíme<br><em>něco rychlého.</em></h2>
 
-                <dl class="home-closer-meta" data-hc-reveal style="--hc-rd: 0.1s;">
+            <div class="home-closer-foot">
+                <dl class="home-closer-meta" data-m-reveal style="--m-d: 0.2s;">
                     <div>
-                        <dt>TELEFON</dt>
+                        <dt>TELEFON / 24H</dt>
                         <dd><a href="tel:+420739657624">+420 739 657 624</a></dd>
                     </div>
                     <div>
@@ -502,15 +452,20 @@
                         <dt>ADRESA</dt>
                         <dd>K. H. Máchy 34<br>765 02 Otrokovice</dd>
                     </div>
-                    <div>
-                        <dt>KOORDINÁTY</dt>
-                        <dd>49.2099°N<br>17.5408°E</dd>
-                    </div>
                 </dl>
-
-                <div class="home-closer-actions" data-hc-reveal style="--hc-rd: 0.2s;">
-                    <a href="tel:+420739657624" class="btn btn-primary btn-lg">Zavolat &mdash; +420 739 657 624</a>
-                    <a href="/kontakt.html" class="btn btn-outline btn-lg">Napsat zprávu</a>
+                <div class="home-closer-actions" data-m-reveal style="--m-d: 0.3s;">
+                    <a href="tel:+420739657624" class="home-cta home-cta--solid">
+                        <span class="home-cta-arrow">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </span>
+                        <span class="home-cta-label"><span data-text="ZAVOLAT">ZAVOLAT</span></span>
+                    </a>
+                    <a href="/kontakt.html" class="home-cta">
+                        <span class="home-cta-arrow">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </span>
+                        <span class="home-cta-label"><span data-text="NAPSAT ZPRÁVU">NAPSAT ZPRÁVU</span></span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -598,7 +553,7 @@
     <script src="/js/i18n.js?v=7"></script>
     <script src="/js/main.js?v=7"></script>
     <script src="/js/eshop.js?v=7"></script>
-    <script src="/js/home.js?v=2" defer></script>
+    <script src="/js/home.js?v=3" defer></script>
     <script src="/js/track.js?v=6" defer></script>
     <script>
     /* Homepage mini-gallery: random images from full Galerie */
