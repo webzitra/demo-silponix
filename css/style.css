@@ -37,19 +37,19 @@ button { cursor: pointer; }
     --accent-rgb: 245, 158, 11;
     --accent-hover: #d97706;
 
-    --bg: #0a0a0a;
-    --bg-alt: #111111;
-    --bg-dark: #111111;
-    --bg-dark-alt: #161616;
-    --surface: #141414;
-    --surface-alt: #1a1a1a;
-    --surface-alt-rgb: 26, 26, 26;
-    --surface-border: #262626;
+    --bg: #050505;
+    --bg-alt: #0d0d0d;
+    --bg-dark: #0d0d0d;
+    --bg-dark-alt: #131313;
+    --surface: #0f0f0f;
+    --surface-alt: #161616;
+    --surface-alt-rgb: 22, 22, 22;
+    --surface-border: rgba(245, 245, 240, 0.1);
 
-    --text: #f5f5f5;
-    --text-secondary: #a3a3a3;
-    --text-muted: #737373;
-    --text-on-dark: #f5f5f5;
+    --text: #f5f5f0;
+    --text-secondary: rgba(245, 245, 240, 0.72);
+    --text-muted: rgba(245, 245, 240, 0.45);
+    --text-on-dark: #f5f5f0;
     --text-on-primary: #ffffff;
 
     --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
@@ -93,8 +93,9 @@ button { cursor: pointer; }
     --z-modal: 500;
     --z-cookie: 400;
 
-    --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-heading: 'Bricolage Grotesque', 'Manrope', 'Helvetica Neue', system-ui, sans-serif;
+    --font-body: 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 }
 
 /* ==================== CUSTOM PROPERTIES — LIGHT ==================== */
@@ -10305,3 +10306,451 @@ a.kontakt-info-value:hover {
     .home-voice-attr { grid-template-columns: 1fr; gap: 0.75rem; }
     .home-voice-result { text-align: left; }
 }
+
+/* ════════════════════════════════════════════════════════════
+   ░░░  M A R Q U E   —   G L O B A L   O V E R R I D E S  ░░░
+   Apply MARQUE aesthetic across the whole site (not just home).
+   Reuses existing class names (.section-badge, .section-title,
+   .page-hero, .product-card, .btn) and overrides their look.
+   ════════════════════════════════════════════════════════════ */
+
+body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text);
+    font-feature-settings: 'ss01' on;
+    letter-spacing: -0.005em;
+}
+
+/* ── Section badges (mono caps with red dash prefix) ─────── */
+.section-badge {
+    font-family: var(--font-mono) !important;
+    font-size: 0.7rem !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.22em !important;
+    text-transform: uppercase !important;
+    color: var(--primary) !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.55rem !important;
+}
+.section-badge::before {
+    content: '—';
+    color: var(--primary);
+    font-weight: 700;
+}
+.section-badge.section-badge-live::before {
+    content: '';
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--primary);
+    box-shadow: 0 0 10px var(--primary);
+    animation: hc-pulse 2.4s ease-out infinite;
+}
+
+/* ── Section titles (huge Bricolage display) ─────────────── */
+.section-title {
+    font-family: var(--font-heading) !important;
+    font-weight: 700 !important;
+    font-variation-settings: 'wdth' 92, 'opsz' 96 !important;
+    font-size: clamp(2.2rem, 5.2vw, 4.6rem) !important;
+    line-height: 0.96 !important;
+    letter-spacing: -0.03em !important;
+    color: var(--text) !important;
+    margin: 0 0 1rem !important;
+    text-wrap: balance;
+    text-transform: none;
+}
+.section-subtitle {
+    font-family: var(--font-body) !important;
+    font-size: clamp(1rem, 1.2vw, 1.1rem) !important;
+    color: var(--text-secondary) !important;
+    line-height: 1.6 !important;
+    max-width: 64ch;
+    margin: 0 auto !important;
+    text-wrap: pretty;
+}
+.section-header {
+    text-align: center;
+    max-width: 920px;
+    margin: 0 auto clamp(2.5rem, 5vw, 4rem) !important;
+}
+.section-header > .section-badge {
+    margin-bottom: 1.25rem !important;
+}
+
+/* ── Page hero (used on shop, kontakt, o-nas, etc) ───────── */
+.page-hero,
+.eshop-hero,
+.legal-hero,
+.kontakt-hero,
+.shop-hero,
+.onas-hero,
+.sluzby-hero,
+.galerie-hero,
+.blog-hero,
+.pdetail-hero {
+    position: relative;
+    padding: clamp(7rem, 18vh, 12rem) 0 clamp(4rem, 8vh, 6rem) !important;
+    background: var(--bg);
+    isolation: isolate;
+    overflow: hidden;
+    min-height: 50vh;
+    display: flex;
+    align-items: end;
+}
+.page-hero::before,
+.eshop-hero::before,
+.legal-hero::before,
+.kontakt-hero::before,
+.shop-hero::before,
+.onas-hero::before,
+.sluzby-hero::before,
+.galerie-hero::before,
+.blog-hero::before,
+.pdetail-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background: var(--bg);
+}
+.page-hero-bg,
+.eshop-hero-bg,
+.kontakt-hero-bg,
+.onas-hero-bg,
+.sluzby-hero-bg,
+.galerie-hero-bg,
+.blog-hero-bg,
+.shop-hero-bg,
+.pdetail-bg {
+    filter: grayscale(0.7) contrast(1.12) brightness(0.45) !important;
+    transform: scale(1.04);
+    transition: transform 12s ease-in-out;
+}
+.page-hero-overlay,
+.eshop-hero-overlay,
+.kontakt-hero-veil,
+.onas-hero-veil,
+.sluzby-hero-veil,
+.galerie-hero-veil,
+.blog-hero-veil,
+.shop-hero-veil,
+.pdetail-veil {
+    background:
+        linear-gradient(180deg, rgba(5,5,5,0.5) 0%, rgba(5,5,5,0.85) 100%),
+        radial-gradient(ellipse at 20% 70%, rgba(var(--primary-rgb), 0.18) 0%, transparent 55%) !important;
+}
+.page-hero-title,
+.eshop-hero-title,
+.kontakt-hero-title,
+.shop-hero-title,
+.onas-hero-title,
+.sluzby-hero-title,
+.galerie-hero-title,
+.blog-hero-title {
+    font-family: var(--font-heading) !important;
+    font-weight: 800 !important;
+    font-variation-settings: 'wdth' 88, 'opsz' 96 !important;
+    font-size: clamp(3rem, 9vw, 8rem) !important;
+    line-height: 0.9 !important;
+    letter-spacing: -0.04em !important;
+    color: var(--text) !important;
+    margin: 0 !important;
+    text-transform: uppercase;
+    text-wrap: balance;
+}
+.page-hero .container,
+.eshop-hero .container,
+.kontakt-hero .container,
+.shop-hero .container,
+.onas-hero .container,
+.sluzby-hero .container,
+.galerie-hero .container,
+.blog-hero .container { padding: 0 clamp(1.25rem, 4vw, 2.5rem); }
+
+/* ── Buttons — sharper, mono caps, MARQUE feel ──────────── */
+.btn {
+    border-radius: 2px !important;
+    font-family: var(--font-heading) !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.04em !important;
+    text-transform: uppercase !important;
+    transition: background 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.btn-primary {
+    background: var(--text) !important;
+    color: var(--bg) !important;
+    border: 1px solid var(--text) !important;
+    text-shadow: none !important;
+}
+.btn-primary:hover:not(:disabled) {
+    background: var(--primary) !important;
+    border-color: var(--primary) !important;
+    color: var(--text) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 0 28px rgba(var(--primary-rgb), 0.4) !important;
+}
+.btn-outline {
+    background: transparent !important;
+    border: 1px solid rgba(245, 245, 240, 0.28) !important;
+    color: var(--text) !important;
+    text-shadow: none !important;
+}
+.btn-outline:hover:not(:disabled) {
+    background: var(--text) !important;
+    color: var(--bg) !important;
+    border-color: var(--text) !important;
+    transform: translateY(-2px);
+    text-shadow: none !important;
+}
+.btn-danger {
+    background: transparent !important;
+    color: var(--primary) !important;
+    border: 1px solid rgba(var(--primary-rgb), 0.5) !important;
+}
+.btn-danger:hover:not(:disabled) {
+    background: var(--primary) !important;
+    color: var(--text) !important;
+    border-color: var(--primary) !important;
+}
+
+/* ── Product card — MARQUE refresh ──────────────────────── */
+.product-card,
+.product-card-link {
+    border-radius: 2px !important;
+}
+.product-card {
+    background: var(--bg-alt) !important;
+    border: 1px solid var(--surface-border) !important;
+    transition: border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.product-card:hover {
+    border-color: rgba(var(--primary-rgb), 0.45) !important;
+    transform: translateY(-3px);
+}
+.product-card-img {
+    background: var(--surface) !important;
+    overflow: hidden;
+}
+.product-card-img img {
+    filter: grayscale(0.4) contrast(1.05) brightness(0.94);
+    transition: filter 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.product-card:hover .product-card-img img {
+    filter: grayscale(0) contrast(1.05) brightness(1);
+    transform: scale(1.06);
+}
+.product-card-cat,
+.product-card-category {
+    font-family: var(--font-mono) !important;
+    font-size: 0.65rem !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.2em !important;
+    text-transform: uppercase !important;
+    color: var(--text-muted) !important;
+}
+.product-card-title,
+.product-card-name {
+    font-family: var(--font-heading) !important;
+    font-weight: 600 !important;
+    font-size: 1.05rem !important;
+    line-height: 1.25 !important;
+    letter-spacing: -0.01em !important;
+    color: var(--text) !important;
+}
+.product-price,
+.product-card-price {
+    font-family: var(--font-heading) !important;
+    font-weight: 700 !important;
+    font-size: 1.25rem !important;
+    color: var(--text) !important;
+    letter-spacing: -0.01em !important;
+}
+.product-price.is-sale {
+    color: var(--primary) !important;
+    -webkit-text-fill-color: var(--primary) !important;
+    background: none !important;
+}
+.product-price-old { color: var(--text-muted) !important; }
+
+/* ── Add-to-cart inside product card — match MARQUE ────── */
+.add-to-cart-btn:not(.shop-view-btn):not(.lang-btn):not(.cart-qty-minus):not(.cart-qty-plus) {
+    background: var(--text) !important;
+    color: var(--bg) !important;
+    border: 1px solid var(--text) !important;
+    border-radius: 2px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    font-family: var(--font-heading) !important;
+    font-weight: 600 !important;
+    text-shadow: none !important;
+    transition: background 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.add-to-cart-btn:not(.shop-view-btn):not(.lang-btn):not(.cart-qty-minus):not(.cart-qty-plus):hover:not(:disabled) {
+    background: var(--primary) !important;
+    color: var(--text) !important;
+    border-color: var(--primary) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 0 24px rgba(var(--primary-rgb), 0.35) !important;
+}
+
+/* Bestseller / sale badges — refined */
+.product-badge,
+.product-card-badge {
+    font-family: var(--font-mono) !important;
+    font-size: 0.6rem !important;
+    letter-spacing: 0.22em !important;
+    text-transform: uppercase !important;
+    border-radius: 0 !important;
+    padding: 0.3rem 0.6rem !important;
+    background: var(--text) !important;
+    color: var(--bg) !important;
+    border: none !important;
+}
+.product-badge--sale {
+    background: var(--primary) !important;
+    color: var(--text) !important;
+    text-shadow: none !important;
+}
+.product-badge--limited {
+    background: var(--bg) !important;
+    color: var(--accent) !important;
+    border: 1px solid var(--accent) !important;
+}
+
+/* ── Cards on other pages (about, services, blog, gallery) ─ */
+.service-card,
+.testimonial-card,
+.stat-card,
+.process-step,
+.blog-card,
+.gallery-item,
+.sponsor-item,
+.faq-item,
+.pdetail-spec-card {
+    border-radius: 4px !important;
+    background: var(--bg-alt) !important;
+    border: 1px solid var(--surface-border) !important;
+}
+.blog-card-title,
+.service-card-title,
+.process-step-title,
+.testimonial-author-name {
+    font-family: var(--font-heading) !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.015em !important;
+}
+
+/* ── Navbar — refine typography (keep structure) ────────── */
+.navbar,
+.nav-bar {
+    background: rgba(5, 5, 5, 0.85) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-bottom: 1px solid var(--surface-border) !important;
+}
+.navbar-link {
+    font-family: var(--font-heading) !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.02em !important;
+    text-transform: uppercase;
+    font-size: 0.82rem !important;
+}
+
+/* ── Footer ─────────────────────────────────────────────── */
+.footer {
+    background: var(--bg) !important;
+    border-top: 1px solid var(--surface-border) !important;
+}
+.footer h4 {
+    font-family: var(--font-mono) !important;
+    font-size: 0.7rem !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.22em !important;
+    text-transform: uppercase !important;
+    color: var(--text-muted) !important;
+}
+.footer-links a,
+.footer-contact-col a {
+    font-family: var(--font-body) !important;
+    color: var(--text-secondary) !important;
+    transition: color 0.25s ease !important;
+}
+.footer-links a:hover,
+.footer-contact-col a:hover { color: var(--text) !important; }
+
+/* ── Form inputs — sharper edges ───────────────────────── */
+.form-input,
+.form-textarea,
+input[type="text"]:not(.home *),
+input[type="email"]:not(.home *),
+input[type="tel"]:not(.home *),
+input[type="password"]:not(.home *),
+input[type="number"]:not(.home *),
+textarea:not(.home *) {
+    border-radius: 2px !important;
+    background: var(--bg-alt) !important;
+    border: 1px solid var(--surface-border) !important;
+    color: var(--text) !important;
+    font-family: var(--font-body) !important;
+}
+.form-input:focus,
+input:focus,
+textarea:focus {
+    border-color: var(--primary) !important;
+    background: var(--surface) !important;
+    box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.18) !important;
+    outline: none !important;
+}
+.form-label,
+label {
+    font-family: var(--font-mono) !important;
+    font-size: 0.7rem !important;
+    letter-spacing: 0.18em !important;
+    text-transform: uppercase !important;
+    color: var(--text-muted) !important;
+}
+
+/* ── pdetail (product detail page) refinements ─────────── */
+.pdetail-buy {
+    background: var(--text) !important;
+    color: var(--bg) !important;
+    border: 1px solid var(--text) !important;
+    border-radius: 2px !important;
+    text-shadow: none !important;
+}
+.pdetail-buy:hover:not(:disabled) {
+    background: var(--primary) !important;
+    color: var(--text) !important;
+    border-color: var(--primary) !important;
+}
+.pdetail-tabs {
+    border-bottom: 1px solid var(--surface-border) !important;
+}
+.pdetail-tab {
+    font-family: var(--font-heading) !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.04em !important;
+    text-transform: uppercase !important;
+    font-size: 0.85rem !important;
+}
+
+/* ── Cookie banner ──────────────────────────────────────── */
+.cookie-banner {
+    background: rgba(5, 5, 5, 0.94) !important;
+    border: 1px solid var(--surface-border) !important;
+    border-radius: 2px !important;
+}
+
