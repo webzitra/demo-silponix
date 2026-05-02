@@ -1,6 +1,6 @@
 /* ============================================================
    SILPONIX DEMO — MAIN.JS
-   Core functionality: theme, menu, navbar, animations, forms, cookies
+   Core functionality: menu, navbar, animations, forms, cookies
    ============================================================ */
 
 (function () {
@@ -9,104 +9,77 @@
     /* ==================== DOM REFERENCES ==================== */
     var navbar = document.getElementById('navbar');
     var navbarMenu = document.getElementById('navbarMenu');
-    var navbarHamburger = document.getElementById('navbarHamburger');
-    var themeToggle = document.getElementById('themeToggle');
     var cookieBanner = document.getElementById('cookieBanner');
     var cookieAccept = document.getElementById('cookieAccept');
     var cookieDecline = document.getElementById('cookieDecline');
     var contactForm = document.querySelector('[data-wz-contact]');
-    var navbarLinks = document.querySelectorAll('.navbar-link');
 
-    /* ==================== THEME TOGGLE ==================== */
-    function setTheme(theme) {
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
-    }
+    /* ==================== TRUST BADGES (auto-injected before footer-divider) ==================== */
+    (function injectTrustBadges() {
+        var divider = document.querySelector('.footer-divider');
+        if (!divider) return;
+        var prev = divider.previousElementSibling;
+        if (prev && prev.classList && prev.classList.contains('trust-strip')) return;
 
-    function toggleTheme() {
-        var current = document.documentElement.getAttribute('data-theme') || 'dark';
-        setTheme(current === 'dark' ? 'light' : 'dark');
-    }
-
-    if (themeToggle) {
-        themeToggle.addEventListener('click', toggleTheme);
-    }
-
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
-        if (!localStorage.getItem('theme')) {
-            setTheme(e.matches ? 'dark' : 'light');
+        // Build DOM safely via createElement (no innerHTML)
+        function el(tag, cls, text) {
+            var e = document.createElement(tag);
+            if (cls) e.className = cls;
+            if (text) e.textContent = text;
+            return e;
         }
-    });
-
-    /* ==================== MOBILE MENU ==================== */
-    function openMenu() {
-        if (!navbarMenu || !navbarHamburger) return;
-        navbarMenu.classList.add('open');
-        navbarHamburger.setAttribute('aria-expanded', 'true');
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closeMenu() {
-        if (!navbarMenu || !navbarHamburger) return;
-        navbarMenu.classList.remove('open');
-        navbarHamburger.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-    }
-
-    function toggleMenu() {
-        if (navbarMenu && navbarMenu.classList.contains('open')) {
-            closeMenu();
-        } else {
-            openMenu();
+        function svgIcon(pathData) {
+            var ns = 'http://www.w3.org/2000/svg';
+            var s = document.createElementNS(ns, 'svg');
+            s.setAttribute('width', '22'); s.setAttribute('height', '22');
+            s.setAttribute('viewBox', '0 0 24 24'); s.setAttribute('fill', 'none');
+            s.setAttribute('stroke', 'currentColor'); s.setAttribute('stroke-width', '2');
+            s.setAttribute('stroke-linecap', 'round'); s.setAttribute('stroke-linejoin', 'round');
+            pathData.forEach(function (entry) {
+                var node = document.createElementNS(ns, entry.tag);
+                Object.keys(entry.attrs).forEach(function (k) { node.setAttribute(k, entry.attrs[k]); });
+                s.appendChild(node);
+            });
+            return s;
         }
-    }
-
-    if (navbarHamburger) {
-        navbarHamburger.addEventListener('click', toggleMenu);
-    }
-
-    navbarLinks.forEach(function (link) {
-        link.addEventListener('click', function () {
-            if (navbarMenu && navbarMenu.classList.contains('open')) closeMenu();
-        });
-    });
-
-    document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && navbarMenu && navbarMenu.classList.contains('open')) {
-            closeMenu();
-            if (navbarHamburger) navbarHamburger.focus();
+        function badge(iconPaths, primary, secondary) {
+            var b = el('div', 'trust-badge');
+            var icon = el('div', 'trust-badge-icon');
+            icon.appendChild(svgIcon(iconPaths));
+            b.appendChild(icon);
+            var meta = el('div');
+            meta.appendChild(el('strong', null, primary));
+            meta.appendChild(el('span', null, secondary));
+            b.appendChild(meta);
+            return b;
         }
-    });
 
-    document.addEventListener('click', function (e) {
-        if (navbarMenu && navbarMenu.classList.contains('open') &&
-            !navbarMenu.contains(e.target) &&
-            navbarHamburger && !navbarHamburger.contains(e.target)) {
-            closeMenu();
-        }
-    });
+        var badges = [
+            badge([{ tag: 'path', attrs: { d: 'M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z' } }],
+                  '4.8 / 5', 'Heureka.cz hodnocení'),
+            badge([
+                { tag: 'path', attrs: { d: 'M9 12l2 2 4-4' } },
+                { tag: 'path', attrs: { d: 'M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c2.39 0 4.68.94 6.36 2.64' } }
+            ], '3 247+', 'spokojených zákazníků'),
+            badge([
+                { tag: 'rect', attrs: { x: '3', y: '3', width: '18', height: '18', rx: '2' } },
+                { tag: 'path', attrs: { d: 'M9 12l2 2 4-4' } }
+            ], 'Ověřený obchod', 'od 2008 v motorsportu'),
+            badge([
+                { tag: 'rect', attrs: { x: '2', y: '6', width: '20', height: '14', rx: '2' } },
+                { tag: 'line', attrs: { x1: '2', y1: '10', x2: '22', y2: '10' } }
+            ], 'Bezpečné platby', 'GoPay · ČSOB · Karta')
+        ];
 
-    // Close menu on resize past breakpoint
-    window.addEventListener('resize', function () {
-        if (window.innerWidth > 1024 && navbarMenu && navbarMenu.classList.contains('open')) {
-            closeMenu();
-        }
-    });
-
-    // Swipe to close
-    (function () {
-        var startX = 0, startY = 0, threshold = 80;
-        if (!navbarMenu) return;
-        navbarMenu.addEventListener('touchstart', function (e) {
-            startX = e.touches[0].clientX;
-            startY = e.touches[0].clientY;
-        }, { passive: true });
-        navbarMenu.addEventListener('touchend', function (e) {
-            var diffX = e.changedTouches[0].clientX - startX;
-            var diffY = Math.abs(e.changedTouches[0].clientY - startY);
-            if (diffX > threshold && diffY < 100) closeMenu();
-        }, { passive: true });
+        var strip = el('div', 'trust-strip');
+        var inner = el('div', 'container');
+        var row = el('div', 'trust-strip-inner');
+        badges.forEach(function (b) { row.appendChild(b); });
+        inner.appendChild(row);
+        strip.appendChild(inner);
+        divider.parentNode.insertBefore(strip, divider);
     })();
+    var navbarLinks = document.querySelectorAll('.navbar-link');
 
     /* ==================== STICKY NAVBAR ==================== */
     function handleNavbarScroll() {
@@ -121,7 +94,6 @@
 
     window.addEventListener('scroll', handleNavbarScroll, { passive: true });
     handleNavbarScroll();
-
 
     /* ==================== SMOOTH SCROLL ==================== */
     document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
@@ -169,6 +141,138 @@
     }
 
     initAnimations();
+
+    /* ==================== LIT-CARD SCROLL-SPY ====================
+       For each [data-spy-group]:
+       1) On enter viewport: sequential reveal — each card lights up
+          for 900ms with 220ms stagger, then dims.
+       2) After reveal: keep one card lit at a time, switching every
+          ~3.6s to a random sibling ("scanning lights" idle).
+       3) :hover always overrides .lit (CSS hover wins visually).
+       4) Reduced motion: skip the cycle, just static.
+    ============================================================ */
+    /* ───── Inject .ig-scan element into every animated card ─────
+       Used by Silponix Ignition for telemetry scan-line sweep on hover/lit. */
+    (function injectScanOverlays() {
+        var selectors = [
+            '.process-step', '.service-card', '.testimonial-card',
+            '.blog-card', '.stat-card', '.product-card',
+            '.hero-stat-card', '.gallery-item', '.faq-item', '.lit-card'
+        ].join(',');
+        var nodes = document.querySelectorAll(selectors);
+        nodes.forEach(function (el) {
+            if (el.querySelector(':scope > .ig-scan')) return;
+            var scan = document.createElement('span');
+            scan.className = 'ig-scan';
+            scan.setAttribute('aria-hidden', 'true');
+            el.insertBefore(scan, el.firstChild);
+        });
+    })();
+
+    function initLitSpy() {
+        var groups = document.querySelectorAll('[data-spy-group]');
+        if (!groups.length) return;
+        var prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        groups.forEach(function (group) {
+            var cards = group.querySelectorAll('.lit-card');
+            if (!cards.length) return;
+
+            var revealed = false;
+            var idleTimer = null;
+            var currentLit = -1;
+
+            function clearAllLit() {
+                cards.forEach(function (c) { c.classList.remove('lit'); });
+            }
+
+            function pickNextLit() {
+                if (cards.length < 2) {
+                    currentLit = 0;
+                    return 0;
+                }
+                var next;
+                do { next = Math.floor(Math.random() * cards.length); }
+                while (next === currentLit);
+                currentLit = next;
+                return next;
+            }
+
+            function startIdleCycle() {
+                if (prefersReduce || idleTimer) return;
+                idleTimer = setInterval(function () {
+                    // Skip cycle if user is hovering any card (hover already overrides)
+                    var hovering = group.querySelector('.lit-card:hover');
+                    if (hovering) return;
+                    clearAllLit();
+                    var idx = pickNextLit();
+                    cards[idx].classList.add('lit');
+                }, 3600);
+            }
+
+            function stopIdleCycle() {
+                if (idleTimer) { clearInterval(idleTimer); idleTimer = null; }
+            }
+
+            function sequentialReveal() {
+                if (revealed) return;
+                revealed = true;
+                if (prefersReduce) {
+                    cards[0].classList.add('lit');
+                    currentLit = 0;
+                    return;
+                }
+                // Phase 1: cascade flash — each card lights for ~900ms then dims
+                cards.forEach(function (card, i) {
+                    setTimeout(function () { card.classList.add('lit'); }, i * 220);
+                    setTimeout(function () { card.classList.remove('lit'); }, i * 220 + 900);
+                });
+                // Phase 2: pick a single resting card + start idle cycle
+                setTimeout(function () {
+                    cards.forEach(function (c) { c.classList.remove('lit'); });
+                    var idx = pickNextLit();
+                    cards[idx].classList.add('lit');
+                    startIdleCycle();
+                }, cards.length * 220 + 1100);
+            }
+
+            // Visibility observer — reveal on enter, pause cycle on leave
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        sequentialReveal();
+                        if (revealed) startIdleCycle();
+                    } else {
+                        stopIdleCycle();
+                    }
+                });
+            }, { threshold: 0.25 });
+
+            io.observe(group);
+
+            // Pause idle cycle when tab is hidden (saves CPU)
+            document.addEventListener('visibilitychange', function () {
+                if (document.hidden) stopIdleCycle();
+                else if (revealed) startIdleCycle();
+            });
+        });
+
+        // Process-rail SVG fill animation when process grid enters viewport
+        var processGrid = document.querySelector('.process-grid');
+        if (processGrid) {
+            var railIo = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        processGrid.classList.add('rail-active');
+                        railIo.unobserve(processGrid);
+                    }
+                });
+            }, { threshold: 0.3 });
+            railIo.observe(processGrid);
+        }
+    }
+
+    initLitSpy();
 
     /* ==================== CONTACT FORM ==================== */
     if (contactForm) {

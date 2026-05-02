@@ -94,7 +94,7 @@
         <div class="admin-content admin-panel active" id="panel-overview">
             <div class="admin-stats-grid">
                 <div class="admin-stat-card">
-                    <div class="admin-stat-icon" style="background: rgba(189,20,27,0.1); color: #bd141b;">
+                    <div class="admin-stat-icon admin-stat-icon--brand">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
                     </div>
                     <div>
@@ -103,7 +103,7 @@
                     </div>
                 </div>
                 <div class="admin-stat-card">
-                    <div class="admin-stat-icon" style="background: rgba(16,185,129,0.1); color: #10b981;">
+                    <div class="admin-stat-icon admin-stat-icon--success">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
                     </div>
                     <div>
@@ -112,7 +112,7 @@
                     </div>
                 </div>
                 <div class="admin-stat-card">
-                    <div class="admin-stat-icon" style="background: rgba(245,158,11,0.1); color: #f59e0b;">
+                    <div class="admin-stat-icon admin-stat-icon--warning">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                     </div>
                     <div>
@@ -121,7 +121,7 @@
                     </div>
                 </div>
                 <div class="admin-stat-card">
-                    <div class="admin-stat-icon" style="background: rgba(99,102,241,0.1); color: #6366f1;">
+                    <div class="admin-stat-icon admin-stat-icon--info">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                     </div>
                     <div>
@@ -174,25 +174,25 @@
             <!-- Summary cards -->
             <div class="admin-stats-grid" id="statsSummary">
                 <div class="admin-stat-card">
-                    <div class="admin-stat-icon" style="background: rgba(99,102,241,0.1); color: #6366f1;">
+                    <div class="admin-stat-icon admin-stat-icon--info">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                     </div>
                     <div><span class="admin-stat-number" id="statsViews">&mdash;</span><span class="admin-stat-label">Celkov&aacute; zobrazen&iacute;</span></div>
                 </div>
                 <div class="admin-stat-card">
-                    <div class="admin-stat-icon" style="background: rgba(16,185,129,0.1); color: #10b981;">
+                    <div class="admin-stat-icon admin-stat-icon--success">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
                     </div>
                     <div><span class="admin-stat-number" id="statsUnique">&mdash;</span><span class="admin-stat-label">Unik&aacute;tn&iacute; n&aacute;v&scaron;t&#283;vn&iacute;ci</span></div>
                 </div>
                 <div class="admin-stat-card">
-                    <div class="admin-stat-icon" style="background: rgba(245,158,11,0.1); color: #f59e0b;">
+                    <div class="admin-stat-icon admin-stat-icon--warning">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
                     </div>
                     <div><span class="admin-stat-number" id="statsAvg">&mdash;</span><span class="admin-stat-label">Pr&#367;m&#283;r / den</span></div>
                 </div>
                 <div class="admin-stat-card">
-                    <div class="admin-stat-icon" style="background: rgba(189,20,27,0.1); color: #bd141b;">
+                    <div class="admin-stat-icon admin-stat-icon--brand">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
                     </div>
                     <div><span class="admin-stat-number" id="statsTopPage">&mdash;</span><span class="admin-stat-label">Nejnav&scaron;t&#283;vovan&#283;j&scaron;&iacute;</span></div>
@@ -235,13 +235,13 @@
                 <h3>Tr&#382;by</h3>
                 <div class="admin-stats-grid" style="grid-template-columns: repeat(2, 1fr);">
                     <div class="admin-stat-card">
-                        <div class="admin-stat-icon" style="background: rgba(16,185,129,0.1); color: #10b981;">
+                        <div class="admin-stat-icon admin-stat-icon--success">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                         </div>
                         <div><span class="admin-stat-number" id="statsRevTotal">&mdash;</span><span class="admin-stat-label">Celkov&eacute; tr&#382;by</span></div>
                     </div>
                     <div class="admin-stat-card">
-                        <div class="admin-stat-icon" style="background: rgba(245,158,11,0.1); color: #f59e0b;">
+                        <div class="admin-stat-icon admin-stat-icon--warning">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
                         </div>
                         <div><span class="admin-stat-number" id="statsRevAvg">&mdash;</span><span class="admin-stat-label">Pr&#367;m&#283;rn&yacute; ko&scaron;&iacute;k</span></div>

@@ -28,6 +28,13 @@ const MIME_TYPES = {
 
 const server = createServer(async (req, res) => {
   let url = new URL(req.url, `http://localhost:${PORT}`);
+
+  if (url.pathname === '/api/track') {
+    res.writeHead(204);
+    res.end();
+    return;
+  }
+
   let filePath = join(__dirname, decodeURIComponent(url.pathname));
 
   try {

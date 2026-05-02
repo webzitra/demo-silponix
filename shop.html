@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="cs" data-theme="dark">
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,15 +14,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"></noscript>
+$(echo -e     <!-- MARQUE fonts (global) -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,500..800&family=JetBrains+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel=&#39;stylesheet&#39;">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,500..800&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>)
     <link rel="stylesheet" href="/css/style.css?v=7">
-    <script>(function(){var t=localStorage.getItem('theme');if(t){document.documentElement.setAttribute('data-theme',t)}else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches){document.documentElement.setAttribute('data-theme','light')}})();</script>
+    
 </head>
 <body>
     <a href="#eshop-main" class="skip-nav">P&#345;esko&#269;it na obsah</a>
 
     <!-- NAVBAR -->
-    <nav class="navbar" id="navbar" role="navigation" aria-label="Hlavn&iacute; navigace">
-        <div class="container navbar-inner">
+    <nav class="navbar nav-bar" id="navbar" role="navigation" aria-label="Hlavn&iacute; navigace">
+        <div class="container nav-bar-inner">
             <a href="/" class="navbar-logo logo-only" aria-label="Silponix &mdash; dom&#367;">
                 <img src="/img/logo.png" alt="Silponix" width="80" height="80" class="logo-img logo-dark"><img src="/img/logo-white.png" alt="" width="80" height="80" class="logo-img logo-light" aria-hidden="true">
                 <span class="logo-text">Silponix</span>
@@ -31,8 +34,6 @@
                 <a href="/" class="navbar-link" role="menuitem" data-i18n="nav.home">Dom&#367;</a>
                 <a href="/shop.html" class="navbar-link active" role="menuitem" data-i18n="nav.eshop">Shop</a>
                 <a href="/sluzby.html" class="navbar-link" role="menuitem" data-i18n="nav.services">Slu&#382;by</a>
-                <a href="/blog.html" class="navbar-link" role="menuitem" data-i18n="nav.blog">Novinky</a>
-                <a href="/galerie.html" class="navbar-link" role="menuitem" data-i18n="nav.gallery">Galerie</a>
                 <a href="/o-nas.html" class="navbar-link" role="menuitem" data-i18n="nav.about">O&nbsp;n&aacute;s</a>
                 <a href="/kontakt.html" class="navbar-link" role="menuitem" data-i18n="nav.contact">Kontakt</a>
             </div>
@@ -50,10 +51,7 @@
                         </button>
                     </div>
                 </div>
-                <button class="theme-toggle" id="themeToggle" aria-label="P&#345;epnout t&eacute;ma">
-                    <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-                    <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-                </button>
+                
                 <a href="/klient/" class="navbar-user" aria-label="M&#367;j &uacute;&#269;et">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                 </a>
@@ -61,97 +59,265 @@
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
                     <span class="cart-count" id="cartCount" hidden>0</span>
                 </a>
-                <a href="/shop.html" class="btn btn-primary btn-sm navbar-cta">Shop</a>
-                <button class="navbar-hamburger" id="navbarHamburger" aria-label="Menu" aria-expanded="false" aria-controls="navbarMenu">
-                    <span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span>
-                </button>
+                
             </div>
         </div>
     </nav>
 
-    <!-- ESHOP HERO -->
-    <section class="eshop-hero" id="eshop-main">
-        <div class="page-hero-bg" style="background-image: url('/img/gallery/pu-silentbloky.png')"></div>
-        <div class="page-hero-overlay"></div>
-        <div class="container">
-            <div class="eshop-hero-inner">
-                <h1 class="eshop-hero-title" data-i18n="eshop_hero.title">Shop</h1>
-                <p class="eshop-hero-subtitle" data-i18n="eshop_hero.subtitle">Z&aacute;vodn&iacute; d&iacute;ly a p&#345;&iacute;slu&scaron;enstv&iacute; Honda</p>
-                <div class="eshop-search">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                    <input type="search" id="searchInput" placeholder="Hledat produkty..." class="form-input" autocomplete="off" data-i18n-placeholder="products.search_placeholder">
+    <!-- ═══════════ SHOP HERO — Premium Catalog ═══════════ -->
+    <section class="shop-hero" id="eshop-main">
+        <div class="shop-hero-bg" aria-hidden="true"></div>
+        <div class="shop-hero-veil" aria-hidden="true"></div>
+        <div class="container shop-hero-inner">
+            <span class="shop-hero-badge">
+                <span class="shop-hero-badge-dot"></span>
+                Motorsport katalog &middot; 2026
+            </span>
+            <h1 class="shop-hero-title">Závodní <span class="text-gradient">díly</span></h1>
+            <p class="shop-hero-subtitle">Honda &amp; motorsport komponenty — ECU Hondata, polyuretanové silentbloky, výfuky, podvozky.</p>
+
+            <form class="shop-search" role="search" onsubmit="event.preventDefault();">
+                <svg class="shop-search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="search" id="searchInput" placeholder="Hledat produkty, díly, ECU…" class="shop-search-input" autocomplete="off" data-i18n-placeholder="products.search_placeholder">
+                <kbd class="shop-search-kbd" aria-hidden="true">⌘ K</kbd>
+            </form>
+
+            <div class="shop-hero-stats" data-spy-group>
+                <div class="shop-stat lit-card">
+                    <span class="shop-stat-value" id="statTotalProducts">25</span>
+                    <span class="shop-stat-label">produktů</span>
+                </div>
+                <div class="shop-stat lit-card">
+                    <span class="shop-stat-value">6</span>
+                    <span class="shop-stat-label">kategorií</span>
+                </div>
+                <div class="shop-stat lit-card">
+                    <span class="shop-stat-value">100%</span>
+                    <span class="shop-stat-label">skladem</span>
+                </div>
+                <div class="shop-stat lit-card">
+                    <span class="shop-stat-value">24h</span>
+                    <span class="shop-stat-label">expedice</span>
                 </div>
             </div>
         </div>
     </section>
-    <div class="eshop-hero-transition"></div>
 
-    <!-- ESHOP CONTENT -->
-    <section class="section eshop-section">
+    <!-- ═══════════ VEHICLE COMPATIBILITY PICKER ═══════════ -->
+    <section class="shop-vehicle-section">
         <div class="container">
-            <div class="eshop-layout">
-                <!-- Sidebar -->
-                <aside class="eshop-sidebar" id="eshopSidebar">
-                    <div class="sidebar-section">
-                        <h3 class="sidebar-title">Kategorie</h3>
-                        <ul class="category-list" id="categoryList">
-                            <li><button class="category-btn active" data-category="all">V&scaron;echny produkty</button></li>
-                            <li><button class="category-btn" data-category="ecu">ECU &amp; Elektronika</button></li>
-                            <li><button class="category-btn" data-category="silentbloky">Silentbloky PU</button></li>
-                            <li><button class="category-btn" data-category="motor">Motor &amp; P&#345;evodovky</button></li>
-                            <li><button class="category-btn" data-category="podvozek">Podvozek &amp; Brzdy</button></li>
-                            <li><button class="category-btn" data-category="karoserie">Karoserie &amp; V&yacute;fuky</button></li>
-                            <li><button class="category-btn" data-category="baterie">Baterie</button></li>
+            <div class="shop-vehicle-picker" id="shopVehiclePicker">
+                <div class="shop-vehicle-display" id="vehicleDisplay">
+                    <span class="shop-vehicle-icon" aria-hidden="true">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M5 3.5a1 1 0 0 1 1-1h1.5a1 1 0 0 1 1 1V10h7V3.5a1 1 0 0 1 1-1H18a1 1 0 0 1 1 1V20.5a1 1 0 0 1-1 1h-1.5a1 1 0 0 1-1-1V14h-7v6.5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1z"/>
+                        </svg>
+                    </span>
+                    <div class="shop-vehicle-text">
+                        <span class="shop-vehicle-label">Váš vůz Honda</span>
+                        <span class="shop-vehicle-value" id="vehicleValue">Vyberte vůz pro zobrazení kompatibility</span>
+                    </div>
+                    <button type="button" class="shop-vehicle-toggle btn btn-sm btn-outline" id="vehicleToggleBtn">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                        <span>Vybrat</span>
+                    </button>
+                    <button type="button" class="shop-vehicle-clear" id="vehicleClearBtn" hidden aria-label="Zrušit výběr vozu">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    </button>
+                </div>
+                <div class="shop-vehicle-dropdown" id="vehicleDropdown" hidden>
+                    <div class="shop-vehicle-grid" id="vehicleGrid"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ SHOP CONTENT ═══════════ -->
+    <section class="section shop-section">
+        <div class="container">
+            <div class="shop-layout">
+
+                <!-- ─── SIDEBAR ─── -->
+                <aside class="shop-sidebar" id="eshopSidebar">
+
+                    <div class="shop-sidebar-section">
+                        <header class="shop-sidebar-header">
+                            <h3 class="shop-sidebar-title">Kategorie</h3>
+                            <button class="shop-sidebar-reset" id="resetCategory" type="button">Reset</button>
+                        </header>
+                        <ul class="shop-cat-list" id="categoryList">
+                            <li><button class="shop-cat-btn category-btn active" data-category="all">
+                                <span class="shop-cat-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                                </span>
+                                <span class="shop-cat-label">Všechny produkty</span>
+                                <span class="shop-cat-count" data-cat-count="all">25</span>
+                            </button></li>
+                            <li><button class="shop-cat-btn category-btn" data-category="ecu">
+                                <span class="shop-cat-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+                                </span>
+                                <span class="shop-cat-label">ECU &amp; Elektronika</span>
+                                <span class="shop-cat-count" data-cat-count="ecu">5</span>
+                            </button></li>
+                            <li><button class="shop-cat-btn category-btn" data-category="silentbloky">
+                                <span class="shop-cat-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg>
+                                </span>
+                                <span class="shop-cat-label">Silentbloky PU</span>
+                                <span class="shop-cat-count" data-cat-count="silentbloky">6</span>
+                            </button></li>
+                            <li><button class="shop-cat-btn category-btn" data-category="motor">
+                                <span class="shop-cat-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                                </span>
+                                <span class="shop-cat-label">Motor &amp; Převodovky</span>
+                                <span class="shop-cat-count" data-cat-count="motor">4</span>
+                            </button></li>
+                            <li><button class="shop-cat-btn category-btn" data-category="podvozek">
+                                <span class="shop-cat-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="3"/><path d="M3 17h2m4 0h6m4 0h2"/><path d="M5 12h14l-2-5H7l-2 5z"/></svg>
+                                </span>
+                                <span class="shop-cat-label">Podvozek &amp; Brzdy</span>
+                                <span class="shop-cat-count" data-cat-count="podvozek">5</span>
+                            </button></li>
+                            <li><button class="shop-cat-btn category-btn" data-category="karoserie">
+                                <span class="shop-cat-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l3-7h12l3 7v6h-3l-1 2H7l-1-2H3v-6z"/><circle cx="7.5" cy="15.5" r="1.5"/><circle cx="16.5" cy="15.5" r="1.5"/></svg>
+                                </span>
+                                <span class="shop-cat-label">Karoserie &amp; Výfuky</span>
+                                <span class="shop-cat-count" data-cat-count="karoserie">3</span>
+                            </button></li>
+                            <li><button class="shop-cat-btn category-btn" data-category="baterie">
+                                <span class="shop-cat-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="18" height="10" rx="2"/><line x1="22" y1="11" x2="22" y2="13"/><line x1="6" y1="11" x2="6" y2="13"/><line x1="10" y1="11" x2="10" y2="13"/></svg>
+                                </span>
+                                <span class="shop-cat-label">Baterie</span>
+                                <span class="shop-cat-count" data-cat-count="baterie">2</span>
+                            </button></li>
                         </ul>
                     </div>
-                    <div class="sidebar-section">
-                        <h3 class="sidebar-title">Cena</h3>
-                        <div class="price-filter">
-                            <input type="number" id="priceMin" class="form-input form-input-sm" placeholder="Od" min="0" data-i18n-placeholder="products.price_from">
-                            <span class="price-sep">&mdash;</span>
-                            <input type="number" id="priceMax" class="form-input form-input-sm" placeholder="Do" min="0" data-i18n-placeholder="products.price_to">
-                            <button class="btn btn-sm btn-primary" id="priceFilterBtn">OK</button>
+
+                    <div class="shop-sidebar-section">
+                        <header class="shop-sidebar-header">
+                            <h3 class="shop-sidebar-title">Cenové rozpětí</h3>
+                        </header>
+                        <div class="shop-price-filter">
+                            <div class="shop-price-input-wrap">
+                                <span class="shop-price-suffix">Kč</span>
+                                <input type="number" id="priceMin" class="shop-price-input" placeholder="Od" min="0" data-i18n-placeholder="products.price_from">
+                            </div>
+                            <span class="shop-price-sep" aria-hidden="true">→</span>
+                            <div class="shop-price-input-wrap">
+                                <span class="shop-price-suffix">Kč</span>
+                                <input type="number" id="priceMax" class="shop-price-input" placeholder="Do" min="0" data-i18n-placeholder="products.price_to">
+                            </div>
+                            <button class="btn btn-sm btn-primary shop-price-apply" id="priceFilterBtn">Použít</button>
                         </div>
                     </div>
-                    <div class="sidebar-section sidebar-info">
-                        <div class="sidebar-info-card">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                            <span data-i18n="products.free_shipping">Doprava zdarma nad 20&nbsp;000&nbsp;K&#269;</span>
-                        </div>
-                        <div class="sidebar-info-card">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                            <span data-i18n="products.consultation">Poradenstv&iacute;: +420 739 657 624</span>
+
+                    <div class="shop-sidebar-section">
+                        <header class="shop-sidebar-header">
+                            <h3 class="shop-sidebar-title">Rychlé filtry</h3>
+                        </header>
+                        <div class="shop-quick-filters">
+                            <label class="shop-toggle-row">
+                                <input type="checkbox" id="toggleInStock">
+                                <span class="shop-toggle-track"><span class="shop-toggle-thumb"></span></span>
+                                <span class="shop-toggle-label">Pouze skladem</span>
+                            </label>
+                            <label class="shop-toggle-row">
+                                <input type="checkbox" id="toggleSale">
+                                <span class="shop-toggle-track"><span class="shop-toggle-thumb"></span></span>
+                                <span class="shop-toggle-label">Ve slevě</span>
+                            </label>
+                            <label class="shop-toggle-row">
+                                <input type="checkbox" id="toggleWithReviews">
+                                <span class="shop-toggle-track"><span class="shop-toggle-thumb"></span></span>
+                                <span class="shop-toggle-label">S hodnocením</span>
+                            </label>
+                            <label class="shop-toggle-row">
+                                <input type="checkbox" id="toggleCompatible">
+                                <span class="shop-toggle-track"><span class="shop-toggle-thumb"></span></span>
+                                <span class="shop-toggle-label">Sedí na můj vůz</span>
+                            </label>
                         </div>
                     </div>
+
+                    <div class="shop-sidebar-info">
+                        <div class="shop-info-card">
+                            <span class="shop-info-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+                            </span>
+                            <div>
+                                <strong>Doprava zdarma</strong>
+                                <span>nad 20 000 Kč</span>
+                            </div>
+                        </div>
+                        <div class="shop-info-card">
+                            <span class="shop-info-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            </span>
+                            <div>
+                                <strong>Poradenství</strong>
+                                <span>+420 739 657 624</span>
+                            </div>
+                        </div>
+                    </div>
+
                 </aside>
 
-                <!-- Products -->
-                <div class="eshop-main">
-                    <div class="eshop-toolbar">
-                        <div class="eshop-results" id="eshopResults" data-i18n="products.loading">Na&#269;&iacute;t&aacute;m produkty...</div>
-                        <div class="eshop-sort">
-                            <label for="sortSelect" class="sr-only">&#344;azen&iacute;</label>
-                            <select id="sortSelect" class="form-input form-select form-input-sm">
-                                <option value="default" data-i18n="products.sort_default">Doporu&#269;en&eacute;</option>
-                                <option value="price-asc" data-i18n="products.sort_price_asc">Cena: nejni&#382;&scaron;&iacute;</option>
-                                <option value="price-desc" data-i18n="products.sort_price_desc">Cena: nejvy&scaron;&scaron;&iacute;</option>
-                                <option value="name-asc" data-i18n="products.sort_name_asc">N&aacute;zev: A-Z</option>
-                                <option value="name-desc" data-i18n="products.sort_name_desc">N&aacute;zev: Z-A</option>
-                            </select>
+                <!-- ─── PRODUCTS ─── -->
+                <div class="shop-main eshop-main">
+
+                    <div class="shop-toolbar">
+                        <div class="shop-results">
+                            <span class="shop-results-dot" aria-hidden="true"></span>
+                            <span id="eshopResults" data-i18n="products.loading">Načítám produkty…</span>
                         </div>
-                        <button class="btn btn-sm btn-outline eshop-filter-toggle" id="filterToggle" aria-label="Filtry">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
-                            <span data-i18n="products.filters">Filtry</span>
-                        </button>
+                        <div class="shop-toolbar-controls">
+                            <div class="shop-view-toggle" role="group" aria-label="Zobrazení">
+                                <button class="shop-view-btn active" data-view="grid" aria-label="Mřížka" aria-pressed="true">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                                </button>
+                                <button class="shop-view-btn" data-view="list" aria-label="Seznam" aria-pressed="false">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                                </button>
+                            </div>
+                            <div class="shop-sort-wrap">
+                                <label for="sortSelect" class="sr-only">Řazení</label>
+                                <select id="sortSelect" class="shop-sort-select">
+                                    <option value="default" data-i18n="products.sort_default">Doporučené</option>
+                                    <option value="rating">Nejlépe hodnocené</option>
+                                    <option value="price-asc" data-i18n="products.sort_price_asc">Cena: nejnižší</option>
+                                    <option value="price-desc" data-i18n="products.sort_price_desc">Cena: nejvyšší</option>
+                                    <option value="name-asc" data-i18n="products.sort_name_asc">Název: A-Z</option>
+                                    <option value="name-desc" data-i18n="products.sort_name_desc">Název: Z-A</option>
+                                </select>
+                                <svg class="shop-sort-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                            </div>
+                            <button class="btn btn-sm btn-outline eshop-filter-toggle shop-filter-toggle" id="filterToggle" aria-label="Filtry">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+                                <span>Filtry</span>
+                            </button>
+                        </div>
                     </div>
-                    <div class="products-grid" id="productsGrid">
+
+                    <div class="active-filters-bar" id="activeFiltersBar" aria-live="polite"></div>
+
+                    <div class="products-grid shop-products-grid" id="productsGrid" data-spy-group>
                         <!-- Filled by JS -->
                     </div>
-                    <div class="eshop-empty" id="eshopEmpty" hidden>
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                        <p data-i18n="products.no_results">&#381;&aacute;dn&eacute; produkty neodpov&iacute;daj&iacute; va&scaron;emu hled&aacute;n&iacute;.</p>
-                        <button class="btn btn-sm btn-outline" id="resetFilters" data-i18n="products.reset_filters">Zru&scaron;it filtry</button>
+
+                    <div class="shop-empty eshop-empty" id="eshopEmpty" hidden>
+                        <div class="shop-empty-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        </div>
+                        <h3 class="shop-empty-title">Nic jsme nenašli</h3>
+                        <p class="shop-empty-text" data-i18n="products.no_results">Žádné produkty neodpovídají vašemu hledání.</p>
+                        <button class="btn btn-sm btn-outline" id="resetFilters" data-i18n="products.reset_filters">Zrušit filtry</button>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -193,6 +359,7 @@
                         <li><a href="/o-nas.html" data-i18n="footer.about">O n&aacute;s</a></li>
                         <li><a href="/kontakt.html" data-i18n="footer.contact">Kontakt</a></li>
                         <li><a href="/blog.html" data-i18n="footer.blog">Novinky</a></li>
+                        <li><a href="/galerie.html" data-i18n="footer.gallery">Galerie</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
@@ -228,29 +395,6 @@
             <div class="cookie-actions">
                 <button class="btn btn-sm btn-primary" id="cookieAccept" data-i18n="cookie.accept">P&#345;ijmout</button>
                 <button class="btn btn-sm btn-outline" id="cookieDecline" data-i18n="cookie.decline">Odm&iacute;tnout</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Quick-View Modal -->
-    <div class="quick-view-modal" id="quickViewModal" role="dialog" aria-modal="true" aria-labelledby="qvModalTitle" hidden>
-        <div class="quick-view-backdrop" id="qvBackdrop"></div>
-        <div class="quick-view-panel">
-            <button class="quick-view-close" id="qvClose" aria-label="Zavřít">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            </button>
-            <div class="quick-view-img-wrap">
-                <img id="qvImage" src="" alt="" class="quick-view-img">
-            </div>
-            <div class="quick-view-info">
-                <p class="product-card-category" id="qvCategory"></p>
-                <h2 class="quick-view-title" id="qvModalTitle"></h2>
-                <p class="quick-view-desc" id="qvDesc"></p>
-                <div class="quick-view-specs" id="qvSpecs"></div>
-                <div class="quick-view-footer">
-                    <span class="quick-view-price" id="qvPrice"></span>
-                    <button class="btn btn-primary" id="qvAddToCart">Přidat do košíku</button>
-                </div>
             </div>
         </div>
     </div>
