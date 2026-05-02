@@ -9306,38 +9306,6 @@ a.kontakt-info-value:hover {
 }
 .home .container { max-width: 1480px; padding: 0 clamp(1.25rem, 4vw, 2.5rem); margin: 0 auto; }
 
-/* ── Custom cursor (desktop only) ──────────────────────── */
-@media (hover: hover) and (pointer: fine) {
-    .home-cursor,
-    .home-cursor-ring {
-        position: fixed;
-        top: 0; left: 0;
-        pointer-events: none;
-        z-index: 9999;
-        transform: translate3d(-50%, -50%, 0);
-        transition: opacity 0.25s ease, width 0.3s var(--ig-ease), height 0.3s var(--ig-ease), background 0.25s ease;
-        opacity: 0;
-        mix-blend-mode: difference;
-    }
-    .home-cursor {
-        width: 6px; height: 6px;
-        border-radius: 50%;
-        background: var(--m-fg);
-    }
-    .home-cursor-ring {
-        width: 36px; height: 36px;
-        border-radius: 50%;
-        border: 1px solid var(--m-fg);
-        transition: opacity 0.2s ease, width 0.4s var(--ig-ease), height 0.4s var(--ig-ease), border-color 0.25s ease;
-    }
-    .home.is-cursor-on .home-cursor,
-    .home.is-cursor-on .home-cursor-ring { opacity: 1; }
-    .home.is-cursor-hover .home-cursor { width: 4px; height: 4px; }
-    .home.is-cursor-hover .home-cursor-ring { width: 64px; height: 64px; border-color: var(--m-red); }
-    .home a, .home button, .home [role="button"] { cursor: none; }
-    .home, .home * { cursor: none; }
-}
-
 /* ── Section reveal ─────────────────────────────────────── */
 .home [data-m-reveal] {
     opacity: 0;
@@ -10033,8 +10001,8 @@ a.kontakt-info-value:hover {
 .home-parts-rail {
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: minmax(300px, 340px);
-    gap: 1rem;
+    grid-auto-columns: minmax(340px, 380px);
+    gap: 1.25rem;
     overflow-x: auto;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
@@ -10045,10 +10013,181 @@ a.kontakt-info-value:hover {
 .home-parts-rail::-webkit-scrollbar { height: 4px; }
 .home-parts-rail::-webkit-scrollbar-thumb { background: var(--m-fg-4); }
 .home-parts-rail > * { scroll-snap-align: start; }
+
+/* ── MARQUE product card refinement (parts rail only) ──── */
 .home-parts-rail .product-card {
     background: var(--m-bg-2) !important;
     border: 1px solid var(--m-line) !important;
     border-radius: 2px !important;
+    overflow: hidden;
+    display: flex !important;
+    flex-direction: column;
+    height: 100%;
+}
+/* Bigger cinematic image area */
+.home-parts-rail .product-card-img-wrap {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: var(--m-bg);
+}
+.home-parts-rail .product-card-img-wrap img,
+.home-parts-rail img.product-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: filter 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+/* Hide noise inside the rail to keep cards uniform */
+.home-parts-rail .product-card-rating,
+.home-parts-rail .product-card-variations,
+.home-parts-rail .product-card-compat,
+.home-parts-rail .product-stock,
+.home-parts-rail .product-card-overlay { display: none !important; }
+
+/* Body — clean MARQUE typography */
+.home-parts-rail .product-card-body {
+    padding: 1.1rem 1.2rem 1.2rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1;
+    gap: 0.5rem !important;
+}
+.home-parts-rail .product-card-category {
+    font-family: var(--m-mono) !important;
+    font-size: 0.62rem !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.24em !important;
+    text-transform: uppercase !important;
+    color: var(--m-fg-3) !important;
+    margin: 0 !important;
+}
+.home-parts-rail .product-name,
+.home-parts-rail .product-card-title {
+    font-family: var(--m-display) !important;
+    font-weight: 600 !important;
+    font-variation-settings: 'wdth' 95, 'opsz' 32 !important;
+    font-size: 1.12rem !important;
+    line-height: 1.2 !important;
+    letter-spacing: -0.015em !important;
+    color: var(--m-fg) !important;
+    margin: 0 !important;
+    text-wrap: balance;
+}
+.home-parts-rail .product-card-footer {
+    margin-top: auto;
+    padding-top: 0.85rem;
+    border-top: 1px solid var(--m-line);
+    display: flex !important;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+.home-parts-rail .product-price-block {
+    display: inline-flex !important;
+    flex-direction: column !important;
+    gap: 0.1rem !important;
+}
+.home-parts-rail .product-price {
+    font-family: var(--m-display) !important;
+    font-weight: 700 !important;
+    font-variation-settings: 'wdth' 92, 'opsz' 48 !important;
+    font-size: 1.5rem !important;
+    letter-spacing: -0.025em !important;
+    color: var(--m-fg) !important;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+}
+.home-parts-rail .product-price.is-sale {
+    color: var(--m-red) !important;
+    -webkit-text-fill-color: var(--m-red) !important;
+    background: none !important;
+}
+.home-parts-rail .product-price-old {
+    font-family: var(--m-mono) !important;
+    font-size: 0.72rem !important;
+    color: var(--m-fg-3) !important;
+    text-decoration: line-through !important;
+    margin: 0 !important;
+}
+
+/* Add-to-cart inside rail — refined inverted button */
+.home-parts-rail .add-to-cart-btn {
+    margin-top: 0.85rem;
+    width: 100%;
+    background: var(--m-fg) !important;
+    color: var(--m-bg) !important;
+    border: 1px solid var(--m-fg) !important;
+    border-radius: 2px !important;
+    font-family: var(--m-display) !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+    font-size: 0.78rem !important;
+    padding: 0.85rem 1rem !important;
+    text-shadow: none !important;
+    transition: background 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.home-parts-rail .add-to-cart-btn:hover:not(:disabled) {
+    background: var(--m-red) !important;
+    border-color: var(--m-red) !important;
+    color: var(--m-fg) !important;
+    transform: none !important;
+    box-shadow: 0 0 24px rgba(var(--primary-rgb), 0.35) !important;
+}
+
+/* Wishlist heart — refined positioning */
+.home-parts-rail .product-card-wishlist {
+    position: absolute;
+    top: 0.85rem;
+    right: 0.85rem;
+    z-index: 3;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: rgba(5, 5, 5, 0.6);
+    border: 1px solid rgba(245, 245, 240, 0.18);
+    color: var(--m-fg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+.home-parts-rail .product-card-wishlist:hover,
+.home-parts-rail .product-card-wishlist.is-active {
+    background: var(--m-red);
+    color: var(--m-fg);
+    border-color: var(--m-red);
+}
+
+/* Bestseller / sale badge inside rail — mono caps top-left */
+.home-parts-rail .product-card .product-badge {
+    position: absolute;
+    top: 0.85rem;
+    left: 0.85rem;
+    z-index: 3;
+    font-family: var(--m-mono) !important;
+    font-size: 0.6rem !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.22em !important;
+    text-transform: uppercase !important;
+    padding: 0.35rem 0.7rem !important;
+    border-radius: 0 !important;
+}
+
+/* Hover */
+.home-parts-rail .product-card:hover {
+    border-color: rgba(var(--primary-rgb), 0.55) !important;
+    transform: translateY(-3px);
+}
+.home-parts-rail .product-card:hover .product-card-img-wrap img,
+.home-parts-rail .product-card:hover img.product-card-img {
+    filter: grayscale(0) !important;
+    transform: scale(1.06);
+}
+.home-parts-rail .product-card .product-card-img-wrap img,
+.home-parts-rail .product-card img.product-card-img {
+    filter: grayscale(0.5) contrast(1.05) brightness(0.92);
 }
 
 /* ─────────────────────────────────────────────────────────
@@ -10292,8 +10431,6 @@ a.kontakt-info-value:hover {
     .home-cycle-bar { position: sticky; top: var(--nb-height, 64px); background: var(--m-bg-2); z-index: 5; }
     .home-closer-foot { grid-template-columns: 1fr; }
     .home-closer-actions { align-items: flex-start; }
-    .home-cursor, .home-cursor-ring { display: none !important; }
-    .home a, .home button, .home, .home * { cursor: auto; }
 }
 @media (max-width: 640px) {
     .home-hero-mark { grid-template-columns: 1fr; gap: 0.4rem; text-align: left; }

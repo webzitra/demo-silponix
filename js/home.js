@@ -14,52 +14,8 @@
 
     const reduceMotion = window.matchMedia &&
         window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const fineCursor = window.matchMedia &&
-        window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-    /* ─── 1. Custom cursor ─────────────────────────────────── */
-    if (fineCursor) {
-        const dot = home.querySelector('.home-cursor');
-        const ring = home.querySelector('.home-cursor-ring');
-        if (dot && ring) {
-            let mx = 0, my = 0, rx = 0, ry = 0;
-            let raf = null;
-
-            const onMove = (e) => {
-                mx = e.clientX; my = e.clientY;
-                if (!raf) raf = requestAnimationFrame(loop);
-                home.classList.add('is-cursor-on');
-            };
-
-            const loop = () => {
-                rx += (mx - rx) * 0.18;
-                ry += (my - ry) * 0.18;
-                dot.style.transform = `translate3d(${mx}px, ${my}px, 0) translate(-50%, -50%)`;
-                ring.style.transform = `translate3d(${rx}px, ${ry}px, 0) translate(-50%, -50%)`;
-                if (Math.abs(mx - rx) > 0.5 || Math.abs(my - ry) > 0.5) {
-                    raf = requestAnimationFrame(loop);
-                } else {
-                    raf = null;
-                }
-            };
-
-            window.addEventListener('mousemove', onMove, { passive: true });
-            window.addEventListener('mouseleave', () => home.classList.remove('is-cursor-on'));
-            window.addEventListener('mouseenter', () => home.classList.add('is-cursor-on'));
-
-            // Hover state on interactive elements
-            const isInteractive = (el) => el && (
-                el.tagName === 'A' || el.tagName === 'BUTTON' ||
-                el.getAttribute('role') === 'button' ||
-                el.closest('a, button, [role="button"]')
-            );
-            window.addEventListener('mouseover', (e) => {
-                home.classList.toggle('is-cursor-hover', !!isInteractive(e.target));
-            });
-        }
-    }
-
-    /* ─── 2. Reveal observer ───────────────────────────────── */
+    /* ─── Reveal observer ───────────────────────────────── */
     const reveals = home.querySelectorAll('[data-m-reveal]');
     if ('IntersectionObserver' in window && reveals.length) {
         const obs = new IntersectionObserver((entries) => {

@@ -554,9 +554,11 @@
         var name = (lang === 'en' && product.name_en) ? product.name_en : product.name;
         var inStock = product.stock > 0;
         var stockClass = inStock ? 'in-stock' : 'out-of-stock';
+        var _tIn = window.t && window.t('products.in_stock');
+        var _tOut = window.t && window.t('products.out_of_stock');
         var stockLabel = inStock
-            ? (window.t ? window.t('products.in_stock') || 'Skladem' : 'Skladem')
-            : (window.t ? window.t('products.out_of_stock') || 'Vyprodáno' : 'Vyprodáno');
+            ? (_tIn && _tIn !== 'products.in_stock' ? _tIn : 'Skladem')
+            : (_tOut && _tOut !== 'products.out_of_stock' ? _tOut : 'Vyprodáno');
 
         var badge = '';
         if (product.badge === 'bestseller') badge = '<span class="product-badge product-badge--bestseller">Bestseller</span>';
