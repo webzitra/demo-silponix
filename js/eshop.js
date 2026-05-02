@@ -666,7 +666,7 @@
     /* ==================== FEATURED PRODUCTS (Homepage) ==================== */
     var featuredGrid = document.getElementById('featuredProducts');
     if (featuredGrid) {
-        var featured = PRODUCTS.filter(function (p) { return p.id !== 25; }).slice(0, 8);
+        var featured = PRODUCTS.filter(function (p) { return p.id !== 25; }).slice(0, 3);
         featured.forEach(function (p) { featuredGrid.appendChild(createProductCard(p)); });
     }
 
